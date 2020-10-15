@@ -63,12 +63,12 @@ function Footer() {
 
           <StyledGroup>
             <h1>Partenaires</h1>
-            <a href="/">Petzel</a>
-            <a href="/">Haribo</a>
-            <a href="/">Expe</a>
-            <a href="/">Au vieux campeur</a>
-            <a href="/">Simond</a>
-            <a href="/">Sport 2000</a>
+            <a href="https://www.petzl.com/FR/fr" target="_blank">Petzel</a>
+            <a href="https://www.haribo.com/fr-fr" target="_blank">Haribo</a>
+            <a href="https://www.expe.fr/" target="_blank">Expe</a>
+            <a href="https://www.auvieuxcampeur.fr/" target="_blank">Au vieux campeur</a>
+            <a href="https://www.simond.fr/" target="_blank">Simond</a>
+            <a href="https://www.sport2000.fr/" target="_blank">Sport 2000</a>
           </StyledGroup>
 
           <StyledGroup>
