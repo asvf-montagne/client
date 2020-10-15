@@ -1,57 +1,72 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-const StyledCard = styled.div`
-  cursor: pointer;
-  width: 100%;
-  display: flex;
-  margin-bottom: 42px;
-  flex-direction: column;
-  border-bottom: 1px solid #E5E5E5;
-`
+const StyledCard = styled.div(
+  (props) => `
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    margin-bottom: 42px;
+    flex-direction: column;
+    border-bottom: 1px solid ${props.theme.typography.colors.gray3};
+  `
+)
 
-const StyledTitle = styled.h1`
+const StyledTitle = styled.h1(
+  (props) => `
   font-size: 1.875rem;
-  color: #001768;
-  font-weight: 500;
-  margin: 0
-`
+  color: ${props.theme.typography.colors.secondary};
+  font-weight: ${props.theme.typography.weight.medium};
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  `
+)
 
-const StyledMeta = styled.span`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 28px 0 26px 0;
-  
-  h2 {
-    font-size: 1.0625rem;
-    color: #6E798C;
-    font-weight: 400;
-    margin: 0
-  }
-  
-  div {
+const StyledMeta = styled.span(
+  (props) => `
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-  }
-`
+    padding: 28px 0 26px 0;
+    
+    h2 {
+      font-size: 1.0625rem;
+      color: ${props.theme.typography.colors.gray1};
+      font-weight: ${props.theme.typography.weight.regular};
+      margin: 0
+    }
+    
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  `
+)
 
-const StyledTags = styled.p`
-  font-size: 0.6875rem;
-  color: #6E798C;
-  font-weight: 600;
-  margin: 0
-`
+const StyledTags = styled.p(
+  (props) => `
+    font-size: 0.6875rem;
+    color: ${props.theme.typography.colors.gray1};
+    font-weight: ${props.theme.typography.weight.semiBold};
+    margin: 0
+  `
+)
 
-const StyledDate = styled.p`
-  font-size: 0.6875rem;
-  color: #6E798C;
-  font-weight: 400;
-  margin: 0 0 0 30px;
-`
+const StyledDate = styled.p(
+  (props) => `
+    font-size: 0.6875rem;
+    color: ${props.theme.typography.colors.gray1};
+    font-weight: ${props.theme.typography.weight.regular};
+    margin: 0 0 0 30px;
+  `
+)
 
 function CardStory({ id, title, name, tags, date, onCLick }) {
   const handleClick = () => {
