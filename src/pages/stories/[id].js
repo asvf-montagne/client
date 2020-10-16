@@ -24,8 +24,20 @@ const mockSuggestedStories = [
   {
     id: '0',
     title: `Goulotte Zia et traversée d'arête !`,
-    image: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-    caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim',
+    images: [
+      {
+        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim'
+      },
+      {
+        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        caption: 'wewe'
+      },
+      {
+        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        caption: 'wqwqqwqw'
+      },
+    ],
     name: 'Martin',
     tags: 'Ski / Alpinisme',
     date: '3 days ago',
@@ -33,7 +45,20 @@ const mockSuggestedStories = [
   {
     id: '1',
     title: 'Pointe de Colomban 2455m (Lauzière)',
-    image: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+    images: [
+      {
+        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim'
+      },
+      {
+        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        caption: 'wewe'
+      },
+      {
+        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        caption: 'wqwqqwqw'
+      },
+    ],
     name: 'Thomas',
     tags: 'Ski / Alpinisme',
     date: '6 days ago',
@@ -41,7 +66,20 @@ const mockSuggestedStories = [
   {
     id: '2',
     title: 'Crête de Brouffier (Taillefer)',
-    image: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+    images: [
+      {
+        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim'
+      },
+      {
+        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        caption: 'wewe'
+      },
+      {
+        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        caption: 'wqwqqwqw'
+      },
+    ],
     name: 'Maud',
     tags: 'Ski / Alpinisme',
     date: '1 week ago',
@@ -56,7 +94,7 @@ function Story() {
     <>
       <Header
         title={mockSuggestedStories[0].title}
-        image={mockSuggestedStories[0].image}
+        images={mockSuggestedStories[0].images}
         name={mockSuggestedStories[0].name}
         tags={mockSuggestedStories[0].tags}
         date={mockSuggestedStories[0].date}

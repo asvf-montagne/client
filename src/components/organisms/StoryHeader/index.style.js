@@ -76,18 +76,24 @@ export const StyledHead = styled.div(
   `
 )
 
-export const StyledImage = styled.img`
-  margin: 64px 0 18px 0;
-  max-height: 640px;
-  width: 100%;
-`
-
-export const StyledCaption = styled.p(
+export const StyledImage = styled.div(
   (props) => `
-    font-size: 1.125rem;
-    color: ${props.theme.typography.colors.gray1};
-    font-weight: ${props.theme.typography.weight.regular};
-    text-decoration: underline;
-    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    img {
+      margin: 64px 0 18px 0;
+      max-height: 640px;
+      width: 100%;
+    }
+    
+    p {
+      font-size: 1.125rem;
+      color: ${props.theme.typography.colors.gray1};
+      font-weight: ${props.theme.typography.weight.regular};
+      text-decoration: underline;
+      margin: 0;
+    }
   `
 )

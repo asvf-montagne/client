@@ -49,6 +49,31 @@ export const StyledHeading = styled.h1(
   `
 )
 
+export const StyledSponsor = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  img {
+    max-height: 128px;
+   -webkit-filter: grayscale(100%);
+   -moz-filter: grayscale(100%);
+   -ms-filter: grayscale(100%);
+   filter: grayscale(100%);
+   filter: gray;
+   object-fit: cover;
+   transition: ease-in-out .16s filter;
+  }
+  
+  img:hover {
+   -webkit-filter: none;
+   -moz-filter: none;
+   -ms-filter: none;
+   filter: none;
+   cursor: pointer;
+  }
+`
+
 export const StyledContact = styled.div(
   (props) => `
     display: flex;

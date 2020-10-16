@@ -1,30 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Carousel as CarouselProvider } from 'react-responsive-carousel'
+import IconChevronRight from '@material-ui/icons/ChevronRight'
+import IconChevronLeft from '@material-ui/icons/ChevronLeft'
 import { StyledCarouselBox, StyledArrow } from './index.style'
+import CarouselProvider, { consts } from 'react-elastic-carousel'
 
 Carousel.propTypes = {
+  itemsToShow: PropTypes.number,
   children: PropTypes.node.isRequired
 }
 
-function Carousel({ children, ...props }) {
-  const arrowPrev = (onClickHandler, hasPrev, label) => hasPrev && (
-    <StyledArrow onClick={onClickHandler} title={label} left>
-      -
-    </StyledArrow>
-  )
-
-  const arrowNext = (onClickHandler, hasPrev, label) => hasPrev && (
-    <StyledArrow onClick={onClickHandler} title={label} right>
-      +
-    </StyledArrow>
-  )
+function Carousel({ itemsToShow = 1, children, ...props }) {
+  const arrow = ({ type, onClick, isEdge }) => {
+    const pointer = type === consts.PREV
+    return (
+      <StyledArrow onClick={onClick} disabled={isEdge}>
+        {pointer
+          ? <IconChevronLeft style={{ color: 'white' }} />
+          : <IconChevronRight style={{ color: 'white' }} />
+        }
+      </StyledArrow>
+    )
+  }
 
   return (
-    <StyledCarouselBox>
+    <StyledCarouselBox {...props}>
       <CarouselProvider
-        renderArrowPrev={arrowPrev}
-        renderArrowNext={arrowNext}
+        renderPagination={() => <></>}
+        itemsToShow={itemsToShow}
+        itemsToScroll={1}
+        renderArrow={arrow}
       >
         {children}
       </CarouselProvider>

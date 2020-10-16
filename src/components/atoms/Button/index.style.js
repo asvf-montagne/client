@@ -14,7 +14,7 @@ export default styled.button(
     :focus {
       outline: none;
       border-color: ${props.color === 'blue' ? '#0C75FF' : props.theme.colors.white};
-      box-shadow: 0 0 0 0.2rem rgba(255,255,255,.5);
+      box-shadow: 0 0 0 0.2rem ${props.color === 'blue' ? 'rgba(12,117,255,.5)' : 'rgba(255,255,255,.5)'};
     }
   `
 )

@@ -24,8 +24,8 @@ function Navigation() {
           <StyledGroup>
             <a href="/club">Le Club</a>
             <a href="/stories">Récits</a>
-            <a href="/programmes">Programmes</a>
-            <a href="/galery">Galerie</a>
+            <a href="/program">Programmes</a>
+            <a href="/gallery">Galerie</a>
             <Button onClick={handleRedirection} style={{ marginLeft: 32 }}>
               Connexion
             </Button>

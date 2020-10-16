@@ -20,7 +20,7 @@ function StorySuggestion({ stories }) {
               key={story.id}
               id={story.id}
               title={story.title}
-              image={story.image}
+              image={story.images[0].src}
               name={story.name}
               tags={story.tags}
               date={story.date}

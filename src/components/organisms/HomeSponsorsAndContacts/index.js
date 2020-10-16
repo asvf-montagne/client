@@ -13,6 +13,7 @@ import {
   StyledBackground,
   StyledOverlay,
   StyledHeading,
+  StyledSponsor,
   StyledContact,
   StyledContactCol,
   StyledContactIcon,
@@ -20,6 +21,7 @@ import {
 } from './index.style'
 
 HomeSponsorsAndContacts.propTypes = {
+  sponsors: PropTypes.array.isRequired,
   fullName: PropTypes.string.isRequired,
   setFullName: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
@@ -30,6 +32,7 @@ HomeSponsorsAndContacts.propTypes = {
 }
 
 function HomeSponsorsAndContacts({
+  sponsors,
   fullName,
   setFullName,
   email,
@@ -83,8 +86,14 @@ function HomeSponsorsAndContacts({
         <StyledOverlay>
           <StyledHeading>Nos partenaires</StyledHeading>
 
-          <Carousel>
-            <h1>Sponsors WIP</h1>
+          <Carousel
+            itemsToShow={4}
+          >
+            {sponsors.map((sponsor, index) => (
+              <StyledSponsor>
+                <img key={index} alt={sponsor.alt} src={sponsor.asset} />
+              </StyledSponsor>
+            ))}
           </Carousel>
 
           <StyledContact>

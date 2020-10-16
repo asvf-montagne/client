@@ -37,6 +37,37 @@ export const StyledHome = styled.div(
   `
 )
 
+const sponsors = [
+  {
+    alt: 'sponsor-petzl',
+    asset: require('../assets/images/logo-sponsor-petzl.jpg')
+  },
+  {
+    alt: 'sponsor-expe',
+    asset: require('../assets/images/logo-sponsor-expe.png')
+  },
+  {
+    alt: 'sponsor-au-vieux-campeur',
+    asset: require('../assets/images/logo-sponsor-au-vieux-campeur.png')
+  },
+  {
+    alt: 'sponsor-FFCAM',
+    asset: require('../assets/images/logo-sponsor-FFCAM.png')
+  },
+  {
+    alt: 'sponsor-haribo',
+    asset: require('../assets/images/logo-sponsor-haribo.jpg')
+  },
+  {
+    alt: 'sponsor-simond',
+    asset: require('../assets/images/logo-sponsor-simond.png')
+  },
+  {
+    alt: 'sponsor-sport-2000',
+    asset: require('../assets/images/logo-sponsor-sport-2000.jpg')
+  }
+]
+
 function Home() {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
@@ -56,6 +87,7 @@ function Home() {
         stories={mockStories}
       />
       <SponsorsAndContacts
+        sponsors={sponsors}
         fullName={fullName}
         setFullName={setFullName}
         email={email}

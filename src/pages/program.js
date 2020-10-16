@@ -1,4 +1,4 @@
-function Programmes() {
+function Program() {
   return (
     <>
       <h1>Programmes</h1>
@@ -6,4 +6,4 @@ function Programmes() {
   )
 }
 
-export default Programmes
+export default Program
