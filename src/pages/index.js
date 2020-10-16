@@ -2,8 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import Introduction from '../components/organisms/homeIntroduction'
 import StoriesHighlight from '../components/organisms/homeStoriesHighlight'
-import Sponsors from '../components/organisms/homeSponsors'
-import Contact from '../components/organisms/homeContact'
+import SponsorsAndContacts from '../components/organisms/homeSponsorsAndContacts'
 
 function Home() {
   const router = useRouter()
@@ -47,9 +46,11 @@ function Home() {
         btnTitle="Programme 2020"
         onClick={handleCTA}
       />
-      <StoriesHighlight stories={mockStories} handleRedirection={handleStoryRedirection} />
-      <Sponsors />
-      <Contact />
+      <StoriesHighlight
+        stories={mockStories}
+        handleRedirection={handleStoryRedirection}
+      />
+      <SponsorsAndContacts />
     </>
   )
 }

@@ -26,7 +26,7 @@ const StyledPad = styled.div(
   (props) => `
     height: 60%;
     width: 60%;
-    background-color: #FFF4F0;
+    background-color: ${props.theme.colors.secondary};
     border-radius: ${props.theme.borderRadius};
   `
 )
