@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import IconMail from '@material-ui/icons/Mail'
 import IconRoom from '@material-ui/icons/Room'
 import IconPhone from '@material-ui/icons/Phone'
 import Container from '../../atoms/Container'
 import Button from '../../atoms/Button'
+import Carousel from '../../atoms/Carousel'
 import Input from '../../molecules/Input'
 import TextArea from '../../molecules/TextArea'
 import {
@@ -12,7 +13,6 @@ import {
   StyledBackground,
   StyledOverlay,
   StyledHeading,
-  StyledPLACEHOLDER,
   StyledContact,
   StyledContactCol,
   StyledContactIcon,
@@ -38,12 +38,55 @@ function HomeSponsorsAndContacts({
   setMessage,
   onSubmit
 }) {
+  const refFullName = useRef(null)
+  const refEmail = useRef(null)
+  const refMessage = useRef(null)
+
+  const handleFormKeyDown = (type) => (event) => {
+    if (event.keyCode === 13) {
+      switch(type) {
+        case 'full-name':
+          refEmail.current.focus()
+          break
+        case 'email':
+          event.preventDefault()
+          refMessage.current.focus()
+          break
+        case 'message':
+          onSubmit(event)
+          break
+        default:
+          break
+      }
+    }
+  }
+
+  const handleFormChange = (type) => (event) => {
+    switch(type) {
+      case 'full-name':
+        setFullName(event.target.value)
+        break
+      case 'email':
+        setEmail(event.target.value)
+        break
+      case 'message':
+        setMessage(event.target.value)
+        break
+      default:
+        break
+    }
+  }
+
   return (
     <StyledOverlayBox>
       <Container>
         <StyledOverlay>
           <StyledHeading>Nos partenaires</StyledHeading>
-          <StyledPLACEHOLDER />
+
+          <Carousel>
+            <h1>Sponsors</h1>
+          </Carousel>
+
           <StyledContact>
             <StyledContactCol>
               <h1>Nous contacter</h1>
@@ -65,29 +108,36 @@ function HomeSponsorsAndContacts({
                 </div>
               </div>
             </StyledContactCol>
+
             <StyledContactCol>
               <StyledContactForm>
                 <Input
                   label="Nom et prénom"
                   placeholder="Jonh Doe"
+                  ref={refFullName}
                   value={fullName}
-                  onChange={(event) => setFullName(event.target.value)}
+                  onKeyDown={handleFormKeyDown('full-name')}
+                  onChange={handleFormChange('full-name')}
                   autoCapitalize="on"
                   icon="user"
                 />
                 <Input
                   label="Email"
                   placeholder="jonhdoe@example.com"
+                  ref={refEmail}
                   value={email}
-                  onChange={(event) => setEmail(event.target.value)}
+                  onKeyDown={handleFormKeyDown('email')}
+                  onChange={handleFormChange('email')}
                   autoCapitalize="off"
                   icon="mail"
                 />
                 <TextArea
                   label="Message"
                   placeholder="Un super message pour l’asvf montagne !"
+                  ref={refMessage}
                   value={message}
-                  onChange={(event) => setMessage(event.target.value)}
+                  onKeyDown={handleFormKeyDown('message')}
+                  onChange={handleFormChange('message')}
                   autoCapitalize="off"
                 />
                 <Button onClick={onSubmit} color="blue" style={{ marginLeft: 'auto' }}>
@@ -98,6 +148,7 @@ function HomeSponsorsAndContacts({
           </StyledContact>
         </StyledOverlay>
       </Container>
+
       <div className="underlay">
         <StyledBackground>
           <div className="light" />

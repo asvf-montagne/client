@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Introduction from '../components/organisms/HomeIntroduction'
 import StoriesHighlight from '../components/organisms/HomeStoriesHighlight'
@@ -6,7 +6,7 @@ import SponsorsAndContacts from '../components/organisms/HomeSponsorsAndContacts
 
 const mockStories = [
   {
-    id: 0,
+    id: '0',
     title: `Goulotte Zia et traversée d'arête !`,
     image: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
     name: 'Martin',
@@ -14,14 +14,14 @@ const mockStories = [
     date: '3 days ago',
   },
   {
-    id: 1,
+    id: '1',
     title: 'Pointe de Colomban 2455m (Lauzière)',
     name: 'Thomas',
     tags: 'Ski / Alpinisme',
     date: '6 days ago',
   },
   {
-    id: 2,
+    id: '2',
     title: 'Crête de Brouffier (Taillefer)',
     name: 'Maud',
     tags: 'Ski / Alpinisme',
@@ -35,7 +35,7 @@ function Home() {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
-  const handleContactSubmit = (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault()
     console.log(fullName, email, message)
   }
@@ -65,7 +65,7 @@ function Home() {
         setEmail={setEmail}
         message={message}
         setMessage={setMessage}
-        onSubmit={handleContactSubmit}
+        onSubmit={handleFormSubmit}
       />
     </>
   )

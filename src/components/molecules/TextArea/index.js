@@ -1,28 +1,21 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import Label from '../../atoms/Label'
-import { StyledInputBox, StyledIconBox, StyledInput } from './index.style'
+import { StyledInputBox, StyledInput } from './index.style'
 
-TextArea.propTypes = {
-  label: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  autoCapitalize: PropTypes.bool,
-  maxlength: PropTypes.number,
-  style: PropTypes.object
-}
-
-function TextArea({
-  label,
-  placeholder,
-  value,
-  onChange,
-  autoCapitalize,
-  maxlength,
-  style,
-  ...props
-}) {
+const TextArea = forwardRef(function (
+  {
+    label,
+    placeholder,
+    value,
+    onChange,
+    autoCapitalize,
+    maxlength,
+    style,
+    ...props
+  },
+  ref
+) {
   const [focused, setFocused] = useState(false)
 
   return (
@@ -30,6 +23,7 @@ function TextArea({
       <Label style={{ marginBottom: 24 }}>{label}</Label>
       <StyledInputBox style={{ borderColor: focused ? '#0C75FF' : '#C4C4C4' }} {...props}>
         <StyledInput
+          ref={ref}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           onChange={onChange}
@@ -42,6 +36,16 @@ function TextArea({
       </StyledInputBox>
     </>
   )
+})
+
+TextArea.propTypes = {
+  label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  autoCapitalize: PropTypes.string,
+  maxlength: PropTypes.number,
+  style: PropTypes.object
 }
 
 export default TextArea

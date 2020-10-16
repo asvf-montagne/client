@@ -13,15 +13,6 @@ export const StyledInputBox = styled.div(
   `
 )
 
-export const StyledIconBox = styled.div(
-  () => `
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0 10px;
-  `
-)
-
 export const StyledInput = styled.textarea(
   (props) => `
     flex: 1;
