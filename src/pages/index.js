@@ -1,8 +1,15 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import styled from '@emotion/styled'
 import Introduction from '../components/organisms/HomeIntroduction'
 import StoriesHighlight from '../components/organisms/HomeStoriesHighlight'
 import SponsorsAndContacts from '../components/organisms/HomeSponsorsAndContacts'
+
+export const StyledHome = styled.div(
+  (props) => `
+    background: ${props.theme.colors.secondary};
+  `
+)
 
 const mockStories = [
   {
@@ -49,7 +56,7 @@ function Home() {
   }
 
   return (
-    <>
+    <StyledHome>
       <Introduction
         btnTitle="Programme 2020"
         onClick={handleCTA}
@@ -67,7 +74,7 @@ function Home() {
         setMessage={setMessage}
         onSubmit={handleFormSubmit}
       />
-    </>
+    </StyledHome>
   )
 }
 

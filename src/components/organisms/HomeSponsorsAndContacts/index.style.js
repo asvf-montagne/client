@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 
 export const StyledOverlayBox = styled.div`
   width: 100%;
+  z-index: 10;
   position: relative;
 
   .underlay {

@@ -2,10 +2,9 @@ import styled from '@emotion/styled'
 
 export const StyledGradient = styled.div`
   flex: 1;
-  margin-top: -4px;
   padding: 74px 0 126px 0;
   background: rgb(255,244,240);
-  background: linear-gradient(180deg, rgba(255,244,240,1) 0%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(180deg, rgba(255,244,240,1) 0%, rgba(255,255,255,1) 100%);
 `
 
 export const StyledGrid = styled.div`
