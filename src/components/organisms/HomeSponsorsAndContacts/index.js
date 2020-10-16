@@ -101,7 +101,7 @@ function HomeSponsorsAndContacts({
                     <IconRoom style={{ color: '#0C75FF' }} />
                     <h3>22 rue du Passou 38090 Vaulx-Milieu </h3>
                   </StyledContactIcon>
-                  <StyledContactIcon>
+                  <StyledContactIcon filled>
                     <IconPhone style={{ color: '#0C75FF' }} />
                     <h3>06 81 26 88 14 (jeudi de 18h30 à 20h)</h3>
                   </StyledContactIcon>

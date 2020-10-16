@@ -48,13 +48,6 @@ export const StyledHeading = styled.h1(
   `
 )
 
-export const StyledPLACEHOLDER = styled.div`
-  width: 100%;
-  height: 118px;
-  background-color: grey;
-  margin: 92px 0;
-`
-
 export const StyledContact = styled.div(
   (props) => `
     display: flex;
@@ -108,6 +101,11 @@ export const StyledContactIcon = styled.div(
     flex-direction: row;
     align-items: center;
     margin-bottom: 38px;
+    ${props.filled && `background-color: ${props.theme.colors.primary};` || ''}
+    ${props.filled && 'border-radius: 7px;' || ''}
+    ${props.filled && 'padding: 12px 15px;' || ''}
+    ${props.filled && `border: 2px solid ${props.theme.typography.colors.link};` || ''}
+    ${props.filled && 'margin-left: -17px;' || ''}
     
     h3 {
       font-size: 0.875rem;
