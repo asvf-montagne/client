@@ -46,20 +46,3 @@ export const StyledCTA = styled.div`
     }
   }
 `
-
-export const StyledButton = styled.button`
-  padding: 11px 16px;
-  border-radius: 3px;
-  background-color: #FFFFFF;
-  border: none;
-  color: #001768;
-  font-size: 1.5rem;
-  font-weight: 600;
-  cursor: pointer;
-
-  :focus {
-    outline: none;
-    border-color: #FFFFFF;
-    box-shadow: 0 0 0 0.2rem rgba(255,255,255,.5);
-  }
-`

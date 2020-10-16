@@ -3,6 +3,9 @@ import IconMail from '@material-ui/icons/Mail'
 import IconRoom from '@material-ui/icons/Room'
 import IconPhone from '@material-ui/icons/Phone'
 import Container from '../../atoms/Container'
+import Button from '../../atoms/Button'
+import Input from '../../molecules/Input'
+import TextArea from '../../molecules/TextArea'
 import {
   StyledOverlayBox,
   StyledBackground,
@@ -15,7 +18,15 @@ import {
   StyledContactForm
 } from './index.style'
 
-function HomeSponsorsAndContacts() {
+function HomeSponsorsAndContacts({
+  fullName,
+  setFullName,
+  email,
+  setEmail,
+  message,
+  setMessage,
+  onSubmit
+}) {
   return (
     <StyledOverlayBox>
       <Container>
@@ -45,7 +56,32 @@ function HomeSponsorsAndContacts() {
             </StyledContactCol>
             <StyledContactCol>
               <StyledContactForm>
-
+                <Input
+                  label="Nom et prénom"
+                  placeholder="Jonh Doe"
+                  value={fullName}
+                  onChange={(event) => setFullName(event.target.value)}
+                  autoCapitalize="on"
+                  icon="user"
+                />
+                <Input
+                  label="Email"
+                  placeholder="jonhdoe@example.com"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  autoCapitalize="off"
+                  icon="mail"
+                />
+                <TextArea
+                  label="Message"
+                  placeholder="Un super message pour l’asvf montagne !"
+                  value={message}
+                  onChange={(event) => setMessage(event.target.value)}
+                  autoCapitalize="off"
+                />
+                <Button onClick={onSubmit} color="blue" style={{ marginLeft: 'auto' }}>
+                  Envoyer le message
+                </Button>
               </StyledContactForm>
             </StyledContactCol>
           </StyledContact>

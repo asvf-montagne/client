@@ -38,23 +38,3 @@ export const StyledLogo = styled.a(
     text-decoration: none;
   `
 )
-
-export const StyledButton = styled.button(
-  (props) => `
-    padding: 5px 10px;
-    border-radius: 3px;
-    background-color: ${props.theme.colors.white};
-    border: none;
-    color: ${props.theme.typography.colors.secondary};
-    font-size: 1.125rem;
-    font-weight: ${props.theme.typography.weight.medium};
-    cursor: pointer;
-    margin-left: 32px;
-  
-    :focus {
-      outline: none;
-      border-color: ${props.theme.colors.white};
-      box-shadow: 0 0 0 0.2rem rgba(255,255,255,.5);
-    }
-  `
-)

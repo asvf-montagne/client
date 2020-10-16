@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from '../../atoms/Container'
-import { StyledOverlay, StyledCTA, StyledButton } from './index.style'
+import Button from '../../atoms/Button'
+import { StyledOverlay, StyledCTA } from './index.style'
 
 import backgroundMountainAsset from '../../../assets/images/cervin_mountain_c7a2ba29c6.jpg'
 
@@ -15,7 +16,7 @@ function HomeIntroduction({ btnTitle, onClick }) {
               <span>La montagne en</span>
               <span>Nord-Isère</span>
             </div>
-            <StyledButton onClick={onClick}>{btnTitle}</StyledButton>
+            <Button large onClick={onClick}>{btnTitle}</Button>
           </StyledCTA>
         </Container>
       </div>

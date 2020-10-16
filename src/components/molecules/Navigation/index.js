@@ -1,12 +1,12 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import Container from '../../atoms/Container'
+import Button from '../../atoms/Button'
 import {
   StyledNavigation,
   StyledList,
   StyledGroup,
-  StyledLogo,
-  StyledButton
+  StyledLogo
 } from './index.style'
 
 function Navigation() {
@@ -26,7 +26,9 @@ function Navigation() {
             <a href="/recits">Récits</a>
             <a href="/programmes">Programmes</a>
             <a href="/galerie">Galerie</a>
-            <StyledButton onClick={handleRedirection}>Connexion</StyledButton>
+            <Button onClick={handleRedirection} style={{ marginLeft: 32 }}>
+              Connexion
+            </Button>
           </StyledGroup>
         </StyledList>
       </Container>

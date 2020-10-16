@@ -22,11 +22,13 @@ export const StyledIconBox = styled.div(
   `
 )
 
-export const StyledInput = styled.input(
+export const StyledInput = styled.textarea(
   (props) => `
     flex: 1;
-    padding: 14px 0;
+    padding: 14px;
     border: none;
+    resize: none;
+    height: 128px;
     font-weight: ${props.theme.typography.weight.regular};
     color: ${props.theme.typography.colors.secondary};
     

@@ -121,6 +121,8 @@ export const StyledContactIcon = styled.div(
 export const StyledContactForm = styled.form(
   (props) => `
     display: flex;
+    flex-direction: column;
+    padding: 32px 32px;
     height: 580px;
     margin-left: 40px;
     border-radius: 7px;

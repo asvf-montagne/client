@@ -1,9 +1,9 @@
 import React from 'react'
 import StyledLabel from './index.style'
 
-function Label({ children, ...props }) {
+function Label({ children, style, ...props }) {
   return (
-    <StyledLabel {...props}>
+    <StyledLabel style={style} {...props}>
       {children}
     </StyledLabel>
   )
