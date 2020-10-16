@@ -34,7 +34,7 @@ export const StyledMeta = styled.span(
     padding: 28px 0 26px 0;
     
     h2 {
-      font-size: 1.0625rem;
+      font-size: 0.6875rem;
       color: ${props.theme.typography.colors.gray1};
       font-weight: ${props.theme.typography.weight.regular};
       margin: 0
