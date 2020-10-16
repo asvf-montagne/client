@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import {
   StyledCard,
@@ -14,12 +15,17 @@ CardStory.propTypes = {
   name: PropTypes.string.isRequired,
   tags: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  onCLick: PropTypes.func.isRequired
 }
 
-function CardStory({ id, title, name, tags, date, onCLick }) {
+function CardStory({ id, title, name, tags, date }) {
+  const router = useRouter()
+
+  const handleRedirection = () => {
+    router.push(`/stories/${id}`)
+  }
+
   return (
-    <StyledCard onClick={() => onCLick(id)}>
+    <StyledCard onClick={handleRedirection}>
       <StyledTitle>{title}</StyledTitle>
       <StyledMeta>
         <h2>{name}</h2>

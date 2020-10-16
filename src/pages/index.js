@@ -1,15 +1,8 @@
 import React, { useState } from 'react'
-import { useRouter } from 'next/router'
 import styled from '@emotion/styled'
 import Introduction from '../components/organisms/HomeIntroduction'
 import StoriesHighlight from '../components/organisms/HomeStoriesHighlight'
 import SponsorsAndContacts from '../components/organisms/HomeSponsorsAndContacts'
-
-export const StyledHome = styled.div(
-  (props) => `
-    background: ${props.theme.colors.secondary};
-  `
-)
 
 const mockStories = [
   {
@@ -23,6 +16,7 @@ const mockStories = [
   {
     id: '1',
     title: 'Pointe de Colomban 2455m (Lauzière)',
+    image: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
     name: 'Thomas',
     tags: 'Ski / Alpinisme',
     date: '6 days ago',
@@ -30,14 +24,20 @@ const mockStories = [
   {
     id: '2',
     title: 'Crête de Brouffier (Taillefer)',
+    image: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
     name: 'Maud',
     tags: 'Ski / Alpinisme',
     date: '1 week ago',
   },
 ]
 
+export const StyledHome = styled.div(
+  (props) => `
+    background: ${props.theme.colors.secondary};
+  `
+)
+
 function Home() {
-  const router = useRouter()
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -47,23 +47,13 @@ function Home() {
     console.log(fullName, email, message)
   }
 
-  const handleCTA = () => {
-    router.push('/programmes')
-  }
-
-  const handleStoryRedirection = (id) => {
-    router.push(`/stories/${id}`)
-  }
-
   return (
     <StyledHome>
       <Introduction
         btnTitle="Programme 2020"
-        onClick={handleCTA}
       />
       <StoriesHighlight
         stories={mockStories}
-        handleRedirection={handleStoryRedirection}
       />
       <SponsorsAndContacts
         fullName={fullName}

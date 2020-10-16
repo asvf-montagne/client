@@ -2,33 +2,41 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Container from '../../atoms/Container'
 import CardStory from '../../molecules/CardStory'
-import CardHighlightStory from '../../molecules/CardStoryHighlight'
+import CardStoryHighlight from '../../molecules/CardStoryHighlight'
 import {
   StyledGradient,
   StyledGrid,
+  StyledContainer,
+  StyledPad,
+  StyledCardContainer,
   StyledList,
   StyledSpan
 } from './index.style'
 
 HomeStoriesHighlight.propTypes = {
   stories: PropTypes.array.isRequired,
-  handleRedirection: PropTypes.func.isRequired
 }
 
-function HomeStoriesHighlight({ stories, handleRedirection }) {
+function HomeStoriesHighlight({ stories }) {
   return (
     <StyledGradient>
       <Container>
         <StyledGrid>
-          <CardHighlightStory
-            id={stories[0].id}
-            title={stories[0].title}
-            image={stories[0].image}
-            name={stories[0].name}
-            tags={stories[0].tags}
-            date={stories[0].date}
-            onClick={handleRedirection}
-          />
+          <StyledContainer>
+            <StyledPad />
+            <div className="overlay">
+              <StyledCardContainer>
+                <CardStoryHighlight
+                  id={stories[0].id}
+                  title={stories[0].title}
+                  image={stories[0].image}
+                  name={stories[0].name}
+                  tags={stories[0].tags}
+                  date={stories[0].date}
+                />
+              </StyledCardContainer>
+            </div>
+          </StyledContainer>
 
           <div style={{width: 232}} />
 
@@ -41,7 +49,6 @@ function HomeStoriesHighlight({ stories, handleRedirection }) {
                 name={story.name}
                 tags={story.tags}
                 date={story.date}
-                onCLick={handleRedirection}
               />
             ))}
           </StyledList>

@@ -1,8 +1,7 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import {
-  StyledContainer,
-  StyledPad,
   StyledCard,
   StyledImage,
   StyledContent,
@@ -19,27 +18,39 @@ CardStoryHighlight.propTypes = {
   name: PropTypes.string.isRequired,
   tags: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  shadow: PropTypes.bool,
+  style: PropTypes.object,
 }
 
-function CardStoryHighlight({ id, title, image, name, tags, date, onClick }) {
+function CardStoryHighlight({
+  id,
+  title,
+  image,
+  name,
+  tags,
+  date,
+  shadow,
+  style,
+  ...props
+}) {
+  const router = useRouter()
+
+  const handleRedirection = () => {
+    router.push(`/stories/${id}`)
+  }
+
   return (
-    <StyledContainer>
-      <StyledPad />
-      <div className="overlay">
-        <StyledCard onClick={() => onClick(id)}>
-          <StyledImage src={image} />
-          <StyledContent>
-            <StyledTags>{tags}</StyledTags>
-            <StyledTitle>{title}</StyledTitle>
-            <StyledMeta>
-              <h2>{name}</h2>
-              <StyledDate>{date}</StyledDate>
-            </StyledMeta>
-          </StyledContent>
-        </StyledCard>
-      </div>
-    </StyledContainer>
+    <StyledCard shadow={shadow} onClick={handleRedirection} style={style} {...props}>
+      <StyledImage src={image} />
+      <StyledContent>
+        <StyledTags>{tags}</StyledTags>
+        <StyledTitle>{title}</StyledTitle>
+        <StyledMeta>
+          <h2>{name}</h2>
+          <StyledDate>{date}</StyledDate>
+        </StyledMeta>
+      </StyledContent>
+    </StyledCard>
   )
 }
 

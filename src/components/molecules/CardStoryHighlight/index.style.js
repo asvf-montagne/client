@@ -1,45 +1,15 @@
 import styled from '@emotion/styled'
 
-export const StyledContainer = styled.div`
-  flex: 1;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  
-  .overlay {
-    position: absolute;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    height: 100%;
-    width: 100%;
-    top: 0px;
-    right: 0px;
-    left: 0px;
-    overflow: hidden;
-  }
-`
-
-export const StyledPad = styled.div(
-  (props) => `
-    height: 60%;
-    width: 60%;
-    background-color: ${props.theme.colors.secondary};
-    border-radius: ${props.theme.borderRadius};
-  `
-)
-
 export const StyledCard = styled.div(
   (props) => `
+    flex: 1;
+    height: 100%;
+    max-width: 424px;
     cursor: pointer;
-    z-index: 100;
-    width: 87%;
-    height: 92%;
-    margin-left: auto;
     border-radius: ${props.theme.borderRadius};
     overflow: hidden;
     background-color: ${props.theme.colors.white};
+    ${props.shadow ? 'box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08)' : ''}
   `
 )
 
@@ -72,7 +42,7 @@ export const StyledTitle = styled.h1(
     font-size: 1.875rem;
     color: ${props.theme.typography.colors.secondary};
     font-weight: ${props.theme.typography.weight.medium};
-    margin: 0;
+    margin: 32px 0;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

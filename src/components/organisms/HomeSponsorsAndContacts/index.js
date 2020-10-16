@@ -84,7 +84,7 @@ function HomeSponsorsAndContacts({
           <StyledHeading>Nos partenaires</StyledHeading>
 
           <Carousel>
-            <h1>Sponsors</h1>
+            <h1>Sponsors WIP</h1>
           </Carousel>
 
           <StyledContact>

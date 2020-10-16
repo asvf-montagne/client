@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useRouter } from 'next/router'
 import Container from '../../atoms/Container'
 import Button from '../../atoms/Button'
 import { StyledOverlay, StyledCTA } from './index.style'
@@ -8,10 +9,15 @@ import backgroundMountainAsset from '../../../assets/images/cervin_mountain_c7a2
 
 HomeIntroduction.propTypes = {
   btnTitle: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
 }
 
-function HomeIntroduction({ btnTitle, onClick }) {
+function HomeIntroduction({ btnTitle }) {
+  const router = useRouter()
+
+  const handleRedirection = () => {
+    router.push('/programmes')
+  }
+
   return (
     <StyledOverlay>
       <img src={backgroundMountainAsset} alt="Avatar" className="image" />
@@ -22,7 +28,7 @@ function HomeIntroduction({ btnTitle, onClick }) {
               <span>La montagne en</span>
               <span>Nord-Isère</span>
             </div>
-            <Button large onClick={onClick}>{btnTitle}</Button>
+            <Button large onClick={handleRedirection}>{btnTitle}</Button>
           </StyledCTA>
         </Container>
       </div>

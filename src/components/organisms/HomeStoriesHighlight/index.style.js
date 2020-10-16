@@ -13,6 +13,43 @@ export const StyledGrid = styled.div`
   margin-bottom: 34px;
 `
 
+export const StyledContainer = styled.div`
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  
+  .overlay {
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+`
+
+export const StyledPad = styled.div(
+  (props) => `
+    height: 75%;
+    width: 75%;
+    background-color: ${props.theme.colors.secondary};
+    border-radius: ${props.theme.borderRadius};
+  `
+)
+
+export const StyledCardContainer = styled.div`
+  z-index: 100;
+  width: 87%;
+  height: 92%;
+  margin-left: auto;
+`
+
 export const StyledList = styled.div`
   display: flex;
   flex: 1;
