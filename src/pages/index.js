@@ -1,8 +1,8 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import Introduction from '../components/organisms/homeIntroduction'
-import StoriesHighlight from '../components/organisms/homeStoriesHighlight'
-import SponsorsAndContacts from '../components/organisms/homeSponsorsAndContacts'
+import Introduction from '../components/organisms/HomeIntroduction'
+import StoriesHighlight from '../components/organisms/HomeStoriesHighlight'
+import SponsorsAndContacts from '../components/organisms/HomeSponsorsAndContacts'
 
 function Home() {
   const router = useRouter()

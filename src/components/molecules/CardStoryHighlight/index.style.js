@@ -1,7 +1,6 @@
-import React from 'react'
 import styled from '@emotion/styled'
 
-const StyledContainer = styled.div`
+export const StyledContainer = styled.div`
   flex: 1;
   position: relative;
   display: flex;
@@ -22,7 +21,7 @@ const StyledContainer = styled.div`
   }
 `
 
-const StyledPad = styled.div(
+export const StyledPad = styled.div(
   (props) => `
     height: 60%;
     width: 60%;
@@ -31,7 +30,7 @@ const StyledPad = styled.div(
   `
 )
 
-const StyledCard = styled.div(
+export const StyledCard = styled.div(
   (props) => `
     cursor: pointer;
     z-index: 100;
@@ -44,13 +43,13 @@ const StyledCard = styled.div(
   `
 )
 
-const StyledImage = styled.img`
+export const StyledImage = styled.img`
   width: 100%;
   height: 52%;
   object-fit: cover;
 `
 
-const StyledContent = styled.div`
+export const StyledContent = styled.div`
   display: flex;
   padding: 24px 18px 32px 18px;
   display: flex;
@@ -59,7 +58,7 @@ const StyledContent = styled.div`
   justify-content: space-between;
 `
 
-const StyledTags = styled.p(
+export const StyledTags = styled.p(
   (props) => `
     font-size: 0.6875rem;
     color: ${props.theme.typography.colors.gray1};
@@ -68,7 +67,7 @@ const StyledTags = styled.p(
   `
 )
 
-const StyledTitle = styled.h1(
+export const StyledTitle = styled.h1(
   (props) => `
     font-size: 1.875rem;
     color: ${props.theme.typography.colors.secondary};
@@ -82,7 +81,7 @@ const StyledTitle = styled.h1(
   `
 )
 
-const StyledMeta = styled.span(
+export const StyledMeta = styled.span(
   (props) => `
     display: flex;
     flex-direction: row;
@@ -97,7 +96,7 @@ const StyledMeta = styled.span(
   `
 )
 
-const StyledDate = styled.p(
+export const StyledDate = styled.p(
   (props) => `
     font-size: 0.6875rem;
     color: ${props.theme.typography.colors.gray1};
@@ -105,30 +104,3 @@ const StyledDate = styled.p(
     margin: 0 0 0 30px;
   `
 )
-
-function CardStoryHighlight({ id, title, image, name, tags, date, onClick }) {
-  const handleClick = () => {
-    onClick(id)
-  }
-
-  return (
-    <StyledContainer>
-      <StyledPad />
-      <div className="overlay">
-        <StyledCard onClick={handleClick}>
-          <StyledImage src={image} />
-          <StyledContent>
-            <StyledTags>{tags}</StyledTags>
-            <StyledTitle>{title}</StyledTitle>
-            <StyledMeta>
-              <h2>{name}</h2>
-              <StyledDate>{date}</StyledDate>
-            </StyledMeta>
-          </StyledContent>
-        </StyledCard>
-      </div>
-    </StyledContainer>
-  )
-}
-
-export default CardStoryHighlight

@@ -1,7 +1,6 @@
-import React from 'react'
 import styled from '@emotion/styled'
 
-const StyledCard = styled.div(
+export const StyledCard = styled.div(
   (props) => `
     cursor: pointer;
     width: 100%;
@@ -12,7 +11,7 @@ const StyledCard = styled.div(
   `
 )
 
-const StyledTitle = styled.h1(
+export const StyledTitle = styled.h1(
   (props) => `
   font-size: 1.875rem;
   color: ${props.theme.typography.colors.secondary};
@@ -26,7 +25,7 @@ const StyledTitle = styled.h1(
   `
 )
 
-const StyledMeta = styled.span(
+export const StyledMeta = styled.span(
   (props) => `
     display: flex;
     flex-direction: row;
@@ -50,7 +49,7 @@ const StyledMeta = styled.span(
   `
 )
 
-const StyledTags = styled.p(
+export const StyledTags = styled.p(
   (props) => `
     font-size: 0.6875rem;
     color: ${props.theme.typography.colors.gray1};
@@ -59,7 +58,7 @@ const StyledTags = styled.p(
   `
 )
 
-const StyledDate = styled.p(
+export const StyledDate = styled.p(
   (props) => `
     font-size: 0.6875rem;
     color: ${props.theme.typography.colors.gray1};
@@ -67,24 +66,3 @@ const StyledDate = styled.p(
     margin: 0 0 0 30px;
   `
 )
-
-function CardStory({ id, title, name, tags, date, onCLick }) {
-  const handleClick = () => {
-    onCLick(id)
-  }
-
-  return (
-    <StyledCard onClick={handleClick}>
-      <StyledTitle>{title}</StyledTitle>
-      <StyledMeta>
-        <h2>{name}</h2>
-        <div>
-          <StyledTags>{tags}</StyledTags>
-          <StyledDate>{date}</StyledDate>
-        </div>
-      </StyledMeta>
-    </StyledCard>
-  )
-}
-
-export default CardStory

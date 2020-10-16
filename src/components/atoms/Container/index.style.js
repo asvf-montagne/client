@@ -1,7 +1,6 @@
-import React from 'react'
 import styled from '@emotion/styled'
 
-const StyledContainer = styled.div`
+export default styled.div`
   width: 100%;
   padding: 0;
   margin: 0 auto;
@@ -22,13 +21,3 @@ const StyledContainer = styled.div`
     max-width: 1040px;
   }
 `
-
-function Container({ children, ...props }) {
-  return (
-    <StyledContainer {...props}>
-      {children}
-    </StyledContainer>
-  )
-}
-
-export default Container

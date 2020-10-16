@@ -1,41 +1,13 @@
 import React from 'react'
-import styled from '@emotion/styled'
-import Container from '../atoms/container'
-import CardStory from '../molecules/cardStory'
-import CardHighlightStory from '../molecules/cardStoryHighlight'
-
-const StyledGradient = styled.div`
-  flex: 1;
-  margin-top: -4px;
-  padding: 74px 0 126px 0;
-  background: rgb(255,244,240);
-  background: linear-gradient(180deg, rgba(255,244,240,1) 0%, rgba(255,255,255,0) 100%);
-`
-
-const StyledGrid = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 34px;
-`
-
-const StyledList = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-`
-
-const StyledSpan = styled.span`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  
-  a {
-    text-decoration: none;
-    color: #0C75FF;
-    font-size: 1.0625rem;
-    font-weight: 500;
-  }
-`
+import Container from '../../atoms/Container'
+import CardStory from '../../molecules/CardStory'
+import CardHighlightStory from '../../molecules/CardStoryHighlight'
+import {
+  StyledGradient,
+  StyledGrid,
+  StyledList,
+  StyledSpan
+} from './index.style'
 
 function HomeStoriesHighlight({ stories, handleRedirection }) {
   return (

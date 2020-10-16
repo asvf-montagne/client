@@ -1,11 +1,6 @@
-import React from 'react'
 import styled from '@emotion/styled'
-import IconMail from '@material-ui/icons/Mail'
-import IconRoom from '@material-ui/icons/Room'
-import IconPhone from '@material-ui/icons/Phone'
-import Container from '../atoms/container'
 
-const StyledOverlayBox = styled.div`
+export const StyledOverlayBox = styled.div`
   width: 100%;
   position: relative;
 
@@ -21,7 +16,7 @@ const StyledOverlayBox = styled.div`
   }
 `
 
-const StyledBackground = styled.div(
+export const StyledBackground = styled.div(
   (props) => `
     height: 100%;
     
@@ -39,11 +34,11 @@ const StyledBackground = styled.div(
   `
 )
 
-const StyledOverlay = styled.div`
+export const StyledOverlay = styled.div`
   padding: 64px 0 0 0;
 `
 
-const StyledHeading = styled.h1(
+export const StyledHeading = styled.h1(
   (props) => `
     font-size: 2.25rem;
     font-weight: ${props.theme.typography.weight.semiBold};
@@ -53,14 +48,14 @@ const StyledHeading = styled.h1(
   `
 )
 
-const StyledPLACEHOLDER = styled.div`
+export const StyledPLACEHOLDER = styled.div`
   width: 100%;
   height: 118px;
   background-color: grey;
   margin: 92px 0;
 `
 
-const StyledContact = styled.div(
+export const StyledContact = styled.div(
   (props) => `
     display: flex;
     flex-direction: row;
@@ -72,7 +67,7 @@ const StyledContact = styled.div(
   `
 )
 
-const StyledContactCol = styled.div(
+export const StyledContactCol = styled.div(
   (props) => `
     display: flex;
     flex-direction: column;
@@ -107,7 +102,7 @@ const StyledContactCol = styled.div(
   `
 )
 
-const StyledContactIcon = styled.div(
+export const StyledContactIcon = styled.div(
   (props) => `
     display: flex;
     flex-direction: row;
@@ -123,7 +118,7 @@ const StyledContactIcon = styled.div(
   `
 )
 
-const StyledContactForm = styled.form(
+export const StyledContactForm = styled.form(
   (props) => `
     display: flex;
     height: 580px;
@@ -132,51 +127,3 @@ const StyledContactForm = styled.form(
     background-color: ${props.theme.colors.white};
   `
 )
-
-function HomeSponsorsAndContacts() {
-  return (
-    <StyledOverlayBox>
-      <Container>
-        <StyledOverlay>
-          <StyledHeading>Nos partenaires</StyledHeading>
-          <StyledPLACEHOLDER />
-          <StyledContact>
-            <StyledContactCol>
-              <h1>Nous contacter</h1>
-              <p>Remplissez le formulaire et nous vous répondrons le plus rapidement possible.</p>
-              <div className="icon-group">
-                <div className="center">
-                  <StyledContactIcon>
-                    <IconMail style={{ color: '#0C75FF' }} />
-                    <h3>contact@asvf-montagne.fr</h3>
-                  </StyledContactIcon>
-                  <StyledContactIcon>
-                    <IconRoom style={{ color: '#0C75FF' }} />
-                    <h3>22 rue du Passou 38090 Vaulx-Milieu </h3>
-                  </StyledContactIcon>
-                  <StyledContactIcon>
-                    <IconPhone style={{ color: '#0C75FF' }} />
-                    <h3>06 81 26 88 14 (jeudi de 18h30 à 20h)</h3>
-                  </StyledContactIcon>
-                </div>
-              </div>
-            </StyledContactCol>
-            <StyledContactCol>
-              <StyledContactForm>
-
-              </StyledContactForm>
-            </StyledContactCol>
-          </StyledContact>
-        </StyledOverlay>
-      </Container>
-      <div className="underlay">
-        <StyledBackground>
-          <div className="light" />
-          <div className="dark" />
-        </StyledBackground>
-      </div>
-    </StyledOverlayBox>
-  )
-}
-
-export default HomeSponsorsAndContacts

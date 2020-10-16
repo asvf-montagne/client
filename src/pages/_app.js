@@ -1,8 +1,9 @@
+import React from 'react'
 import Head from 'next/head'
 import { Global } from '@emotion/core'
 import ThemeProvider from '../theme'
-import Navigation from '../components/molecules/navigation'
-import Footer from '../components/molecules/footer'
+import Navigation from '../components/molecules/Navigation'
+import Footer from '../components/molecules/Footer'
 
 const globalStyle = `
   * {
