@@ -22,12 +22,12 @@ export const StyledBackground = styled.div(
     
     .light {
       display: flex;
-      height: 50%;
+      height: 46%;
       background-color: ${props.theme.colors.secondary};
     }
     
     .dark {
-      height: 50%;
+      height: 54%;
       display: flex;
       background-color: ${props.theme.colors.tertiary};
     }
