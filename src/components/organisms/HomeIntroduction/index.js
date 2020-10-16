@@ -1,9 +1,15 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Container from '../../atoms/Container'
 import Button from '../../atoms/Button'
 import { StyledOverlay, StyledCTA } from './index.style'
 
 import backgroundMountainAsset from '../../../assets/images/cervin_mountain_c7a2ba29c6.jpg'
+
+HomeIntroduction.propTypes = {
+  btnTitle: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
+}
 
 function HomeIntroduction({ btnTitle, onClick }) {
   return (

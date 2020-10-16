@@ -1,4 +1,4 @@
-function Recits() {
+function Stories() {
   return (
     <>
       <h1>Recits</h1>
@@ -6,4 +6,4 @@ function Recits() {
   )
 }
 
-export default Recits
+export default Stories

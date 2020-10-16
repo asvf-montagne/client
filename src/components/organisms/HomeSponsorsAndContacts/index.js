@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import IconMail from '@material-ui/icons/Mail'
 import IconRoom from '@material-ui/icons/Room'
 import IconPhone from '@material-ui/icons/Phone'
@@ -17,6 +18,16 @@ import {
   StyledContactIcon,
   StyledContactForm
 } from './index.style'
+
+HomeSponsorsAndContacts.propTypes = {
+  fullName: PropTypes.string.isRequired,
+  setFullName: PropTypes.func.isRequired,
+  email: PropTypes.string.isRequired,
+  setEmail: PropTypes.func.isRequired,
+  message: PropTypes.string.isRequired,
+  setMessage: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
+}
 
 function HomeSponsorsAndContacts({
   fullName,

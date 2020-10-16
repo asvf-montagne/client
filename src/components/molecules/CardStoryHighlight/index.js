@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {
   StyledContainer,
   StyledPad,
@@ -10,6 +11,16 @@ import {
   StyledMeta,
   StyledDate
 } from './index.style'
+
+CardStoryHighlight.propTypes = {
+  id: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
+}
 
 function CardStoryHighlight({ id, title, image, name, tags, date, onClick }) {
   return (

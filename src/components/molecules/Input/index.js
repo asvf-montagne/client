@@ -1,8 +1,19 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import IconUser from '@material-ui/icons/Person'
 import IconMail from '@material-ui/icons/MailOutline'
 import Label from '../../atoms/Label'
 import { StyledInputBox, StyledIconBox, StyledInput } from './index.style'
+
+Input.propTypes = {
+  label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  autoCapitalize: PropTypes.bool,
+  icon: PropTypes.oneOf(['user', 'mail']),
+  style: PropTypes.object
+}
 
 function Input({
   label,

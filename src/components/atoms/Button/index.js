@@ -1,7 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import StyledButton from './index.style'
 
-function Button({ onClick, large = false, color, children, style, ...props }) {
+Button.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  color: PropTypes.oneOf(['blue', 'white']),
+  large: PropTypes.bool,
+  style: PropTypes.object,
+  children: PropTypes.node.isRequired
+}
+
+function Button({ onClick, color, large = false, children, style, ...props }) {
   return (
     <StyledButton
       color={color}

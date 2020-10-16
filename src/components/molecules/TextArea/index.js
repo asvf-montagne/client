@@ -1,8 +1,17 @@
 import React, { useState } from 'react'
-import IconUser from '@material-ui/icons/Person'
-import IconMail from '@material-ui/icons/MailOutline'
+import PropTypes from 'prop-types'
 import Label from '../../atoms/Label'
 import { StyledInputBox, StyledIconBox, StyledInput } from './index.style'
+
+TextArea.propTypes = {
+  label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  autoCapitalize: PropTypes.bool,
+  maxlength: PropTypes.number,
+  style: PropTypes.object
+}
 
 function TextArea({
   label,

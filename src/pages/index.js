@@ -45,7 +45,7 @@ function Home() {
   }
 
   const handleStoryRedirection = (id) => {
-    router.push(`/recits/${id}`)
+    router.push(`/stories/${id}`)
   }
 
   return (

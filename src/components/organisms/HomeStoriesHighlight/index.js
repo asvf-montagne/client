@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Container from '../../atoms/Container'
 import CardStory from '../../molecules/CardStory'
 import CardHighlightStory from '../../molecules/CardStoryHighlight'
@@ -8,6 +9,11 @@ import {
   StyledList,
   StyledSpan
 } from './index.style'
+
+HomeStoriesHighlight.propTypes = {
+  stories: PropTypes.array.isRequired,
+  handleRedirection: PropTypes.func.isRequired
+}
 
 function HomeStoriesHighlight({ stories, handleRedirection }) {
   return (

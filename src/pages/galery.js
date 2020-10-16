@@ -1,4 +1,4 @@
-function Galerie() {
+function Galery() {
   return (
     <>
       <h1>Galerie</h1>
@@ -6,4 +6,4 @@ function Galerie() {
   )
 }
 
-export default Galerie
+export default Galery

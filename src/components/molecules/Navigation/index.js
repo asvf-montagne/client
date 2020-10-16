@@ -22,10 +22,10 @@ function Navigation() {
         <StyledList>
           <StyledLogo href="/">ASVF Montagne</StyledLogo>
           <StyledGroup>
-            <a href="/le-club">Le Club</a>
-            <a href="/recits">Récits</a>
+            <a href="/club">Le Club</a>
+            <a href="/stories">Récits</a>
             <a href="/programmes">Programmes</a>
-            <a href="/galerie">Galerie</a>
+            <a href="/galery">Galerie</a>
             <Button onClick={handleRedirection} style={{ marginLeft: 32 }}>
               Connexion
             </Button>
