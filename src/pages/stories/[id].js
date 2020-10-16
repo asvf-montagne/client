@@ -1,7 +1,8 @@
 import React from 'react'
 import { useRouter } from 'next/router'
+import Header from '../../components/organisms/StoryHeader'
 import Content from '../../components/organisms/StoryContent'
-import Suggestion from '../../components/organisms/StorySuggestion'
+import Suggested from '../../components/organisms/StorySuggested'
 
 const content = `
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper consequat purus tempor quam phasellus. Pellentesque arcu dictumst sit imperdiet viverra mauris enim interdum neque. Neque sed sed viverra arcu malesuada lobortis. Sollicitudin diam ipsum elit id fames duis tortor. Nunc consequat diam, commodo, semper placerat ac sed condimentum. Ut tellus est libero nam amet, risus nunc fames quis. Mattis neque proin dictum ante. Sed laoreet dictum morbi scelerisque. Tincidunt euismod egestas tincidunt ut ornare. Gravida accumsan convallis velit praesent duis tincidunt. Ultrices condimentum ultrices elit, at amet. Luctus placerat tempor dictumst turpis eu sit diam. Suspendisse velit, nulla cras dictum at.
@@ -24,6 +25,7 @@ const mockSuggestedStories = [
     id: '0',
     title: `Goulotte Zia et traversée d'arête !`,
     image: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+    caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim',
     name: 'Martin',
     tags: 'Ski / Alpinisme',
     date: '3 days ago',
@@ -52,8 +54,16 @@ function Story() {
 
   return (
     <>
+      <Header
+        title={mockSuggestedStories[0].title}
+        image={mockSuggestedStories[0].image}
+        name={mockSuggestedStories[0].name}
+        tags={mockSuggestedStories[0].tags}
+        date={mockSuggestedStories[0].date}
+        caption={mockSuggestedStories[0].caption}
+      />
       <Content content={content} />
-      <Suggestion stories={mockSuggestedStories} />
+      <Suggested stories={mockSuggestedStories} />
     </>
   )
 }

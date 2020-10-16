@@ -4,11 +4,11 @@ import Container from '../../atoms/Container'
 import CardStoryHighlight from '../../molecules/CardStoryHighlight'
 import { StyledSuggested, StyledRow, StyledHeading } from './index.style'
 
-StorySuggested.propTypes = {
-  stories: PropTypes.string.isRequired
+StorySuggestion.propTypes = {
+  stories: PropTypes.array.isRequired
 }
 
-function StorySuggested({ stories }) {
+function StorySuggestion({ stories }) {
   return (
     <StyledSuggested>
       <Container>
@@ -17,6 +17,7 @@ function StorySuggested({ stories }) {
           {stories.slice(0, 2).map((story) => (
             <CardStoryHighlight
               shadow
+              key={story.id}
               id={story.id}
               title={story.title}
               image={story.image}
@@ -31,4 +32,4 @@ function StorySuggested({ stories }) {
   )
 }
 
-export default StorySuggested
+export default StorySuggestion
