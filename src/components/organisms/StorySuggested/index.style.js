@@ -4,6 +4,15 @@ export const StyledSuggested = styled.div(
   (props) => `
     background-color: ${props.theme.colors.secondary};
     padding: 92px 0;
+    
+    h1 {
+      font-size: ${props.theme.typography.size.heading.h1};
+      font-weight: ${props.theme.typography.weight.semiBold};
+      color: ${props.theme.typography.colors.secondary};
+      text-align: center;
+      margin: 0;
+      margin-bottom: 92px;
+    }
   `
 )
 
@@ -12,14 +21,3 @@ export const StyledRow = styled.div`
   flex-direction: row;
   justify-content: space-around;
 `
-
-export const StyledHeading = styled.h1(
-  (props) => `
-    font-size: 2.25rem;
-    font-weight: ${props.theme.typography.weight.semiBold};
-    color: ${props.theme.typography.colors.secondary};
-    text-align: center;
-    margin: 0;
-    margin-bottom: 92px;
-  `
-)

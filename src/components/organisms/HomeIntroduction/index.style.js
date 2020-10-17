@@ -22,27 +22,29 @@ export const StyledOverlay = styled.div`
   }
 `
 
-export const StyledCTA = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  div {
+export const StyledContent = styled.div(
+  (props) => `
     display: flex;
     flex-direction: column;
-    margin-bottom: 44px;
-
-    span {
-      font-weight: 700;
-      color: #FFFFFF;
-    }
+    align-items: flex-start;
   
-    span:nth-of-type(1) { 
-      font-size: 2.25rem;
-    }
+    div {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 44px;
   
-    span:nth-of-type(2) { 
-      font-size: 3.5625rem;
+      span {
+        font-weight: ${props.theme.typography.weight.bold};
+        color: ${props.theme.typography.colors.white};
+      }
+    
+      span:nth-of-type(1) { 
+        font-size: 2.25rem;
+      }
+    
+      span:nth-of-type(2) { 
+        font-size: 3.5625rem;
+      }
     }
-  }
-`
+  `
+)

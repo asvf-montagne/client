@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
+import IconChevronRight from '@material-ui/icons/ChevronRight'
 import Container from '../../atoms/Container'
-import CardStory from '../../molecules/CardStory'
+import CardStoryMinimal from '../../molecules/CardStoryMinimal'
 import CardStoryHighlight from '../../molecules/CardStoryHighlight'
 import {
   StyledGradient,
@@ -18,6 +20,8 @@ HomeStoriesHighlight.propTypes = {
 }
 
 function HomeStoriesHighlight({ stories }) {
+  const theme = useTheme()
+
   return (
     <StyledGradient>
       <Container>
@@ -38,11 +42,11 @@ function HomeStoriesHighlight({ stories }) {
             </div>
           </StyledContainer>
 
-          <div style={{width: 232}} />
+          <div style={{ width: 160 }} />
 
           <StyledList>
             {stories.map((story) => (
-              <CardStory
+              <CardStoryMinimal
                 key={story.id}
                 id={story.id}
                 title={story.title}
@@ -55,7 +59,10 @@ function HomeStoriesHighlight({ stories }) {
         </StyledGrid>
 
         <StyledSpan>
-          <a href="/recits">Voir tous nos récits ></a>
+          <a href="/stories">
+            Voir tous nos récits
+            <IconChevronRight style={{ marginLeft: 8, color: theme.typography.colors.link }} />
+          </a>
         </StyledSpan>
       </Container>
     </StyledGradient>

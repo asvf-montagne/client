@@ -40,7 +40,7 @@ function StoryHeader({
                 return (
                   <StyledImage key={index}>
                     <img src={src} />
-                    <p>{caption}</p>
+                    <caption>{caption}</caption>
                   </StyledImage>
                 )
               })}

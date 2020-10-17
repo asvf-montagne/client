@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const StyledNavigation = styled.nav(
+export const StyledNavigationContainer = styled.nav(
   (props) => `
     display: flex;
     height: 94px;
@@ -8,7 +8,7 @@ export const StyledNavigation = styled.nav(
   `
 )
 
-export const StyledList = styled.div`
+export const StyledNavigation = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,36 +16,39 @@ export const StyledList = styled.div`
   height: 100%;
 `
 
-export const StyledGroup = styled.div`
-  display: flex;
-  height: 100%;
-  flex-direction: row;
-  align-items: center;
-`
-
-export const StyledLink = styled.a(
-  (props) => `
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 100%;
-    font-size: 1.125rem;
-    color: ${props.theme.typography.colors.white};
-    font-weight: ${props.theme.typography.weight.regular};
-    text-decoration: none;
-    margin-left: 26px;
-    ${props.active && `
-      border-bottom: 3px solid ${props.theme.typography.colors.link};
-      border-top: 3px solid ${props.theme.colors.tertiary};
-    `}
-  `
-)
-
 export const StyledLogo = styled.a(
   (props) => `
     font-size: 1.5rem;
     color: ${props.theme.typography.colors.white};
     font-weight: ${props.theme.typography.weight.semiBold};
     text-decoration: none;
+  `
+)
+
+export const StyledList = styled.ul`
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+
+export const StyledLink = styled.li(
+  (props) => `
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-left: 26px;
+    
+    a {
+      font-size: ${props.theme.typography.size.paragraph.large};
+      color: ${props.theme.typography.colors.white};
+      font-weight: ${props.theme.typography.weight.regular};
+      text-decoration: none;
+    }
+    
+    ${props.active && `
+      border-bottom: 3px solid ${props.theme.typography.colors.link};
+      border-top: 3px solid ${props.theme.colors.tertiary};
+    `}
   `
 )

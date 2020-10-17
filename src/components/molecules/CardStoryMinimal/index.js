@@ -3,10 +3,8 @@ import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import {
   StyledCard,
-  StyledTitle,
   StyledMeta,
-  StyledTags,
-  StyledDate
+  StyledSpan
 } from './index.style'
 
 CardStory.propTypes = {
@@ -26,13 +24,13 @@ function CardStory({ id, title, name, tags, date }) {
 
   return (
     <StyledCard onClick={handleRedirection}>
-      <StyledTitle>{title}</StyledTitle>
+      <h1>{title}</h1>
       <StyledMeta>
-        <h2>{name}</h2>
-        <div>
-          <StyledTags>{tags}</StyledTags>
-          <StyledDate>{date}</StyledDate>
-        </div>
+        <p>{name}</p>
+        <StyledSpan>
+          <p className="tags">{tags}</p>
+          <p className="time">{date}</p>
+        </StyledSpan>
       </StyledMeta>
     </StyledCard>
   )

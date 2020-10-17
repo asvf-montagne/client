@@ -1,50 +1,131 @@
 import React from 'react'
-import Index from '../../atoms/Container'
-import { StyledFooter, StyledList, StyledGroup } from './index.style'
+import Container from '../../atoms/Container'
+import { StyledFooter, StyledList, StyledLink } from './index.style'
+
+const groups = [
+  {
+    title: 'ASVF Montagne',
+    links: [
+      {
+        ref: '/',
+        name: 'Le club'
+      },
+      {
+        ref: '/',
+        name: 'Récits'
+      },
+      {
+        ref: '/',
+        name: 'Programmes'
+      },
+      {
+        ref: '/',
+        name: 'Galerie'
+      },
+      {
+        ref: '/',
+        name: 'Connexion'
+      },
+      {
+        ref: '/',
+        name: 'Inscription'
+      }
+    ]
+  },
+  {
+    title: 'Les liens',
+    links: [
+      {
+        ref: '/',
+        name: 'Villefontaine'
+      },
+      {
+        ref: '/',
+        name: 'Météo grimpe'
+      },
+      {
+        ref: '/',
+        name: 'Kinéscalade'
+      },
+      {
+        ref: '/',
+        name: 'Camptocamp'
+      },
+      {
+        ref: '/',
+        name: 'Skitour'
+      },
+      {
+        ref: '/',
+        name: 'FFH'
+      }
+    ]
+  },
+  {
+    title: 'Partenaires',
+    links: [
+      {
+        ref: 'https://www.petzl.com/FR/fr',
+        name: 'Petzel'
+      },
+      {
+        ref: 'https://www.haribo.com/fr-fr',
+        name: 'Haribo'
+      },
+      {
+        ref: 'https://www.expe.fr/',
+        name: 'Expe'
+      },
+      {
+        ref: 'https://www.auvieuxcampeur.fr/',
+        name: 'Au vieux campeur'
+      },
+      {
+        ref: 'https://www.simond.fr/',
+        name: 'Simond'
+      },
+      {
+        ref: 'https://www.sport2000.fr/',
+        name: 'Sport 2000'
+      }
+    ]
+  },
+  {
+    title: 'Le site',
+    links: [
+      {
+        ref: '/',
+        name: 'Sitemap'
+      },
+      {
+        ref: '/',
+        name: 'Mentions légales'
+      },
+      {
+        ref: '/',
+        name: 'Flux RSS'
+      }
+    ]
+  }
+]
 
 function Footer() {
   return (
     <StyledFooter>
-      <Index>
+      <Container>
         <StyledList>
-          <StyledGroup>
-            <h1>ASVF Montagne</h1>
-            <a href="/">Le club</a>
-            <a href="/">Récits</a>
-            <a href="/">Programmes</a>
-            <a href="/">Galerie</a>
-            <a href="/">Connexion</a>
-            <a href="/">Inscription</a>
-          </StyledGroup>
-
-          <StyledGroup>
-            <h1>Les liens</h1>
-            <a href="/">Villefontaine</a>
-            <a href="/">Météo grimpe</a>
-            <a href="/">Kinéscalade</a>
-            <a href="/">Camptocamp</a>
-            <a href="/">Skitour</a>
-            <a href="/">FFH</a>
-          </StyledGroup>
-
-          <StyledGroup>
-            <h1>Partenaires</h1>
-            <a href="https://www.petzl.com/FR/fr" target="_blank">Petzel</a>
-            <a href="https://www.haribo.com/fr-fr" target="_blank">Haribo</a>
-            <a href="https://www.expe.fr/" target="_blank">Expe</a>
-            <a href="https://www.auvieuxcampeur.fr/" target="_blank">Au vieux campeur</a>
-            <a href="https://www.simond.fr/" target="_blank">Simond</a>
-            <a href="https://www.sport2000.fr/" target="_blank">Sport 2000</a>
-          </StyledGroup>
-
-          <StyledGroup>
-            <h1>Le site</h1>
-            <a href="/">Sitemap</a>
-            <a href="/">Mentions légales</a>
-            <a href="/">Flux RSS</a>
-          </StyledGroup>
+          {groups.map((group, index) => (
+            <ul key={index}>
+              <h3>{group.title}</h3>
+              {group.links.map((link, index) => (
+                <StyledLink key={index}>
+                  <a href={link.ref}>{link.name}</a>
+                </StyledLink>
+              ))}
+            </ul>
+          ))}
         </StyledList>
-      </Index>
+      </Container>
     </StyledFooter>
   )
 }

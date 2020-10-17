@@ -35,17 +35,17 @@ export const StyledBackground = styled.div(
   `
 )
 
-export const StyledOverlay = styled.div`
-  padding: 64px 0 0 0;
-`
-
-export const StyledHeading = styled.h1(
+export const StyledOverlay = styled.div(
   (props) => `
-    font-size: 2.25rem;
-    font-weight: ${props.theme.typography.weight.semiBold};
-    color: ${props.theme.typography.colors.secondary};
-    text-align: center;
-    margin: 0;
+    padding: 64px 0 0 0;
+    
+    h1 {
+      font-size: ${props.theme.typography.size.heading.h1};
+      font-weight: ${props.theme.typography.weight.semiBold};
+      color: ${props.theme.typography.colors.secondary};
+      text-align: center;
+      margin: 0;
+    }
   `
 )
 
@@ -83,6 +83,7 @@ export const StyledContact = styled.div(
     border-radius: ${props.theme.borderRadius};
     background-color: ${props.theme.colors.tertiary};
     padding: 58px 72px;
+    margin-top: 32px;
   `
 )
 
@@ -93,14 +94,15 @@ export const StyledContactCol = styled.div(
     flex: 1;
     
     h1 {
-      font-size: 2.25rem;
+      font-size: ${props.theme.typography.size.heading.h1};
       font-weight: ${props.theme.typography.weight.semiBold};
       color: ${props.theme.typography.colors.white};
+      text-align: left;
       margin: 0 0 24px 0;
     }
     
     p {
-      font-size: 1.125rem;
+      font-size: ${props.theme.typography.size.paragraph.large};
       font-weight: ${props.theme.typography.weight.regular};
       color: ${props.theme.typography.colors.gray2};
       margin: 0 0 24px 0;
@@ -133,8 +135,8 @@ export const StyledContactIcon = styled.div(
     ${props.filled && `border: 2px solid ${props.theme.typography.colors.link};` || ''}
     ${props.filled && 'margin-left: -17px;' || ''}
     
-    h3 {
-      font-size: 0.875rem;
+    p {
+      font-size: ${props.theme.typography.size.paragraph.medium};
       font-weight: ${props.theme.typography.weight.regular};
       color: ${props.theme.typography.colors.white};
       margin: 0 0 0 18px;

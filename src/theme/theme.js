@@ -14,7 +14,24 @@ export default {
       gray1: 'rgba(110, 121, 140, 1)',
       gray2: 'rgba(196, 196, 196, 1)',
       gray3: 'rgba(229, 229, 229, 1)',
-      white: 'rgba(255, 255 ,255, 1)',
+      white: 'rgba(255, 255, 255, 1)',
+      error: 'rgba(252, 80, 85, 1)',
+    },
+    size: {
+      heading: {
+        h1: '2.25rem',
+        h2: '2rem',
+        h3: '1.5rem',
+        h4: '1.125rem',
+      },
+      paragraph: {
+        large: '1.125rem',
+        medium: '0.875rem',
+        small: '0.6875rem',
+      },
+      blog: {
+        medium: '1.3125rem',
+      },
     },
     weight: {
       thin: 100,

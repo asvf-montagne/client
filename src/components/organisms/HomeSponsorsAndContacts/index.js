@@ -84,7 +84,7 @@ function HomeSponsorsAndContacts({
     <StyledOverlayBox>
       <Container>
         <StyledOverlay>
-          <StyledHeading>Nos partenaires</StyledHeading>
+          <h1>Nos partenaires</h1>
 
           <Carousel itemsPerPage={4}>
             {sponsors.map((sponsor, index) => (
@@ -102,15 +102,15 @@ function HomeSponsorsAndContacts({
                 <div className="center">
                   <StyledContactIcon>
                     <IconMail style={{ color: '#0C75FF' }} />
-                    <h3>contact@asvf-montagne.fr</h3>
+                    <p>contact@asvf-montagne.fr</p>
                   </StyledContactIcon>
                   <StyledContactIcon>
                     <IconRoom style={{ color: '#0C75FF' }} />
-                    <h3>22 rue du Passou 38090 Vaulx-Milieu </h3>
+                    <p>22 rue du Passou 38090 Vaulx-Milieu </p>
                   </StyledContactIcon>
                   <StyledContactIcon filled>
                     <IconPhone style={{ color: '#0C75FF' }} />
-                    <h3>06 81 26 88 14 (jeudi de 18h30 à 20h)</h3>
+                    <p>06 81 26 88 14 (jeudi de 18h30 à 20h)</p>
                   </StyledContactIcon>
                 </div>
               </div>
@@ -125,7 +125,6 @@ function HomeSponsorsAndContacts({
                   value={fullName}
                   onKeyDown={handleFormKeyDown('full-name')}
                   onChange={handleFormChange('full-name')}
-                  autoCapitalize="on"
                   icon="user"
                 />
                 <Input
@@ -135,7 +134,6 @@ function HomeSponsorsAndContacts({
                   value={email}
                   onKeyDown={handleFormKeyDown('email')}
                   onChange={handleFormChange('email')}
-                  autoCapitalize="off"
                   icon="mail"
                 />
                 <TextArea
@@ -145,9 +143,8 @@ function HomeSponsorsAndContacts({
                   value={message}
                   onKeyDown={handleFormKeyDown('message')}
                   onChange={handleFormChange('message')}
-                  autoCapitalize="off"
                 />
-                <Button onClick={onSubmit} color="blue" style={{ marginLeft: 'auto' }}>
+                <Button onClick={onSubmit} type="plain-blue" size="medium" style={{ marginLeft: 'auto' }}>
                   Envoyer le message
                 </Button>
               </StyledContactForm>

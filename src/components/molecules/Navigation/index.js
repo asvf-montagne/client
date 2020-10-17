@@ -3,9 +3,9 @@ import { useRouter } from 'next/router'
 import Container from '../../atoms/Container'
 import Button from '../../atoms/Button'
 import {
+  StyledNavigationContainer,
   StyledNavigation,
   StyledList,
-  StyledGroup,
   StyledLink,
   StyledLogo
 } from './index.style'
@@ -18,22 +18,32 @@ function Navigation() {
   }
 
   return (
-    <StyledNavigation>
+    <StyledNavigationContainer>
       <Container>
-        <StyledList>
+        <StyledNavigation>
           <StyledLogo href="/">ASVF Montagne</StyledLogo>
-          <StyledGroup>
-            <StyledLink active={router.pathname.includes('/club')} href="/club">Le Club</StyledLink>
-            <StyledLink active={router.pathname.includes('/stories')} href="/stories">Récits</StyledLink>
-            <StyledLink active={router.pathname.includes('/program')} href="/program">Programmes</StyledLink>
-            <StyledLink active={router.pathname.includes('/gallery')} href="/gallery">Galerie</StyledLink>
-            <Button onClick={handleRedirection} style={{ marginLeft: 32 }}>
+
+          <StyledList>
+            <StyledLink active={router.pathname.includes('/club')}>
+              <a href="/club">Le Club</a>
+            </StyledLink>
+            <StyledLink active={router.pathname.includes('/stories')}>
+              <a href="/stories">Récits</a>
+            </StyledLink>
+            <StyledLink active={router.pathname.includes('/program')}>
+              <a href="/program">Programmes</a>
+            </StyledLink>
+            <StyledLink active={router.pathname.includes('/gallery')}>
+              <a href="/gallery">Galerie</a>
+            </StyledLink>
+
+            <Button onClick={handleRedirection} type="plain-white" size="medium" style={{ marginLeft: 32 }}>
               Connexion
             </Button>
-          </StyledGroup>
-        </StyledList>
+          </StyledList>
+        </StyledNavigation>
       </Container>
-    </StyledNavigation>
+    </StyledNavigationContainer>
   )
 }
 

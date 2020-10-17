@@ -3,20 +3,20 @@ import PropTypes from 'prop-types'
 import StyledButton from './index.style'
 
 Button.propTypes = {
+  type: PropTypes.oneOf(['plain-blue', 'plain-white', 'minimalist']).isRequired,
+  size: PropTypes.oneOf(['medium', 'large']),
+  fluid: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
-  color: PropTypes.oneOf(['blue', 'white']),
-  large: PropTypes.bool,
-  style: PropTypes.object,
   children: PropTypes.node.isRequired
 }
 
-function Button({ onClick, color, large = false, children, style, ...props }) {
+function Button({ onClick, size = 'medium', type, fluid = false, children, ...props }) {
   return (
     <StyledButton
-      color={color}
-      large={large}
+      size={size}
+      type={type}
+      fluid={fluid}
       onClick={onClick}
-      style={style}
       {...props}
     >
       {children}

@@ -36,7 +36,7 @@ export const StyledBackground = styled.div(
 )
 
 export const StyledOverlay = styled.div`
-  padding: 32px 0;
+  padding: 32px 0 0 0;
 `
 
 export const StyledHead = styled.div(
@@ -44,32 +44,32 @@ export const StyledHead = styled.div(
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 64px 0;
+    padding: 64px 0 0 0;
+    
+    p {
+      font-size: ${props.theme.typography.size.paragraph.large};
+      color: ${props.theme.typography.colors.gray1};
+    }
     
     .tags {
-      font-size: 1.125rem;
       color: ${props.theme.typography.colors.link};
       font-weight: ${props.theme.typography.weight.regular};
       margin: 0
     }
     
     h1 {
-      font-size: 3rem;
+      font-size: ${props.theme.typography.size.heading.h1};
       color: ${props.theme.typography.colors.primary};
       font-weight: ${props.theme.typography.weight.semiBold};
-      margin: 32px 0 52px 0;
+      margin: 52px 0 64px 0;
     }
     
     .name {
-      font-size: 1.125rem;
-      color: ${props.theme.typography.colors.gray1};
       font-weight: ${props.theme.typography.weight.semiBold};
       margin: 0 0 4px 0;
     }
     
     .time {
-      font-size: 1.125rem;
-      color: ${props.theme.typography.colors.gray1};
       font-weight: ${props.theme.typography.weight.regular};
       margin: 0
     }
@@ -83,13 +83,13 @@ export const StyledImage = styled.div(
     align-items: center;
     
     img {
-      margin: 64px 0 18px 0;
+      margin: 0 0 18px 0;
       max-height: 640px;
       width: 100%;
     }
     
-    p {
-      font-size: 1.125rem;
+    caption {
+      font-size: ${props.theme.typography.size.paragraph.large};
       color: ${props.theme.typography.colors.gray1};
       font-weight: ${props.theme.typography.weight.regular};
       text-decoration: underline;

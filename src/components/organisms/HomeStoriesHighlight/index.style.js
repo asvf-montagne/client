@@ -56,15 +56,20 @@ export const StyledList = styled.div`
   flex-direction: column;
 `
 
-export const StyledSpan = styled.span`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  
-  a {
-    text-decoration: none;
-    color: #0C75FF;
-    font-size: 1.0625rem;
-    font-weight: 500;
-  }
-`
+export const StyledSpan = styled.span(
+  (props) => `
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+    a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      text-decoration: none;
+      color: ${props.theme.typography.colors.link};
+      font-size: ${props.theme.typography.size.h4};
+      font-weight: ${props.theme.typography.weight.medium};
+    }
+  `
+)

@@ -5,10 +5,7 @@ import {
   StyledCard,
   StyledImage,
   StyledContent,
-  StyledTags,
-  StyledTitle,
   StyledMeta,
-  StyledDate
 } from './index.style'
 
 CardStoryHighlight.propTypes = {
@@ -43,11 +40,11 @@ function CardStoryHighlight({
     <StyledCard shadow={shadow} onClick={handleRedirection} style={style} {...props}>
       <StyledImage src={image} />
       <StyledContent>
-        <StyledTags>{tags}</StyledTags>
-        <StyledTitle>{title}</StyledTitle>
+        <p className="tags">{tags}</p>
+        <h1>{title}</h1>
         <StyledMeta>
-          <h2>{name}</h2>
-          <StyledDate>{date}</StyledDate>
+          <p className="name">{name}</p>
+          <p className="time">{date}</p>
         </StyledMeta>
       </StyledContent>
     </StyledCard>
