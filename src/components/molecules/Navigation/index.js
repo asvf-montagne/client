@@ -6,6 +6,7 @@ import {
   StyledNavigation,
   StyledList,
   StyledGroup,
+  StyledLink,
   StyledLogo
 } from './index.style'
 
@@ -22,10 +23,10 @@ function Navigation() {
         <StyledList>
           <StyledLogo href="/">ASVF Montagne</StyledLogo>
           <StyledGroup>
-            <a href="/club">Le Club</a>
-            <a href="/stories">Récits</a>
-            <a href="/program">Programmes</a>
-            <a href="/gallery">Galerie</a>
+            <StyledLink selected={router.pathname.includes('/club')} href="/club">Le Club</StyledLink>
+            <StyledLink selected={router.pathname.includes('/stories')} href="/stories">Récits</StyledLink>
+            <StyledLink selected={router.pathname.includes('/program')} href="/program">Programmes</StyledLink>
+            <StyledLink selected={router.pathname.includes('/gallery')} href="/gallery">Galerie</StyledLink>
             <Button onClick={handleRedirection} style={{ marginLeft: 32 }}>
               Connexion
             </Button>

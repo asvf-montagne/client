@@ -8,12 +8,11 @@ import {
   StyledOverlay,
   StyledHead,
   StyledImage,
-  StyledCaption,
 } from './index.style'
 
 StoryHeader.propTypes = {
   title: PropTypes.string.isRequired,
-  images: PropTypes.string.isRequired,
+  images: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
   tags: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,

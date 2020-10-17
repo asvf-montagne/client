@@ -86,12 +86,10 @@ function HomeSponsorsAndContacts({
         <StyledOverlay>
           <StyledHeading>Nos partenaires</StyledHeading>
 
-          <Carousel
-            itemsToShow={4}
-          >
+          <Carousel itemsPerPage={4}>
             {sponsors.map((sponsor, index) => (
-              <StyledSponsor>
-                <img key={index} alt={sponsor.alt} src={sponsor.asset} />
+              <StyledSponsor key={index}>
+                <img alt={sponsor.alt} src={sponsor.asset} />
               </StyledSponsor>
             ))}
           </Carousel>
