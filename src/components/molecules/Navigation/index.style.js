@@ -34,8 +34,10 @@ export const StyledLink = styled.a(
     font-weight: ${props.theme.typography.weight.regular};
     text-decoration: none;
     margin-left: 26px;
-    ${props.selected && `border-bottom: 3px solid ${props.theme.typography.colors.link};`}
-    ${props.selected && `border-top: 3px solid ${props.theme.colors.tertiary};`}
+    ${props.active && `
+      border-bottom: 3px solid ${props.theme.typography.colors.link};
+      border-top: 3px solid ${props.theme.colors.tertiary};
+    `}
   `
 )
 

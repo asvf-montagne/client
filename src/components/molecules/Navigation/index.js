@@ -23,10 +23,10 @@ function Navigation() {
         <StyledList>
           <StyledLogo href="/">ASVF Montagne</StyledLogo>
           <StyledGroup>
-            <StyledLink selected={router.pathname.includes('/club')} href="/club">Le Club</StyledLink>
-            <StyledLink selected={router.pathname.includes('/stories')} href="/stories">Récits</StyledLink>
-            <StyledLink selected={router.pathname.includes('/program')} href="/program">Programmes</StyledLink>
-            <StyledLink selected={router.pathname.includes('/gallery')} href="/gallery">Galerie</StyledLink>
+            <StyledLink active={router.pathname.includes('/club')} href="/club">Le Club</StyledLink>
+            <StyledLink active={router.pathname.includes('/stories')} href="/stories">Récits</StyledLink>
+            <StyledLink active={router.pathname.includes('/program')} href="/program">Programmes</StyledLink>
+            <StyledLink active={router.pathname.includes('/gallery')} href="/gallery">Galerie</StyledLink>
             <Button onClick={handleRedirection} style={{ marginLeft: 32 }}>
               Connexion
             </Button>
