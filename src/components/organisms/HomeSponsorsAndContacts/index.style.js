@@ -80,7 +80,7 @@ export const StyledContact = styled.div(
     flex-direction: row;
     width: 100%;
     background-color: grey;
-    border-radius: ${props.theme.borderRadius};
+    border-radius: ${props.theme.borderRadius.medium};
     background-color: ${props.theme.colors.tertiary};
     padding: 58px 72px;
     margin-top: 32px;
@@ -130,7 +130,7 @@ export const StyledContactIcon = styled.div(
     align-items: center;
     margin-bottom: 38px;
     ${props.filled && `background-color: ${props.theme.colors.primary};` || ''}
-    ${props.filled && 'border-radius: 7px;' || ''}
+    ${props.filled && `border-radius: ${props.theme.borderRadius.medium};` || ''}
     ${props.filled && 'padding: 12px 15px;' || ''}
     ${props.filled && `border: 2px solid ${props.theme.typography.colors.link};` || ''}
     ${props.filled && 'margin-left: -17px;' || ''}
@@ -151,7 +151,7 @@ export const StyledContactForm = styled.form(
     padding: 32px 32px;
     height: 580px;
     margin-left: 40px;
-    border-radius: 7px;
+    border-radius: ${props.theme.borderRadius.medium};
     background-color: ${props.theme.colors.white};
   `
 )

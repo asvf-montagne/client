@@ -4,7 +4,7 @@ import { useTheme } from 'emotion-theming'
 import IconChevronRight from '@material-ui/icons/ChevronRight'
 import Container from '../../atoms/Container'
 import CardStoryMinimal from '../../molecules/CardStoryMinimal'
-import CardStoryHighlight from '../../molecules/CardStoryHighlight'
+import CardStory from '../../molecules/CardStory'
 import {
   StyledGradient,
   StyledGrid,
@@ -30,7 +30,7 @@ function HomeStoriesHighlight({ stories }) {
             <StyledPad />
             <div className="overlay">
               <StyledCardContainer>
-                <CardStoryHighlight
+                <CardStory
                   id={stories[0].id}
                   title={stories[0].title}
                   image={stories[0].image}

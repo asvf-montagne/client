@@ -1,5 +1,8 @@
 export default {
-  borderRadius: '3px',
+  borderRadius: {
+    small: '3px',
+    medium: '7px',
+  },
   colors: {
     primary: 'rgba(0, 23, 104, 1)',
     secondary: 'rgba(255, 244, 240, 1)',

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Container from '../../atoms/Container'
-import CardStoryHighlight from '../../molecules/CardStoryHighlight'
+import CardStoryHighlight from '../../molecules/CardStory'
 import { StyledSuggested, StyledRow } from './index.style'
 
 StorySuggestion.propTypes = {

@@ -41,7 +41,7 @@ export const StyledInput = styled.div(
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-radius: 7px;
+    border-radius: ${props.theme.borderRadius.medium};
     overflow: hidden;
     border-width: 2px;
     border-style: solid;

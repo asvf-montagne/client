@@ -7,7 +7,7 @@ export default styled.button(
     flex-direction: row;
     justify-content: center;
     padding: 11px 16px;
-    border-radius: 7px;
+    border-radius: ${props.theme.borderRadius.medium};
     color: ${
       props.type === 'plain-blue'
         ? props.theme.typography.colors.white
@@ -23,10 +23,6 @@ export default styled.button(
         ? props.theme.typography.colors.link
         : props.theme.colors.white
     };
-    ${props.type === 'minimalist' && `
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-      transition: ease-in-out 0.12s box-shadow;
-    `}
     
     :hover {
       cursor: pointer;
@@ -50,6 +46,10 @@ export default styled.button(
     }
     
     ${props.fluid && 'width: 100%;'}
-    ${props.type === 'minimalist' && 'border: 2px solid rgba(97, 114, 255, 0.2);'}
+    ${props.type === 'minimalist' && `
+      border: 2px solid rgba(97, 114, 255, 0.2);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      transition: ease-in-out 0.12s box-shadow;
+    `}
   `
 )
