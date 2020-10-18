@@ -1,27 +1,24 @@
 import React, { useState } from 'react'
 import AuthLayout from '../components/organisms/AuthLayout'
-import FormLogin from '../components/organisms/FormLogin'
+import FormForgotPassword from '../components/organisms/FormForgotPassword'
 
-function Login() {
+function Register() {
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(email, password)
+    console.log(email)
   }
 
   return (
     <AuthLayout
-      title="Se connecter"
+      title="Mot de passe oublié ?"
       helper={{
-        title: 'Vous n’avez pas de compte ?',
-        ref: '/register'
+        title: 'La mémoire vous revient ? Se connecter',
+        ref: '/login'
       }}
     >
-      <FormLogin
-        password={password}
-        setPassword={setPassword}
+      <FormForgotPassword
         email={email}
         setEmail={setEmail}
         onSubmit={handleSubmit}
@@ -30,4 +27,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Register

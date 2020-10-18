@@ -16,6 +16,7 @@ export default {
       gray3: 'rgba(229, 229, 229, 1)',
       white: 'rgba(255, 255, 255, 1)',
       error: 'rgba(252, 80, 85, 1)',
+      success: 'rgba(0, 236, 151, 1)',
     },
     size: {
       heading: {

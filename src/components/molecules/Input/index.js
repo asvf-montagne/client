@@ -3,11 +3,13 @@ import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 import IconUser from '@material-ui/icons/Person'
 import IconMail from '@material-ui/icons/MailOutline'
+import IconLock from '@material-ui/icons/LockOutlined'
 import Label from '../../atoms/Label'
 import { StyledInputContainer, StyledLabelSpan, StyledInput } from './index.style'
 
 const Input = forwardRef((
   {
+    type = 'text',
     label,
     placeholder,
     value,
@@ -41,6 +43,8 @@ const Input = forwardRef((
         return <IconUser style={{ color: getStateColor('error') }} />
       case 'mail':
         return <IconMail style={{ color: getStateColor('error') }} />
+      case 'password':
+        return <IconLock style={{ color: getStateColor('error') }} />
       default:
         break
     }
@@ -62,6 +66,7 @@ const Input = forwardRef((
           </div>
         )}
         <input
+          type={type}
           ref={ref}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
@@ -80,12 +85,13 @@ const Input = forwardRef((
 })
 
 Input.propTypes = {
+  type: PropTypes.oneOf(['text', 'password']),
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   autoCapitalize: PropTypes.string,
-  icon: PropTypes.oneOf(['user', 'mail']),
+  icon: PropTypes.oneOf(['user', 'mail', 'password']),
   link: PropTypes.object,
   error: PropTypes.object
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { Global } from '@emotion/core'
 import ThemeProvider from '../theme'
 import Navigation from '../components/molecules/Navigation'
@@ -17,7 +18,20 @@ const globalStyle = `
   }
 `
 
+const exceptions = [
+  '/login',
+  '/register',
+  '/forgot-password',
+  '/confirm-email',
+  '/verify',
+  '/change-password',
+]
+
 function App({ Component, pageProps }) {
+  const router = useRouter()
+
+  const filter = (currentRoute) => !exceptions.some((route) => currentRoute.includes(route))
+
   return (
     <>
       <Head>
@@ -26,9 +40,13 @@ function App({ Component, pageProps }) {
       </Head>
 
       <ThemeProvider>
-        <Navigation />
+        {filter(router.pathname) && (
+          <Navigation />
+        )}
         <Component {...pageProps} />
-        <Footer />
+        {filter(router.pathname) && (
+          <Footer />
+        )}
       </ThemeProvider>
 
       <Global styles={globalStyle} />

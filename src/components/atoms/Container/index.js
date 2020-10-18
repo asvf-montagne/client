@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import StyledContainer from './index.style'
 
 Container.propTypes = {
+  small: PropTypes.bool,
   children: PropTypes.node.isRequired
 }
 
-function Container({ children, ...props }) {
+function Container({ small = false, children, ...props }) {
   return (
-    <StyledContainer {...props}>
+    <StyledContainer small={small} {...props}>
       {children}
     </StyledContainer>
   )

@@ -24,9 +24,11 @@ export const StyledOverlay = styled.div`
 
 export const StyledContent = styled.div(
   (props) => `
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
   
     div {
       display: flex;

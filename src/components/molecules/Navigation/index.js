@@ -33,9 +33,6 @@ function Navigation() {
             <StyledLink active={router.pathname.includes('/program')}>
               <a href="/program">Programmes</a>
             </StyledLink>
-            <StyledLink active={router.pathname.includes('/gallery')}>
-              <a href="/gallery">Galerie</a>
-            </StyledLink>
 
             <Button onClick={handleRedirection} type="plain-white" size="medium" style={{ marginLeft: 32 }}>
               Connexion
