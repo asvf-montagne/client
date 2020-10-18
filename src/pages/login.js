@@ -25,6 +25,7 @@ function Login() {
         email={email}
         setEmail={setEmail}
         onSubmit={handleSubmit}
+        onGoogleSubmit={handleSubmit}
       />
     </AuthLayout>
   )

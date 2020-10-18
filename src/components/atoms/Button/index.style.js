@@ -23,25 +23,33 @@ export default styled.button(
         ? props.theme.typography.colors.link
         : props.theme.colors.white
     };
+    ${props.type === 'minimalist' && `
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      transition: ease-in-out 0.12s box-shadow;
+    `}
     
     :hover {
       cursor: pointer;
+      ${props.type === 'minimalist' && 'box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);'}
     }
   
     :focus {
       outline: none;
-      border-color: ${
-        props.type === 'plain-blue'
-          ? props.theme.typography.colors.link
-          : props.theme.colors.white
-      };
-      box-shadow: 0 0 0 0.2rem ${
-        props.type === 'plain-blue'
-          ? 'rgba(12,117,255,.5)'
-          : 'rgba(255,255,255,.5)'
-      };
+      ${props.type !== 'minimalist' && `
+        border-color: ${
+          props.type === 'plain-blue'
+            ? props.theme.typography.colors.link
+            : props.theme.colors.white
+        };
+        box-shadow: 0 0 0 0.2rem ${
+          props.type === 'plain-blue'
+            ? 'rgba(12,117,255,.5)'
+            : 'rgba(255,255,255,.5)'
+        };
+      `}
     }
     
     ${props.fluid && 'width: 100%;'}
+    ${props.type === 'minimalist' && 'border: 2px solid rgba(97, 114, 255, 0.2);'}
   `
 )

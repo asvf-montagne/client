@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Input from '../../molecules/Input'
-import Button from '../../atoms/Button'
+import AuthConnection from '../AuthConnection'
 import StyledForm from './index.style'
 
 FormRegister.propTypes = {
@@ -11,7 +11,8 @@ FormRegister.propTypes = {
   setPassword: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
   setEmail: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  onGoogleSubmit: PropTypes.func.isRequired
 }
 
 function FormRegister({
@@ -21,7 +22,8 @@ function FormRegister({
   setPassword,
   email,
   setEmail,
-  onSubmit
+  onSubmit,
+  onGoogleSubmit,
 }) {
   const refFullName = useRef(null)
   const refEmail = useRef(null)
@@ -95,9 +97,12 @@ function FormRegister({
         onChange={handleFormChange('password')}
         icon="password"
       />
-      <Button type="plain-blue" fluid onClick={onSubmit}>
-        Inscription
-      </Button>
+      <AuthConnection
+        title="Inscription"
+        authType="register"
+        onDefaultSubmit={onSubmit}
+        onGoogleSubmit={onGoogleSubmit}
+      />
     </StyledForm>
   )
 }

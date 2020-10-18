@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Input from '../../molecules/Input'
-import Button from '../../atoms/Button'
+import AuthConnection from '../AuthConnection'
 import StyledForm from './index.style'
 
 FormLogin.propTypes = {
@@ -9,7 +9,8 @@ FormLogin.propTypes = {
   setPassword: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
   setEmail: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  onGoogleSubmit: PropTypes.func.isRequired
 }
 
 function FormLogin({
@@ -17,7 +18,8 @@ function FormLogin({
   setPassword,
   email,
   setEmail,
-  onSubmit
+  onSubmit,
+  onGoogleSubmit,
 }) {
   const refEmail = useRef(null)
   const refPassword = useRef(null)
@@ -79,9 +81,12 @@ function FormLogin({
           ref: '/forgot-password'
         }}
       />
-      <Button type="plain-blue" fluid onClick={onSubmit}>
-        Connexion
-      </Button>
+      <AuthConnection
+        title="Connexion"
+        authType="login"
+        onDefaultSubmit={onSubmit}
+        onGoogleSubmit={onGoogleSubmit}
+      />
     </StyledForm>
   )
 }
