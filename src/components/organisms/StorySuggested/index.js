@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Container from '../../atoms/Container'
-import CardStoryHighlight from '../../molecules/CardStory'
+import CardStory from '../../molecules/CardStory'
 import { StyledSuggested, StyledRow } from './index.style'
 
 StorySuggestion.propTypes = {
@@ -15,7 +15,7 @@ function StorySuggestion({ stories }) {
         <h1>Continuer de lire ...</h1>
         <StyledRow>
           {stories.slice(0, 2).map((story) => (
-            <CardStoryHighlight
+            <CardStory
               shadow
               key={story.id}
               id={story.id}

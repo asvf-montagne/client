@@ -3,11 +3,11 @@ import styled from '@emotion/styled'
 export const StyledCard = styled.div(
   (props) => `
     width: 100%;
-    height: 100%;
     cursor: pointer;
     overflow: hidden;
     border-radius: ${props.theme.borderRadius.medium};
     background-color: ${props.theme.colors.white};
+    transition: ease-in-out 0.16s;
     ${props.shadow ? 'box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);' : ''}
     ${props.border ? 'border: 2px solid rgba(12, 117, 255, 0.2);' : ''}
     
@@ -41,7 +41,7 @@ export const StyledCard = styled.div(
         font-size: ${props.theme.typography.size.heading.h2};
         color: ${props.theme.typography.colors.secondary};
         font-weight: ${props.theme.typography.weight.medium};
-        margin: 0;
+        margin: 16px 0;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
@@ -57,6 +57,7 @@ export const StyledCard = styled.div(
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
+        margin: 0 0 16px 0;
       }
     }
   `

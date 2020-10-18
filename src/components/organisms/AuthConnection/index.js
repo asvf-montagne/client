@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import StyledGroup from './index.style'
 import Button from '../../atoms/Button'
+import StyledGroup from './index.style'
 
 import GoogleLogoAsset from '../../../assets/images/logo-google.png'
 

@@ -51,5 +51,6 @@ export default styled.button(
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
       transition: ease-in-out 0.12s box-shadow;
     `}
+    ${props.border ? 'border: 2px solid rgba(12, 117, 255, 0.2);' : ''}
   `
 )
