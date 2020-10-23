@@ -70,6 +70,10 @@ export const StyledSpan = styled.span(
       color: ${props.theme.typography.colors.link};
       font-size: ${props.theme.typography.size.h4};
       font-weight: ${props.theme.typography.weight.medium};
+      
+      :hover {
+        color: ${props.theme.typography.colors.linkLighter};
+      }
     }
   `
 )
