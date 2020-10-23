@@ -39,8 +39,8 @@ function StoryHeader({
               {images.map(({ src, caption }, index) => {
                 return (
                   <StyledImage key={index}>
-                    <img src={src} />
-                    <caption>{caption}</caption>
+                    <img alt="story-image-elem" src={src} />
+                    <p>{caption}</p>
                   </StyledImage>
                 )
               })}

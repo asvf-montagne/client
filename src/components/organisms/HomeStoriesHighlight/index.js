@@ -33,7 +33,7 @@ function HomeStoriesHighlight({ stories }) {
                 <CardStory
                   id={stories[0].id}
                   title={stories[0].title}
-                  image={stories[0].image}
+                  image={stories[0].images[0].src}
                   name={stories[0].name}
                   tags={stories[0].tags}
                   date={stories[0].date}
@@ -45,7 +45,7 @@ function HomeStoriesHighlight({ stories }) {
           <div style={{ width: 160 }} />
 
           <StyledList>
-            {stories.map((story) => (
+            {stories.slice(0, 3).map((story) => (
               <CardStoryMinimal
                 key={story.id}
                 id={story.id}

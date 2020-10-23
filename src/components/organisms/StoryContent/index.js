@@ -1,19 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import EditorRendererProvider from 'react-editorjs-renderer'
 import Container from '../../atoms/Container'
-import { StyledContent, StyledText } from './index.style'
+import { StyledContent } from './index.style'
 
 StoryContent.propTypes = {
-  content: PropTypes.string.isRequired
+  data: PropTypes.object.isRequired
 }
 
-function StoryContent({ content }) {
+function StoryContent({ data }) {
   return (
     <StyledContent>
       <Container>
-        <StyledText>
-          {content}
-        </StyledText>
+        <EditorRendererProvider data={data} style={{ disable: true }} />
       </Container>
     </StyledContent>
   )

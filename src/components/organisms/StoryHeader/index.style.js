@@ -88,7 +88,7 @@ export const StyledImage = styled.div(
       width: 100%;
     }
     
-    caption {
+    p {
       font-size: ${props.theme.typography.size.paragraph.large};
       color: ${props.theme.typography.colors.gray1};
       font-weight: ${props.theme.typography.weight.regular};

@@ -5,140 +5,7 @@ import IconChevronDown from '@material-ui/icons/KeyboardArrowDown'
 import Button from '../components/atoms/Button'
 import SearchGrid from '../components/organisms/SearchGrid'
 
-const mockSearchedStories = [
-  {
-    id: '0',
-    title: `Goulotte Zia et traversée d'arête !`,
-    images: [
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim'
-      },
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'wewe'
-      },
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'wqwqqwqw'
-      },
-    ],
-    name: 'Martin',
-    tags: 'Ski / Alpinisme',
-    date: '3 days ago',
-    preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper consequat purus tempor quam phasellus. Pellentesque arcu dictumst sit imperbvbnjkljhgvbnmkjuhgbnjk hbnj uhbnmkiu hbnmkiu ijk iuh njkiuh jkiuhjk iuhj',
-  },
-  {
-    id: '1',
-    title: 'Pointe de Colomban 2455m (Lauzière)',
-    images: [
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim'
-      },
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'wewe'
-      },
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'wqwqqwqw'
-      },
-    ],
-    name: 'Thomas',
-    tags: 'Ski / Alpinisme',
-    date: '6 days ago',
-    preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper consequat purus tempor quam phasellus. Pellentesque arcu dictumst sit imperbvbnjkljhgvbnmkjuhgbnjk hbnj uhbnmkiu hbnmkiu ijk iuh njkiuh jkiuhjk iuhj',
-  },
-  {
-    id: '2',
-    title: 'Crête de Brouffier (Taillefer)',
-    images: [
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim'
-      },
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'wewe'
-      },
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'wqwqqwqw'
-      },
-    ],
-    name: 'Maud',
-    tags: 'Ski / Alpinisme',
-    date: '1 week ago',
-    preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper consequat purus tempor quam phasellus. Pellentesque arcu dictumst sit imperbvbnjkljhgvbnmkjuhgbnjk hbnj uhbnmkiu hbnmkiu ijk iuh njkiuh jkiuhjk iuhj',
-  },
-  {
-    id: '4',
-    title: `Goulotte Zia et traversée d'arête !`,
-    images: [
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim'
-      },
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'wewe'
-      },
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'wqwqqwqw'
-      },
-    ],
-    name: 'Martin',
-    tags: 'Ski / Alpinisme',
-    date: '3 days ago',
-    preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper consequat purus tempor quam phasellus. Pellentesque arcu dictumst sit imperbvbnjkljhgvbnmkjuhgbnjk hbnj uhbnmkiu hbnmkiu ijk iuh njkiuh jkiuhjk iuhj',
-  },
-  {
-    id: '5',
-    title: 'Pointe de Colomban 2455m (Lauzière)',
-    images: [
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim'
-      },
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'wewe'
-      },
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'wqwqqwqw'
-      },
-    ],
-    name: 'Thomas',
-    tags: 'Ski / Alpinisme',
-    date: '6 days ago',
-    preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper consequat purus tempor quam phasellus. Pellentesque arcu dictumst sit imperbvbnjkljhgvbnmkjuhgbnjk hbnj uhbnmkiu hbnmkiu ijk iuh njkiuh jkiuhjk iuhj',
-  },
-  {
-    id: '6',
-    title: 'Crête de Brouffier (Taillefer)',
-    images: [
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim'
-      },
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'wewe'
-      },
-      {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
-        caption: 'wqwqqwqw'
-      },
-    ],
-    name: 'Maud',
-    tags: 'Ski / Alpinisme',
-    date: '1 week ago',
-    preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper consequat purus tempor quam phasellus. Pellentesque arcu dictumst sit imperbvbnjkljhgvbnmkjuhgbnjk hbnj uhbnmkiu hbnmkiu ijk iuh njkiuh jkiuhjk iuhj',
-  },
-]
+import mockStories from '../mockData'
 
 export const StyledStories = styled.div`
   display: flex;
@@ -162,7 +29,7 @@ function Stories() {
 
   return (
     <StyledStories>
-      <SearchGrid stories={mockSearchedStories} />
+      <SearchGrid stories={mockStories} />
       <Button
         border
         onClick={handleFetchMore}
