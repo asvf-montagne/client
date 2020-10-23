@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const StyledContent = styled.div(
+export const StyledContent = styled.span(
   (props) => `
     margin: 0 0 128px 0;
     
@@ -72,3 +72,7 @@ export const StyledContent = styled.div(
     }
   `
 )
+
+export const StyledContentInner = styled.div`
+  padding: 0 72px;
+`
