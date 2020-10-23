@@ -55,11 +55,15 @@ export const StyledHead = styled.div(
       color: ${props.theme.typography.colors.link};
       font-weight: ${props.theme.typography.weight.regular};
       margin: 0
+      
+      :hover {
+        color: ${props.theme.typography.colors.linkLighter};
+      }
     }
     
     h1 {
       font-size: ${props.theme.typography.size.heading.h1};
-      color: ${props.theme.typography.colors.primary};
+      color: ${props.theme.colors.primary};
       font-weight: ${props.theme.typography.weight.semiBold};
       margin: 52px 0 64px 0;
     }

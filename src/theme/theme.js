@@ -14,6 +14,7 @@ export default {
       primary: 'rgba(1, 2, 43, 1)',
       secondary: 'rgba(0, 23, 104, 1)',
       link: 'rgba(12, 117, 255, 1)',
+      linkLighter: 'rgb(77,154,255)',
       gray1: 'rgba(110, 121, 140, 1)',
       gray2: 'rgba(196, 196, 196, 1)',
       gray3: 'rgba(229, 229, 229, 1)',

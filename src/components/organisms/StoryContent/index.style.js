@@ -60,7 +60,13 @@ export const StyledContent = styled.span(
     a {
       text-decoration: none;
       color: ${props.theme.typography.colors.link};
+      
+      :hover {
+        color: ${props.theme.typography.colors.linkLighter};
+      }
     }
+    
+    
     
     mark {
       background-color: rgba(245,235,111,0.29);

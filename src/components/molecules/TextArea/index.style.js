@@ -31,6 +31,7 @@ export const StyledLabelSpan = styled.span(
       
       :hover {
         text-decoration: underline;
+        color: ${props.theme.typography.colors.linkLighter};
       }
     }
   `
