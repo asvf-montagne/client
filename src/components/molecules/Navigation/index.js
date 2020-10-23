@@ -21,17 +21,19 @@ function Navigation() {
     <StyledNavigationContainer>
       <Container>
         <StyledNavigation>
-          <StyledLogo href="/">ASVF Montagne</StyledLogo>
-
           <StyledList>
+            <StyledLogo href="/">ASVF Montagne</StyledLogo>
             <StyledLink active={router.pathname.includes('/club')}>
               <a href="/club">Le Club</a>
             </StyledLink>
             <StyledLink active={router.pathname.includes('/stories')}>
               <a href="/stories">Récits</a>
             </StyledLink>
-            <StyledLink active={router.pathname.includes('/program')}>
-              <a href="/program">Programmes</a>
+          </StyledList>
+
+          <StyledList>
+            <StyledLink active={router.pathname.includes('/register')}>
+              <a href="/register">Inscription</a>
             </StyledLink>
 
             <Button onClick={handleRedirection} type="plain-white" size="medium" style={{ marginLeft: 32 }}>
