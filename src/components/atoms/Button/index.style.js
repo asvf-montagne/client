@@ -27,6 +27,7 @@ export default styled.button(
     :hover {
       cursor: pointer;
       ${props.type === 'minimalist' && 'box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);'}
+      ${props.type === 'minimalist' && `border: 2px solid ${props.theme.colors.cta};`}
     }
   
     :focus {

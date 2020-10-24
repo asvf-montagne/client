@@ -13,7 +13,7 @@ export const StyledCard = styled.div(
     
     :hover {
       ${props.shadow ? 'box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);' : ''}
-      ${props.border ? 'border: 2px solid rgba(12, 117, 255, 1);' : ''}
+      ${props.border ? `border: 2px solid ${props.theme.colors.cta};` : ''}
     }
     
     img {

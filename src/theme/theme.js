@@ -7,6 +7,7 @@ export default {
     primary: 'rgba(0, 23, 104, 1)',
     secondary: 'rgba(255, 244, 240, 1)',
     tertiary: 'rgba(2, 4, 74, 1)',
+    cta: 'rgba(12, 117, 255, 1)',
     white: 'rgba(255, 255 ,255, 1)',
   },
   typography: {
