@@ -80,5 +80,5 @@ export const StyledContent = styled.span(
 )
 
 export const StyledContentInner = styled.div`
-  padding: 0 72px;
+  padding: 0 72px 92px 72px;
 `

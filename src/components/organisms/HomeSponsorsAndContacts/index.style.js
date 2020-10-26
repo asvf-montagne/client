@@ -123,17 +123,23 @@ export const StyledContactCol = styled.div(
   `
 )
 
-export const StyledContactIcon = styled.div(
+export const StyledContactIcon = styled.button(
   (props) => `
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 38px;
-    ${props.filled && `background-color: ${props.theme.colors.primary};` || ''}
-    ${props.filled && `border-radius: ${props.theme.borderRadius.medium};` || ''}
-    ${props.filled && 'padding: 12px 15px;' || ''}
-    ${props.filled && `border: 2px solid ${props.theme.typography.colors.link};` || ''}
-    ${props.filled && 'margin-left: -17px;' || ''}
+    margin-bottom: 10px;
+    padding: 14px 17px;
+    background-color: transparent;
+    border: none;
+    
+    &:hover {
+      cursor: pointer;
+      padding: 12px 15px;
+      background-color: ${props.theme.colors.primary};
+      border-radius: ${props.theme.borderRadius.medium};
+      border: 2px solid ${props.theme.typography.colors.link};
+    }
     
     p {
       font-size: ${props.theme.typography.size.paragraph.medium};
