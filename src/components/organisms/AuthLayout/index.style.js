@@ -64,9 +64,10 @@ export const StyledHelper = styled.span(
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    padding: 32px 0;
+    padding: 28px 0;
     
     a {
+      padding: 4px 8px;
       display: flex;
       flex-direction: row;
       align-items: center;
