@@ -23,10 +23,10 @@ function AuthLayout({ title, helper, children }) {
 
   return (
     <StyledLayout>
-      <div className="column">
+      <div className="column left">
         <StyledImage src={backgroundMountainAsset} />
       </div>
-      <div className="column">
+      <div className="column right">
         <StyledStrip>
           <a href="/">
             <IconChevronLeft style={{ marginRight: 8, color: theme.typography.colors.link }} />

@@ -1,20 +1,28 @@
 import styled from '@emotion/styled'
 
 export const StyledLayout = styled.div`
-  height: 100vh;
   display: flex;
   flex-direction: row;
 
   .column {
-    flex: 1;
-    flex-direction: column;
-    display: flex;
+    width: 50%;
     overflow: hidden;
+  }
+  
+  @media screen and (max-width: 576px) {
+    .left {
+      width: 0%;
+    }
+    
+    .right {
+      width: 100%;
+    }
   }
 `
 
 export const StyledImage = styled.img`
-  height: 100%;
+  height: 100vh;
+  width: 100%;
   object-fit: cover;
 `
 
