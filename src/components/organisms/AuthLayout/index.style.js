@@ -2,16 +2,22 @@ import styled from '@emotion/styled'
 
 export const StyledLayout = styled.div`
   display: flex;
+  height: 100vh;
   flex-direction: row;
-
-  .column {
+  
+  .left {
     width: 50%;
     overflow: hidden;
   }
   
-  @media screen and (max-width: 576px) {
+  .right {
+    width: 50%;
+    overflow:auto;
+  }
+  
+  @media screen and (max-width: 795px) {
     .left {
-      width: 0%;
+      display: none;
     }
     
     .right {
@@ -28,39 +34,40 @@ export const StyledImage = styled.img`
 
 export const StyledStrip = styled.div(
   (props) => `
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     width: 100%;
     background-color: ${props.theme.colors.secondary};
-    padding: 32px 0 52px 0;
-    
-    a {
-      margin-left: 88px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      text-decoration: none;
-      color: ${props.theme.typography.colors.link};
-      font-size: ${props.theme.typography.size.h4};
-      font-weight: ${props.theme.typography.weight.medium};
-      
-      :hover {
-        color: ${props.theme.typography.colors.linkLighter};
-      }
-    }
+    padding: 32px 18px 52px 18px;
     
     div {
       display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-      margin-top: 64px;
+      flex-direction: column;
+      justify-content: space-between;
+      
+      a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-decoration: none;
+        color: ${props.theme.typography.colors.link};
+        font-size: ${props.theme.typography.size.h4};
+        font-weight: ${props.theme.typography.weight.medium};
+        
+        :hover {
+          color: ${props.theme.typography.colors.linkLighter};
+        }
+      }
+      
+      @media screen and (min-width: 1270px) {
+        a {
+          margin-left: -88px;
+        }
+      }
       
       h1 {
+        margin: 64px 0 0 0;
         font-size: ${props.theme.typography.size.heading.h1};
         font-weight: ${props.theme.typography.weight.semiBold};
         color: ${props.theme.typography.colors.secondary};
-        margin: 0;
       }
     }
   `
