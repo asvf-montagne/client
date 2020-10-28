@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import styles from './Button.module.css'
+import PropTypes from 'prop-types';
+import styles from './Button.module.css';
 
 Button.propTypes = {
   type: PropTypes.oneOf(['primary', 'light', 'link']).isRequired,
@@ -7,8 +7,8 @@ Button.propTypes = {
   shadow: PropTypes.bool,
   fluid: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired
-}
+  children: PropTypes.node.isRequired,
+};
 
 export default function Button({ type = 'primary', size = 'medium', shadow = false, fluid = false, onClick, children, ...props }) {
   return (
@@ -20,5 +20,5 @@ export default function Button({ type = 'primary', size = 'medium', shadow = fal
     `}>
       {children}
     </button>
-  )
+  );
 }

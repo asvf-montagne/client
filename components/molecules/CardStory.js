@@ -10,10 +10,10 @@ CardStory.propTypes = {
   categories: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   description: PropTypes.string,
-}
+};
 
 export default function CardStory({ id, title, image, author, categories, date, description }) {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleRedirection = () => {
     router.push(`/stories/${id}`)
@@ -49,5 +49,5 @@ export default function CardStory({ id, title, image, author, categories, date, 
         </div>
       </div>
     </div>
-  )
+  );
 }

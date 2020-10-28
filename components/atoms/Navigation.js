@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
-import Button from '@components/atoms/Button'
+import Button from '@components/atoms/Button';
 import styles from './Navigation.module.css';
 
 export default function Navigation() {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleRedirection = () => {
     router.push('/sign-in')

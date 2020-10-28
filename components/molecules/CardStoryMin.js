@@ -8,10 +8,10 @@ CardStoryMin.propTypes = {
   author: PropTypes.string.isRequired,
   categories: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-}
+};
 
 export default function CardStoryMin({ id, title, author, categories, date }) {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleRedirection = () => {
     router.push(`/stories/${id}`)
@@ -36,5 +36,5 @@ export default function CardStoryMin({ id, title, author, categories, date }) {
         </span>
       </div>
     </div>
-  )
+  );
 }
