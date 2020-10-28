@@ -54,6 +54,10 @@
         display: none;
     }
 
+    .header__list {
+        display: none;
+    }
+
     .header__container {
         max-width: 343px;
     }

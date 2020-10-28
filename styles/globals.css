@@ -22,6 +22,7 @@
 
   --font-color-primary: rgba(1, 2, 43, 1);
   --font-color-secondary: rgba(0, 23, 104, 1);
+  --font-color-secondaryActive: rgba(0, 39, 178, 1);
   --font-color-contrast: rgba(255, 255, 255, 1);
   --font-color-status-success: rgba(0, 236, 151, 1);
   --font-color-status-error: rgba(252, 80, 85, 1);

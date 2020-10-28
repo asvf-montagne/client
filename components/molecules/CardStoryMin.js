@@ -27,10 +27,10 @@ export default function CardStoryMin({ id, title, author, categories, date }) {
           {author}
         </p>
         <span className={styles.cardMin__meta__span}>
-          <p className="tags">
+          <p>
             {categories}
           </p>
-          <p className="time">
+          <p>
             {date}
           </p>
         </span>
