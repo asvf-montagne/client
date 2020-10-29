@@ -1,6 +1,8 @@
-import { useRef } from 'react';
 import PropTypes from 'prop-types';
+import Icon from '@material-ui/core/Icon';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import useWindowSize from '@hooks/useWindowSize';
+import LandingForm from '@components/molecules/LandingForm'
 import styles from './LandingContact.module.css';
 
 const sponsors = [
@@ -45,9 +47,8 @@ LandingContact.propTypes = {
 };
 
 export default function LandingContact({ fullName, setFullName, email, setEmail, message, setMessage, onSubmit }) {
-  const refFullName = useRef(null);
-  const refEmail = useRef(null);
-  const refMessage = useRef(null);
+  const { width: size } = useWindowSize();
+
 
   return (
     <section className={styles.landingContact}>
@@ -64,7 +65,7 @@ export default function LandingContact({ fullName, setFullName, email, setEmail,
           style={{ margin: '92px 0', width: '100%' }}
         >
           {sponsors.map((sponsor, index) => (
-            <SwiperSlide>
+            <SwiperSlide key={index}>
               <div key={index} className={styles.landingContact__swiperItem}>
                 <img alt={sponsor.alt} src={sponsor.asset} className={styles.landingContact__swiperItem__image} />
               </div>
@@ -72,68 +73,71 @@ export default function LandingContact({ fullName, setFullName, email, setEmail,
           ))}
         </Swiper>
 
-        {/*    <StyledContact>*/}
-        {/*      <StyledContactCol>*/}
-        {/*        <h1>Nous contacter</h1>*/}
-        {/*        <p>Remplissez le formulaire et nous vous répondrons le plus rapidement possible.</p>*/}
-        {/*        <div className="icon-group">*/}
-        {/*          <div className="center">*/}
-        {/*            <StyledContactIcon>*/}
-        {/*              <IconMail style={{ color: '#0C75FF' }} />*/}
-        {/*              <p>contact@asvf-montagne.fr</p>*/}
-        {/*            </StyledContactIcon>*/}
-        {/*            <StyledContactIcon>*/}
-        {/*              <IconRoom style={{ color: '#0C75FF' }} />*/}
-        {/*              <p>22 rue du Passou 38090 Vaulx-Milieu </p>*/}
-        {/*            </StyledContactIcon>*/}
-        {/*            <StyledContactIcon>*/}
-        {/*              <IconPhone style={{ color: '#0C75FF' }} />*/}
-        {/*              <p>06 81 26 88 14 (jeudi de 18h30 à 20h)</p>*/}
-        {/*            </StyledContactIcon>*/}
-        {/*          </div>*/}
-        {/*        </div>*/}
-        {/*      </StyledContactCol>*/}
+        <div className={styles.landingContact__overlay__contacts}>
+          <div className={styles.landingContact__overlay__contacts__col}>
+            <h1 className={styles.landingContact__overlay__contacts__col__title}>
+              Nous contacter
+            </h1>
+            <p className={styles.landingContact__overlay__contacts__col__description}>
+              Remplissez le formulaire et nous vous répondrons le plus rapidement possible.
+            </p>
 
-        {/*      <StyledContactCol>*/}
-        {/*        <StyledContactForm>*/}
-        {/*          <Input*/}
-        {/*            label="Nom et prénom"*/}
-        {/*            placeholder="Jonh Doe"*/}
-        {/*            ref={refFullName}*/}
-        {/*            value={fullName}*/}
-        {/*            onKeyDown={(event) => {*/}
-        {/*              event.preventDefault()*/}
-        {/*              refEmail.current.focus()*/}
-        {/*            }}*/}
-        {/*            onChange={(event) => setFullName(event.target.value)}*/}
-        {/*            icon="user"*/}
-        {/*          />*/}
-        {/*          <Input*/}
-        {/*            label="Email"*/}
-        {/*            placeholder="jonhdoe@example.com"*/}
-        {/*            ref={refEmail}*/}
-        {/*            value={email}*/}
-        {/*            onKeyDown={(event) => {*/}
-        {/*              event.preventDefault()*/}
-        {/*              refMessage.current.focus()*/}
-        {/*            }}*/}
-        {/*            onChange={(event) => setEmail(event.target.value)}*/}
-        {/*            icon="mail"*/}
-        {/*          />*/}
-        {/*          <TextArea*/}
-        {/*            label="Message"*/}
-        {/*            placeholder="Un super message pour l’asvf montagne !"*/}
-        {/*            ref={refMessage}*/}
-        {/*            value={message}*/}
-        {/*            onKeyDown={(event) => onSubmit(event)}*/}
-        {/*            onChange={(event) => setMessage(event.target.value)}*/}
-        {/*          />*/}
-        {/*          <Button onClick={onSubmit} type="plain-blue" size="medium" style={{ marginLeft: 'auto' }}>*/}
-        {/*            Envoyer le message*/}
-        {/*          </Button>*/}
-        {/*        </StyledContactForm>*/}
-        {/*      </StyledContactCol>*/}
-        {/*    </StyledContact>*/}
+            <div className={styles.landingContact__overlay__contacts__col__icons}>
+              <div className={styles.landingContact__overlay__contacts__col__icons__inner}>
+
+                <button className={styles.landingContact__overlay__contacts__col__icons_btn}>
+                  <Icon style={{ fontSize: 24, color: '#0C75FF', margin: '2px 0 0 8px' }}>
+                    mail
+                  </Icon>
+                  <p className={styles.landingContact__overlay__contacts__col__icons_btn__title}>
+                    contact@asvf-montagne.fr
+                  </p>
+                </button>
+                <button className={styles.landingContact__overlay__contacts__col__icons_btn}>
+                  <Icon style={{ fontSize: 24, color: '#0C75FF', margin: '2px 0 0 8px' }}>
+                    room
+                  </Icon>
+                  <p className={styles.landingContact__overlay__contacts__col__icons_btn__title}>
+                    22 rue du Passou 38090 Vaulx-Milieu
+                  </p>
+                </button>
+                <button className={styles.landingContact__overlay__contacts__col__icons_btn}>
+                  <Icon style={{ fontSize: 24, color: '#0C75FF', margin: '2px 0 0 8px' }}>
+                    phone
+                  </Icon>
+                  <p className={styles.landingContact__overlay__contacts__col__icons_btn__title}>
+                    06 81 26 88 14 (jeudi de 18h30 à 20h)
+                  </p>
+                </button>
+              </div>
+            </div>
+
+            {size <= 1184 && (
+              <LandingForm
+                position="center"
+                email={email}
+                fullName={fullName}
+                message={message}
+                setEmail={setEmail}
+                setFullName={setFullName}
+                setMessage={setMessage}
+                onSubmit={onSubmit}
+              />
+            )}
+          </div>
+
+          {size > 1184 && (
+            <LandingForm
+              email={email}
+              fullName={fullName}
+              message={message}
+              setEmail={setEmail}
+              setFullName={setFullName}
+              setMessage={setMessage}
+              onSubmit={onSubmit}
+            />
+          )}
+        </div>
       </div>
 
         <div className={styles.landingContact__background}>

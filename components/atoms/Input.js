@@ -1,8 +1,9 @@
 import { forwardRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
 import styles from './Input.module.css';
 
-export default forwardRef(({
+const Input = forwardRef(({
   textArea = false,
   type = 'text',
   label,
@@ -39,7 +40,14 @@ export default forwardRef(({
       `}>
         {icon && (
           <div className={styles.input__container__iconBox}>
-            <Icon style={{ fontSize: 24, margin: '2px 0 0 8px' }}>
+            <Icon className={`
+              ${styles.input__container__iconBox__icon}
+              ${
+                error
+                  ? styles.input__container__iconBox__iconError
+                  : (focused && styles.input__container__iconBox__iconFocused)
+              }
+            `}>
               {icon}
             </Icon>
           </div>
@@ -51,7 +59,7 @@ export default forwardRef(({
               className={styles.input__container__textarea}
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
-              onChange={onChange}
+              onChange={(event) => onChange(event.target.value)}
               value={value}
               placeholder={placeholder}
             />
@@ -62,7 +70,7 @@ export default forwardRef(({
               className={styles.input__container__input}
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
-              onChange={onChange}
+              onChange={(event) => onChange(event.target.value)}
               value={value}
               placeholder={placeholder}
             />
@@ -78,3 +86,16 @@ export default forwardRef(({
     </div>
   );
 })
+
+Input.propTypes = {
+  textArea: PropTypes.bool,
+  type: PropTypes.oneOf(['text', 'password']),
+  label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  link: PropTypes.object,
+  error: PropTypes.object
+}
+
+export default Input;

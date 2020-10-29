@@ -1,0 +1,30 @@
+.landingContact__overlay__contacts__col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.landingContact__overlay__contacts__center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 32px;
+}
+
+.landingContact__overlay__contacts__col__inner__form {
+    width: 100%;
+}
+
+.landingContact__overlay__contacts__col__form {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    border-radius: var(--border-radius-medium);
+    background-color: var(--primary-bg-color);
+}
+
+.landingContact__overlay__contacts__col__formRight {
+    margin-left: 64px;
+}

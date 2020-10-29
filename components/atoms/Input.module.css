@@ -1,6 +1,7 @@
 .input {
     display: flex;
     flex-direction: column;
+    margin-bottom: 32px;
 }
 
 .input__errorMsg {
@@ -15,7 +16,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .input__span__label {
@@ -58,6 +59,20 @@
     flex-direction: row;
     align-items: center;
     margin: 0 10px;
+    color: var(--font-color-gray2);
+}
+
+.input__container__iconBox__icon {
+    margin: 2px 0 0 8px;
+    font-size: 24px;
+}
+
+.input__container__iconBox__iconFocused {
+    color: var(--font-color-link);
+}
+
+.input__container__iconBox__iconError {
+    color: var(--font-color-status-error);
 }
 
 .input__container__input {
@@ -84,6 +99,14 @@
     color: var(--font-color-gray2);
 }
 
+.input__container__textarea::placeholder {
+    color: var(--font-color-gray2);
+}
+
 .input__container__input:focus {
+    outline: none;
+}
+
+.input__container__textarea:focus {
     outline: none;
 }
