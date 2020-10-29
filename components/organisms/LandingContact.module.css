@@ -51,15 +51,18 @@
 }
 
 .landingContact__swiperItem {
+    width: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .landingContact__swiperItem__image {
+    max-width: 100%;
+    height: auto;
     max-height: 128px;
     filter: grayscale(100%);
-    object-fit: cover;
     transition: ease-in-out .16s;
 }
 

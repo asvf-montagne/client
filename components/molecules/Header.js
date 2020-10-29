@@ -20,7 +20,7 @@ export default function Header({ variant, meta }) {
           ${variant === 'search' ? styles.header__overlay__innerSearch : ''}
         `}>
           {variant === 'story' && (
-            <Button type="link" style={{ marginBottom: 42 }} onClick={() => console.log('redirect to category')}>
+            <Button type="link" style={{ marginBottom: 42 }}>
               {meta.categories}
             </Button>
           )}

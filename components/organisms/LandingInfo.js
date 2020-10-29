@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Button from '@components/atoms/Button';
 import CardStoryMin from '@components/molecules/CardStoryMin';
 import CardStory from '@components/molecules/CardStory';
-import styles from './landingInfo.module.css';
+import styles from './LandingInfo.module.css';
 
 import backgroundImage from '@assets/images/cervin_mountain_c7a2ba29c6.jpg';
 

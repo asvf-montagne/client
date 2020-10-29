@@ -13,11 +13,11 @@ SearchBar.propTypes = {
 };
 
 export default function SearchBar({ search, setSearch, placeholder, handleSearch, categories, category, setCategory, ...props }) {
-  console.log(categories)
   return (
     <form className={styles.searchBar} {...props}>
       <div className={styles.searchBar__selectContainer}>
-        <select name="categories" value={category} onChange={(event) => setCategory(event.target.value)}>
+        <select value={category} onChange={(event) => setCategory(event.target.value)} className={styles.searchBar__select}>
+          <option value="" key="default">Category</option>
           {categories.map((category, index) => (
             <option value={category.value} key={index}>{category.label}</option>
           ))}

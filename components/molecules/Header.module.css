@@ -106,7 +106,7 @@
 }
 
 .header__swiperItem__image {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     max-height: 640px;
 }
@@ -123,11 +123,19 @@
     .header__overlay__inner {
         max-width: 343px;
     }
+
+    .header__overlay__innerSearch {
+        padding: 96px 0 64px 0;
+    }
 }
 
 @media screen and (min-width: 576px) and (max-width: 768px) {
     .header__overlay__inner {
         max-width: 544px;
+    }
+
+    .header__overlay__innerSearch {
+        padding: 96px 0 64px 0;
     }
 }
 
