@@ -10,9 +10,10 @@ CardStory.propTypes = {
   categories: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   description: PropTypes.string,
+  border: PropTypes.bool,
 };
 
-export default function CardStory({ id, title, image, author, categories, date, description }) {
+export default function CardStory({ id, title, image, author, categories, date, description, borderless = false }) {
   const router = useRouter();
 
   const handleRedirection = () => {
@@ -20,7 +21,7 @@ export default function CardStory({ id, title, image, author, categories, date, 
   }
 
   return (
-    <div className={styles.cardStory} onClick={handleRedirection}>
+    <div className={`${styles.cardStory} ${borderless ? styles.cardStoryBorderless : ''}`} onClick={handleRedirection}>
       <div className={styles.cardStory__image}>
         <img src={image} alt="card-image" />
       </div>

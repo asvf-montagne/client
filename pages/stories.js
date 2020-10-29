@@ -17,7 +17,7 @@ export default function Stories() {
   const [category, setCategory] = useState('');
 
   const handleSearch = () => {
-    console.log(category, search)
+    console.log(category, search);
   }
 
   return (
@@ -36,5 +36,5 @@ export default function Stories() {
         stories={mockStories}
       />
     </Layout>
-  )
+  );
 }

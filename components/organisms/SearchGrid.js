@@ -17,6 +17,7 @@ export default function SearchGrid({ stories = [] }) {
             key={story.id}
             id={story.id}
             title={story.title}
+            description={story.preview}
             image={story.images[0].src}
             preview={story.preview}
             author={story.name}

@@ -50,6 +50,7 @@ export default function landingInfoInfo({ highlightedStories }) {
                 <div className={styles.landingInfo__storyHighlight__highlight__overlay}>
                   <div className={styles.landingInfo__storyHighlight__highlight__overlay__inner}>
                     <CardStory
+                      borderless
                       id={highlightedStories[0].id}
                       title={highlightedStories[0].title}
                       image={highlightedStories[0].images[0].src}

@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router'
 import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
 import Button from '@components/atoms/Button';
@@ -7,11 +8,13 @@ import styles from './AuthLayout.module.css';
 import backgroundMountainAsset from '@assets/images/mont-blanc.jpg';
 
 AuthLayout.propTypes = {
-  title: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
   helper: PropTypes.object.isRequired,
 };
 
 export default function AuthLayout({ title, helper, children }) {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -27,7 +30,7 @@ export default function AuthLayout({ title, helper, children }) {
           <div className={styles.authLayout__right}>
             <div className={styles.authLayout__right__header}>
               <div className={styles.authLayout__right__header__inner}>
-                <Button type="link" onClick={() => console.log('wewe')}>
+                <Button type="link" onClick={() => router.push('/')}>
                   <Icon style={{ marginRight: 8 }}>chevron_left</Icon>
                   Retourner sur le site
                 </Button>
@@ -40,7 +43,7 @@ export default function AuthLayout({ title, helper, children }) {
             </div>
 
             <div className={styles.authLayout__right__helper}>
-              <Button type="link" onClick={() => console.log('wewe')}>
+              <Button type="link" onClick={() => router.push(helper.href)}>
                 {helper.label}
               </Button>
             </div>

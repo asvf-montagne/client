@@ -1,9 +1,9 @@
-import Layout from "../components/atoms/Layout";
+import AuthLayout from "../components/atoms/AuthLayout";
 
 export default function ConfirmEmail() {
   return (
-    <Layout>
+    <AuthLayout title="S’inscrire" helper={{ label: `La mémoire vous revient ? Se connecter`, href: '/sign-in' }}>
       <h1>ConfirmEmail</h1>
-    </Layout>
-  )
+    </AuthLayout>
+  );
 }

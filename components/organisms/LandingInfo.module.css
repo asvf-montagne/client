@@ -91,14 +91,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-    /*height: 100%;*/
-    /*width: 100%;*/
 }
 
 .landingInfo__storyHighlight__highlight__overlay__inner {
     z-index: 100;
     width: 87%;
-    height: 92%;
+    height: 88%;
     margin-left: auto;
 }
 

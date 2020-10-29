@@ -1,9 +1,9 @@
-import Layout from "../components/atoms/Layout";
+import AuthLayout from "../components/atoms/AuthLayout";
 
 export default function SignUp() {
   return (
-    <Layout>
+    <AuthLayout title="S'inscrire" helper={{ label: `Vous avez déjà un compte ?`, href: '/sign-in' }}>
       <h1>SignUp</h1>
-    </Layout>
-  )
+    </AuthLayout>
+  );
 }
