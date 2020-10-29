@@ -3,7 +3,7 @@ import Layout from "@components/atoms/Layout";
 import LandingInfo from "@components/organisms/LandingInfo";
 import LandingContact from "@components/organisms/LandingContact";
 
-import mockStories from '../mockStories'
+import mockStories from '../mockStories';
 
 export default function Home() {
   const [fullName, setFullName] = useState('')

@@ -8,7 +8,7 @@
     flex-direction: column;
     border-radius: var(--border-radius-medium);
     background-color: var(--primary-bg-color);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow);
     border: 2px solid rgba(12, 117, 255, 0.2);
     transition: ease-in-out 0.16s;
 }

@@ -1,9 +1,16 @@
-import Layout from "../components/atoms/Layout";
+import Layout from '@components/atoms/Layout';
+import DefaultPageLayout from '@components/organisms/DefaultPageLayout';
+
+import mockStories from "../mockStories";
 
 export default function Club() {
   return (
     <Layout>
-      <h1>Club</h1>
+      <DefaultPageLayout
+        variant="page"
+        meta={{ title: `L'école d'escade`, subTitle: 'Dernière mise à jour le 18/03/2020' }}
+        data={mockStories[0].data}
+      />
     </Layout>
   )
 }

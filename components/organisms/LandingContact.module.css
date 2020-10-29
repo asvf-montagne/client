@@ -18,13 +18,13 @@
 
 .landingContact__background__top {
     display: flex;
-    height: 46%;
+    height: 50%;
     background-color: var(--secondary-bg-color);
 }
 
 .landingContact__background__bottom {
     display: flex;
-    height: 54%;
+    height: 50%;
     background-color: var(--primary-blue-bg-color);
 }
 
@@ -149,9 +149,6 @@
 @media screen and (max-width: 576px) {
     .landingContact__overlay__inner {
         max-width: 343px;
-    }
-
-    .landingContact__overlay__inner {
         padding: 0;
     }
 
@@ -163,9 +160,6 @@
 @media screen and (min-width: 576px) and (max-width: 768px) {
     .landingContact__overlay__inner {
         max-width: 544px;
-    }
-
-    .landingContact__overlay__inner {
         padding: 0;
     }
 

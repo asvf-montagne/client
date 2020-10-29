@@ -49,7 +49,6 @@ LandingContact.propTypes = {
 export default function LandingContact({ fullName, setFullName, email, setEmail, message, setMessage, onSubmit }) {
   const { width: size } = useWindowSize();
 
-
   return (
     <section className={styles.landingContact}>
 
@@ -144,10 +143,10 @@ export default function LandingContact({ fullName, setFullName, email, setEmail,
         </div>
       </div>
 
-        <div className={styles.landingContact__background}>
-          <div className={styles.landingContact__background__top} />
-          <div className={styles.landingContact__background__bottom} />
-        </div>
+      <div className={styles.landingContact__background}>
+        <div className={styles.landingContact__background__top} />
+        <div className={styles.landingContact__background__bottom} />
+      </div>
     </section>
   );
 }

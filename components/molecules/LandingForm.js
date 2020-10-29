@@ -1,7 +1,19 @@
 import { useRef } from 'react';
+import PropTypes from 'prop-types';
 import Input from '@components/atoms/Input';
 import Button from '@components/atoms/Button';
 import styles from './LandingForm.module.css';
+
+LandingForm.propTypes = {
+  position: PropTypes.oneOf(['right', 'center']),
+  fullName: PropTypes.string.isRequired,
+  setFullName: PropTypes.func.isRequired,
+  email: PropTypes.string.isRequired,
+  setEmail: PropTypes.func.isRequired,
+  message: PropTypes.string.isRequired,
+  setMessage: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default function LandingForm({ position = 'right', fullName, setFullName, email, setEmail, message, setMessage, onSubmit }) {
   const refFullName = useRef(null);

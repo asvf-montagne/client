@@ -1,0 +1,15 @@
+.blog__inner {
+    padding: 0 64px;
+}
+
+@media screen and (max-width: 576px) {
+    .blog__inner {
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+    .blog__inner {
+        padding: 0;
+    }
+}
