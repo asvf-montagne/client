@@ -12,13 +12,14 @@ SearchBar.propTypes = {
   setCategory: PropTypes.func.isRequired,
 };
 
-export function SearchBar({ search, setSearch, placeholder, handleSearch, categories, category, setCategory }) {
+export default function SearchBar({ search, setSearch, placeholder, handleSearch, categories, category, setCategory, ...props }) {
+  console.log(categories)
   return (
-    <form className={styles.searchBar}>
+    <form className={styles.searchBar} {...props}>
       <div className={styles.searchBar__selectContainer}>
         <select name="categories" value={category} onChange={(event) => setCategory(event.target.value)}>
-          {categories.map((category) => (
-            <option value={category.value}>{category.label}</option>
+          {categories.map((category, index) => (
+            <option value={category.value} key={index}>{category.label}</option>
           ))}
         </select>
       </div>

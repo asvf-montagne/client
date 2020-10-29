@@ -4,14 +4,17 @@ export default [
     title: `Goulotte Zia et traversée d'arête !`,
     images: [
       {
+        alt: 'weweew',
         src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim'
       },
       {
+        alt: 'weweew',
         src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wewe'
       },
       {
+        alt: 'weweew',
         src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wqwqqwqw'
       },
