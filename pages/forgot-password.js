@@ -1,9 +1,21 @@
-import AuthLayout from "../components/atoms/AuthLayout";
+import { useState } from 'react';
+import AuthLayout from '@components/atoms/AuthLayout';
+import FormForgotPassword from "@components/organisms/FormForgotPassword";
 
 export default function ForgotPassword() {
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = () => {
+    console.log(email);
+  }
+
   return (
-    <AuthLayout title="Mot de passe oublié ?" helper={{ label: `La mémoire vous revient ? Se connecter`, href: '/sign-in' }}>
-      <h1>ForgotPassword</h1>
+    <AuthLayout title="S’inscrire" helper={{ label: `Vous avez déjà un compte ?`, href: '/sign-in' }}>
+      <FormForgotPassword
+        email={email}
+        setEmail={setEmail}
+        onSubmit={handleSubmit}
+      />
     </AuthLayout>
   );
 }

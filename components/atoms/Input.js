@@ -5,6 +5,7 @@ import styles from './Input.module.css';
 
 const Input = forwardRef(({
   textArea = false,
+  autocomplete = 'off',
   type = 'text',
   label,
   placeholder,
@@ -67,6 +68,7 @@ const Input = forwardRef(({
             <input
               ref={ref}
               type={type}
+              autoComplete={autocomplete}
               className={styles.input__container__input}
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
