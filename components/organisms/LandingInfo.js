@@ -58,7 +58,7 @@ export default function landingInfoInfo({ highlightedStories }) {
                       id={highlightedStory.id}
                       title={highlightedStory.title}
                       image={posts.getImageMediumURL(highlightedStory)}
-                      author={'todo'}
+                      author={posts.getTitledAuthor(highlightedStory)}
                       categories={posts.getFirstTag(highlightedStory)}
                       date={posts.getPublishedTimeAgo(highlightedStory)}
                     />
@@ -72,7 +72,7 @@ export default function landingInfoInfo({ highlightedStories }) {
                   key={story.id}
                   id={story.id}
                   title={story.title}
-                  author={'todo'}
+                  author={posts.getTitledAuthor(story)}
                   categories={posts.getFirstTag(story)}
                   date={posts.getPublishedTimeAgo(story)}
                 />
