@@ -6,7 +6,7 @@ import CardStoryMin from '@components/molecules/CardStoryMin';
 import CardStory from '@components/molecules/CardStory';
 import styles from './LandingInfo.module.css';
 import backgroundImage from '@assets/images/cervin_mountain_c7a2ba29c6.jpg';
-import { postsUtil } from "../../services/posts";
+import { posts } from "../../services/posts";
 import React from "react";
 
 landingInfoInfo.propTypes = {
@@ -57,10 +57,10 @@ export default function landingInfoInfo({ highlightedStories }) {
                       borderless
                       id={highlightedStory.id}
                       title={highlightedStory.title}
-                      image={postsUtil.getImageMediumURL(highlightedStory)}
+                      image={posts.getImageMediumURL(highlightedStory)}
                       author={'todo'}
-                      categories={postsUtil.getFirstTag(highlightedStory)}
-                      date={postsUtil.getPublishedTimeAgo(highlightedStory)}
+                      categories={posts.getFirstTag(highlightedStory)}
+                      date={posts.getPublishedTimeAgo(highlightedStory)}
                     />
                   </div>
                 </div>
@@ -72,9 +72,9 @@ export default function landingInfoInfo({ highlightedStories }) {
                   key={story.id}
                   id={story.id}
                   title={story.title}
-                  author={story.name}
-                  categories={postsUtil.getFirstTag(story)}
-                  date={postsUtil.getPublishedTimeAgo(story)}
+                  author={'todo'}
+                  categories={posts.getFirstTag(story)}
+                  date={posts.getPublishedTimeAgo(story)}
                 />
               ))}
             </div>

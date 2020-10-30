@@ -3,7 +3,7 @@ import Icon from '@material-ui/core/Icon';
 import CardStory from '@components/molecules/CardStory';
 import Button from '@components/atoms/Button';
 import styles from './SearchGrid.module.css';
-import { postsUtil } from "../../services/posts";
+import { posts } from "../../services/posts";
 
 export default function SearchGrid({ stories = [] }) {
   return (
@@ -19,11 +19,11 @@ export default function SearchGrid({ stories = [] }) {
             key={story.id}
             id={story.id}
             title={story.title}
-            description={'todo preview description'}
-            image={postsUtil.getImageMediumURL(story)}
+            description={posts.getRawDescription(story)}
+            image={posts.getImageMediumURL(story)}
             author={'todo'}
-            categories={postsUtil.getFirstTag(story)}
-            date={postsUtil.getPublishedTimeAgo(story)}
+            categories={posts.getFirstTag(story)}
+            date={posts.getPublishedTimeAgo(story)}
           />
         ))}
       </div>
