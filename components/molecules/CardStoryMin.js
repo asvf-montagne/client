@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styles from './CardStoryMin.module.css';
 
 CardStoryMin.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   categories: PropTypes.string.isRequired,
