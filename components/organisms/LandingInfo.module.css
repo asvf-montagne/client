@@ -56,8 +56,8 @@
     padding: 64px 0;
     background: rgb(255,244,240);
     background: linear-gradient(180deg, rgba(255,244,240,1) 0%, rgba(255,255,255,1) 100%);
-    /*Image skip 2px at bottom event tho it's 100% height 🤷*/
-    margin-top: -2px;
+    /*Image skip 4px at bottom event tho it's 100% height 🤷*/
+    margin-top: -4px;
 }
 
 .landingInfo__storyHighlight__inner {
