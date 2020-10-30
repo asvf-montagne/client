@@ -72,7 +72,11 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-  line-height: 1;
+  letter-spacing: 0.005em;
+}
+
+p {
+  line-height: 1.5em;
 }
 
 ol, ul {
