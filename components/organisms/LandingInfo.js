@@ -5,8 +5,9 @@ import Button from '@components/atoms/Button';
 import CardStoryMin from '@components/molecules/CardStoryMin';
 import CardStory from '@components/molecules/CardStory';
 import styles from './LandingInfo.module.css';
-
 import backgroundImage from '@assets/images/cervin_mountain_c7a2ba29c6.jpg';
+import { postsUtil } from "../../services/posts";
+import React from "react";
 
 landingInfoInfo.propTypes = {
   highlightedStories: PropTypes.array.isRequired,
@@ -23,10 +24,12 @@ export default function landingInfoInfo({ highlightedStories }) {
     router.push('/stories')
   }
 
+  const highlightedStory = highlightedStories[0]
+
   return (
     <section className={styles.landingInfo}>
       <div className={styles.landingInfo__imgContainer}>
-        <img src={backgroundImage} alt="landing-background" />
+        <img src={backgroundImage} alt="landing-background"/>
         <div className={styles.landingInfo__overlay}>
           <div className={styles.container}>
             <div className={styles.landingInfo__overlay__title}>
@@ -46,18 +49,18 @@ export default function landingInfoInfo({ highlightedStories }) {
           <div className={styles.landingInfo__storyHighlight__inner}>
             <div className={styles.landingInfo__storyHighlight__inner__col}>
               <div className={styles.landingInfo__storyHighlight__highlight}>
-                <div className={styles.landingInfo__storyHighlight__highlight__backgroundRec} />
+                <div className={styles.landingInfo__storyHighlight__highlight__backgroundRec}/>
                 <div className={styles.landingInfo__storyHighlight__highlight__overlay}>
                   <div className={styles.landingInfo__storyHighlight__highlight__overlay__inner}>
                     <CardStory
                       shadow={false}
                       borderless
-                      id={highlightedStories[0].id}
-                      title={highlightedStories[0].title}
-                      image={highlightedStories[0].images[0].src}
-                      author={highlightedStories[0].name}
-                      categories={highlightedStories[0].tags}
-                      date={highlightedStories[0].date}
+                      id={highlightedStory.id}
+                      title={highlightedStory.title}
+                      image={postsUtil.getImageMediumURL(highlightedStory)}
+                      author={'todo'}
+                      categories={postsUtil.getFirstTag(highlightedStory)}
+                      date={postsUtil.getPublishedTimeAgo(highlightedStory)}
                     />
                   </div>
                 </div>
@@ -70,8 +73,8 @@ export default function landingInfoInfo({ highlightedStories }) {
                   id={story.id}
                   title={story.title}
                   author={story.name}
-                  categories={story.tags}
-                  date={story.date}
+                  categories={postsUtil.getFirstTag(story)}
+                  date={postsUtil.getPublishedTimeAgo(story)}
                 />
               ))}
             </div>
