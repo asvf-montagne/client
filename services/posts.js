@@ -60,6 +60,15 @@ export const posts = {
           return prev
       }
     }, '')
+  },
+
+  getTitledAuthor(post) {
+    const firstName = post['created_by']['firstname']
+    if (firstName === '') {
+      return post['created_by']['username'] || 'unknown'
+    }
+
+    return firstName[0].toUpperCase() + firstName.slice(1);
   }
 
 

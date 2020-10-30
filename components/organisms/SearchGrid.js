@@ -21,7 +21,7 @@ export default function SearchGrid({ stories = [] }) {
             title={story.title}
             description={posts.getRawDescription(story)}
             image={posts.getImageMediumURL(story)}
-            author={'todo'}
+            author={posts.getTitledAuthor(story)}
             categories={posts.getFirstTag(story)}
             date={posts.getPublishedTimeAgo(story)}
           />
