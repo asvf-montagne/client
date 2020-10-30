@@ -4,17 +4,15 @@
 }
 
 .landingInfo__imgContainer {
-    width: 100%;
     position: relative;
-    height: calc(100vh - 94px);
+    width: 100%;
+    /*height: calc(100vh - 94px);*/
     overflow: hidden;
-    background-repeat:no-repeat;
-    background-size:cover;
 }
 
 .landingInfo__imgContainer img {
-    height: 100%;
-    width: auto;
+    height: auto;
+    width: 100%;
 }
 
 .landingInfo__overlay {
@@ -58,6 +56,8 @@
     padding: 64px 0;
     background: rgb(255,244,240);
     background: linear-gradient(180deg, rgba(255,244,240,1) 0%, rgba(255,255,255,1) 100%);
+    /*Image skip 2px at bottom event tho it's 100% height 🤷*/
+    margin-top: -2px;
 }
 
 .landingInfo__storyHighlight__inner {
@@ -128,6 +128,12 @@
     .landingInfo__storyHighlight__inner__col:nth-child(1) {
         display: none;
     }
+
+    .landingInfo__imgContainer img {
+        height: auto;
+        transform: translate(-25%, 0);
+        width: 200%;
+    }
 }
 
 @media screen and (min-width: 576px) and (max-width: 768px) {
@@ -137,6 +143,12 @@
 
     .landingInfo__storyHighlight__inner__col:nth-child(1) {
         display: none;
+    }
+
+    .landingInfo__imgContainer img {
+        height: auto;
+        width: 150%;
+        transform: translate(-15%, 0);
     }
 }
 

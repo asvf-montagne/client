@@ -3,7 +3,7 @@ import styles from './Button.module.css';
 
 Button.propTypes = {
   type: PropTypes.oneOf(['primary', 'light', 'link']).isRequired,
-  focus: PropTypes.oneOf(['primary', 'light', 'link']).isRequired,
+  focus: PropTypes.oneOf(['primary', 'light', 'link']),
   size: PropTypes.oneOf(['medium', 'large']),
   shadow: PropTypes.bool,
   fluid: PropTypes.bool,

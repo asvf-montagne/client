@@ -26,7 +26,7 @@ export default function landingInfoInfo({ highlightedStories }) {
   return (
     <section className={styles.landingInfo}>
       <div className={styles.landingInfo__imgContainer}>
-        <img src={backgroundImage} alt="landingInfo-background" />
+        <img src={backgroundImage} alt="landing-background" />
         <div className={styles.landingInfo__overlay}>
           <div className={styles.container}>
             <div className={styles.landingInfo__overlay__title}>
