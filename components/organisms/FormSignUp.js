@@ -39,7 +39,7 @@ export default function FormSignUp({ fullName, setFullName, password, setPasswor
             event.preventDefault()
           }
         }}
-        onChange={(event) => setFullName(event.target.value)}
+        onChange={setFullName}
         icon="person_outline"
       />
       <Input
@@ -54,7 +54,7 @@ export default function FormSignUp({ fullName, setFullName, password, setPasswor
             event.preventDefault()
           }
         }}
-        onChange={(event) => setEmail(event.target.value)}
+        onChange={setEmail}
         icon="mail"
       />
       <Input
@@ -70,7 +70,7 @@ export default function FormSignUp({ fullName, setFullName, password, setPasswor
             event.preventDefault()
           }
         }}
-        onChange={(event) => setPassword(event.target.value)}
+        onChange={setPassword}
         icon="lock"
       />
 
