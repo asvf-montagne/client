@@ -30,9 +30,9 @@ export default function FormNewPassword({ password, setPassword, passwordConfirm
         ref={refPassword}
         value={password}
         onKeyDown={(event) => {
-          event.preventDefault()
           if (event.keyCode === 13) {
             refPasswordConfirm.current.focus()
+            event.preventDefault()
           }
         }}
         onChange={(event) => setPassword(event.target.value)}
@@ -47,9 +47,9 @@ export default function FormNewPassword({ password, setPassword, passwordConfirm
         ref={refPasswordConfirm}
         value={password}
         onKeyDown={(event) => {
-          event.preventDefault()
           if (event.keyCode === 13) {
             onSubmit(event)
+            event.preventDefault()
           }
         }}
         onChange={(event) => setPassword(event.target.value)}

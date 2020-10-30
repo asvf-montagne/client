@@ -35,9 +35,9 @@ export default function LandingForm({ position = 'right', fullName, setFullName,
             value={fullName}
             onChange={setFullName}
             onKeyDown={(event) => {
-              event.preventDefault()
               if (event.keyCode === 13) {
                 refEmail.current.focus()
+                event.preventDefault()
               }
             }}
             icon="person_outline"
@@ -49,9 +49,9 @@ export default function LandingForm({ position = 'right', fullName, setFullName,
             value={email}
             onChange={setEmail}
             onKeyDown={(event) => {
-              event.preventDefault()
               if (event.keyCode === 13) {
                 refMessage.current.focus()
+                event.preventDefault()
               }
             }}
             icon="mail"
@@ -64,7 +64,6 @@ export default function LandingForm({ position = 'right', fullName, setFullName,
             value={message}
             onChange={setMessage}
             onKeyDown={(event) => {
-              event.preventDefault()
               if (event.keyCode === 13) {
                 onSubmit(event)
               }

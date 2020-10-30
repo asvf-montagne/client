@@ -11,6 +11,7 @@ const Input = forwardRef(({
   placeholder,
   value,
   onChange,
+  onKeyDown,
   icon,
   link,
   error,
@@ -61,6 +62,7 @@ const Input = forwardRef(({
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               onChange={(event) => onChange(event.target.value)}
+              onKeyDown={onKeyDown}
               value={value}
               placeholder={placeholder}
             />
@@ -73,6 +75,7 @@ const Input = forwardRef(({
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               onChange={(event) => onChange(event.target.value)}
+              onKeyDown={onKeyDown}
               value={value}
               placeholder={placeholder}
             />
@@ -96,6 +99,7 @@ Input.propTypes = {
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func.isRequired,
   link: PropTypes.object,
   error: PropTypes.object
 }

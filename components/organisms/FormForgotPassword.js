@@ -26,9 +26,9 @@ export default function FormForgotPassword({ email, setEmail, onSubmit }) {
         ref={refEmail}
         value={email}
         onKeyDown={(event) => {
-          event.preventDefault()
           if (event.keyCode === 13) {
             onSubmit(event)
+            event.preventDefault()
           }
         }}
         onChange={(event) => setEmail(event.target.value)}

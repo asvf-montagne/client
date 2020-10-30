@@ -30,13 +30,13 @@ export default function FormSignIn({ email, setEmail, password, setPassword, onS
         placeholder="jonhdoe@example.com"
         ref={refEmail}
         value={email}
+        onChange={setEmail}
         onKeyDown={(event) => {
-          event.preventDefault()
           if (event.keyCode === 13) {
             refPassword.current.focus()
+            event.preventDefault()
           }
         }}
-        onChange={(event) => setEmail(event.target.value)}
         icon="mail"
       />
       <Input
@@ -46,13 +46,13 @@ export default function FormSignIn({ email, setEmail, password, setPassword, onS
         placeholder="password"
         ref={refPassword}
         value={password}
+        onChange={setPassword}
         onKeyDown={(event) => {
-          event.preventDefault()
           if (event.keyCode === 13) {
             onSubmit(event)
+            event.preventDefault()
           }
         }}
-        onChange={(event) => setPassword(event.target.value)}
         icon="lock"
         link={{
           title: 'Mot de passe oublié ?',

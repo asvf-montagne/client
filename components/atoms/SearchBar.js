@@ -30,6 +30,12 @@ export default function SearchBar({ search, setSearch, placeholder, handleSearch
         type='text'
         className={styles.searchBar__input}
         onChange={(event) => setSearch(event.target.value)}
+        onKeyDown={(event) => {
+          if (event.keyCode === 13) {
+            handleSearch(event)
+            event.preventDefault()
+          }
+        }}
         value={search}
         placeholder={placeholder}
       />

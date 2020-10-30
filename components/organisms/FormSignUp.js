@@ -34,9 +34,9 @@ export default function FormSignUp({ fullName, setFullName, password, setPasswor
         ref={refFullName}
         value={fullName}
         onKeyDown={(event) => {
-          event.preventDefault()
           if (event.keyCode === 13) {
             refEmail.current.focus()
+            event.preventDefault()
           }
         }}
         onChange={(event) => setFullName(event.target.value)}
@@ -49,9 +49,9 @@ export default function FormSignUp({ fullName, setFullName, password, setPasswor
         ref={refEmail}
         value={email}
         onKeyDown={(event) => {
-          event.preventDefault()
           if (event.keyCode === 13) {
             refPassword.current.focus()
+            event.preventDefault()
           }
         }}
         onChange={(event) => setEmail(event.target.value)}
@@ -65,9 +65,9 @@ export default function FormSignUp({ fullName, setFullName, password, setPasswor
         ref={refPassword}
         value={password}
         onKeyDown={(event) => {
-          event.preventDefault()
           if (event.keyCode === 13) {
             onSubmit(event)
+            event.preventDefault()
           }
         }}
         onChange={(event) => setPassword(event.target.value)}
