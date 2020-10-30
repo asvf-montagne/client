@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
-import SwiperCore, { Navigation, A11y } from 'swiper';
+import SwiperCore, { A11y, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Button from '@components/atoms/Button';
 import SearchBar from '@components/atoms/SearchBar';
 import styles from "@components/molecules/Header.module.css";
+import React from "react";
 
 SwiperCore.use([Navigation, A11y]);
 
@@ -24,7 +25,7 @@ export default function Header({ variant, meta }) {
         `}>
           {variant === 'story' && (
             <Button type="link" style={{ marginBottom: 42 }}>
-              {meta.categories}
+              {meta.tags}
             </Button>
           )}
           <h1 className={styles.header__overlay__inner__title}>
@@ -55,7 +56,7 @@ export default function Header({ variant, meta }) {
                   {meta.images.map((image, index) => (
                     <SwiperSlide key={index}>
                       <div key={index} className={styles.header__swiperItem}>
-                        <img alt={image.alt} src={image.src} className={styles.header__swiperItem__image} />
+                        <img alt={image.alt} src={image.src} className={styles.header__swiperItem__image}/>
                         <figcaption className={styles.header__swiperItem__caption}>
                           {image.caption}
                         </figcaption>
@@ -68,13 +69,7 @@ export default function Header({ variant, meta }) {
           )}
           {variant === 'search' && (
             <SearchBar
-              categories={meta.categories}
-              category={meta.category}
-              setCategory={meta.setCategory}
-              search={meta.search}
-              setSearch={meta.setSearch}
-              handleSearch={meta.handleSearch}
-              placeholder={meta.placeholder}
+              {...meta}
               style={{ marginTop: 64 }}
             />
           )}
@@ -84,10 +79,10 @@ export default function Header({ variant, meta }) {
       <div className={styles.header__background}>
         <div className={`
           ${variant === 'story' ? styles.header__background__topStory : styles.header__background__top}
-        `} />
+        `}/>
         <div className={`
           ${variant === 'story' ? styles.header__background__bottomStory : styles.header__background__bottom}
-        `} />
+        `}/>
       </div>
     </div>
   );

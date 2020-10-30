@@ -1,11 +1,10 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Layout from "@components/atoms/Layout";
 import LandingInfo from "@components/organisms/LandingInfo";
 import LandingContact from "@components/organisms/LandingContact";
+import services from "../services";
 
-import mockStories from '../mockStories';
-
-export default function Home() {
+function Home({ stories }) {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -17,7 +16,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <LandingInfo highlightedStories={mockStories} />
+      <LandingInfo highlightedStories={stories}/>
       <LandingContact
         email={email}
         fullName={fullName}
@@ -30,3 +29,14 @@ export default function Home() {
     </Layout>
   )
 }
+
+export async function getServerSideProps() {
+  const stories = await services().posts.list({ limit: 4 })
+
+  return {
+    props: { stories }
+  }
+}
+
+
+export default Home
