@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styles from './CardStory.module.css';
 
 CardStory.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
