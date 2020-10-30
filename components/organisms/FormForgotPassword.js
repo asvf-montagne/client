@@ -21,7 +21,7 @@ export default function FormForgotPassword({ email, setEmail, onSubmit }) {
     <form className={styles.signUpForm}>
       <Input
         autocomplete="email"
-        label="Email"
+        label="Email de votre compte"
         placeholder="jonhdoe@example.com"
         ref={refEmail}
         value={email}
