@@ -32,9 +32,9 @@ export default function CardStory({ id, title, image, author, categories, date, 
           <p className={styles.cardStory__content__inner__categories}>
             {categories}
           </p>
-          <p className={styles.cardStory__content__inner__title}>
+          <h1 className={styles.cardStory__content__inner__title}>
             {title}
-          </p>
+          </h1>
           {description && (
             <p className={styles.cardStory__content__inner__description}>
               {description}
