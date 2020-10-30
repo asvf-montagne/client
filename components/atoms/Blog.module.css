@@ -2,6 +2,115 @@
     padding: 0 64px;
 }
 
+.blog__inner p {
+    color: var(--font-color-primary);
+    font-size: var(--font-size-special);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0.005em;
+    line-height: 1.5em;
+    padding: 0.4em 0;
+}
+
+.blog__inner > p:nth-child(1)::first-letter {
+    font-size: 64px;
+    color: var(--font-color-secondary);
+    font-weight: var(--font-weight-semiBold);
+    margin-right: 16px;
+}
+
+.blog__inner a {
+    text-decoration: none;
+    color: var(--font-color-link);
+    transition: ease-in-out .16s;
+}
+
+.blog__inner a:hover {
+    color: var(--font-color-linkActive);
+}
+
+.blog__inner h1, .blog__inner h2, .blog__inner h3, .blog__inner h4, .blog__inner h5, .blog__inner h6 {
+    color: var(--font-color-secondary);
+    font-weight: var(--font-weight-semiBold);
+    margin: 0 0 -0.8em;
+    letter-spacing: 0.005em;
+    line-height: 1.5em;
+    padding: 1em 0;
+}
+
+.blog__inner h1 {
+    font-size: var(--font-size-h1);
+}
+
+.blog__inner h2 {
+    font-size: var(--font-size-h2);
+}
+
+.blog__inner h3 {
+    font-size: var(--font-size-h3);
+}
+
+.blog__inner h4 {
+    font-size: var(--font-size-h4);
+}
+
+.blog__inner h5 {
+    font-size: var(--font-size-h4);
+}
+
+.blog__inner h6 {
+    font-size: var(--font-size-h4);
+}
+
+.blog__inner ul {
+    list-style-type: none;
+    padding: 0.4em 0 0.4em 40px;
+    margin: 0;
+    outline: none;
+}
+
+.blog__inner ul li:before {
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    content: '-';
+}
+
+.blog__inner ul li {
+    color: var(--font-color-primary);
+    font-size: var(--font-size-special);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0.005em;
+    line-height: 1.6em;
+    padding: 5.5px 0 5.5px 3px;
+}
+
+.blog__inner blockquote {
+    padding: 1.5em 0 1.5em 40px;
+}
+
+.blog__inner blockquote div {
+    border-left: 3px solid rgb(196, 196, 196);
+    padding: 10px 12px 10px 40px;
+}
+
+.blog__inner blockquote div p:nth-child(1) {
+    color: var(--font-color-primary);
+    font-size: var(--font-size-special);
+    font-weight: var(--font-weight-light);
+    letter-spacing: 0.005em;
+    line-height: 1.5em;
+    padding: 0.4em 0;
+}
+
+.blog__inner blockquote div p:nth-child(2) {
+    color: var(--font-color-gray1);
+    font-size: var(--font-size-special);
+    font-weight: var(--font-weight-light);
+    letter-spacing: 0.005em;
+    line-height: 1.5em;
+    padding: 0.4em 0;
+}
+
 @media screen and (max-width: 576px) {
     .blog__inner {
         padding: 0;

@@ -106,7 +106,7 @@
 }
 
 .header__swiperItem__image {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     max-height: 640px;
 }
@@ -116,7 +116,7 @@
     color: var(--font-color-gray1);
     font-weight: var(--font-weight-regular);
     text-decoration: underline;
-    margin-top: 8px;
+    margin-top: 16px;
 }
 
 @media screen and (max-width: 576px) {

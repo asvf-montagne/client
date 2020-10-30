@@ -41,7 +41,7 @@ export default [
         {
           "type" : "paragraph",
           "data" : {
-            "text" : "viverra tortor vel mattis. Nec sagittis eget sit in velit suspendisse aliquam massa. Pulvinar amet eu elementum interdum velit vulputate. Elementum luctus id nisi, placerat donec. Amet, eget lacus, proin ligula aliquam ut mauris a non."
+            "text" : "viverra tortor <a href='/'>vel mattis</a>. Nec sagittis eget <b>sit in</b> velit suspendisse <i>aliquam</i> massa. Pulvinar amet eu elementum interdum velit vulputate. <u>Elementum luctus id nisi</u>, placerat donec. Amet, eget lacus, proin ligula aliquam ut mauris a non."
           }
         },
         {

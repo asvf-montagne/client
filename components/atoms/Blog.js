@@ -11,7 +11,23 @@ Blog.propTypes = {
 export default function Blog({ data }) {
   return (
     <div className={styles.blog__inner}>
-      <EditorRendererProvider data={data} />
+      <EditorRendererProvider
+        style={{
+          header: {
+            disable: true,
+          },
+          paragraph: {
+            disable: true,
+          },
+          list: {
+            disable: true,
+          },
+          quote: {
+            disable: true,
+          },
+        }}
+        data={data}
+      />
     </div>
   );
 }

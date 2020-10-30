@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
+import SwiperCore, { Navigation, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Button from '@components/atoms/Button';
 import SearchBar from '@components/atoms/SearchBar';
 import styles from "@components/molecules/Header.module.css";
+
+SwiperCore.use([Navigation, A11y]);
 
 Header.propTypes = {
   variant: PropTypes.oneOf(['page', 'search', 'story']).isRequired,
@@ -44,6 +47,7 @@ export default function Header({ variant, meta }) {
               <div className={styles.header__overlay__inner__swiperContainer}>
                 <Swiper
                   loop
+                  navigation
                   slidesPerView={1}
                   spaceBetween={64}
                   style={{ width: '100%' }}

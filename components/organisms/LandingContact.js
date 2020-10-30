@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
+import SwiperCore, { Autoplay, Navigation, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import useWindowSize from '@hooks/useWindowSize';
 import LandingForm from '@components/molecules/LandingForm'
@@ -36,6 +37,8 @@ const sponsors = [
   }
 ];
 
+SwiperCore.use([Autoplay, Navigation, A11y]);
+
 LandingContact.propTypes = {
   fullName: PropTypes.string.isRequired,
   setFullName: PropTypes.func.isRequired,
@@ -60,9 +63,11 @@ export default function LandingContact({ fullName, setFullName, email, setEmail,
 
           <Swiper
             loop
+            navigation
             slidesPerView={4}
             spaceBetween={32}
-            style={{ margin: '92px 0', width: '100%' }}
+            autoplay={{ delay: 5000 }}
+            style={{ margin: '92px 0', padding: '0 32px', width: '100%' }}
           >
             {sponsors.map((sponsor, index) => (
               <SwiperSlide key={index}>
