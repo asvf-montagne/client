@@ -8,9 +8,16 @@
     flex-direction: column;
     border-radius: var(--border-radius-medium);
     background-color: var(--primary-bg-color);
-    box-shadow: var(--shadow);
     border: 2px solid rgba(12, 117, 255, 0.2);
     transition: ease-in-out 0.16s;
+}
+
+.cardStoryShadow {
+    box-shadow: var(--shadow);
+}
+
+.cardStoryShadow:hover {
+    box-shadow: var(--shadow-active);
 }
 
 .cardStoryBorderless {
@@ -18,7 +25,6 @@
 }
 
 .cardStory:hover {
-    box-shadow: var(--shadow-active);
     border: 2px solid var(--tertiary-blue-bg-color);
 }
 
