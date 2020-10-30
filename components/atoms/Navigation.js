@@ -26,7 +26,7 @@ export default function Navigation() {
           <li className={router.pathname.includes('/sign-up') ? styles.header__list__itemActive : styles.header__list__item}>
             <a className={styles.header__list__item__link} href="/sign-up">Register</a>
           </li>
-          <Button onClick={handleRedirection} type="light" style={{ marginLeft: 32 }}>
+          <Button onClick={handleRedirection} type="light" focus="light" style={{ marginLeft: 32 }}>
             Connexion
           </Button>
         </ul>

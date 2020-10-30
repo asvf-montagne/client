@@ -32,7 +32,7 @@ export default function landingInfoInfo({ highlightedStories }) {
             <div className={styles.landingInfo__overlay__title}>
               <h1>La montagne en</h1>
               <h1>Nord-Isère</h1>
-              <Button onClick={handleClubRedirection} size="large" type="light">
+              <Button onClick={handleClubRedirection} size="large" type="light" focus="light">
                 Adhérer au club
                 <Icon style={{ fontSize: 24, margin: '2px 0 0 8px' }}>chevron_right</Icon>
               </Button>

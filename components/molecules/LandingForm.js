@@ -69,7 +69,7 @@ export default function LandingForm({ position = 'right', fullName, setFullName,
               }
             }}
           />
-          <Button onClick={onSubmit} type="primary" style={{ marginLeft: 'auto' }}>
+          <Button onClick={onSubmit} type="primary" focus="primary" style={{ marginLeft: 'auto' }}>
             Envoyer le message
           </Button>
         </form>

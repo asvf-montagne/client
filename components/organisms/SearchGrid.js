@@ -26,7 +26,7 @@ export default function SearchGrid({ stories = [] }) {
           />
         ))}
       </div>
-      <Button type="light" onClick={() => console.log('charger plus')}>
+      <Button type="light" onClick={() => console.log('charger plus')} focus="primary">
         Charger plus
         <Icon style={{ fontSize: 24, margin: '2px 0 0 8px' }}>keyboard_arrow_down</Icon>
       </Button>

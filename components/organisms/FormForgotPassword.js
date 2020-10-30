@@ -36,7 +36,7 @@ export default function FormForgotPassword({ email, setEmail, onSubmit }) {
       />
 
       <div className={styles.signUpForm__authGroup}>
-        <Button type="primary" fluid onClick={(event) => onSubmit(event)}>
+        <Button type="primary" focus="primary" fluid onClick={(event) => onSubmit(event)}>
           Envoyer
         </Button>
       </div>

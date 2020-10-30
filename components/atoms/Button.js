@@ -3,6 +3,7 @@ import styles from './Button.module.css';
 
 Button.propTypes = {
   type: PropTypes.oneOf(['primary', 'light', 'link']).isRequired,
+  focus: PropTypes.oneOf(['primary', 'light', 'link']).isRequired,
   size: PropTypes.oneOf(['medium', 'large']),
   shadow: PropTypes.bool,
   fluid: PropTypes.bool,
@@ -10,12 +11,13 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default function Button({ type = 'primary', size = 'medium', shadow = false, fluid = false, onClick, children, ...props }) {
+export default function Button({ type = 'primary', focus = 'light', size = 'medium', shadow = false, fluid = false, onClick, children, ...props }) {
   return (
     <button type="button" onClick={onClick} {...props} className={`
       ${styles.btn}
       ${styles['btn-' + type]}
       ${styles['btn-' + size]}
+      ${styles['btn-focus-' + focus]}
       ${shadow ? styles['btn-shadow'] : ''}
     `}>
       {children}
