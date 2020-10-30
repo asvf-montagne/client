@@ -51,6 +51,7 @@
 
 .authLayout__right__inner {
     display: flex;
+    height: calc(100% - 288px);
     flex-direction: column;
     margin: 0 auto;
 }

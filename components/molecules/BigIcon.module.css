@@ -1,0 +1,31 @@
+.bigIcon {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bigIcon__icon {
+    font-size: 148px !important;
+}
+
+.bigIcon__iconPrimary {
+    color: var(--font-color-link)
+}
+
+.bigIcon__iconSuccess {
+    color: var(--font-color-status-success)
+}
+
+.bigIcon__iconError {
+    color: var(--font-color-status-error)
+}
+
+.bigIcon__title {
+    margin-top: 24px;
+    font-size: var(--font-size-h4);
+    color: var(--font-color-gray1);
+    font-weight: var(--font-weight-regular);
+    text-align: center;
+}

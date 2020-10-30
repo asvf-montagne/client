@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AuthLayout from '@components/atoms/AuthLayout';
 import FormNewPassword from "@components/organisms/FormNewPassword";
 
-export default function ChangePassword() {
+export default function NewPassword() {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
