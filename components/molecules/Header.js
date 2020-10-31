@@ -56,10 +56,11 @@ export default function Header({ variant, meta }) {
                   {meta.images.map((image, index) => (
                     <SwiperSlide key={index}>
                       <div key={index} className={styles.header__swiperItem}>
-                        <img alt={image.alt} src={image.src} className={styles.header__swiperItem__image}/>
-                        <figcaption className={styles.header__swiperItem__caption}>
+                        <img alt={image.alternativeText || image.name} src={image.url} className={styles.header__swiperItem__image}/>
+                        {image.caption !== undefined && <figcaption className={styles.header__swiperItem__caption}>
                           {image.caption}
-                        </figcaption>
+                        </figcaption>}
+
                       </div>
                     </SwiperSlide>
                   ))}
