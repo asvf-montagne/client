@@ -31,9 +31,9 @@ export default function DefaultPageLayout({ variant, meta, data }) {
                     key={story.id}
                     id={story.id}
                     title={story.title}
-                    image={posts.getImageSmallURL(story)}
-                    author={posts.getTitledAuthor(story)}
-                    categories={posts.getFirstTag(story)}
+                    image={posts.getImage(story)}
+                    author={story.author}
+                    categories={story.tags[0]}
                     date={posts.getPublishedTimeAgo(story)}
                   />
                 ))}

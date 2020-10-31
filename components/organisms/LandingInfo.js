@@ -57,9 +57,9 @@ export default function landingInfoInfo({ highlightedStories }) {
                       borderless
                       id={highlightedStory.id}
                       title={highlightedStory.title}
-                      image={posts.getImageSmallURL(highlightedStory)}
-                      author={posts.getTitledAuthor(highlightedStory)}
-                      categories={posts.getFirstTag(highlightedStory)}
+                      image={posts.getImage(highlightedStory)}
+                      author={highlightedStory.author}
+                      categories={highlightedStory.tags[0]}
                       date={posts.getPublishedTimeAgo(highlightedStory)}
                     />
                   </div>
@@ -72,8 +72,8 @@ export default function landingInfoInfo({ highlightedStories }) {
                   key={story.id}
                   id={story.id}
                   title={story.title}
-                  author={posts.getTitledAuthor(story)}
-                  categories={posts.getFirstTag(story)}
+                  author={story.author}
+                  categories={story.tags[0]}
                   date={posts.getPublishedTimeAgo(story)}
                 />
               ))}
