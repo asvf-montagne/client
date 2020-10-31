@@ -3,6 +3,7 @@ import Blog from '@components/atoms/Blog';
 import Header from '@components/molecules/Header';
 import CardStory from '@components/molecules/CardStory';
 import styles from "@components/organisms/DefaultPageLayout.module.css";
+import { posts } from "../../services/posts";
 
 DefaultPageLayout.propTypes = {
   variant: PropTypes.oneOf(['page', 'story']).isRequired,
@@ -30,10 +31,10 @@ export default function DefaultPageLayout({ variant, meta, data }) {
                     key={story.id}
                     id={story.id}
                     title={story.title}
-                    image={story.images[0].src}
-                    author={story.name}
-                    categories={story.tags}
-                    date={story.date}
+                    image={posts.getImageSmallURL(story)}
+                    author={posts.getTitledAuthor(story)}
+                    categories={posts.getFirstTag(story)}
+                    date={posts.getPublishedTimeAgo(story)}
                   />
                 ))}
               </div>

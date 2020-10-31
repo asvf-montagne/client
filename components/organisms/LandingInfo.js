@@ -57,7 +57,7 @@ export default function landingInfoInfo({ highlightedStories }) {
                       borderless
                       id={highlightedStory.id}
                       title={highlightedStory.title}
-                      image={posts.getImageMediumURL(highlightedStory)}
+                      image={posts.getImageSmallURL(highlightedStory)}
                       author={posts.getTitledAuthor(highlightedStory)}
                       categories={posts.getFirstTag(highlightedStory)}
                       date={posts.getPublishedTimeAgo(highlightedStory)}

@@ -18,6 +18,29 @@ const postsService = client => ({
     );
     return res.data
   },
+
+  async find({ id }) {
+    const res = await client.get(`/posts`, {
+        params: {
+          id,
+        }
+      }
+    );
+    return res.data
+  },
+
+  async suggested({ date, limit = 2 }) {
+    const res = await client.get(`/posts`, {
+        params: {
+          '_limit': limit,
+          'published_at_lt': date,
+          '_sort': 'published_at:desc',
+        }
+      }
+    );
+
+    return res.data
+  }
 })
 
 const DEFAULT_IMAGE = 'https://www.ilac.com/wp-content/uploads/2019/05/dark-placeholder.png'
@@ -31,14 +54,32 @@ export const posts = {
     return post.tags[0].tag
   },
 
-  getImageMediumURL(post) {
-    if (post.images.length === 0) {
+  getImageSmallURL(post) {
+    if (post.images.length === 0 || post.images[0].formats.small === undefined) {
       return DEFAULT_IMAGE
     }
 
-    const img = post.images[0].formats.medium
+    return post.images[0].formats.small.url
+  },
 
-    return img.url
+  getImagesForSlider(post) {
+    if (post.images.length === 0) {
+      return []
+    }
+
+    const imageSize = ['large', 'medium', 'small', 'thumbnail']
+    return post.images.map(image => {
+      imageSize.forEach(size => {
+        if (image.url !== undefined) return
+        if (image.formats[size] !== undefined) {
+          image.url = image.formats.large.url
+        }
+      })
+
+      if (image.url === undefined) image.url = DEFAULT_IMAGE
+
+      return image
+    })
   },
 
   getPublishedTimeAgo(post) {
