@@ -8,11 +8,10 @@ const timeAgo = new TimeAgo('fr-FR')
 
 const postsService = client => ({
   async list({ limit = 5, offset = 0 }) {
-    const res = await client.get(`/posts`, {
+    const res = await client.get(`/posts/view/search`, {
         params: {
-          '_limit': limit,
-          '_sort': 'published_at:desc',
-          '_start': offset
+          'limit': limit,
+          'start': offset
         }
       }
     );
@@ -30,15 +29,13 @@ const postsService = client => ({
   },
 
   async suggested({ date, limit = 2 }) {
-    const res = await client.get(`/posts`, {
+    const res = await client.get(`/posts/view/search`, {
         params: {
-          '_limit': limit,
-          'published_at_lt': date,
-          '_sort': 'published_at:desc',
+          'limit': limit,
+          'publishedBefore': date,
         }
       }
     );
-
     return res.data
   }
 })
@@ -46,6 +43,8 @@ const postsService = client => ({
 const DEFAULT_IMAGE = 'https://www.ilac.com/wp-content/uploads/2019/05/dark-placeholder.png'
 
 export const posts = {
+  defaultImage: DEFAULT_IMAGE,
+
   getFirstTag(post) {
     if (post.tags.length === 0) {
       return 'unknown'
@@ -54,12 +53,12 @@ export const posts = {
     return post.tags[0].tag
   },
 
-  getImageSmallURL(post) {
-    if (post.images.length === 0 || post.images[0].formats.small === undefined) {
+  getImage(post) {
+    if (post.image === undefined) {
       return DEFAULT_IMAGE
     }
 
-    return post.images[0].formats.small.url
+    return post.image.url
   },
 
   getImagesForSlider(post) {

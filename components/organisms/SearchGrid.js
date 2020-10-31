@@ -19,10 +19,10 @@ export default function SearchGrid({ stories = [] }) {
             key={story.id}
             id={story.id}
             title={story.title}
-            description={posts.getRawDescription(story)}
-            image={posts.getImageSmallURL(story)}
-            author={posts.getTitledAuthor(story)}
-            categories={posts.getFirstTag(story)}
+            description={story.content}
+            image={posts.getImage(story)}
+            author={story.author}
+            categories={story.tags[0]}
             date={posts.getPublishedTimeAgo(story)}
           />
         ))}
