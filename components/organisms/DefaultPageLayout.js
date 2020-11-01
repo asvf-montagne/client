@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from 'prop-types';
 import Blog from '@components/atoms/Blog';
 import Header from '@components/molecules/Header';
