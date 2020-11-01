@@ -17,13 +17,6 @@ function Home({ stories, partners }) {
     console.log(fullName, email, message)
   }
 
-  useEffect(() => {
-
-    // In order to reduce amount time to load the stories page
-    router.prefetch('/stories').then(() => console.info('fetched stories'))
-
-  }, [])
-
   return (
     <Layout>
       <LandingInfo highlightedStories={stories}/>
