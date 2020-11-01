@@ -23,9 +23,9 @@ export default function Header({ variant, meta }) {
           ${variant === 'story' ? styles.header__overlay__innerStory : ''}
           ${variant === 'search' ? styles.header__overlay__innerSearch : ''}
         `}>
-          {variant === 'story' && (
+          {variant === 'story' && meta.tag !== undefined && (
             <Button type="link" style={{ marginBottom: 42 }}>
-              {meta.tags}
+              {meta.tag}
             </Button>
           )}
           <h1 className={styles.header__overlay__inner__title}>
