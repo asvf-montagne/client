@@ -40,11 +40,12 @@ function Home({ stories }) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const stories = await services().posts.list({ limit: 4 })
 
   return {
-    props: { stories }
+    props: { stories },
+    revalidate: 5,
   }
 }
 

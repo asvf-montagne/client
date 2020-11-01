@@ -4,7 +4,7 @@ import Header from '@components/molecules/Header';
 import SearchGrid from '@components/organisms/SearchGrid';
 import services from "../services";
 
-export default function Stories({ tags, posts }) {
+export default function Stories({ tags, stories }) {
   const [search, setSearch] = useState('');
   const [tag, setTag] = useState('');
 
@@ -25,17 +25,20 @@ export default function Stories({ tags, posts }) {
         placeholder: 'Essayer de rechercher "chamonix" ou bien "6c"',
       }}/>
       <SearchGrid
-        stories={posts}
+        stories={stories}
       />
     </Layout>
   );
 }
 
-export async function getServerSideProps() {
-  const tags = await services().tags.list()
-  const posts = await services().posts.list({ limit: 9 })
+export async function getStaticProps() {
+  const [tags, stories] = await Promise.all([
+    services().tags.list(),
+    services().posts.list({ limit: 15 })
+  ])
 
   return {
-    props: { tags, posts }
+    props: { tags, stories },
+    revalidate: 2,
   }
 }

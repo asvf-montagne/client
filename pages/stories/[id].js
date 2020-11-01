@@ -28,8 +28,9 @@ export default function Story({ story, suggestedStories }) {
 }
 
 export async function getServerSideProps(ctx) {
-  const story = await services().posts.find({ ...ctx.params })
+  // todo: if the story is not found: => 404
 
+  const story = await services().posts.find({ ...ctx.params })
   const suggestedStories = await services().posts.suggested({ limit: 2, date: story[0]['published_at'] })
 
   return {
