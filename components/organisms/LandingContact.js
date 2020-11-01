@@ -1,41 +1,11 @@
+import React from "react";
 import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
-import SwiperCore, { Autoplay, Navigation, A11y } from 'swiper';
+import SwiperCore, { A11y, Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import useWindowSize from '@hooks/useWindowSize';
 import LandingForm from '@components/molecules/LandingForm'
 import styles from './LandingContact.module.css';
-
-const sponsors = [
-  {
-    alt: 'sponsor-petzl',
-    asset: require('../../assets/images/logo-sponsor-petzl.jpg')
-  },
-  {
-    alt: 'sponsor-expe',
-    asset: require('../../assets/images/logo-sponsor-expe.png')
-  },
-  {
-    alt: 'sponsor-au-vieux-campeur',
-    asset: require('../../assets/images/logo-sponsor-au-vieux-campeur.png')
-  },
-  {
-    alt: 'sponsor-FFCAM',
-    asset: require('../../assets/images/logo-sponsor-FFCAM.png')
-  },
-  {
-    alt: 'sponsor-haribo',
-    asset: require('../../assets/images/logo-sponsor-haribo.jpg')
-  },
-  {
-    alt: 'sponsor-simond',
-    asset: require('../../assets/images/logo-sponsor-simond.png')
-  },
-  {
-    alt: 'sponsor-sport-2000',
-    asset: require('../../assets/images/logo-sponsor-sport-2000.jpg')
-  }
-];
 
 SwiperCore.use([Autoplay, Navigation, A11y]);
 
@@ -47,9 +17,10 @@ LandingContact.propTypes = {
   message: PropTypes.string.isRequired,
   setMessage: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  partners: PropTypes.array.isRequired,
 };
 
-export default function LandingContact({ fullName, setFullName, email, setEmail, message, setMessage, onSubmit }) {
+export default function LandingContact({ fullName, setFullName, email, setEmail, message, setMessage, onSubmit, partners }) {
   const { width: size } = useWindowSize();
 
   return (
@@ -69,10 +40,10 @@ export default function LandingContact({ fullName, setFullName, email, setEmail,
             autoplay={{ delay: 5000 }}
             style={{ margin: '92px 0', padding: '0 32px', width: '100%' }}
           >
-            {sponsors.map((sponsor, index) => (
+            {partners.map(({ name, url, link }, index) => (
               <SwiperSlide key={index}>
                 <div key={index} className={styles.landingContact__swiperItem}>
-                  <img alt={sponsor.alt} src={sponsor.asset} className={styles.landingContact__swiperItem__image} />
+                  <img alt={name} src={url} className={styles.landingContact__swiperItem__image}/>
                 </div>
               </SwiperSlide>
             ))}
@@ -149,8 +120,8 @@ export default function LandingContact({ fullName, setFullName, email, setEmail,
       </div>
 
       <div className={styles.landingContact__background}>
-        <div className={styles.landingContact__background__top} />
-        <div className={styles.landingContact__background__bottom} />
+        <div className={styles.landingContact__background__top}/>
+        <div className={styles.landingContact__background__bottom}/>
       </div>
     </section>
   );

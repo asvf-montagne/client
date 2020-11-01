@@ -5,7 +5,7 @@ import LandingContact from "@components/organisms/LandingContact";
 import services from "../services";
 import { useRouter } from 'next/router';
 
-function Home({ stories }) {
+function Home({ stories, partners }) {
   const router = useRouter()
 
   const [fullName, setFullName] = useState('')
@@ -28,6 +28,7 @@ function Home({ stories }) {
     <Layout>
       <LandingInfo highlightedStories={stories}/>
       <LandingContact
+        partners={partners}
         email={email}
         fullName={fullName}
         message={message}
@@ -41,10 +42,13 @@ function Home({ stories }) {
 }
 
 export async function getStaticProps() {
-  const stories = await services().posts.list({ limit: 4 })
+  const [stories, partners] = await Promise.all([
+    services().posts.list({ limit: 4 }),
+    services().partners.list()
+  ])
 
   return {
-    props: { stories },
+    props: { stories, partners },
     revalidate: 5,
   }
 }

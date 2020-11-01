@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
 import Button from '@components/atoms/Button';
 import styles from './AuthLayout.module.css';
+import backgroundImage from '@assets/images/mont_blanc.jpg';
 
-import backgroundMountainAsset from '@assets/images/mont-blanc.jpg';
 
 AuthLayout.propTypes = {
   title: PropTypes.string.isRequired,
@@ -25,7 +25,7 @@ export default function AuthLayout({ title, helper, children }) {
       <main>
         <div className={styles.authLayout}>
           <div className={styles.authLayout__left}>
-            <img alt="mountain background" src={backgroundMountainAsset} className={styles.authLayout__left__img} />
+            <img alt="mont blanc" src={backgroundImage} className={styles.authLayout__left__img} />
           </div>
           <div className={styles.authLayout__right}>
             <div className={styles.authLayout__right__header}>
