@@ -24,7 +24,7 @@ export default function Header({ variant, meta }) {
           ${variant === 'search' ? styles.header__overlay__innerSearch : ''}
         `}>
           {variant === 'story' && meta.tag !== undefined && (
-            <Button type="link" style={{ marginBottom: 42 }}>
+            <Button onClick={() => console.log("todo: go on search story with tag filter: " + meta.tag)} type="link" style={{ marginBottom: 42 }}>
               {meta.tag}
             </Button>
           )}
