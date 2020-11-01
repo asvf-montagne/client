@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Layout from "@components/atoms/Layout";
 import LandingInfo from "@components/organisms/LandingInfo";
 import LandingContact from "@components/organisms/LandingContact";
 import services from "../services";
-import { useRouter } from 'next/router';
 
 function Home({ stories, partners }) {
-  const router = useRouter()
-
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
