@@ -5,7 +5,7 @@ import Button from '@components/atoms/Button';
 import CardStoryMin from '@components/molecules/CardStoryMin';
 import CardStory from '@components/molecules/CardStory';
 import styles from './LandingInfo.module.css';
-import backgroundImage from '@assets/images/cervin_mountain_c7a2ba29c6.jpg';
+import backgroundImage from '@assets/images/cervin.jpg';
 import { posts } from "../../services/posts";
 import React from "react";
 
@@ -29,7 +29,7 @@ export default function landingInfoInfo({ highlightedStories }) {
   return (
     <section className={styles.landingInfo}>
       <div className={styles.landingInfo__imgContainer}>
-        <img src={backgroundImage} alt="landing-background"/>
+        <img src={backgroundImage} alt="montagne cervin"/>
         <div className={styles.landingInfo__overlay}>
           <div className={styles.container}>
             <div className={styles.landingInfo__overlay__title}>
