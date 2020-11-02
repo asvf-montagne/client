@@ -9,8 +9,7 @@ import services from "../../services";
 import { posts } from "../../services/posts";
 
 export default function Story({ story, suggestedStories }) {
-  // const images = posts.getImagesForSlider(story);
-  const images = [];
+  const images = posts.getImagesForSlider(story);
   return (
     <Layout>
       <SplitBackgroundOverlay padding="96px 0 64px 0" topHalfHeight={!!images.length ? 60 : 100}>
