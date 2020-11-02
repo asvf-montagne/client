@@ -7,11 +7,22 @@ TimeAgo.addLocale(fr)
 const timeAgo = new TimeAgo('fr-FR')
 
 const postsService = client => ({
-  async list({ limit = 5, offset = 0 }) {
+  async list({ limit = 5 }) {
     const res = await client.get(`/posts/view/search`, {
         params: {
           'limit': limit,
-          'start': offset
+          'start': 0
+        }
+      }
+    );
+    return res.data
+  },
+
+  async search(params) {
+    const res = await client.get(`/posts/view/search`, {
+        params: {
+          'limit': 15,
+          ...params
         }
       }
     );
@@ -50,7 +61,7 @@ export const posts = {
       return 'unknown'
     }
 
-    return post.tags[0].tag
+    return post.tags[0].tagId
   },
 
   getImage(post) {

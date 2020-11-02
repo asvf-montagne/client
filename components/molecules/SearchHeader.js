@@ -10,8 +10,8 @@ SearchHeader.propTypes = {
   placeholder: PropTypes.string.isRequired,
   handleSearch: PropTypes.func.isRequired,
   tags: PropTypes.array.isRequired,
-  tag: PropTypes.string.isRequired,
-  setTag: PropTypes.func.isRequired
+  tagId: PropTypes.string.isRequired,
+  setTagId: PropTypes.func.isRequired
 }
 
 export default function SearchHeader({
@@ -21,8 +21,8 @@ export default function SearchHeader({
   placeholder,
   handleSearch,
   tags,
-  tag,
-  setTag
+  tagId,
+  setTagId
 }) {
   return (
     <>
@@ -35,8 +35,8 @@ export default function SearchHeader({
         placeholder={placeholder}
         handleSearch={handleSearch}
         tags={tags}
-        tag={tag}
-        setTag={setTag}
+        tagId={tagId}
+        setTagId={setTagId}
         style={{ marginTop: 64 }}
       />
     </>
