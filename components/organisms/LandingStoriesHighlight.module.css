@@ -1,0 +1,106 @@
+.storiesHighlight {
+    display: flex;
+    flex-direction: column;
+    padding: 64px 0;
+    background: rgb(255,244,240);
+    background: linear-gradient(180deg, rgba(255,244,240,1) 0%, rgba(255,255,255,1) 100%);
+    /*Image skip 4px at bottom event tho it's 100% height 🤷*/
+    margin-top: -4px;
+}
+
+.storiesHighlight__inner {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.storiesHighlight__innerLink {
+    justify-content: flex-end;
+}
+
+.storiesHighlight__inner__col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.storiesHighlight__highlight {
+    position: relative;
+    display: flex;
+    flex: 1;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+.storiesHighlight__highlight__backgroundRec {
+    height: 75%;
+    width: 75%;
+    background-color: var(--secondary-bg-color);
+    border-radius: var(--border-radius-medium);
+}
+
+.storiesHighlight__highlight__overlay {
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.storiesHighlight__highlight__overlay__inner {
+    z-index: 100;
+    width: 87%;
+    height: 88%;
+    margin-left: auto;
+}
+
+.storiesHighlight__span {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+.storiesHighlight__span button {
+    padding-right: 0;
+}
+
+@media screen and (max-width: 576px) {
+    .storiesHighlight__inner {
+        max-width: 343px;
+    }
+
+    .storiesHighlight__inner__col:nth-child(1) {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+    .storiesHighlight__inner {
+        max-width: 544px;
+    }
+
+    .storiesHighlight__inner__col:nth-child(1) {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1080px) {
+    .storiesHighlight__inner {
+        max-width: 738px;
+    }
+
+    .storiesHighlight__inner__col:nth-child(1) {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1080px) {
+    .storiesHighlight__inner {
+        max-width: 1040px;
+    }
+}
