@@ -19,7 +19,6 @@ export default function Story({ story, suggestedStories }) {
           images={posts.getImagesForSlider(story)}
         />
       </SplitBackgroundOverlay>
-
       <Blog data={JSON.parse(story.content)} />
       <SuggestedStories stories={suggestedStories} />
     </Layout>
