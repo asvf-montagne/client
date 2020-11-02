@@ -83,6 +83,7 @@
     font-size: var(--font-size-h1);
     color: var(--font-color-secondary);
     font-weight: var(--font-weight-semiBold);
+    text-align: center;
 }
 
 .header__overlay__inner__subTitle {
