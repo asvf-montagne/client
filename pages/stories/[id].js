@@ -1,14 +1,10 @@
 import React from "react";
-import { useRouter } from 'next/router';
 import Layout from '@components/atoms/Layout';
 import DefaultPageLayout from '@components/organisms/DefaultPageLayout';
-import mockStories from "../../mockStories";
 import services from "../../services";
 import { posts } from "../../services/posts";
 
 export default function Story({ story, suggestedStories }) {
-  const router = useRouter()
-
   return (
     <Layout>
       <DefaultPageLayout

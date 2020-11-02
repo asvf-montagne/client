@@ -40,6 +40,12 @@
     background-color: var(--primary-bg-color);
 }
 
+.header__background__topStoryMaxed {
+    display: flex;
+    height: 100%;
+    background-color: var(--secondary-bg-color);
+}
+
 .header__overlay {
     display: flex;
     flex: 1;
