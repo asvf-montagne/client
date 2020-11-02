@@ -69,6 +69,7 @@
     color: var(--font-color-secondary);
     font-weight: var(--font-weight-medium);
     overflow: hidden;
+    word-break: break-word;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -87,6 +88,7 @@
     font-size: var(--font-size-medium);
     font-weight: var(--font-weight-regular);
     overflow: hidden;
+    word-break: break-word;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3;
