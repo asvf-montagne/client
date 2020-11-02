@@ -3,8 +3,8 @@ import styles from "./PageHeader.module.css";
 import React from "react";
 
 PageHeader.propTypes = {
-  title: PropTypes.string,
-  subTitle: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string.isRequired,
 }
 
 export default function PageHeader({ title, subTitle }) {

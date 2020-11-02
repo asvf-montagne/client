@@ -10,13 +10,13 @@ import { posts } from "../../services/posts";
 export default function Story({ story, suggestedStories }) {
   return (
     <Layout>
-      <SplitBackgroundOverlay padding="96px 0 64px 0" topHalfHeight={55}>
+      <SplitBackgroundOverlay padding="96px 0 64px 0" topHalfHeight={60}>
         <StoryHeader
           tag={posts.getFirstTag(story)}
           title={story.title}
           author={posts.getTitledAuthor(story)}
           date={posts.getPublishedTimeAgo(story)}
-          images={posts.getImagesForSlider(story)}
+          image={posts.getImagesForSlider(story)[0]}
         />
       </SplitBackgroundOverlay>
       <Blog data={JSON.parse(story.content)} />

@@ -8,7 +8,7 @@ SplitBackgroundOverlay.propTypes = {
     PropTypes.number
   ]),
   topHalfHeight: PropTypes.number,
-  children: PropTypes.func
+  children: PropTypes.object
 }
 
 export default function SplitBackgroundOverlay({ padding = '92px 0', topHalfHeight, children }) {

@@ -19,7 +19,9 @@
     margin-top: 8px;
 }
 
-.storyHeader__splideContainer {
-    width: 100%;
-    padding: 64px 0;
+.storyHeader__image {
+    max-height: 680px;
+    width: auto;
+    max-width: 100%;
+    margin: 64px 0;
 }

@@ -1,18 +1,17 @@
 import PropTypes from 'prop-types';
 import Button from '@components/atoms/Button';
-// import PostSlider from '@components/molecules/PostSlider';
 import styles from "./StoryHeader.module.css";
 import React from "react";
 
 StoryHeader.propTypes = {
   tag: PropTypes.string,
-  title: PropTypes.string,
-  author: PropTypes.string,
-  date: PropTypes.string,
-  images: PropTypes.array
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  image: PropTypes.object
 }
 
-export default function StoryHeader({ tag, title, author, date, images }) {
+export default function StoryHeader({ tag, title, author, date, image }) {
   return (
     <>
       {tag !== undefined && (
@@ -33,12 +32,9 @@ export default function StoryHeader({ tag, title, author, date, images }) {
       <p className={styles.storyHeader__date}>
         {date}
       </p>
-
-      {/*{!!images.length && (*/}
-      {/*  <div className={styles.storyHeader__splideContainer}>*/}
-      {/*    <PostSlider images={images}/>*/}
-      {/*  </div>*/}
-      {/*)}*/}
+      {image && (
+        <img src={image.url} className={styles.storyHeader__image} alt={image.name} />
+      )}
     </>
   );
 }

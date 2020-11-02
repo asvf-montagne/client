@@ -9,7 +9,7 @@ SearchHeader.propTypes = {
   setSearch: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   handleSearch: PropTypes.func.isRequired,
-  tags: PropTypes.string.isRequired,
+  tags: PropTypes.array.isRequired,
   tag: PropTypes.string.isRequired,
   setTag: PropTypes.func.isRequired
 }
