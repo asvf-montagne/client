@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
-import SwiperCore, { A11y, Autoplay, Navigation } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import useWindowSize from '@hooks/useWindowSize';
 import LandingForm from '@components/molecules/LandingForm'
 import styles from './LandingContact.module.css';
+import dynamic from "next/dynamic";
 
-SwiperCore.use([Autoplay, Navigation, A11y]);
+const PartnersSlider = dynamic(
+  () => import('@components/molecules/PartnersSlider'),
+  { ssr: false }
+)
 
 LandingContact.propTypes = {
   fullName: PropTypes.string.isRequired,
@@ -31,23 +33,7 @@ export default function LandingContact({ fullName, setFullName, email, setEmail,
           <h1 className={styles.landingContact__overlay__title}>
             Nos partenaires
           </h1>
-
-          <Swiper
-            loop
-            navigation
-            slidesPerView={4}
-            spaceBetween={32}
-            autoplay={{ delay: 5000 }}
-            style={{ margin: '92px 0', padding: '0 32px', width: '100%' }}
-          >
-            {partners.map(({ name, url, link }, index) => (
-              <SwiperSlide key={index}>
-                <div key={index} className={styles.landingContact__swiperItem}>
-                  <img alt={name} src={url} className={styles.landingContact__swiperItem__image}/>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <PartnersSlider partners={partners}/>
         </div>
 
         <div className={styles.landingContact__overlay__contacts}>

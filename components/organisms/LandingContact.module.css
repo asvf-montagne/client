@@ -50,27 +50,6 @@
     color: var(--font-color-secondary);
 }
 
-.landingContact__swiperItem {
-    height: 128px;
-    display: flex;
-    margin: 0 16px;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.landingContact__swiperItem__image {
-    max-width: 100%;
-    max-height: 128px;
-    height: auto;
-    filter: grayscale(100%);
-    transition: ease-in-out .16s;
-}
-
-.landingContact__swiperItem__image:hover {
-    filter: none;
-    cursor: pointer;
-}
 
 .landingContact__overlay__contacts {
     display: flex;

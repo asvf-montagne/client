@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
-import SwiperCore, { A11y, Navigation } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import Button from '@components/atoms/Button';
 import SearchBar from '@components/atoms/SearchBar';
 import styles from "@components/molecules/Header.module.css";
 import React from "react";
+import dynamic from "next/dynamic";
 
-SwiperCore.use([Navigation, A11y]);
+const PostSlider = dynamic(
+  () => import('@components/molecules/PostSlider'),
+  { ssr: false }
+)
 
 Header.propTypes = {
   variant: PropTypes.oneOf(['page', 'search', 'story']).isRequired,
@@ -24,7 +26,8 @@ export default function Header({ variant, meta }) {
           ${variant === 'search' ? styles.header__overlay__innerSearch : ''}
         `}>
           {variant === 'story' && meta.tag !== undefined && (
-            <Button onClick={() => console.log("todo: go on search story with tag filter: " + meta.tag)} type="link" style={{ marginBottom: 42 }}>
+            <Button onClick={() => console.log("todo: go on search story with tag filter: " + meta.tag)} type="link"
+                    style={{ marginBottom: 42 }}>
               {meta.tag}
             </Button>
           )}
@@ -45,26 +48,8 @@ export default function Header({ variant, meta }) {
                 {meta.date}
               </p>
 
-              <div className={styles.header__overlay__inner__swiperContainer}>
-                <Swiper
-                  loop
-                  navigation
-                  slidesPerView={1}
-                  spaceBetween={64}
-                  style={{ width: '100%' }}
-                >
-                  {meta.images.map((image, index) => (
-                    <SwiperSlide key={index}>
-                      <div key={index} className={styles.header__swiperItem}>
-                        <img alt={image.alternativeText || image.name} src={image.url} className={styles.header__swiperItem__image}/>
-                        {image.caption !== undefined && <figcaption className={styles.header__swiperItem__caption}>
-                          {image.caption}
-                        </figcaption>}
-
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+              <div className={styles.header__overlay__inner__splideContainer}>
+                <PostSlider images={meta.images}/>
               </div>
             </>
           )}
