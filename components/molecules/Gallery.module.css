@@ -1,0 +1,28 @@
+.gallery {
+    margin: 0 auto;
+    padding: 0 0 92px 0;
+}
+
+@media screen and (max-width: 576px) {
+    .gallery {
+        max-width: 343px;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+    .gallery {
+        max-width: 544px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1080px) {
+    .gallery {
+        max-width: 738px;
+    }
+}
+
+@media screen and (min-width: 1080px) {
+    .gallery {
+        max-width: 1040px;
+    }
+}

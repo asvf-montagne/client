@@ -3,6 +3,7 @@ import Layout from '@components/atoms/Layout';
 import SplitBackgroundOverlay from "@components/atoms/SplitBackgroundOverlay";
 import StoryHeader from "@components/molecules/StoryHeader";
 import Blog from '@components/atoms/Blog';
+import Gallery from "@components/molecules/Gallery";
 import SuggestedStories from '@components/organisms/SuggestedStories';
 import services from "../../services";
 import { posts } from "../../services/posts";
@@ -20,6 +21,10 @@ export default function Story({ story, suggestedStories }) {
         />
       </SplitBackgroundOverlay>
       <Blog data={JSON.parse(story.content)} />
+      <Gallery images={posts.getImagesForSlider(story).map(image => ({
+        ...image,
+        src: image.url,
+      }))} />
       <SuggestedStories stories={suggestedStories} />
     </Layout>
   );
