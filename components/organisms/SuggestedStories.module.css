@@ -22,11 +22,15 @@
     margin-bottom: 64px;
 }
 
-.suggestedStories__cards {
+.suggestedStories__grid {
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px 16px;
+}
+
+.suggestedStories__grid > div {
+    justify-self: center;
 }
 
 @media screen and (max-width: 576px) {
