@@ -22,7 +22,13 @@
     margin-bottom: 64px;
 }
 
-.suggestedStories__grid {
+.suggestedStories__titleEnd {
+    font-size: var(--font-size-h1);
+    color: var(--font-color-secondary);
+    font-weight: var(--font-weight-semiBold);
+}
+
+.suggestedStories__cards {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

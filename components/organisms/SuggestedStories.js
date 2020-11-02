@@ -13,10 +13,11 @@ export default function DefaultPageLayout({ stories }) {
     <section className={styles.suggestedStories}>
       <div className={styles.suggestedStories__inner}>
         <div className={styles.suggestedStories__inner__box}>
-          <h1 className={styles.suggestedStories__title}>
-            Continuer de lire ...
+          <h1 className={stories.length > 0 ? styles.suggestedStories__title : styles.suggestedStories__titleEnd}>
+            {stories.length > 0 ? 'Continuer de lire ...' : `Bravo vous avez lu le dernier récit !`}
           </h1>
-          <div className={styles.suggestedStories__grid}>
+          {stories.length > 0 &&
+          <div className={styles.suggestedStories__cards}>
             {stories.map((story) => (
               <CardStory
                 key={story.id}
@@ -28,7 +29,8 @@ export default function DefaultPageLayout({ stories }) {
                 date={posts.getPublishedTimeAgo(story)}
               />
             ))}
-          </div>
+          </div>}
+
         </div>
       </div>
     </section>
