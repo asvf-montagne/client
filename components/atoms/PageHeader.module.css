@@ -1,0 +1,13 @@
+.pageHeader__title {
+    font-size: var(--font-size-h1);
+    color: var(--font-color-secondary);
+    font-weight: var(--font-weight-semiBold);
+    text-align: center;
+}
+
+.pageHeader__subTitle {
+    font-size: var(--font-size-large);
+    color: var(--font-color-gray1);
+    font-weight: var(--font-weight-regular);
+    margin-top: 16px;
+}
