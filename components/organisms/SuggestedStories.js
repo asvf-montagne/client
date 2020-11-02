@@ -16,7 +16,7 @@ export default function DefaultPageLayout({ stories }) {
           <h1 className={styles.suggestedStories__title}>
             Continuer de lire ...
           </h1>
-          <div className={styles.suggestedStories__cards}>
+          <div className={styles.suggestedStories__grid}>
             {stories.map((story) => (
               <CardStory
                 key={story.id}
