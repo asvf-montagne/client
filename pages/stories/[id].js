@@ -1,24 +1,27 @@
 import React from "react";
 import Layout from '@components/atoms/Layout';
-import DefaultPageLayout from '@components/organisms/DefaultPageLayout';
+import SplitBackgroundOverlay from "@components/atoms/SplitBackgroundOverlay";
+import StoryHeader from "@components/molecules/StoryHeader";
+import Blog from '@components/atoms/Blog';
+import SuggestedStories from '@components/organisms/SuggestedStories';
 import services from "../../services";
 import { posts } from "../../services/posts";
 
 export default function Story({ story, suggestedStories }) {
   return (
     <Layout>
-      <DefaultPageLayout
-        variant="story"
-        meta={{
-          tag: posts.getFirstTag(story),
-          title: story.title,
-          author: posts.getTitledAuthor(story),
-          date: posts.getPublishedTimeAgo(story),
-          images: posts.getImagesForSlider(story),
-          suggestedStories,
-        }}
-        data={JSON.parse(story.content)}
-      />
+      <SplitBackgroundOverlay padding="96px 0 64px 0" topHalfHeight={55}>
+        <StoryHeader
+          tag={posts.getFirstTag(story)}
+          title={story.title}
+          author={posts.getTitledAuthor(story)}
+          date={posts.getPublishedTimeAgo(story)}
+          images={posts.getImagesForSlider(story)}
+        />
+      </SplitBackgroundOverlay>
+
+      <Blog data={JSON.parse(story.content)} />
+      <SuggestedStories stories={suggestedStories} />
     </Layout>
   );
 }

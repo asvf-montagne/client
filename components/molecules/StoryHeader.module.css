@@ -1,0 +1,25 @@
+.storyHeader__title {
+    font-size: var(--font-size-h1);
+    color: var(--font-color-secondary);
+    font-weight: var(--font-weight-semiBold);
+    text-align: center;
+}
+
+.storyHeader__author {
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-semiBold);
+    color: var(--font-color-gray1);
+    margin-top: 64px;
+}
+
+.storyHeader__date {
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-regular);
+    color: var(--font-color-gray1);
+    margin-top: 8px;
+}
+
+.storyHeader__splideContainer {
+    width: 100%;
+    padding: 64px 0;
+}

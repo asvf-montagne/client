@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '@components/atoms/Layout';
-import Header from '@components/molecules/Header';
+import SplitBackgroundOverlay from "@components/atoms/SplitBackgroundOverlay";
+import SearchHeader from "@components/molecules/SearchHeader";
 import SearchGrid from '@components/organisms/SearchGrid';
 import services from "../services";
 
@@ -14,16 +15,18 @@ export default function Stories({ tags, stories }) {
 
   return (
     <Layout>
-      <Header variant="search" meta={{
-        title: `Découvrez nos récits`,
-        tags,
-        tag,
-        setTag,
-        search,
-        setSearch,
-        handleSearch,
-        placeholder: 'Essayer de rechercher "chamonix" ou bien "6c"',
-      }}/>
+      <SplitBackgroundOverlay padding="96px 32px 64px 32px" topHalfHeight={65}>
+        <SearchHeader
+          title="Découvrez nos récits"
+          tags={tags}
+          tag={tag}
+          setTag={setTag}
+          search={search}
+          setSearch={setSearch}
+          handleSearch={handleSearch}
+          placeholder="Essayer de rechercher 'chamonix' ou bien '6c'"
+        />
+      </SplitBackgroundOverlay>
       <SearchGrid
         stories={stories}
       />
