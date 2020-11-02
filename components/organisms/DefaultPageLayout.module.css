@@ -3,6 +3,10 @@
     padding-bottom: 92px;
 }
 
+.blogMargin {
+    padding-top: 92px;
+}
+
 .suggestedStories {
     background-color: var(--secondary-bg-color);
 }

@@ -16,7 +16,10 @@ export default function DefaultPageLayout({ variant, meta, data }) {
   return (
     <>
       <Header variant={variant} meta={meta} />
-      <section className={styles.blog}>
+      <section className={`
+        ${styles.blog}
+        ${variant === 'story' && !meta.images.length && styles.blogMargin}
+      `}>
         <Blog data={data} />
       </section>
       {variant === 'story' && (

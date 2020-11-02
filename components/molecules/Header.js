@@ -48,9 +48,11 @@ export default function Header({ variant, meta }) {
                 {meta.date}
               </p>
 
-              <div className={styles.header__overlay__inner__splideContainer}>
-                <PostSlider images={meta.images}/>
-              </div>
+              {!!meta.images.length && (
+                <div className={styles.header__overlay__inner__splideContainer}>
+                  <PostSlider images={meta.images}/>
+                </div>
+              )}
             </>
           )}
           {variant === 'search' && (
@@ -63,11 +65,16 @@ export default function Header({ variant, meta }) {
       </div>
 
       <div className={styles.header__background}>
+        <div className={
+          variant === 'story' && (
+            !!meta.images.length
+              ? styles.header__background__topStory
+              : styles.header__background__topStoryMaxed
+          ) || styles.header__background__top
+        }/>
         <div className={`
-          ${variant === 'story' ? styles.header__background__topStory : styles.header__background__top}
-        `}/>
-        <div className={`
-          ${variant === 'story' ? styles.header__background__bottomStory : styles.header__background__bottom}
+          ${styles.header__background__bottom}
+          ${variant === 'story' && !!meta.images.length &&  styles.header__background__bottomStory || ''}
         `}/>
       </div>
     </div>
