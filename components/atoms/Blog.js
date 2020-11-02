@@ -9,9 +9,9 @@ Blog.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default function Blog({ data }) {
+export default function Blog({ data, ...props }) {
   return (
-    <section className={styles.blog}>
+    <section className={styles.blog} {...props}>
       <div className={styles.blog__inner}>
         <EditorRendererProvider
           style={{

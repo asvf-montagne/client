@@ -9,19 +9,21 @@ import services from "../../services";
 import { posts } from "../../services/posts";
 
 export default function Story({ story, suggestedStories }) {
+  // const images = posts.getImagesForSlider(story);
+  const images = [];
   return (
     <Layout>
-      <SplitBackgroundOverlay padding="96px 0 64px 0" topHalfHeight={60}>
+      <SplitBackgroundOverlay padding="96px 0 64px 0" topHalfHeight={!!images.length ? 60 : 100}>
         <StoryHeader
           tag={posts.getFirstTag(story)}
           title={story.title}
           author={posts.getTitledAuthor(story)}
           date={posts.getPublishedTimeAgo(story)}
-          image={posts.getImagesForSlider(story)[0]}
+          image={images[0]}
         />
       </SplitBackgroundOverlay>
-      <Blog data={JSON.parse(story.content)} />
-      <Gallery images={posts.getImagesForSlider(story).map(image => ({
+      <Blog data={JSON.parse(story.content)} style={{ marginTop: (!images.length ? 64 : 0) }} />
+      <Gallery images={images.map(image => ({
         src: image.url,
         alt: image.caption,
         height: image.height,
