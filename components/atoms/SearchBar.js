@@ -9,16 +9,16 @@ SearchBar.propTypes = {
   placeholder: PropTypes.string.isRequired,
   handleSearch: PropTypes.func.isRequired,
   tags: PropTypes.array.isRequired,
-  tag: PropTypes.string.isRequired,
-  setTag: PropTypes.func.isRequired,
+  tagId: PropTypes.string.isRequired,
+  setTagId: PropTypes.func.isRequired,
 };
 
-export default function SearchBar({ search, setSearch, placeholder, handleSearch, tags, tag, setTag, ...props }) {
+export default function SearchBar({ search, setSearch, placeholder, handleSearch, tags, tagId, setTagId, ...props }) {
   return (
     <form className={styles.searchBar} {...props}>
       <div className={styles.searchBar__selectContainer}>
-        <select value={tag} onChange={(event) => setTag(event.target.value)} className={styles.searchBar__select}>
-          <option value="" key="default">Category</option>
+        <select value={tagId} onChange={(event) => setTagId(event.target.value)} className={styles.searchBar__select}>
+          <option value="ALL" key="default">Toutes les catégories</option>
           {tags.map((t, index) => (
             <option value={t.id} key={index}>{t.tag}</option>
           ))}
