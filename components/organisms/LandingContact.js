@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
-import SwiperCore, { A11y, Autoplay, Navigation } from 'swiper';
 import useWindowSize from '@hooks/useWindowSize';
 import LandingForm from '@components/molecules/LandingForm'
 import styles from './LandingContact.module.css';
@@ -11,8 +10,6 @@ const PartnersSlider = dynamic(
   () => import('@components/molecules/PartnersSlider'),
   { ssr: false }
 )
-
-SwiperCore.use([Autoplay, Navigation, A11y]);
 
 LandingContact.propTypes = {
   fullName: PropTypes.string.isRequired,

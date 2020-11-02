@@ -26,9 +26,9 @@ export default function PostSlider({ images }) {
                        caption
                      }, index) => (
           <SplideSlide key={index}>
-            <div className={styles.header__swiperItem}>
-              <img alt={alternativeText || name} src={url} className={styles.header__swiperItem__image}/>
-              {caption !== undefined && <figcaption className={styles.header__swiperItem__caption}>
+            <div className={styles.header__splideItem}>
+              <img alt={alternativeText || name} src={url} className={styles.header__splideItem__image}/>
+              {caption !== undefined && <figcaption className={styles.header__splideItem__caption}>
                 {caption}
               </figcaption>}
             </div>

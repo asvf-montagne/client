@@ -5,7 +5,7 @@
     padding-top: 50px;
 }
 
-.partnersSlider__swiperItem {
+.partnersSlider__splideItem {
     height: 128px;
     display: flex;
     margin: 0 16px;
@@ -14,7 +14,7 @@
     align-items: center;
 }
 
-.partnersSlider__swiperItem__image {
+.partnersSlider__splideItem__image {
     max-width: 100%;
     max-height: 128px;
     height: auto;
@@ -22,7 +22,7 @@
     transition: ease-in-out .16s;
 }
 
-.partnersSlider__swiperItem__image:hover {
+.partnersSlider__splideItem__image:hover {
     filter: none;
     cursor: pointer;
 }

@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import SwiperCore, { A11y, Navigation } from 'swiper';
 import Button from '@components/atoms/Button';
 import SearchBar from '@components/atoms/SearchBar';
 import styles from "@components/molecules/Header.module.css";
@@ -10,8 +9,6 @@ const PostSlider = dynamic(
   () => import('@components/molecules/PostSlider'),
   { ssr: false }
 )
-
-SwiperCore.use([Navigation, A11y]);
 
 Header.propTypes = {
   variant: PropTypes.oneOf(['page', 'search', 'story']).isRequired,
