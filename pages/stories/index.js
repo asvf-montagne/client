@@ -3,7 +3,7 @@ import Layout from '@components/atoms/Layout';
 import SplitBackgroundOverlay from "@components/atoms/SplitBackgroundOverlay";
 import SearchHeader from "@components/molecules/SearchHeader";
 import StoriesGrid from '@components/organisms/StoriesGrid';
-import services from "../services";
+import services from "../../services";
 
 const StoriesActions = {
   SET_STORIES: 'SET_STORIES',
@@ -21,7 +21,6 @@ function StoriesReducer(state, action) {
       throw new Error(`action unorganized ${action.type} with parameter ${action.params}`);
   }
 }
-
 
 export default function Stories({ tags, stories }) {
   const [search, setSearch] = useState('');

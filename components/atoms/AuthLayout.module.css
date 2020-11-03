@@ -38,32 +38,32 @@
 
 .authLayout__right__header__inner button {
     margin-right: auto;
-    padding-left: 0;
+    margin-left: 32px;
 }
 
 .authLayout__right__header__inner__title {
-    margin-top: 48px;
-    justify-self: center;
+    display: flex;
+    width: 100%;
+    justify-self: flex-start;
     font-size: var(--font-size-h1);
     font-weight: var(--font-weight-semiBold);
     color: var(--font-color-secondary);
+    margin: 48px auto 0 auto;
 }
 
 .authLayout__right__inner {
     display: flex;
-    height: calc(100% - 288px);
     flex-direction: column;
+    min-height: calc(100vh - 200px);
     margin: 0 auto;
 }
 
 .authLayout__right__helper {
     display: flex;
-    position: absolute;
     flex-direction: row;
     justify-content: center;
     padding: 28px 0;
-    width: 50%;
-    bottom: 0;
+    margin-top: auto;
 }
 
 @media screen and (max-width: 930px) {
@@ -75,13 +75,13 @@
         width: 100%;
     }
 
-    .authLayout__right__header__inner, .authLayout__right__inner {
+    .authLayout__right__header__inner__title, .authLayout__right__inner {
         max-width: 304px;
     }
 }
 
 @media screen and (min-width: 930px) {
-    .authLayout__right__header__inner, .authLayout__right__inner {
+    .authLayout__right__header__inner__title, .authLayout__right__inner {
         max-width: 384px;
     }
 }
