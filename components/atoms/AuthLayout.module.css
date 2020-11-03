@@ -38,15 +38,17 @@
 
 .authLayout__right__header__inner button {
     margin-right: auto;
-    padding-left: 0;
+    margin-left: 32px;
 }
 
 .authLayout__right__header__inner__title {
-    margin-top: 48px;
-    justify-self: center;
+    display: flex;
+    width: 100%;
+    justify-self: flex-start;
     font-size: var(--font-size-h1);
     font-weight: var(--font-weight-semiBold);
     color: var(--font-color-secondary);
+    margin: 48px auto 0 auto;
 }
 
 .authLayout__right__inner {
@@ -73,13 +75,13 @@
         width: 100%;
     }
 
-    .authLayout__right__header__inner, .authLayout__right__inner {
+    .authLayout__right__header__inner__title, .authLayout__right__inner {
         max-width: 304px;
     }
 }
 
 @media screen and (min-width: 930px) {
-    .authLayout__right__header__inner, .authLayout__right__inner {
+    .authLayout__right__header__inner__title, .authLayout__right__inner {
         max-width: 384px;
     }
 }
