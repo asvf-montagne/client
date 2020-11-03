@@ -9,7 +9,7 @@ export default function StoriesGrid({ stories = [], handleFetchMoreStories, show
   return (
     <section className={styles.grid}>
       <h3 className={styles.grid__result}>
-        {`${stories.length} Récit${stories.length > 1 && 's'} trouvé${stories.length > 1 ? 's' : ''}`}
+        {`${stories.length} Récit${stories.length > 1 ? 's' : ''} trouvé${stories.length > 1 ? 's' : ''}`}
       </h3>
       <div className={styles.grid__inner}>
         {stories.map((story) => (
