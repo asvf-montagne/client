@@ -40,12 +40,11 @@ export default function AuthLayout({ title, helper, children }) {
 
             <div className={styles.authLayout__right__inner}>
               {children}
-            </div>
-
-            <div className={styles.authLayout__right__helper}>
-              <Button type="link" onClick={() => router.push(helper.href)}>
-                {helper.label}
-              </Button>
+              <div className={styles.authLayout__right__helper}>
+                <Button type="link" onClick={() => router.push(helper.href)}>
+                  {helper.label}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
