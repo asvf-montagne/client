@@ -61,7 +61,7 @@ export default function Stories({ tags, stories }) {
 
   return (
     <Layout>
-      <SplitBackgroundOverlay padding="96px 32px 64px 32px" topHalfHeight={65}>
+      <SplitBackgroundOverlay padding="96px 0 64px 0" topHalfHeight={65}>
         <SearchHeader
           title="Découvrez nos récits"
           tags={tags}
