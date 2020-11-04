@@ -40,7 +40,7 @@ export default function FormSignUp({ fullName, setFullName, password, setPasswor
           }
         }}
         onChange={setFullName}
-        icon="person_outline"
+        icon="person"
       />
       <Input
         autocomplete="email"

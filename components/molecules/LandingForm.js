@@ -40,7 +40,7 @@ export default function LandingForm({ position = 'right', fullName, setFullName,
                 event.preventDefault()
               }
             }}
-            icon="person_outline"
+            icon="person"
           />
           <Input
             label="Email"
