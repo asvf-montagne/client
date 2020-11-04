@@ -1,10 +1,14 @@
 .header {
-    height: 94px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0;
     background-color: var(--primary-blue-bg-color);
 }
 
 .header__container {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -39,7 +43,7 @@
     height: 100%;
 }
 
-.header__list__item:not(:first-child) {
+.header__list > .header__list__item:not(:first-child) {
     margin-left: 32px;
 }
 
@@ -59,7 +63,28 @@
     text-decoration: none;
 }
 
-@media screen and (max-width: 576px) and (max-width: 576px) {
+.header__menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header__menu__item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 16px 0;
+}
+
+.header__menu__item__link {
+    font-size: var(--font-size-large);
+    color: var(--font-color-contrast);
+    font-weight: var(--font-weight-regular);
+    text-decoration: none;
+}
+
+@media screen and (max-width: 576px) and (max-width: 575px) {
     .header__logo {
         display: none;
     }
@@ -68,12 +93,12 @@
         max-width: 343px;
     }
 
-    .header__list__item:not([id="burger"]) {
+    .header__list > .header__list__item:not([id="burger"]) {
         display: none;
     }
 }
 
-@media screen and (min-width: 576px) and (max-width: 768px) {
+@media screen and (min-width: 576px) and (max-width: 767px) {
     .header__logo__min {
         display: none;
     }
@@ -82,12 +107,12 @@
         max-width: 544px;
     }
 
-    .header__list__item:not([id="burger"]) {
+    .header__list > .header__list__item:not([id="burger"]) {
         display: none;
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1080px) {
+@media screen and (min-width: 768px) and (max-width: 1079px) {
     .header__logo__min {
         display: none;
     }
@@ -96,7 +121,7 @@
         max-width: 738px;
     }
 
-    .header__list__item[id="burger"] {
+    .header__list > .header__list__item[id="burger"] {
         display: none;
     }
 }
@@ -110,7 +135,7 @@
         max-width: 1040px;
     }
 
-    .header__list__item[id="burger"] {
+    .header__list > .header__list__item[id="burger"] {
         display: none;
     }
 }
