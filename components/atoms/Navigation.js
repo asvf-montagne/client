@@ -12,7 +12,7 @@ export default function Navigation() {
   const isAuthenticated = false;
 
   const handleRedirection = () => {
-    router.push('/sign-in')
+    router.push('/sign-up')
   }
 
   useEffect(() => {
@@ -39,11 +39,11 @@ export default function Navigation() {
           {!isAuthenticated && (
             <>
               <li className={styles.header__list__item}>
-                <a className={styles.header__list__item__link} href="/sign-up">Register</a>
+                <a className={styles.header__list__item__link} href="/sign-in">Connexion</a>
               </li>
               <li className={styles.header__list__item}>
                 <Button onClick={handleRedirection} type="light" focus="light">
-                  Connexion
+                  Inscription
                 </Button>
               </li>
             </>
@@ -67,10 +67,10 @@ export default function Navigation() {
             {!isAuthenticated && (
               <>
                 <li className={styles.header__menu__item}>
-                  <a className={styles.header__menu__item__link} href="/sign-up">Register</a>
+                  <a className={styles.header__menu__item__link} href="/sign-in">Connexion</a>
                 </li>
                 <li className={styles.header__menu__item}>
-                  <a className={styles.header__menu__item__link} href="/sign-in">Connexion</a>
+                  <a className={styles.header__menu__item__link} href="/sign-up">Inscription</a>
                 </li>
               </>
             ) || (

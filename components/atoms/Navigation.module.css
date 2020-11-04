@@ -43,6 +43,11 @@
     height: 100%;
 }
 
+.header__list > .header__list__item[id="burger"] > button > span {
+    color: var(--font-color-contrast);
+    font-size: 32px;
+}
+
 .header__list > .header__list__item:not(:first-child) {
     margin-left: 32px;
 }
