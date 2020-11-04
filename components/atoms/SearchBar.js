@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import Icon from '@material-ui/core/Icon';
 import Button from '@components/atoms/Button';
 import styles from './SearchBar.module.css'
+import useWindowSize from "@hooks/useWindowSize";
 
 SearchBar.propTypes = {
   search: PropTypes.string.isRequired,
@@ -14,6 +16,8 @@ SearchBar.propTypes = {
 };
 
 export default function SearchBar({ search, setSearch, placeholder, handleSearch, tags, tagId, setTagId, ...props }) {
+  const { width: size } = useWindowSize();
+
   return (
     <form className={styles.searchBar} {...props}>
       <div className={styles.searchBar__selectContainer}>
@@ -43,7 +47,9 @@ export default function SearchBar({ search, setSearch, placeholder, handleSearch
 
       <div className={styles.searchBar__btnContainer}>
         <Button type="primary" focus="primary" onClick={handleSearch}>
-          Rechercher
+          {size > 768 ? 'Rechercher' : (
+            <Icon>search</Icon>
+          )}
         </Button>
       </div>
     </form>
