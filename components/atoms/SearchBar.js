@@ -46,7 +46,7 @@ export default function SearchBar({ search, setSearch, placeholder, handleSearch
       />
 
       <div className={styles.searchBar__btnContainer}>
-        <Button type="primary" focus="primary" onClick={handleSearch}>
+        <Button variant="primary" size="medium" focus="primary" onClick={handleSearch}>
           {size > 768 ? 'Rechercher' : (
             <Icon>search</Icon>
           )}

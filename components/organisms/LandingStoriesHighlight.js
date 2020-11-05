@@ -48,7 +48,7 @@ export default function LandingStoriesHighlight({ highlightedStories, handleRedi
         </div>
 
         <span className={styles.storiesHighlight__span}>
-          <Button onClick={handleRedirection} type="link">
+          <Button variant="link" size="medium" onClick={handleRedirection}>
             Voir tous nos récits
             <Icon style={{ fontSize: 24, margin: '2px 0 0 8px' }}>chevron_right</Icon>
           </Button>
