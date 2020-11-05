@@ -11,12 +11,12 @@
 
 .btn-medium {
     font-weight: var(--font-weight-medium);
-    font-size: var(--title-size-small);
+    font-size: var(--text-size-large);
 }
 
 .btn-large {
     font-weight: var(--font-weight-semiBold);
-    font-size: var(--title-size-medium);
+    font-size: var(--title-size-small);
 }
 
 .btn-primary {

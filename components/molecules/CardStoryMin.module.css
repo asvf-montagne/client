@@ -31,7 +31,7 @@
 }
 
 .cardMin__meta__author {
-    font-size: var(--font-size-medium);
+    font-size: var(--text-size-medium);
     color: var(--font-color-gray1);
     font-weight: var(--font-weight-medium);
 }
@@ -44,7 +44,7 @@
 }
 
 .cardMin__meta__span p {
-    font-size: var(--font-size-medium);
+    font-size: var(--text-size-medium);
     color: var(--font-color-gray1);
     font-weight: var(--font-weight-semiBold);
 }

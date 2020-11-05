@@ -6,14 +6,14 @@
 }
 
 .storyHeader__author {
-    font-size: var(--font-size-large);
+    font-size: var(--text-size-large);
     font-weight: var(--font-weight-semiBold);
     color: var(--font-color-gray1);
     margin-top: 64px;
 }
 
 .storyHeader__date {
-    font-size: var(--font-size-large);
+    font-size: var(--text-size-large);
     font-weight: var(--font-weight-regular);
     color: var(--font-color-gray1);
     margin-top: 8px;

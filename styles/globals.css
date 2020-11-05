@@ -14,11 +14,6 @@
   --secondary-blue-bg-color: rgba(0, 23, 104, 1);
   --tertiary-blue-bg-color: rgba(12, 117, 255, 1);
 
-  --font-size-small: 0.75rem;
-  --font-size-medium: 0.875rem;
-  --font-size-large: 1.125rem;
-  --font-size-special: 1.3125rem;
-
   --title-size-large: 2.25rem;
   --title-size-medium: 1.5rem;
   --title-size-small: 1.125rem;
@@ -68,6 +63,8 @@ time, mark, audio, video {
   border: 0;
   font-family: 'Inter', sans-serif;
   vertical-align: baseline;
+  line-height: 1.6em;
+  letter-spacing: -0.02em;
 }
 
 article, aside, details, figcaption, figure,

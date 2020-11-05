@@ -32,7 +32,7 @@
 }
 
 .footer__link {
-    font-size: var(--font-size-large);
+    font-size: var(--text-size-large);
     color: var(--font-color-gray2);
     font-weight: var(--font-weight-medium);
     text-decoration: none;

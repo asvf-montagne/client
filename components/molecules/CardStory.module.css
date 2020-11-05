@@ -59,7 +59,7 @@
 }
 
 .cardStory__content__inner__categories {
-    font-size: var(--font-size-medium);
+    font-size: var(--text-size-medium);
     color: var(--font-color-gray1);
     font-weight: var(--font-weight-semiBold);
 }
@@ -85,7 +85,7 @@
 
 .cardStory__content__inner__description {
     color: var(--font-color-gray1);
-    font-size: var(--font-size-medium);
+    font-size: var(--text-size-medium);
     font-weight: var(--font-weight-regular);
     overflow: hidden;
     word-break: break-word;
@@ -103,7 +103,7 @@
 }
 
 .cardStory__content__inner__span p {
-    font-size: var(--font-size-medium);
+    font-size: var(--text-size-medium);
     color: var(--font-color-gray1);
     font-weight: var(--font-weight-medium);
 }

@@ -62,7 +62,7 @@
 }
 
 .header__list__item__link {
-    font-size: var(--font-size-large);
+    font-size: var(--text-size-large);
     color: var(--font-color-contrast);
     font-weight: var(--font-weight-regular);
     text-decoration: none;
@@ -83,7 +83,7 @@
 }
 
 .header__menu__item__link {
-    font-size: var(--font-size-large);
+    font-size: var(--text-size-large);
     color: var(--font-color-contrast);
     font-weight: var(--font-weight-regular);
     text-decoration: none;
