@@ -38,7 +38,7 @@
     min-width: 150px;
 }
 
-.btn_primary, .btn_primary > .btn_inner {
+.btn_primary, .btn_primary > .btn_inner, .btn_primary > .btn_inner > span {
     border: none;
     background-color: var(--tertiary-blue-bg-color);
     color: var(--font-color-contrast);
