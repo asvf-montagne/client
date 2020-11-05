@@ -23,6 +23,14 @@
   --font-size-large: 1.125rem;
   --font-size-special: 1.3125rem;
 
+  --title-size-large: 2.25rem;
+  --title-size-medium: 1.5rem;
+  --title-size-small: 1.125rem;
+
+  --text-size-large: 1rem;
+  --text-size-medium: 0.875rem;
+  --text-size-small: 0.8125rem;
+
   --font-color-primary: rgba(1, 2, 43, 1);
   --font-color-secondary: rgba(0, 23, 104, 1);
   --font-color-secondaryActive: rgba(0, 39, 178, 1);

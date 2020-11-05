@@ -16,14 +16,14 @@
 }
 
 .suggestedStories__title {
-    font-size: var(--font-size-h1);
+    font-size: var(--title-size-large);
     color: var(--font-color-secondary);
     font-weight: var(--font-weight-semiBold);
     margin-bottom: 64px;
 }
 
 .suggestedStories__titleEnd {
-    font-size: var(--font-size-h1);
+    font-size: var(--title-size-large);
     color: var(--font-color-secondary);
     font-weight: var(--font-weight-semiBold);
 }
