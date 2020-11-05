@@ -5,7 +5,7 @@
 }
 
 .input__errorMsg {
-    font-size: var(--font-size-medium);
+    font-size: var(--text-size-medium);
     font-weight: var(--font-weight-regular);
     color: var(--font-color-status-error);
     text-decoration: none;
@@ -20,13 +20,13 @@
 }
 
 .input__span__label {
-    font-size: var(--font-size-large);
+    font-size: var(--text-size-large);
     font-weight: var(--font-weight-regular);
     color: var(--font-color-secondary);
 }
 
 .input__span__link {
-    font-size: var(--font-size-medium);
+    font-size: var(--text-size-medium);
     font-weight: var(--font-weight-regular);
     color:var(--font-color-link);
     text-decoration: none;
@@ -79,7 +79,7 @@
     flex: 1;
     padding: 14px 0;
     border: none;
-    font-size: var(--font-size-medium);
+    font-size: var(--text-size-medium);
     font-weight: var(--font-weight-regular);
     color: var(--font-color-secondary);
 }
@@ -90,7 +90,7 @@
     border: none;
     resize: none;
     height: 128px;
-    font-size: var(--font-size-medium);
+    font-size: var(--text-size-medium);
     font-weight: var(--font-weight-regular);
     color: var(--font-color-secondary);
 }

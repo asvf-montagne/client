@@ -24,7 +24,7 @@
 
 .bigIcon__title {
     margin-top: 24px;
-    font-size: var(--font-size-h4);
+    font-size: var(--title-size-small);
     color: var(--font-color-gray1);
     font-weight: var(--font-weight-regular);
     text-align: center;

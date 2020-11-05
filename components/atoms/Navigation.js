@@ -42,20 +42,20 @@ export default function Navigation() {
                 <a className={styles.header__list__item__link} href="/sign-in">Connexion</a>
               </li>
               <li className={styles.header__list__item}>
-                <Button onClick={handleRedirection} type="light" focus="light">
+                <Button size="medium" onClick={handleRedirection} variant="light" focus="light">
                   Inscription
                 </Button>
               </li>
             </>
           ) || (
             <li className={styles.header__list__item}>
-              <Button onClick={handleRedirection} type="light" focus="light">
+              <Button onClick={handleRedirection} size="medium" variant="light" focus="light">
                 Logout
               </Button>
             </li>
           )}
           <li className={styles.header__list__item} id="burger">
-            <Button onClick={() => setIsMenuActive(!isMenuActive)} type="link" focus="primary">
+            <Button onClick={() => setIsMenuActive(!isMenuActive)} size="medium" variant="light" focus="light">
               <Icon>{isMenuActive ? 'close' : 'menu'}</Icon>
             </Button>
           </li>

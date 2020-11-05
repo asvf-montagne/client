@@ -16,27 +16,25 @@
 }
 
 .suggestedStories__title {
-    font-size: var(--font-size-h1);
+    font-size: var(--title-size-large);
     color: var(--font-color-secondary);
     font-weight: var(--font-weight-semiBold);
     margin-bottom: 64px;
 }
 
 .suggestedStories__titleEnd {
-    font-size: var(--font-size-h1);
+    font-size: var(--title-size-large);
     color: var(--font-color-secondary);
     font-weight: var(--font-weight-semiBold);
 }
 
 .suggestedStories__cards {
     width: 100%;
+    min-height: 488px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 32px 16px;
-}
-
-.suggestedStories__grid > div {
-    justify-self: center;
+    justify-items: center;
 }
 
 @media screen and (max-width: 576px) {

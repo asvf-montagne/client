@@ -30,7 +30,7 @@ export default function AuthLayout({ title, helper, children }) {
           <div className={styles.authLayout__right}>
             <div className={styles.authLayout__right__header}>
               <div className={styles.authLayout__right__header__inner}>
-                <Button type="link" onClick={() => router.push('/')}>
+                <Button variant="link" size="medium" onClick={() => router.push('/')}>
                   <Icon style={{ marginRight: 8 }}>chevron_left</Icon>
                   Retourner sur le site
                 </Button>
@@ -41,7 +41,7 @@ export default function AuthLayout({ title, helper, children }) {
             <div className={styles.authLayout__right__inner}>
               {children}
               <div className={styles.authLayout__right__helper}>
-                <Button type="link" onClick={() => router.push(helper.href)}>
+                <Button variant="link" size="medium" onClick={() => router.push(helper.href)}>
                   {helper.label}
                 </Button>
               </div>

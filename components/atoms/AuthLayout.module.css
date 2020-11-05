@@ -45,7 +45,7 @@
     display: flex;
     width: 100%;
     justify-self: flex-start;
-    font-size: var(--font-size-h1);
+    font-size: var(--title-size-large);
     font-weight: var(--font-weight-semiBold);
     color: var(--font-color-secondary);
     margin: 48px auto 0 auto;

@@ -9,10 +9,10 @@
 
 .blog__inner p {
     color: var(--font-color-primary);
-    font-size: var(--font-size-special);
+    font-size: var(--text-size-large);
     font-weight: var(--font-weight-regular);
     letter-spacing: 0.005em;
-    line-height: 1.5em;
+    line-height: 2rem;
     padding: 0.4em 0;
 }
 
@@ -27,6 +27,7 @@
     text-decoration: none;
     color: var(--font-color-link);
     transition: ease-in-out .16s;
+    line-height: 2rem;
 }
 
 .blog__inner a:hover {
@@ -38,32 +39,32 @@
     font-weight: var(--font-weight-semiBold);
     margin: 0 0 -0.8em;
     letter-spacing: 0.005em;
-    line-height: 1.5em;
+    line-height: 2rem;
     padding: 1em 0;
 }
 
 .blog__inner h1 {
-    font-size: var(--font-size-h1);
+    font-size: var(--title-size-large);
 }
 
 .blog__inner h2 {
-    font-size: var(--font-size-h2);
+    font-size: var(--title-size-medium);
 }
 
 .blog__inner h3 {
-    font-size: var(--font-size-h3);
+    font-size: var(--title-size-medium);
 }
 
 .blog__inner h4 {
-    font-size: var(--font-size-h4);
+    font-size: var(--title-size-small);
 }
 
 .blog__inner h5 {
-    font-size: var(--font-size-h4);
+    font-size: var(--title-size-small);
 }
 
 .blog__inner h6 {
-    font-size: var(--font-size-h4);
+    font-size: var(--title-size-small);
 }
 
 .blog__inner ul {
@@ -82,10 +83,10 @@
 
 .blog__inner ul li {
     color: var(--font-color-primary);
-    font-size: var(--font-size-special);
+    font-size: var(--text-size-large);
     font-weight: var(--font-weight-regular);
     letter-spacing: 0.005em;
-    line-height: 1.6em;
+    line-height: 2rem;
     padding: 5.5px 0 5.5px 3px;
 }
 
@@ -100,19 +101,19 @@
 
 .blog__inner blockquote div p:nth-child(1) {
     color: var(--font-color-primary);
-    font-size: var(--font-size-special);
+    font-size: var(--text-size-large);
     font-weight: var(--font-weight-light);
     letter-spacing: 0.005em;
-    line-height: 1.5em;
+    line-height: 2rem;
     padding: 0.4em 0;
 }
 
 .blog__inner blockquote div p:nth-child(2) {
     color: var(--font-color-gray1);
-    font-size: var(--font-size-special);
+    font-size: var(--text-size-large);
     font-weight: var(--font-weight-light);
     letter-spacing: 0.005em;
-    line-height: 1.5em;
+    line-height: 2rem;
     padding: 0.4em 0;
 }
 

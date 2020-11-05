@@ -27,11 +27,12 @@ export default function StoriesGrid({ stories = [], handleFetchMoreStories, show
           />
         ))}
       </div>
-      {showFetchMoreStoriesBtn && <Button type="light" onClick={handleFetchMoreStories} focus="primary">
-        Charger plus
-        <Icon style={{ fontSize: 24, margin: '2px 0 0 8px' }}>keyboard_arrow_down</Icon>
-      </Button>
-      }
+      {showFetchMoreStoriesBtn && (
+        <Button variant="light" size="medium" onClick={handleFetchMoreStories} focus="primary">
+          Charger plus
+          <Icon style={{ fontSize: 24, margin: '2px 0 0 8px' }}>keyboard_arrow_down</Icon>
+        </Button>
+      )}
 
     </section>
   )

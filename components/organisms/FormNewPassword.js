@@ -57,7 +57,7 @@ export default function FormNewPassword({ password, setPassword, passwordConfirm
       />
 
       <div className={styles.signUpForm__authGroup}>
-        <Button type="primary" focus="primary" fluid onClick={(event) => onSubmit(event)}>
+        <Button variant="primary" size="large" focus="primary" fluid onClick={(event) => onSubmit(event)}>
           Change password
         </Button>
       </div>
