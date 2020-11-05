@@ -75,7 +75,7 @@ export default function FormSignUp({ fullName, setFullName, password, setPasswor
       />
 
       <div className={styles.signUpForm__authGroup}>
-        <Button type="primary" focus="primary" fluid onClick={(event) => onSubmit(event)}>
+        <Button variant="primary" size="large" focus="primary" fluid onClick={(event) => onSubmit(event)}>
           Connexion
         </Button>
 
@@ -83,7 +83,7 @@ export default function FormSignUp({ fullName, setFullName, password, setPasswor
           Ou bien se s'inscrire avec
         </p>
 
-        <Button type="light" focus="primary" fluid onClick={(event) => onSubmit(event)}>
+        <Button variant="light" size="large" focus="primary" fluid onClick={(event) => onSubmit(event)}>
           <img alt="auth-google" src={GoogleLogoAsset} className={styles.signUpForm__authGroup__googleImg} />
           Google
         </Button>

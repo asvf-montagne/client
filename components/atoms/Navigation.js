@@ -42,14 +42,14 @@ export default function Navigation() {
                 <a className={styles.header__list__item__link} href="/sign-in">Connexion</a>
               </li>
               <li className={styles.header__list__item}>
-                <Button onClick={handleRedirection} type="light" focus="light">
+                <Button size="medium" onClick={handleRedirection} variant="light" focus="light">
                   Inscription
                 </Button>
               </li>
             </>
           ) || (
             <li className={styles.header__list__item}>
-              <Button onClick={handleRedirection} type="light" focus="light">
+              <Button onClick={handleRedirection} type="light" size="medium" variant="light" focus="light">
                 Logout
               </Button>
             </li>
