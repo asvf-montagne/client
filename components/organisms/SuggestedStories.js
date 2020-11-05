@@ -23,6 +23,7 @@ export default function DefaultPageLayout({ stories }) {
                 key={story.id}
                 id={story.id}
                 title={story.title}
+                description={story.content}
                 image={posts.getImage(story)}
                 author={story.author}
                 categories={story.tags[0]}
