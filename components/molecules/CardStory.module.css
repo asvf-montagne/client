@@ -65,7 +65,7 @@
 }
 
 .cardStory__content__inner__title {
-    font-size: var(--font-size-h2);
+    font-size: var(--title-size-medium);
     color: var(--font-color-secondary);
     font-weight: var(--font-weight-medium);
     overflow: hidden;

@@ -17,14 +17,14 @@
 }
 
 .header__logo {
-    font-size: var(--font-size-h3);
+    font-size: var(--title-size-medium);
     color: var(--font-color-contrast);
     font-weight: var(--font-weight-semiBold);
     text-decoration: none;
 }
 
 .header__logo__min {
-    font-size: var(--font-size-h3);
+    font-size: var(--title-size-medium);
     color: var(--font-color-contrast);
     font-weight: var(--font-weight-semiBold);
     text-decoration: none;

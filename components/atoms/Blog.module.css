@@ -47,23 +47,23 @@
 }
 
 .blog__inner h2 {
-    font-size: var(--font-size-h2);
+    font-size: var(--title-size-medium);
 }
 
 .blog__inner h3 {
-    font-size: var(--font-size-h3);
+    font-size: var(--title-size-medium);
 }
 
 .blog__inner h4 {
-    font-size: var(--font-size-h4);
+    font-size: var(--title-size-small);
 }
 
 .blog__inner h5 {
-    font-size: var(--font-size-h4);
+    font-size: var(--title-size-small);
 }
 
 .blog__inner h6 {
-    font-size: var(--font-size-h4);
+    font-size: var(--title-size-small);
 }
 
 .blog__inner ul {

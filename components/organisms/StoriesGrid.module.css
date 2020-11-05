@@ -7,7 +7,7 @@
 }
 
 .grid__result {
-    font-size: var(--font-size-h3);
+    font-size: var(--title-size-medium);
     color: var(--font-color-secondary);
     font-weight: var(--font-weight-semiBold);
 }
