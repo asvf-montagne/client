@@ -13,7 +13,7 @@ export default function LandingHero({ handleRedirection }) {
           <div className={styles.hero__overlay__inner__title}>
             <h1>La montagne en</h1>
             <h1>Nord-Isère</h1>
-            <Button onClick={handleRedirection} size="large" type="light" focus="light">
+            <Button onClick={handleRedirection} size="large" variant="light" focus="light">
               Adhérer au club
               <Icon style={{ fontSize: 24, margin: '2px 0 0 8px' }}>chevron_right</Icon>
             </Button>
