@@ -68,13 +68,13 @@
 }
 
 @media screen and (max-width: 576px) {
-    .searchBar {
+    .searchBar__selectContainer, .searchBar__separator {
         display: none;
     }
 }
 
 @media screen and (min-width: 576px) and (max-width: 768px) {
-    .searchBar {
+    .searchBar__selectContainer, .searchBar__separator {
         display: none;
     }
 }
