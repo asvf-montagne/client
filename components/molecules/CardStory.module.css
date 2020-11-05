@@ -93,7 +93,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 }
 
 .cardStory__content__inner__span {
