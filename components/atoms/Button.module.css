@@ -24,7 +24,7 @@
     align-items: center;
     justify-content: center;
     font-size: var(--text-size-medium);
-    font-weight: var(--font-weight-regular) !important;
+    font-weight: var(--font-weight-medium) !important;
     color: var(--font-color-secondary);
 }
 
