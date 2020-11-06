@@ -65,6 +65,7 @@ time, mark, audio, video {
   vertical-align: baseline;
   line-height: 1.6em;
   letter-spacing: -0.02em;
+  scroll-behavior: smooth;
 }
 
 article, aside, details, figcaption, figure,

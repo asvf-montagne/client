@@ -4,7 +4,7 @@ import React from "react";
 
 PageHeader.propTypes = {
   title: PropTypes.string.isRequired,
-  subTitle: PropTypes.string.isRequired,
+  subTitle: PropTypes.string,
 }
 
 export default function PageHeader({ title, subTitle }) {
@@ -13,9 +13,11 @@ export default function PageHeader({ title, subTitle }) {
       <h1 className={styles.pageHeader__title}>
         {title}
       </h1>
-      <h1 className={styles.pageHeader__subTitle}>
-        {subTitle}
-      </h1>
+      {subTitle && (
+        <h1 className={styles.pageHeader__subTitle}>
+          {subTitle}
+        </h1>
+      )}
     </>
   );
 }

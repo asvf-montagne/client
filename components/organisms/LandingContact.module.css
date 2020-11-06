@@ -104,6 +104,13 @@
     flex-direction: column;
 }
 
+.landingContact__overlay__contacts__col__inner__title {
+    font-size: var(--title-size-small);
+    font-weight: var(--font-weight-semiBold);
+    color: var(--font-color-contrast);
+    margin: 16px 0;
+}
+
 .landingContact__overlay__contacts__col__icons_btn {
     display: flex;
     flex-direction: row;

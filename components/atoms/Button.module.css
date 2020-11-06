@@ -67,5 +67,15 @@
 
 .btn_shadow {
     transition: ease-in-out 0.12s;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow);
+}
+
+.btn_shadow:hover {
+    transition: ease-in-out 0.12s;
+    box-shadow: var(--shadow-active);
+}
+
+.btn_shadow:focus {
+    transition: ease-in-out 0.12s;
+    box-shadow: var(--shadow-active);
 }
