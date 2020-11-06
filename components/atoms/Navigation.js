@@ -34,7 +34,7 @@ export default function Navigation() {
             <a className={styles.header__list__item__link} href="/stories">Récits</a>
           </li>
           <li className={styles.header__list__item}>
-            <a className={styles.header__list__item__link} href="/stories">Contact</a>
+            <a className={styles.header__list__item__link} href="/contact">Contact</a>
           </li>
         </ul>
 

@@ -57,6 +57,11 @@ export default function LandingContact({ fullName, setFullName, email, setEmail,
                       contact@asvf-montagne.fr
                     </p>
                   </button>
+
+                  <h3 className={styles.landingContact__overlay__contacts__col__inner__title}>
+                    Ouvert le jeudi de 18h30 à 20h
+                  </h3>
+
                   <button className={styles.landingContact__overlay__contacts__col__icons_btn}>
                     <Icon style={{ fontSize: 24, color: '#0C75FF', margin: '2px 0 0 8px' }}>
                       room
@@ -70,7 +75,7 @@ export default function LandingContact({ fullName, setFullName, email, setEmail,
                       phone
                     </Icon>
                     <p className={styles.landingContact__overlay__contacts__col__icons_btn__title}>
-                      06 81 26 88 14 (jeudi de 18h30 à 20h)
+                      06 81 26 88 14
                     </p>
                   </button>
                 </div>

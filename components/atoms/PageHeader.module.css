@@ -9,5 +9,6 @@
     font-size: var(--text-size-large);
     color: var(--font-color-gray1);
     font-weight: var(--font-weight-regular);
+    text-align: center;
     margin-top: 16px;
 }
