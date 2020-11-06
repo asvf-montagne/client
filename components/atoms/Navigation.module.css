@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 13.5px 0;
+    padding: 13.5px 16px;
     background-color: var(--primary-blue-bg-color);
 }
 
@@ -89,13 +89,21 @@
     text-decoration: none;
 }
 
-@media screen and (max-width: 576px) and (max-width: 575px) {
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (max-width: 576px) {
     .header__logo {
         display: none;
     }
 
-    .header__container {
-        max-width: 343px;
+    .header__list > .header__list__item:not([id="burger"]) {
+        display: none;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (min-width: 576px) and (max-width: 795px) {
+    .header__logo__min {
+        display: none;
     }
 
     .header__list > .header__list__item:not([id="burger"]) {
@@ -103,27 +111,10 @@
     }
 }
 
-@media screen and (min-width: 576px) and (max-width: 767px) {
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 768px) and (max-width: 1080px) {
     .header__logo__min {
         display: none;
-    }
-
-    .header__container {
-        max-width: 544px;
-    }
-
-    .header__list > .header__list__item:not([id="burger"]) {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1079px) {
-    .header__logo__min {
-        display: none;
-    }
-
-    .header__container {
-        max-width: 738px;
     }
 
     .header__list > .header__list__item[id="burger"] {
@@ -131,13 +122,14 @@
     }
 }
 
+/* Extra large devices (large desktops, 1268px and up) */
 @media screen and (min-width: 1080px) {
-    .header__logo__min {
-        display: none;
-    }
-
     .header__container {
         max-width: 1040px;
+    }
+
+    .header__logo__min {
+        display: none;
     }
 
     .header__list > .header__list__item[id="burger"] {

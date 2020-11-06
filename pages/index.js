@@ -14,10 +14,6 @@ const infos = [
     redirect: '/',
   },
   {
-    label: 'dim 08 nov 2020 / VTT, FTT et Handbike / Handisport',
-    redirect: '/',
-  },
-  {
     label: 'dim 15 nov 2020 / Sortie VTT – 25 à 35km / VTT',
     redirect: '/',
   },
