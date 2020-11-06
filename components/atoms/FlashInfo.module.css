@@ -1,0 +1,62 @@
+.flash {
+    z-index: 101;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    background-color: var(--font-color-secondary);
+}
+
+.flash:hover {
+    cursor: pointer;
+}
+
+.flash_btn {
+    position: absolute;
+    right: 0;
+}
+
+.flash_inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 16px 48px 16px 16px;
+}
+
+.flash_inner_span {
+    color: var(--font-color-gray2);
+    font-size: var(--text-size-small);
+    word-break: break-word;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (max-width: 576px) {
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (min-width: 576px) and (max-width: 795px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 796px) and (max-width: 991px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media screen and (min-width: 992px) and (max-width: 1080px) {
+}
+
+/* Extra large devices (large desktops, 1268px and up) */
+@media screen and (min-width: 1080px) {
+    .flash_inner {
+        max-width: 1040px;
+    }
+}
