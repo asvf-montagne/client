@@ -33,6 +33,7 @@
 
 .flash_inner__link:hover {
     text-decoration: underline;
+    animation-play-state: paused;
 }
 
 .flash_inner > button:last-child > div > span {
