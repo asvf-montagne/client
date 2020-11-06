@@ -21,7 +21,7 @@
     color: var(--font-color-gray2);
     font-weight: var(--font-weight-light);
     text-decoration: none;
-    animation: fadeOut 12s infinite;
+    animation: fadeOut 10s infinite;
 
     overflow: hidden;
     word-break: break-word;
@@ -47,10 +47,10 @@
     0% {
         opacity: 0;
     }
-    25% {
+    15% {
         opacity: 1;
     }
-    75% {
+    85% {
         opacity: 1;
     }
     100% {
