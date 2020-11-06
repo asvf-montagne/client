@@ -33,6 +33,9 @@ export default function Navigation() {
           <li className={styles.header__list__item}>
             <a className={styles.header__list__item__link} href="/stories">Récits</a>
           </li>
+          <li className={styles.header__list__item}>
+            <a className={styles.header__list__item__link} href="/stories">Contact</a>
+          </li>
         </ul>
 
         <ul className={styles.header__list}>
@@ -75,7 +78,7 @@ export default function Navigation() {
               </>
             ) || (
               <li className={styles.header__menu__item}>
-                <Button onClick={handleRedirection} type="light" focus="light">
+                <Button onClick={handleRedirection} variant="light" size="medium" focus="light">
                   Logout
                 </Button>
               </li>

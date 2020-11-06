@@ -1,9 +1,10 @@
+import React from "react";
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 // import NextSeo from 'next-seo';
 import Navigation from "@components/atoms/Navigation";
 import Footer from "@components/atoms/Footer";
-import React from "react";
+import styles from './Layout.module.css';
 
 // const DEFAULT_SEO = {
 //   title: 'ASVF Montagne',
@@ -37,7 +38,7 @@ export default function Layout({ children, less = false }) {
       {!less && (
         <Navigation />
       )}
-      <main>{children}</main>
+      <main className={styles.container}>{children}</main>
       {!less && (
         <Footer />
       )}
