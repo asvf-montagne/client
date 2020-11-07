@@ -1025,6 +1025,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.10.0":
+  version "7.12.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
+  integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.10.4", "@babel/template@^7.7.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.10.4.tgz#3251996c4200ebc71d1a8fc405fba940f36ba278"
@@ -2906,6 +2913,13 @@ fill-range@^7.0.1:
   integrity sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==
   dependencies:
     to-regex-range "^5.0.1"
+
+final-form@^4.20.1:
+  version "4.20.1"
+  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.20.1.tgz#525a7f7f27f55c28d8994b157b24d6104fc560e9"
+  integrity sha512-IIsOK3JRxJrN72OBj7vFWZxtGt3xc1bYwJVPchjVWmDol9DlzMSAOPB+vwe75TUYsw1JaH0fTQnIgwSQZQ9Acg==
+  dependencies:
+    "@babel/runtime" "^7.10.0"
 
 find-cache-dir@3.3.1:
   version "3.3.1"
@@ -4857,13 +4871,18 @@ react-dom@^17.0.1:
     object-assign "^4.1.1"
     scheduler "^0.20.1"
 
-react-editorjs-renderer@^2.0.3:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/react-editorjs-renderer/-/react-editorjs-renderer-2.0.4.tgz#5bb438d34fd3f77e4d4d4ed9dc41c577f31665ef"
-  integrity sha512-JBHS8yr85hJgzDfYDQn0WTHAFbb1AXCQPSJBzyyKLp26YA2UJXG5Bk5Uq7pSvbqwiIERMUgEkq/aS8Z0Ut1EmA==
+react-editorjs-renderer@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-editorjs-renderer/-/react-editorjs-renderer-2.1.0.tgz#6fe1a66f3d1588f463506a737fed88fca6a56c2c"
+  integrity sha512-jyz8kTD1FHFGN+SkFGQg2FOpSuh3ZgFOn+OIJ8kefk6NVNYahe8KAYCS6bAkYuNt98SDRp7cCJfxjk9vpYy5tA==
   dependencies:
     prop-types "^15.7.2"
     react-html-parser "^2.0.2"
+
+react-final-form-hooks@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-final-form-hooks/-/react-final-form-hooks-2.0.2.tgz#edd3d058d5eda620681644cb022861c5efe7955a"
+  integrity sha512-Q8ZP1B0vyAsJ3E8T8QEbje6ECdvD7xkNUd95iMoZuuXAuAtjEHoj8fL8SWxm3V/tG1GPwMkmKS/DPTYlVaaMVg==
 
 react-focus-lock@^2.3.1:
   version "2.4.1"
@@ -6093,6 +6112,11 @@ util@^0.11.0:
   integrity sha512-HShAsny+zS2TZfaXxD9tYj4HQGlBezXZMZuM/S5PKLLoZkShZiGk9o5CzukI1LVHZvjdvZ2Sj1aW/Ndn2NB/HQ==
   dependencies:
     inherits "2.0.3"
+
+validator@^13.1.17:
+  version "13.1.17"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-13.1.17.tgz#ad677736950adddd3c37209484a6b2e0966579ad"
+  integrity sha512-zL5QBoemJ3jYFb2/j38y7ljhwYGXVLUp8H6W1nVxadnAOvUOytec+L7BHh1oBQ82/TzWXHd+GSaxUWp4lROkLg==
 
 vm-browserify@1.1.2, vm-browserify@^1.0.1:
   version "1.1.2"

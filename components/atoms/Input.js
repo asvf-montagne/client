@@ -1,22 +1,24 @@
-import { forwardRef, useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
 import styles from './Input.module.css';
 
 const Input = forwardRef(({
-  textArea = false,
-  autocomplete = 'off',
-  type = 'text',
-  label,
-  placeholder,
-  value,
-  onChange,
-  onKeyDown,
-  icon,
-  link,
-  error,
-  ...props
-}, ref) => {
+                            textArea = false,
+                            autocomplete = 'off',
+                            type = 'text',
+                            label,
+                            placeholder,
+                            value,
+                            onChange,
+                            onKeyDown,
+                            onFocus,
+                            onBlur,
+                            icon,
+                            link,
+                            meta,
+                            ...props
+                          }, ref) => {
   const [focused, setFocused] = useState(false)
 
   return (
@@ -35,20 +37,20 @@ const Input = forwardRef(({
       <div className={`
         ${styles.input__container}
         ${
-          error
-            ? styles.input__containerError
-            : (focused && styles.input__containerFocused)
-        }
+        meta.touched && meta.error
+          ? styles.input__containerError
+          : (focused && styles.input__containerFocused)
+      }
       `}>
         {icon && (
           <div className={styles.input__container__iconBox}>
             <Icon className={`
               ${styles.input__container__iconBox__icon}
               ${
-                error
-                  ? styles.input__container__iconBox__iconError
-                  : (focused && styles.input__container__iconBox__iconFocused)
-              }
+              meta.touched && meta.error
+                ? styles.input__container__iconBox__iconError
+                : (focused && styles.input__container__iconBox__iconFocused)
+            }
             `}>
               {icon}
             </Icon>
@@ -59,8 +61,14 @@ const Input = forwardRef(({
             <textarea
               ref={ref}
               className={styles.input__container__textarea}
-              onFocus={() => setFocused(true)}
-              onBlur={() => setFocused(false)}
+              onFocus={() => {
+                onFocus()
+                setFocused(true)
+              }}
+              onBlur={() => {
+                onBlur()
+                setFocused(false)
+              }}
               onChange={(event) => onChange(event.target.value)}
               onKeyDown={onKeyDown}
               value={value}
@@ -72,8 +80,14 @@ const Input = forwardRef(({
               type={type}
               autoComplete={autocomplete}
               className={styles.input__container__input}
-              onFocus={() => setFocused(true)}
-              onBlur={() => setFocused(false)}
+              onFocus={() => {
+                onFocus()
+                setFocused(true)
+              }}
+              onBlur={() => {
+                onBlur()
+                setFocused(false)
+              }}
               onChange={(event) => onChange(event.target.value)}
               onKeyDown={onKeyDown}
               value={value}
@@ -83,9 +97,9 @@ const Input = forwardRef(({
         }
       </div>
 
-      {error && (
+      {meta.touched && meta.error && (
         <a className={styles.input__errorMsg}>
-          {error.message}
+          {meta.error}
         </a>
       )}
     </div>
