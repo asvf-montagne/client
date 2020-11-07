@@ -37,6 +37,7 @@ export default function FormSignIn({ email, setEmail, password, setPassword, onS
             event.preventDefault()
           }
         }}
+        meta={{}}
         icon="mail"
       />
       <Input
@@ -53,6 +54,7 @@ export default function FormSignIn({ email, setEmail, password, setPassword, onS
             event.preventDefault()
           }
         }}
+        meta={{}}
         icon="lock"
         link={{
           title: 'Mot de passe oublié ?',

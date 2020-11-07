@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import AuthLayout from '@components/atoms/AuthLayout';
 import FormForgotPassword from "@components/organisms/FormForgotPassword";
 

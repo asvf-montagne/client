@@ -2,6 +2,7 @@ import axios from "axios";
 import postsService from "./posts";
 import tagsService from "./tags";
 import partnersService from "./partners";
+import contactFormSubmissionsService from "./contact-form-submissions";
 
 const baseURL = process.env.API_ENDPOINT || process.env.NEXT_PUBLIC_API_ENDPOINT || 'https://dashboard.asvf-montagne.fr';
 
@@ -24,7 +25,8 @@ function services({ token } = {}) {
   return {
     posts: postsService(client),
     tags: tagsService(client),
-    partners: partnersService(client)
+    partners: partnersService(client),
+    contactFormSubmissions: contactFormSubmissionsService(client)
   }
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
 import useWindowSize from '@hooks/useWindowSize';
-import LandingForm from '@components/molecules/LandingForm'
+import ContactForm from '@components/organisms/ContactForm'
 import styles from './LandingContact.module.css';
 import dynamic from "next/dynamic";
 
@@ -82,29 +82,12 @@ export default function LandingContact({ fullName, setFullName, email, setEmail,
               </div>
 
               {size <= 1184 && (
-                <LandingForm
-                  position="center"
-                  email={email}
-                  fullName={fullName}
-                  message={message}
-                  setEmail={setEmail}
-                  setFullName={setFullName}
-                  setMessage={setMessage}
-                  onSubmit={onSubmit}
-                />
+                <ContactForm/>
               )}
             </div>
 
             {size > 1184 && (
-              <LandingForm
-                email={email}
-                fullName={fullName}
-                message={message}
-                setEmail={setEmail}
-                setFullName={setFullName}
-                setMessage={setMessage}
-                onSubmit={onSubmit}
-              />
+              <ContactForm/>
             )}
           </div>
         </div>

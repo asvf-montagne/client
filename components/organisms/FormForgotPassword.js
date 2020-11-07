@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Button from "@components/atoms/Button";
 import Input from '@components/atoms/Input';
@@ -31,6 +31,7 @@ export default function FormForgotPassword({ email, setEmail, onSubmit }) {
             event.preventDefault()
           }
         }}
+        meta={{}}
         onChange={(event) => setEmail(event.target.value)}
         icon="mail"
       />

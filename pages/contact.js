@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Layout from '@components/atoms/Layout';
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay';
 import PageHeader from '@components/atoms/PageHeader';
-import Button from '@components/atoms/Button';
-import LandingForm from '@components/molecules/LandingForm';
+import ContactForm from '@components/organisms/ContactForm';
 import styles from '../styles/Contact.module.css';
 import Icon from "@material-ui/core/Icon";
 
@@ -19,7 +18,8 @@ export default function Contact() {
   return (
     <Layout>
       <SplitBackgroundOverlay padding="96px 0 96px 0" topHalfHeight={90}>
-        <PageHeader title="Nous contacter" subTitle="Remplissez le formulaire et nous vous répondrons le plus rapidement possible." />
+        <PageHeader title="Nous contacter"
+                    subTitle="Remplissez le formulaire et nous vous répondrons le plus rapidement possible."/>
       </SplitBackgroundOverlay>
       <section className={styles.contact_form}>
         <div className={styles.container}>
@@ -44,16 +44,7 @@ export default function Contact() {
             </button>
           </div>
         </div>
-        <LandingForm
-          position="center"
-          email={email}
-          fullName={fullName}
-          message={message}
-          setEmail={setEmail}
-          setFullName={setFullName}
-          setMessage={setMessage}
-          onSubmit={handleSubmit}
-        />
+        <ContactForm position="center"/>
       </section>
     </Layout>
   )
