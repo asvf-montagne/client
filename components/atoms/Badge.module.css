@@ -1,0 +1,40 @@
+.badge {
+    display: inline-block;
+    border-radius: 7px;
+    padding: 5px 10px 5px 10px;
+    background-color: gray;
+}
+.badge__inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.badge__inner > * {
+    margin-left: 10px;
+}
+
+.badge__inner > *:first-child {
+    margin-left: 0 !important;
+}
+
+.badge__green {
+    color: var(--font-color-status-success);
+    background-color: #D6EEDC;
+}
+
+.badge__yellow {
+    color: #FF8457;
+    background-color: var(--secondary-bg-color)
+}
+
+.badge__red {
+    color: var(--font-color-status-error);
+    background-color: #FEDCDD;
+}
+
+.badge__blue {
+    color: var(--font-color-link);
+    background-color: #CEE3FF;
+}
