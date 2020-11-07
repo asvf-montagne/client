@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Button from "@components/atoms/Button";
 import Input from '@components/atoms/Input';
@@ -40,6 +40,7 @@ export default function FormSignUp({ fullName, setFullName, password, setPasswor
           }
         }}
         onChange={setFullName}
+        meta={{}}
         icon="person"
       />
       <Input
@@ -54,6 +55,7 @@ export default function FormSignUp({ fullName, setFullName, password, setPasswor
             event.preventDefault()
           }
         }}
+        meta={{}}
         onChange={setEmail}
         icon="mail"
       />
@@ -70,6 +72,7 @@ export default function FormSignUp({ fullName, setFullName, password, setPasswor
             event.preventDefault()
           }
         }}
+        meta={{}}
         onChange={setPassword}
         icon="lock"
       />

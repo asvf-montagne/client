@@ -115,7 +115,7 @@ Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   onKeyDown: PropTypes.func.isRequired,
   link: PropTypes.object,
-  error: PropTypes.object
+  meta: PropTypes.object
 }
 
 export default Input;

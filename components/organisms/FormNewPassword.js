@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Button from "@components/atoms/Button";
 import Input from '@components/atoms/Input';
@@ -35,6 +35,7 @@ export default function FormNewPassword({ password, setPassword, passwordConfirm
             event.preventDefault()
           }
         }}
+        meta={{}}
         onChange={(event) => setPassword(event.target.value)}
         icon="lock"
       />
@@ -52,6 +53,7 @@ export default function FormNewPassword({ password, setPassword, passwordConfirm
             event.preventDefault()
           }
         }}
+        meta={{}}
         onChange={(event) => setPassword(event.target.value)}
         icon="lock"
       />

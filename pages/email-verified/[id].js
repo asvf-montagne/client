@@ -1,5 +1,6 @@
 import AuthLayout from "@components/atoms/AuthLayout";
 import BigIcon from "@components/molecules/BigIcon";
+import React from "react";
 
 export default function EmailVerify() {
   return (
