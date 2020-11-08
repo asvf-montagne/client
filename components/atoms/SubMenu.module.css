@@ -1,8 +1,8 @@
 .submenu {
     padding: 24px;
-    max-width: 400px;
+    max-width: 600px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 32px;
     grid-auto-rows: minmax(100px, auto);
     background-color: var(--primary-bg-color);
@@ -29,16 +29,17 @@
     color: var(--font-color-gray1);
     font-weight: var(--font-weight-medium);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     margin-bottom: 16px;
 }
 
 .submenu_group_link {
     width: 100%;
-    font-size: var(--text-size-small);
+    font-size: var(--text-size-medium);
     color: var(--font-color-primary);
     font-weight: var(--font-weight-regular);
     text-decoration: none;
+    text-transform: capitalize;
     transition: ease-in-out 0.1s;
     line-height: 1.6rem;
 }
