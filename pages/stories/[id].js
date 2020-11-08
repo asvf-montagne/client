@@ -9,20 +9,19 @@ import services from "../../services";
 import { posts } from "../../services/posts";
 
 export default function Story({ story, suggestedStories }) {
-  const images = posts.getImagesForSlider(story);
   return (
     <Layout>
-      <SplitBackgroundOverlay padding="96px 0 64px 0" topHalfHeight={!!images.length ? 60 : 100}>
+      <SplitBackgroundOverlay padding="96px 0 64px 0" topHalfHeight={!!story.images.length ? 60 : 100}>
         <StoryHeader
           tag={posts.getFirstTag(story)}
           title={story.title}
           author={posts.getTitledAuthor(story)}
           date={posts.getPublishedTimeAgo(story)}
-          image={images[0]}
+          image={posts.getFirstImage(story)}
         />
       </SplitBackgroundOverlay>
-      <Blog data={JSON.parse(story.content)} style={{ marginTop: (!images.length ? 64 : 0) }} />
-      <Gallery images={images.map(image => ({
+      <Blog data={JSON.parse(story.content)} style={{ marginTop: (!story.images.length ? 64 : 0) }} />
+      <Gallery images={story.images.map(image => ({
         src: image.url,
         alt: image.caption,
         height: image.height,
@@ -37,9 +36,9 @@ export async function getServerSideProps(ctx) {
   // todo: if the story is not found: => 404
 
   const story = await services().posts.find({ ...ctx.params })
-  const suggestedStories = await services().posts.suggested({ limit: 2, date: story[0]['published_at'] })
+  const suggestedStories = await services().posts.suggested({ limit: 2, date: story['published_at'] })
 
   return {
-    props: { story: story[0], suggestedStories }
+    props: { story, suggestedStories }
   }
 }

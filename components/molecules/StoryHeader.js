@@ -16,7 +16,8 @@ export default function StoryHeader({ tag, title, author, date, image }) {
     <>
       {tag !== undefined && (
         <Button
-          type="link"
+          variant="link"
+          focus="link"
           onClick={() => console.log("todo: go on search story with tag filter: " + tag)}
           style={{ marginBottom: 42 }}
         >

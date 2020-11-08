@@ -24,7 +24,7 @@ export default function DefaultPageLayout({ stories }) {
                 id={story.id}
                 title={story.title}
                 description={story.content}
-                image={posts.getImage(story)}
+                image={posts.getPreviewImage(story)}
                 author={story.author}
                 categories={story.tags[0]}
                 date={posts.getPublishedTimeAgo(story)}

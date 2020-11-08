@@ -24,7 +24,7 @@ export default function LandingStoriesHighlight({ highlightedStories, handleRedi
                     id={highlightedStory.id}
                     title={highlightedStory.title}
                     description={highlightedStory.content}
-                    image={posts.getImage(highlightedStory)}
+                    image={posts.getPreviewImage(highlightedStory)}
                     author={highlightedStory.author}
                     categories={highlightedStory.tags[0]}
                     date={posts.getPublishedTimeAgo(highlightedStory)}

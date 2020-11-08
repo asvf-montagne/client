@@ -1,6 +1,7 @@
 import TimeAgo from 'javascript-time-ago'
 import fr from 'javascript-time-ago/locale/fr'
 import stripHtml from "string-strip-html";
+import imageNotFound from "@assets/images/image_not_found.png";
 
 TimeAgo.addLocale(fr)
 
@@ -30,7 +31,7 @@ const postsService = client => ({
   },
 
   async find({ id }) {
-    const res = await client.get(`/posts`, {
+    const res = await client.get(`/posts/view/post`, {
         params: {
           id,
         }
@@ -51,45 +52,29 @@ const postsService = client => ({
   }
 })
 
-const DEFAULT_IMAGE = 'https://www.ilac.com/wp-content/uploads/2019/05/dark-placeholder.png'
-
 export const posts = {
-  defaultImage: DEFAULT_IMAGE,
-
   getFirstTag(post) {
     if (post.tags.length === 0) {
       return 'unknown'
     }
 
-    return post.tags[0].tag
+    return post.tags[0]
   },
 
-  getImage(post) {
+  getPreviewImage(post) {
     if (post.image === undefined) {
-      return DEFAULT_IMAGE
+      return imageNotFound
     }
 
     return post.image.url
   },
 
-  getImagesForSlider(post) {
+  getFirstImage(post) {
     if (post.images.length === 0) {
-      return []
+      return { url: imageNotFound, name: "image not found" }
     }
 
-    const imageSize = ['large', 'medium', 'small', 'thumbnail']
-    return post.images.map(image => {
-      imageSize.forEach(size => {
-        if (image.url !== undefined) return
-        if (image.formats[size] !== undefined) {
-          image.url = image.formats.large.url
-        }
-      })
-
-      if (image.url === undefined) image.url = DEFAULT_IMAGE
-
-      return image
-    })
+    return post.images.reverse()[0]
   },
 
   getPublishedTimeAgo(post) {
@@ -114,9 +99,9 @@ export const posts = {
   },
 
   getTitledAuthor(post) {
-    const firstName = post['created_by']['firstname']
+    const firstName = post['author']['firstname']
     if (firstName === '') {
-      return post['created_by']['username'] || 'unknown'
+      return post['author']['username'] || 'unknown'
     }
 
     return firstName[0].toUpperCase() + firstName.slice(1);
