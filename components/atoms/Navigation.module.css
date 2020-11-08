@@ -43,6 +43,20 @@
     height: 100%;
 }
 
+.header__list__item:hover .submenu_container {
+    opacity: 1;
+    z-index: 10000;
+}
+
+.submenu_container {
+    opacity: 0;
+    position: absolute;
+    margin-left: -32px;
+    top: 64px;
+    z-index: 0;
+    transition: 0.3s;
+}
+
 .header__list > .header__list__item[id="burger"] > button > span {
     color: var(--font-color-contrast);
     font-size: 32px;

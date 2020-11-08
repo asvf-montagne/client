@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Icon from '@material-ui/core/Icon';
 import Button from '@components/atoms/Button';
+import SubMenu from '@components/atoms/SubMenu';
 import styles from './Navigation.module.css';
 import useWindowSize from "@hooks/useWindowSize";
 
@@ -29,6 +30,9 @@ export default function Navigation() {
           <a className={styles.header__logo__min} href="/">ASVF</a>
           <li className={styles.header__list__item}>
             <a className={styles.header__list__item__link} href="/club">Le Club</a>
+            <div className={styles.submenu_container}>
+              <SubMenu />
+            </div>
           </li>
           <li className={styles.header__list__item}>
             <a className={styles.header__list__item__link} href="/stories">Récits</a>
