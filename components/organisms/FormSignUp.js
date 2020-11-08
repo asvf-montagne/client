@@ -4,7 +4,7 @@ import Button from "@components/atoms/Button";
 import Input from '@components/atoms/Input';
 import styles from './FormSignIn.module.css';
 
-import GoogleLogoAsset from '@assets/images/logo-google.png';
+import GoogleLogoAsset from '@assets/images/logo_google.png';
 
 FormSignUp.propTypes = {
   fullName: PropTypes.string.isRequired,
