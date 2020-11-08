@@ -61,7 +61,7 @@ export const posts = {
       return 'unknown'
     }
 
-    return post.tags[0]
+    return post.tags[0].tag
   },
 
   getImage(post) {
