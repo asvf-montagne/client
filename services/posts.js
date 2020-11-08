@@ -74,28 +74,11 @@ export const posts = {
       return { url: imageNotFound, name: "image not found" }
     }
 
-    return post.images.reverse()[0]
+    return post.images[0]
   },
 
   getPublishedTimeAgo(post) {
     return timeAgo.format(new Date(post['published_at']), 'round')
-  },
-
-  getRawDescription(post) {
-    const content = JSON.parse(post.content)
-    return content.blocks.reduce((prev, curr) => {
-      const prevWithSpace = () => prev.length > 0 ? prev + ' ' : prev
-      switch (curr.type) {
-        case 'paragraph':
-          return prevWithSpace() + stripHtml(curr.data.text).result
-        case 'list':
-          return prevWithSpace() + stripHtml(curr.data.items.reduce((p, i) => p + ', ' + i, '')).result
-        case 'quote':
-          return prevWithSpace() + stripHtml(curr.data.text + '|' + curr.data.caption).result
-        default:
-          return prev
-      }
-    }, '')
   },
 
   getTitledAuthor(post) {
