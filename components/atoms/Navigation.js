@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Icon from '@material-ui/core/Icon';
 import Button from '@components/atoms/Button';
-import SubMenu from '@components/atoms/SubMenu';
 import styles from './Navigation.module.css';
 import useWindowSize from "@hooks/useWindowSize";
 
@@ -50,6 +49,25 @@ const clubSubMenu = [
     ]
   }
 ]
+
+function SubMenu() {
+  return (
+    <div className={styles.submenu}>
+      {clubSubMenu.map((item, index) => (
+        <div key={index} className={styles.submenu_group}>
+          <h6 className={styles.submenu_group_title}>
+            {item.title}
+          </h6>
+          {item.links.map((link, index) => (
+            <a key={index} className={styles.submenu_group_link} href={link.url}>
+              {link.label}
+            </a>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function Navigation() {
   const router = useRouter();
