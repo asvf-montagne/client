@@ -61,13 +61,13 @@ const items = [
 export default function SubMenu() {
   return (
     <div className={styles.submenu}>
-      {items.map((item) => (
-        <div className={styles.submenu_group}>
+      {items.map((item, index) => (
+        <div key={index} className={styles.submenu_group}>
           <h6 className={styles.submenu_group_title}>
             {item.title}
           </h6>
-          {item.links.map((link) => (
-            <a className={styles.submenu_group_link} href={link.url}>
+          {item.links.map((link, index) => (
+            <a key={index} className={styles.submenu_group_link} href={link.url}>
               {link.label}
             </a>
           ))}
