@@ -103,6 +103,26 @@
     text-decoration: none;
 }
 
+.header__menu__item__link_sub_title {
+    font-size: var(--text-size-large);
+    color: var(--font-color-gray1);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.header__menu__item__link_sub_link {
+    font-size: var(--text-size-large);
+    color: var(--font-color-contrast);
+    font-weight: var(--font-weight-regular);
+    text-decoration: none;
+}
+
+.header__menu__item__link_sub_title::before, .header__menu__item__link_sub_link::before {
+    content: ' ';
+    margin-left: 24px;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media screen and (max-width: 576px) {
     .header__logo {

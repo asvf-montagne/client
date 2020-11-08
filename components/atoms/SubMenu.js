@@ -36,26 +36,13 @@ const items = [
       {
         label: "Location materiel",
         url: '/'
-      }
-    ]
-  },
-  {
-    title: 'infos',
-    links: [
+      },
       {
         label: 'COVID-19',
         url: '/'
       },
-      {
-        label: "notices assurance",
-        url: '/'
-      },
-      {
-        label: "questionnaire santé",
-        url: '/'
-      }
     ]
-  },
+  }
 ]
 
 export default function SubMenu() {

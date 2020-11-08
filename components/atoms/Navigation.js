@@ -6,6 +6,51 @@ import SubMenu from '@components/atoms/SubMenu';
 import styles from './Navigation.module.css';
 import useWindowSize from "@hooks/useWindowSize";
 
+const clubSubMenu = [
+  {
+    title: 'nouveau',
+    links: [
+      {
+        label: 'Presentation du club',
+        url: '/'
+      },
+      {
+        label: "Ecole d'escalade",
+        url: '/'
+      },
+      {
+        label: "Le mur d'escalade",
+        url: '/'
+      },
+      {
+        label: 'Inscription au club',
+        url: '/'
+      }
+    ]
+  },
+  {
+    title: 'adhérent',
+    links: [
+      {
+        label: 'Prochaines sorties',
+        url: '/'
+      },
+      {
+        label: "reglement interieur",
+        url: '/'
+      },
+      {
+        label: "Location materiel",
+        url: '/'
+      },
+      {
+        label: 'COVID-19',
+        url: '/'
+      },
+    ]
+  }
+]
+
 export default function Navigation() {
   const router = useRouter();
   const { width: size } = useWindowSize();
@@ -92,6 +137,18 @@ export default function Navigation() {
             <li className={styles.header__menu__item}>
               <a className={styles.header__menu__item__link} href="/club">Le Club</a>
             </li>
+            {clubSubMenu.map((item, index) => (
+              <div key={index}>
+                <li className={styles.header__menu__item}>
+                  <a className={styles.header__menu__item__link_sub_title} href="/club">{item.title}</a>
+                </li>
+                {item.links.map((link, index) => (
+                  <li key={index} className={styles.header__menu__item}>
+                    <a className={styles.header__menu__item__link_sub_link} href={link.url}>{link.label}</a>
+                  </li>
+                ))}
+              </div>
+            ))}
             <li className={styles.header__menu__item}>
               <a className={styles.header__menu__item__link} href="/stories">Récits</a>
             </li>
