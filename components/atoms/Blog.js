@@ -14,8 +14,6 @@ export default function Blog({ data, ...props }) {
   return (
     <section className={styles.blog} {...props}>
       <div className={styles.blog__inner}>
-        <UploadImageInput/>
-
         <EditorRendererProvider
           style={{
             header: {
