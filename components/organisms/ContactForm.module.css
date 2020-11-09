@@ -25,10 +25,6 @@
     background-color: var(--primary-bg-color);
 }
 
-.landingContact__overlay__contacts__col__formRight {
-    margin-left: 64px;
-}
-
 .landingContact__overlay__contacts__colorParagraph {
     color: var(--font-color-secondary);
 }
