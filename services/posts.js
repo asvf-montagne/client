@@ -1,6 +1,5 @@
 import TimeAgo from 'javascript-time-ago'
 import fr from 'javascript-time-ago/locale/fr'
-import stripHtml from "string-strip-html";
 import imageNotFound from "@assets/images/image_not_found.png";
 
 TimeAgo.addLocale(fr)
@@ -89,8 +88,6 @@ export const posts = {
 
     return firstName[0].toUpperCase() + firstName.slice(1);
   }
-
-
 }
 
 export default postsService
