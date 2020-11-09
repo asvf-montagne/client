@@ -1,0 +1,120 @@
+.upload_file {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    border-width: 2px;
+    border-radius: 7px;
+    border-color: var(--font-color-link);
+    border-style: dashed;
+    color: var(--font-color-secondary);
+    outline: none;
+    transition: border .24s ease-in-out;
+    cursor: pointer;
+}
+
+.upload_file:hover {
+    background-color: #f5f9ff;
+}
+
+.upload_file__active {
+}
+
+.upload_file__accept {
+    border-color: var(--font-color-status-success);
+    background-color: #E0F9F0;
+}
+
+.upload_file__reject {
+    border-color: var(--font-color-status-error);
+    background-color: #FEDCDD;
+}
+
+
+.upload_file__textComponent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+.upload_file__textComponent em {
+    color: var(--font-color-link) !important;
+    font-style: normal;
+}
+
+.img_preview__container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.img_preview__img {
+    align-self: center;
+    border-radius: 7px;
+    height: 100px;
+    width: 150px;
+    object-fit: cover;
+}
+
+.img_preview__imagePreview {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 16px;
+    padding-top: 16px;
+    border-bottom: 1px solid var(--font-color-gray3);
+    transition: ease-in;
+    justify-content: space-between;
+}
+
+.img_preview__imagePreview:last-child {
+    border-bottom: none;
+}
+
+.img_preview__containedInputAndIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+}
+
+.img_preview__input {
+    width: 100%;
+}
+
+.img_preview__contained_del {
+    margin-left: 16px;
+    color: var(--font-color-gray2);
+    cursor: pointer;
+}
+
+.img_preview__contained_del:hover {
+    color: var(--font-color-status-error);
+}
+
+.img_preview__title {
+    margin-top: 16px;
+    color: var(--font-color-secondary)
+}
+
+@media screen and (max-width: 600px) {
+    .img_preview__imagePreview {
+        flex-direction: column;
+        justify-items: start;
+    }
+
+    .img_preview__containedInputAndIcon {
+        margin-top: 10px;
+        align-self: normal;
+    }
+
+    .img_preview__img {
+        height: 200px;
+        width: 100%;
+    }
+
+    .img_preview__contained_del {
+        margin-left: 0;
+    }
+}
