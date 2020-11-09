@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Icon from "@material-ui/core/Icon";
-import Button from "@components/atoms/Button";
+import Icon from '@material-ui/core/Icon';
+import Button from '@components/atoms/Button';
 import styles from './FlashInfo.module.css';
 
 FlashInfo.propTypes = {
@@ -15,7 +15,8 @@ export default function FlashInfo({ infos = [], handleClose }) {
   return (
     <div id="test" className={styles.flash}>
       <div className={styles.flash_inner}>
-        <a onAnimationIteration={() => setIndex(index + 1)}
+        <a
+          onAnimationIteration={() => setIndex(index + 1)}
           className={styles.flash_inner__link}
           href={infos[index % infos.length].redirect}
         >

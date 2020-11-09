@@ -6,105 +6,105 @@ const groups = [
     links: [
       {
         ref: '/',
-        name: 'Le club'
+        name: 'Le club',
       },
       {
         ref: '/',
-        name: 'Récits'
+        name: 'Récits',
       },
       {
         ref: '/',
-        name: 'Programmes'
+        name: 'Programmes',
       },
       {
         ref: '/',
-        name: 'Galerie'
+        name: 'Galerie',
       },
       {
         ref: '/',
-        name: 'Connexion'
+        name: 'Connexion',
       },
       {
         ref: '/',
-        name: 'Inscription'
-      }
-    ]
+        name: 'Inscription',
+      },
+    ],
   },
   {
     title: 'Les liens',
     links: [
       {
         ref: '/',
-        name: 'Villefontaine'
+        name: 'Villefontaine',
       },
       {
         ref: '/',
-        name: 'Météo grimpe'
+        name: 'Météo grimpe',
       },
       {
         ref: '/',
-        name: 'Kinéscalade'
+        name: 'Kinéscalade',
       },
       {
         ref: '/',
-        name: 'Camptocamp'
+        name: 'Camptocamp',
       },
       {
         ref: '/',
-        name: 'Skitour'
+        name: 'Skitour',
       },
       {
         ref: '/',
-        name: 'FFH'
-      }
-    ]
+        name: 'FFH',
+      },
+    ],
   },
   {
     title: 'Partenaires',
     links: [
       {
         ref: 'https://www.petzl.com/FR/fr',
-        name: 'Petzel'
+        name: 'Petzel',
       },
       {
         ref: 'https://www.haribo.com/fr-fr',
-        name: 'Haribo'
+        name: 'Haribo',
       },
       {
         ref: 'https://www.expe.fr/',
-        name: 'Expe'
+        name: 'Expe',
       },
       {
         ref: 'https://www.auvieuxcampeur.fr/',
-        name: 'Au vieux campeur'
+        name: 'Au vieux campeur',
       },
       {
         ref: 'https://www.simond.fr/',
-        name: 'Simond'
+        name: 'Simond',
       },
       {
         ref: 'https://www.sport2000.fr/',
-        name: 'Sport 2000'
-      }
-    ]
+        name: 'Sport 2000',
+      },
+    ],
   },
   {
     title: 'Le site',
     links: [
       {
         ref: '/',
-        name: 'Sitemap'
+        name: 'Sitemap',
       },
       {
         ref: '/',
-        name: 'Mentions légales'
+        name: 'Mentions légales',
       },
       {
         ref: '/',
-        name: 'Flux RSS'
-      }
-    ]
-  }
+        name: 'Flux RSS',
+      },
+    ],
+  },
 ];
 
 export default function Footer() {
@@ -114,9 +114,7 @@ export default function Footer() {
         <div className={styles.footer__container}>
           {groups.map((group, index) => (
             <ul key={index} className={styles.footer__list}>
-              <h3 className={styles.footer__title}>
-                {group.title}
-              </h3>
+              <h3 className={styles.footer__title}>{group.title}</h3>
               {group.links.map((link, index) => (
                 <li key={index} className={styles.footer__item}>
                   <a href={link.ref} className={styles.footer__link}>

@@ -14,8 +14,8 @@ export default function CardStoryMin({ id, title, author, categories, date }) {
   const router = useRouter();
 
   const handleRedirection = () => {
-    router.push(`/stories/${id}`)
-  }
+    router.push(`/stories/${id}`);
+  };
 
   return (
     <div className={styles.cardMin}>
@@ -23,16 +23,10 @@ export default function CardStoryMin({ id, title, author, categories, date }) {
         {title}
       </h1>
       <div className={styles.cardMin__meta}>
-        <p className={styles.cardMin__meta__author}>
-          {author}
-        </p>
+        <p className={styles.cardMin__meta__author}>{author}</p>
         <span className={styles.cardMin__meta__span}>
-          <p>
-            {categories}
-          </p>
-          <p>
-            {date}
-          </p>
+          <p>{categories}</p>
+          <p>{date}</p>
         </span>
       </div>
     </div>

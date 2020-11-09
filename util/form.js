@@ -1,5 +1,4 @@
 const FormUtil = {
-
   /**
    * react-final-form detect that we can't reset form in submit method and
    * suggest itself to use setTimeout to reset the form after submitting.
@@ -9,20 +8,19 @@ const FormUtil = {
    */
   reset(values, form) {
     setTimeout(() => {
-      Object.keys(values).forEach(key => {
+      Object.keys(values).forEach((key) => {
         form.resetFieldState(key);
       });
       form.reset();
-    })
+    });
   },
 
   navigateToNextInput(event, refNext, keycode) {
     if (event.keyCode === keycode) {
-      refNext.current.focus()
-      event.preventDefault()
+      refNext.current.focus();
+      event.preventDefault();
     }
-  }
-}
+  },
+};
 
-
-export { FormUtil }
+export { FormUtil };

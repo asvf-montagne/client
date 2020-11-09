@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import Button from "@components/atoms/Button";
+import Button from '@components/atoms/Button';
 import Input from '@components/atoms/Input';
 import styles from './FormNewPassword.module.css';
 
@@ -10,11 +10,17 @@ FormNewPassword.propTypes = {
   password: PropTypes.string.isRequired,
   setPassword: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-}
+};
 
-export default function FormNewPassword({ password, setPassword, passwordConfirm, setPasswordConfirm, onSubmit }) {
-  const refPassword = useRef(null)
-  const refPasswordConfirm = useRef(null)
+export default function FormNewPassword({
+  password,
+  setPassword,
+  passwordConfirm,
+  setPasswordConfirm,
+  onSubmit,
+}) {
+  const refPassword = useRef(null);
+  const refPasswordConfirm = useRef(null);
 
   useEffect(() => {
     refPassword.current.focus();
@@ -31,8 +37,8 @@ export default function FormNewPassword({ password, setPassword, passwordConfirm
         value={password}
         onKeyDown={(event) => {
           if (event.keyCode === 13) {
-            refPasswordConfirm.current.focus()
-            event.preventDefault()
+            refPasswordConfirm.current.focus();
+            event.preventDefault();
           }
         }}
         meta={{}}
@@ -49,8 +55,8 @@ export default function FormNewPassword({ password, setPassword, passwordConfirm
         value={password}
         onKeyDown={(event) => {
           if (event.keyCode === 13) {
-            onSubmit(event)
-            event.preventDefault()
+            onSubmit(event);
+            event.preventDefault();
           }
         }}
         meta={{}}
@@ -59,7 +65,13 @@ export default function FormNewPassword({ password, setPassword, passwordConfirm
       />
 
       <div className={styles.signUpForm__authGroup}>
-        <Button variant="primary" size="large" focus="primary" fluid onClick={(event) => onSubmit(event)}>
+        <Button
+          variant="primary"
+          size="large"
+          focus="primary"
+          fluid
+          onClick={(event) => onSubmit(event)}
+        >
           Change password
         </Button>
       </div>

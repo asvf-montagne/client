@@ -79,7 +79,7 @@ const Input = forwardRef(({
               ref={ref}
               type={type}
               autoComplete={autocomplete}
-              className={styles.input__container__input}
+              className={`${styles.input__container__input} ${icon ? styles.input__container__input__iconless : ''}`}
               onFocus={() => {
                 onFocus()
                 setFocused(true)

@@ -1,13 +1,18 @@
-import styles from "./LandingStoriesHighlight.module.css";
-import CardStory from "@components/molecules/CardStory";
-import {posts} from "../../services/posts";
-import CardStoryMin from "@components/molecules/CardStoryMin";
-import Button from "@components/atoms/Button";
-import Icon from "@material-ui/core/Icon";
-import React from "react";
+import PropTypes from 'prop-types';
+import CardStory from '@components/molecules/CardStory';
+import { posts } from '../../services/posts';
+import CardStoryMin from '@components/molecules/CardStoryMin';
+import Button from '@components/atoms/Button';
+import Icon from '@material-ui/core/Icon';
+import styles from './LandingStoriesHighlight.module.css';
+
+LandingStoriesHighlight.propTypes = {
+  highlightedStories: PropTypes.array.isRequired,
+  handleRedirection: PropTypes.func.isRequired,
+};
 
 export default function LandingStoriesHighlight({ highlightedStories, handleRedirection }) {
-  const highlightedStory = highlightedStories[0]
+  const highlightedStory = highlightedStories[0];
 
   return (
     <section className={styles.storiesHighlight}>
@@ -15,7 +20,7 @@ export default function LandingStoriesHighlight({ highlightedStories, handleRedi
         <div className={styles.storiesHighlight__grid}>
           <div className={styles.storiesHighlight__inner__col}>
             <div className={styles.storiesHighlight__highlight}>
-              <div className={styles.storiesHighlight__highlight__backgroundRec}/>
+              <div className={styles.storiesHighlight__highlight__backgroundRec} />
               <div className={styles.storiesHighlight__highlight__overlay}>
                 <div className={styles.storiesHighlight__highlight__overlay__inner}>
                   <CardStory

@@ -11,7 +11,8 @@ BigIcon.propTypes = {
 export default function BigIcon({ icon, variant, description }) {
   return (
     <div className={styles.bigIcon}>
-      <Icon className={`
+      <Icon
+        className={`
         ${styles.bigIcon__icon}
         ${variant === 'primary' ? styles.bigIcon__iconPrimary : ''}
         ${variant === 'success' ? styles.bigIcon__iconSuccess : ''}
@@ -20,11 +21,7 @@ export default function BigIcon({ icon, variant, description }) {
       >
         {icon}
       </Icon>
-      {description && (
-        <h4 className={styles.bigIcon__title}>
-          {description}
-        </h4>
-      )}
+      {description && <h4 className={styles.bigIcon__title}>{description}</h4>}
     </div>
-  )
+  );
 }

@@ -79,11 +79,15 @@
 
 .input__container__input {
     flex: 1;
-    padding: 14px 0;
+    padding: 14px;
     border: none;
     font-size: var(--text-size-medium);
     font-weight: var(--font-weight-regular);
     color: var(--font-color-secondary);
+}
+
+.input__container__input__iconless {
+    margin-left: 0;
 }
 
 .input__container__textarea {

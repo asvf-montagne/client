@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 // import NextSeo from 'next-seo';
-import Navigation from "@components/atoms/Navigation";
-import Footer from "@components/atoms/Footer";
+import Navigation from '@components/atoms/Navigation';
+import Footer from '@components/atoms/Footer';
 import styles from './Layout.module.css';
 
 // const DEFAULT_SEO = {
@@ -25,9 +25,10 @@ import styles from './Layout.module.css';
 
 Layout.propTypes = {
   less: PropTypes.bool,
+  children: PropTypes.node.isRequired,
 };
 
-export default function Layout({ children, less = false }) {
+export default function Layout({ less = false, children }) {
   return (
     <>
       <Head>
@@ -35,13 +36,9 @@ export default function Layout({ children, less = false }) {
         {/*<link rel="icon" href="/favicon.ico" />*/}
       </Head>
       {/*<NextSeo config={DEFAULT_SEO} />*/}
-      {!less && (
-        <Navigation />
-      )}
+      {!less && <Navigation />}
       <main className={styles.container}>{children}</main>
-      {!less && (
-        <Footer />
-      )}
+      {!less && <Footer />}
     </>
   );
 }
