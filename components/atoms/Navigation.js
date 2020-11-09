@@ -158,7 +158,7 @@ export default function Navigation() {
             {clubSubMenu.map((item, index) => (
               <div key={index}>
                 <li className={styles.header__menu__item}>
-                  <a className={styles.header__menu__item__link_sub_title} href="/club">{item.title}</a>
+                  <p className={styles.header__menu__item__link_sub_title}>{item.title}</p>
                 </li>
                 {item.links.map((link, index) => (
                   <li key={index} className={styles.header__menu__item}>
