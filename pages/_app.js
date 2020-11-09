@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import useRouterScroll from '@hooks/useRouterScroll';
+import { wrapper } from '../store';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import '@styles/globals.css';
 import 'nprogress/nprogress.css';
@@ -16,8 +17,10 @@ Application.propTypes = {
   pageProps: PropTypes.object,
 };
 
-export default function Application({ Component, pageProps }) {
+function Application({ Component, pageProps }) {
   useRouterScroll();
 
   return <Component {...pageProps} />;
 }
+
+export default wrapper.withRedux(Application);
