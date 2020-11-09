@@ -5,6 +5,70 @@ import Button from '@components/atoms/Button';
 import styles from './Navigation.module.css';
 import useWindowSize from "@hooks/useWindowSize";
 
+const clubSubMenu = [
+  {
+    title: 'nouveau ?',
+    links: [
+      {
+        label: 'Presentation du club',
+        url: '/'
+      },
+      {
+        label: "Ecole d'escalade",
+        url: '/'
+      },
+      {
+        label: "Le mur d'escalade",
+        url: '/'
+      },
+      {
+        label: 'Inscription au club',
+        url: '/'
+      }
+    ]
+  },
+  {
+    title: 'adhérent',
+    links: [
+      {
+        label: 'Prochaines sorties',
+        url: '/'
+      },
+      {
+        label: "reglement interieur",
+        url: '/'
+      },
+      {
+        label: "Location materiel",
+        url: '/'
+      },
+      {
+        label: 'COVID-19',
+        url: '/'
+      },
+    ]
+  }
+]
+
+function SubMenu() {
+  return (
+    <div className={styles.submenu}>
+      {clubSubMenu.map((item, index) => (
+        <div key={index} className={styles.submenu_group}>
+          <h6 className={styles.submenu_group_title}>
+            {item.title}
+          </h6>
+          {item.links.map((link, index) => (
+            <a key={index} className={styles.submenu_group_link} href={link.url}>
+              {link.label}
+            </a>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function Navigation() {
   const router = useRouter();
   const { width: size } = useWindowSize();
@@ -29,6 +93,11 @@ export default function Navigation() {
           <a className={styles.header__logo__min} href="/">ASVF</a>
           <li className={styles.header__list__item}>
             <a className={styles.header__list__item__link} href="/club">Le Club</a>
+            {size > 768 && (
+              <div className={styles.submenu_container}>
+                <SubMenu />
+              </div>
+            )}
           </li>
           <li className={styles.header__list__item}>
             <a className={styles.header__list__item__link} href="/stories">Récits</a>
@@ -86,6 +155,18 @@ export default function Navigation() {
             <li className={styles.header__menu__item}>
               <a className={styles.header__menu__item__link} href="/club">Le Club</a>
             </li>
+            {clubSubMenu.map((item, index) => (
+              <div key={index}>
+                <li className={styles.header__menu__item}>
+                  <p className={styles.header__menu__item__link_sub_title}>{item.title}</p>
+                </li>
+                {item.links.map((link, index) => (
+                  <li key={index} className={styles.header__menu__item}>
+                    <a className={styles.header__menu__item__link_sub_link} href={link.url}>{link.label}</a>
+                  </li>
+                ))}
+              </div>
+            ))}
             <li className={styles.header__menu__item}>
               <a className={styles.header__menu__item__link} href="/stories">Récits</a>
             </li>

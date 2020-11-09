@@ -43,6 +43,20 @@
     height: 100%;
 }
 
+.header__list__item:hover .submenu_container {
+    opacity: 1;
+    z-index: 10000;
+}
+
+.submenu_container {
+    opacity: 0;
+    position: absolute;
+    margin-left: -32px;
+    top: 64px;
+    z-index: 0;
+    transition: 0.3s;
+}
+
 .header__list > .header__list__item[id="burger"] > button > span {
     color: var(--font-color-contrast);
     font-size: 32px;
@@ -87,6 +101,80 @@
     color: var(--font-color-contrast);
     font-weight: var(--font-weight-regular);
     text-decoration: none;
+}
+
+.header__menu__item__link_sub_title {
+    font-size: var(--text-size-large);
+    color: var(--font-color-gray2);
+    font-weight: var(--font-weight-semiBold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.header__menu__item__link_sub_link {
+    font-size: var(--text-size-large);
+    color: var(--font-color-contrast);
+    font-weight: var(--font-weight-regular);
+    text-decoration: none;
+}
+
+.header__menu__item__link_sub_title::before, .header__menu__item__link_sub_link::before {
+    content: ' ';
+    margin-left: 24px;
+}
+
+.submenu {
+    padding: 24px;
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px;
+    grid-auto-rows: minmax(100px, auto);
+    background-color: var(--primary-bg-color);
+    border-radius: var(--border-radius-medium);
+}
+
+.submenu::after {
+    content: '';
+    position: absolute;
+    left: 52px;
+    top: -10px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid var(--primary-bg-color);
+}
+
+.submenu_group {
+    display: flex;
+    flex-direction: column;
+}
+
+.submenu_group_title {
+    font-size: var(--text-size-large);
+    color: var(--font-color-gray1);
+    font-weight: var(--font-weight-semiBold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+
+.submenu_group_link {
+    width: 100%;
+    font-size: var(--text-size-medium);
+    color: var(--font-color-primary);
+    font-weight: var(--font-weight-regular);
+    text-decoration: none;
+    transition: ease-in-out 0.1s;
+    line-height: 1.6rem;
+}
+
+.submenu_group_link::first-letter {
+    text-transform: uppercase;
+}
+
+.submenu_group_link:hover {
+    color: var(--font-color-linkActive);
 }
 
 /* Small devices (landscape phones, 576px and up) */
