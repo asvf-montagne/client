@@ -64,9 +64,6 @@ export default function ContactForm({ position = 'right' }) {
       <div className={styles.landingContact__overlay__contacts__col__inner__form}>
 
         <Form
-          mutators={{
-            ...arrayMutators
-          }}
           onSubmit={onSubmit}
           validate={contactFormSubmissions.validate}
           render={({ submitError, handleSubmit, values, form }) =>
@@ -101,8 +98,6 @@ export default function ContactForm({ position = 'right' }) {
                          meta={meta}/>
                 )}
               </Field>
-
-              <UploadImageInput push={form.mutators.push}/>
 
               <Button onClick={() => handleSubmit(values, form)} size="medium" variant="primary"
                       focus="primary"

@@ -85,17 +85,16 @@ export default function UploadImageInput({ push }) {
       })}>
         <input {...getInputProps()} />
         <div className={styles.upload_file__textComponent}>
-          <div><p>Faites glisser vos fichiers ici ou bien&nbsp;</p>
-            <p className={styles.upload_file__textComponent_p}>cherchez les</p></div>
+          <p>Faites glisser vos fichiers ici ou bien <em>cherchez les</em></p>
         </div>
       </div>
       <div>
 
-        <h4 className={styles.img_preview__title}>
+        <p className={styles.img_preview__title}>
           {files.length > 0
             ? `Fichier${files.length > 1 ? 's' : ''} (${files.length})`
             : `Aucune image ajouté pour l'instant`}
-        </h4>
+        </p>
 
         <div className={styles.img_preview__container}>
 
@@ -110,13 +109,15 @@ export default function UploadImageInput({ push }) {
                 }
 
                 return (
-                  <div className={styles.img_preview__row} key={index}>
+                  <div className={styles.img_preview__imagePreview} key={index}>
+
                     <img alt="hello" className={styles.img_preview__img} src={f.preview}/>
-                    <div className={styles.img_preview__right}>
+                    <div className={styles.img_preview__containedInputAndIcon}>
                       <div className={styles.img_preview__input}>
                         <Field name={`files.${index}.caption`} type="text">
                           {({ input, meta }) => (
-                            <Input label="Légende" placeholder="Des jolies montagnes ..." icon="text_format"
+                            <Input label="Légende" placeholder="Des jolies montagnes ..."
+                                   icon="text_format"
                                    {...input}
                                    onKeyDown={() => {
                                    }}
@@ -124,7 +125,7 @@ export default function UploadImageInput({ push }) {
                           )}
                         </Field>
                       </div>
-                      <Icon className={styles.img_preview__right_del} onClick={() => {
+                      <Icon className={styles.img_preview__contained_del} onClick={() => {
                         fields.remove(index)
                         deleteFile(f)
                       }}>delete</Icon>
