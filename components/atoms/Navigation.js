@@ -7,7 +7,7 @@ import useWindowSize from "@hooks/useWindowSize";
 
 const clubSubMenu = [
   {
-    title: 'nouveau',
+    title: 'nouveau ?',
     links: [
       {
         label: 'Presentation du club',
