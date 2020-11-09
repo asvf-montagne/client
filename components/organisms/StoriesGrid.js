@@ -1,15 +1,28 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
 import CardStory from '@components/molecules/CardStory';
 import Button from '@components/atoms/Button';
 import styles from './StoriesGrid.module.css';
-import { posts } from "../../services/posts";
+import { posts } from '../../services/posts';
 
-export default function StoriesGrid({ stories = [], handleFetchMoreStories, showFetchMoreStoriesBtn }) {
+StoriesGrid.propTypes = {
+  stories: PropTypes.array,
+  handleFetchMoreStories: PropTypes.func,
+  showFetchMoreStoriesBtn: PropTypes.bool,
+};
+
+export default function StoriesGrid({
+  stories = [],
+  handleFetchMoreStories,
+  showFetchMoreStoriesBtn,
+}) {
   return (
     <section className={styles.grid}>
       <h3 className={styles.grid__result}>
-        {`${stories.length} Récit${stories.length > 1 ? 's' : ''} trouvé${stories.length > 1 ? 's' : ''}`}
+        {`${stories.length} Récit${stories.length > 1 ? 's' : ''} trouvé${
+          stories.length > 1 ? 's' : ''
+        }`}
       </h3>
       <div className={styles.grid__inner}>
         {stories.map((story) => (
@@ -33,7 +46,6 @@ export default function StoriesGrid({ stories = [], handleFetchMoreStories, show
           <Icon style={{ fontSize: 24, margin: '2px 0 0 8px' }}>keyboard_arrow_down</Icon>
         </Button>
       )}
-
     </section>
-  )
+  );
 }

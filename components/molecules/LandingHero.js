@@ -1,13 +1,18 @@
-import React from "react";
-import styles from "./LandingHero.module.css";
-import backgroundImage from "@assets/images/cervin.jpg";
-import Button from "@components/atoms/Button";
-import Icon from "@material-ui/core/Icon";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './LandingHero.module.css';
+import backgroundImage from '@assets/images/cervin.jpg';
+import Button from '@components/atoms/Button';
+import Icon from '@material-ui/core/Icon';
+
+LandingHero.propTypes = {
+  handleRedirection: PropTypes.func.isRequired,
+};
 
 export default function LandingHero({ handleRedirection }) {
   return (
     <section className={styles.hero__imgContainer}>
-      <img src={backgroundImage} alt="montagne cervin"/>
+      <img src={backgroundImage} alt="montagne cervin" />
       <div className={styles.hero__overlay}>
         <div className={styles.hero__overlay__inner}>
           <div className={styles.hero__overlay__inner__title}>

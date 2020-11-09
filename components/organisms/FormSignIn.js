@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import Button from "@components/atoms/Button";
+import Button from '@components/atoms/Button';
 import Input from '@components/atoms/Input';
 import styles from './FormSignIn.module.css';
 
@@ -12,11 +12,11 @@ FormSignIn.propTypes = {
   password: PropTypes.string.isRequired,
   setPassword: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-}
+};
 
 export default function FormSignIn({ email, setEmail, password, setPassword, onSubmit }) {
-  const refEmail = useRef(null)
-  const refPassword = useRef(null)
+  const refEmail = useRef(null);
+  const refPassword = useRef(null);
 
   useEffect(() => {
     refEmail.current.focus();
@@ -33,8 +33,8 @@ export default function FormSignIn({ email, setEmail, password, setPassword, onS
         onChange={setEmail}
         onKeyDown={(event) => {
           if (event.keyCode === 13) {
-            refPassword.current.focus()
-            event.preventDefault()
+            refPassword.current.focus();
+            event.preventDefault();
           }
         }}
         meta={{}}
@@ -50,29 +50,43 @@ export default function FormSignIn({ email, setEmail, password, setPassword, onS
         onChange={setPassword}
         onKeyDown={(event) => {
           if (event.keyCode === 13) {
-            onSubmit(event)
-            event.preventDefault()
+            onSubmit(event);
+            event.preventDefault();
           }
         }}
         meta={{}}
         icon="lock"
         link={{
           title: 'Mot de passe oublié ?',
-          ref: '/forgot-password'
+          ref: '/forgot-password',
         }}
       />
 
       <div className={styles.signUpForm__authGroup}>
-        <Button variant="primary" size="large" focus="primary" fluid onClick={(event) => onSubmit(event)}>
+        <Button
+          variant="primary"
+          size="large"
+          focus="primary"
+          fluid
+          onClick={(event) => onSubmit(event)}
+        >
           Connexion
         </Button>
 
-        <p className={styles.signUpForm__authGroup__separator}>
-          Ou bien se connecter avec
-        </p>
+        <p className={styles.signUpForm__authGroup__separator}>Ou bien se connecter avec</p>
 
-        <Button variant="light" size="large" focus="primary" fluid onClick={(event) => onSubmit(event)}>
-          <img alt="auth-google" src={GoogleLogoAsset} className={styles.signUpForm__authGroup__googleImg} />
+        <Button
+          variant="light"
+          size="large"
+          focus="primary"
+          fluid
+          onClick={(event) => onSubmit(event)}
+        >
+          <img
+            alt="auth-google"
+            src={GoogleLogoAsset}
+            className={styles.signUpForm__authGroup__googleImg}
+          />
           Google
         </Button>
       </div>

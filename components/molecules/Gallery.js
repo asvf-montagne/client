@@ -1,12 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import GalleryProvider from "react-photo-gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
+import GalleryProvider from 'react-photo-gallery';
+import Carousel, { Modal, ModalGateway } from 'react-images';
 import styles from './Gallery.module.css';
 
 Gallery.propTypes = {
-  images: PropTypes.array
-}
+  images: PropTypes.array,
+};
 
 export default function Gallery({ images }) {
   const [currentImage, setCurrentImage] = useState(0);
@@ -28,10 +28,7 @@ export default function Gallery({ images }) {
       <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeModal}>
-            <Carousel
-              currentIndex={currentImage}
-              views={images}
-            />
+            <Carousel currentIndex={currentImage} views={images} />
           </Modal>
         ) : null}
       </ModalGateway>

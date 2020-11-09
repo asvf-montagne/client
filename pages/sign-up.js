@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AuthLayout from '@components/atoms/AuthLayout';
-import FormSignUp from "@components/organisms/FormSignUp";
+import FormSignUp from '@components/organisms/FormSignUp';
 
 export default function SignUp() {
   const [fullName, setFullName] = useState('');
@@ -9,10 +9,13 @@ export default function SignUp() {
 
   const handleSubmit = () => {
     console.log(email, password);
-  }
+  };
 
   return (
-    <AuthLayout title="S'inscrire" helper={{ label: `Vous avez déjà un compte ?`, href: '/sign-in' }}>
+    <AuthLayout
+      title="S'inscrire"
+      helper={{ label: `Vous avez déjà un compte ?`, href: '/sign-in' }}
+    >
       <FormSignUp
         fullName={fullName}
         setFullName={setFullName}

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import SearchBar from '@components/atoms/SearchBar';
-import styles from "./SearchHeader.module.css";
-import React from "react";
+import styles from './SearchHeader.module.css';
+import React from 'react';
 
 SearchHeader.propTypes = {
   title: PropTypes.string.isRequired,
@@ -11,8 +11,8 @@ SearchHeader.propTypes = {
   handleSearch: PropTypes.func.isRequired,
   tags: PropTypes.array.isRequired,
   tagId: PropTypes.string.isRequired,
-  setTagId: PropTypes.func.isRequired
-}
+  setTagId: PropTypes.func.isRequired,
+};
 
 export default function SearchHeader({
   title,
@@ -22,13 +22,11 @@ export default function SearchHeader({
   handleSearch,
   tags,
   tagId,
-  setTagId
+  setTagId,
 }) {
   return (
     <>
-      <h1 className={styles.searchHeader__title}>
-        {title}
-      </h1>
+      <h1 className={styles.searchHeader__title}>{title}</h1>
       <SearchBar
         search={search}
         setSearch={setSearch}
