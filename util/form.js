@@ -21,6 +21,12 @@ const FormUtil = {
       event.preventDefault();
     }
   },
+
+  withKeyCode(event, keycode, f) {
+    if (event.keyCode === keycode) {
+      f();
+    }
+  },
 };
 
 export { FormUtil };

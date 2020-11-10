@@ -13,7 +13,7 @@ export default function SignIn() {
   return (
     <AuthLayout
       title="Se connecter"
-      helper={{ label: `Vous n'avez pas de compte ?`, href: '/sign-up' }}
+      helper={{ label: `Vous n'avez pas de compte ?`, href: '/auth/sign-up' }}
     >
       <FormSignIn
         email={email}

@@ -37,7 +37,7 @@ const Input = forwardRef(({
       <div className={`
         ${styles.input__container}
         ${
-        meta.touched && meta.error
+        meta.touched && (meta.error || (meta.submitError && !meta.modifiedSinceLastSubmit))
           ? styles.input__containerError
           : (focused && styles.input__containerFocused)
       }
@@ -47,7 +47,7 @@ const Input = forwardRef(({
             <Icon className={`
               ${styles.input__container__iconBox__icon}
               ${
-              meta.touched && meta.error
+              meta.touched && (meta.error || (meta.submitError && !meta.modifiedSinceLastSubmit))
                 ? styles.input__container__iconBox__iconError
                 : (focused && styles.input__container__iconBox__iconFocused)
             }
@@ -97,9 +97,9 @@ const Input = forwardRef(({
         }
       </div>
 
-      {meta.touched && meta.error && (
+      {meta.touched && (meta.error || (meta.submitError && !meta.modifiedSinceLastSubmit)) && (
         <a className={styles.input__errorMsg}>
-          {meta.error}
+          {(meta.error || meta.submitError)}
         </a>
       )}
     </div>
