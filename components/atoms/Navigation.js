@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Icon from '@material-ui/core/Icon';
-import Button from '@components/atoms/Button';
-import styles from './Navigation.module.css';
-import useWindowSize from '@hooks/useWindowSize';
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import Icon from '@material-ui/core/Icon'
+import Button from '@components/atoms/Button'
+import styles from './Navigation.module.css'
+import useWindowSize from '@hooks/useWindowSize'
 
 const clubSubMenu = [
   {
@@ -48,7 +48,7 @@ const clubSubMenu = [
       },
     ],
   },
-];
+]
 
 function SubMenu() {
   return (
@@ -57,31 +57,35 @@ function SubMenu() {
         <div key={index} className={styles.submenu_group}>
           <h6 className={styles.submenu_group_title}>{item.title}</h6>
           {item.links.map((link, index) => (
-            <a key={index} className={styles.submenu_group_link} href={link.url}>
+            <a
+              key={index}
+              className={styles.submenu_group_link}
+              href={link.url}
+            >
               {link.label}
             </a>
           ))}
         </div>
       ))}
     </div>
-  );
+  )
 }
 
 export default function Navigation() {
-  const router = useRouter();
-  const { width: size } = useWindowSize();
-  const [isMenuActive, setIsMenuActive] = useState(false);
-  const isAuthenticated = false;
+  const router = useRouter()
+  const { width: size } = useWindowSize()
+  const [isMenuActive, setIsMenuActive] = useState(false)
+  const isAuthenticated = false
 
   const handleRedirection = () => {
-    router.push('/auth/sign-up');
-  };
+    router.push('/auth/sign-up')
+  }
 
   useEffect(() => {
     if (size > 768) {
-      setIsMenuActive(false);
+      setIsMenuActive(false)
     }
-  }, [size]);
+  }, [size])
 
   return (
     <nav className={styles.header}>
@@ -119,19 +123,32 @@ export default function Navigation() {
           {(!isAuthenticated && (
             <>
               <li className={styles.header__list__item}>
-                <a className={styles.header__list__item__link} href="/auth/sign-in">
+                <a
+                  className={styles.header__list__item__link}
+                  href="/auth/sign-in"
+                >
                   Connexion
                 </a>
               </li>
               <li className={styles.header__list__item}>
-                <Button size="medium" onClick={handleRedirection} variant="light" focus="light">
+                <Button
+                  size="medium"
+                  onClick={handleRedirection}
+                  variant="light"
+                  focus="light"
+                >
                   Inscription
                 </Button>
               </li>
             </>
           )) || (
             <li className={styles.header__list__item}>
-              <Button onClick={handleRedirection} size="medium" variant="light" focus="light">
+              <Button
+                onClick={handleRedirection}
+                size="medium"
+                variant="light"
+                focus="light"
+              >
                 Logout
               </Button>
             </li>
@@ -154,19 +171,30 @@ export default function Navigation() {
             {(!isAuthenticated && (
               <>
                 <li className={styles.header__menu__item}>
-                  <a className={styles.header__menu__item__link} href="/auth/sign-in">
+                  <a
+                    className={styles.header__menu__item__link}
+                    href="/auth/sign-in"
+                  >
                     Connexion
                   </a>
                 </li>
                 <li className={styles.header__menu__item}>
-                  <a className={styles.header__menu__item__link} href="/auth/sign-up">
+                  <a
+                    className={styles.header__menu__item__link}
+                    href="/auth/sign-up"
+                  >
                     Inscription
                   </a>
                 </li>
               </>
             )) || (
               <li className={styles.header__menu__item}>
-                <Button onClick={handleRedirection} variant="light" size="medium" focus="light">
+                <Button
+                  onClick={handleRedirection}
+                  variant="light"
+                  size="medium"
+                  focus="light"
+                >
                   Logout
                 </Button>
               </li>
@@ -179,11 +207,16 @@ export default function Navigation() {
             {clubSubMenu.map((item, index) => (
               <div key={index}>
                 <li className={styles.header__menu__item}>
-                  <p className={styles.header__menu__item__link_sub_title}>{item.title}</p>
+                  <p className={styles.header__menu__item__link_sub_title}>
+                    {item.title}
+                  </p>
                 </li>
                 {item.links.map((link, index) => (
                   <li key={index} className={styles.header__menu__item}>
-                    <a className={styles.header__menu__item__link_sub_link} href={link.url}>
+                    <a
+                      className={styles.header__menu__item__link_sub_link}
+                      href={link.url}
+                    >
                       {link.label}
                     </a>
                   </li>
@@ -204,5 +237,5 @@ export default function Navigation() {
         </div>
       )}
     </nav>
-  );
+  )
 }

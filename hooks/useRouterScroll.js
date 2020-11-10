@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 /**
  * React hook that forces a scroll reset to a particular set of coordinates in the document
@@ -16,23 +16,23 @@ import { useEffect } from 'react';
  * @param {number} [options.top=0] Specifies the number of pixels along the Y axis to scroll the window.
  */
 function useRouterScroll({ behavior = 'auto', left = 0, top = 0 } = {}) {
-  const router = useRouter();
+  const router = useRouter()
   useEffect(() => {
     // Scroll to given coordinates when router finishes navigating
     // This fixes an inconsistent behaviour between `<Link/>` and `next/router`
     // See https://github.com/vercel/next.js/issues/3249
     const handleRouteChangeComplete = () => {
-      window.scrollTo({ top, left, behavior });
-    };
+      window.scrollTo({ top, left, behavior })
+    }
 
-    router.events.on('routeChangeComplete', handleRouteChangeComplete);
+    router.events.on('routeChangeComplete', handleRouteChangeComplete)
 
     // If the component is unmounted, unsubscribe from the event
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChangeComplete);
-    };
+      router.events.off('routeChangeComplete', handleRouteChangeComplete)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [behavior, left, top]);
+  }, [behavior, left, top])
 }
 
-export default useRouterScroll;
+export default useRouterScroll

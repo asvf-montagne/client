@@ -1,40 +1,40 @@
-import React, { useEffect, useRef } from 'react';
-import Button from '@components/atoms/Button';
-import Input from '@components/atoms/Input';
-import styles from './FormSignIn.module.css';
+import React, { useEffect, useRef } from 'react'
+import Button from '@components/atoms/Button'
+import Input from '@components/atoms/Input'
+import styles from './FormSignIn.module.css'
 
-import GoogleLogoAsset from '@assets/images/logo_google.png';
-import { Field, Form } from 'react-final-form';
-import { FormUtil } from '../../util/form';
-import { Users } from '../../services/users';
-import services from '../../services';
-import { useRouter } from 'next/router';
-import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError';
+import GoogleLogoAsset from '@assets/images/logo_google.png'
+import { Field, Form } from 'react-final-form'
+import { FormUtil } from '../../util/form'
+import { Users } from '../../services/users'
+import services from '../../services'
+import { useRouter } from 'next/router'
+import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError'
 
 export default function FormSignUp({}) {
-  const router = useRouter();
+  const router = useRouter()
 
-  const refUsername = useRef(null);
-  const refEmail = useRef(null);
-  const refPassword = useRef(null);
+  const refUsername = useRef(null)
+  const refEmail = useRef(null)
+  const refPassword = useRef(null)
 
   async function onSubmit(values) {
     try {
-      const res = await services().users.signUp(values);
+      const res = await services().users.signUp(values)
 
       if (res.status === 200) {
-        await router.push('/auth/email-sent');
+        await router.push('/auth/email-sent')
       } else {
-        return Users.validateFromBackendSignUp(res);
+        return Users.validateFromBackendSignUp(res)
       }
     } catch (error) {
-      console.error('error while submitting sign up form', error);
+      console.error('error while submitting sign up form', error)
     }
   }
 
   useEffect(() => {
-    refUsername.current.focus();
-  }, []);
+    refUsername.current.focus()
+  }, [])
 
   return (
     <Form
@@ -42,7 +42,11 @@ export default function FormSignUp({}) {
       onSubmit={onSubmit}
       render={({ submitError, handleSubmit, values }) => (
         <form className={styles.signUpForm}>
-          <DisplaySuccessOrError success={false} error={submitError} successMessage={''} />
+          <DisplaySuccessOrError
+            success={false}
+            error={submitError}
+            successMessage={''}
+          />
 
           <Field name="username" type="text">
             {({ input, meta }) => (
@@ -65,7 +69,9 @@ export default function FormSignUp({}) {
                 icon="mail"
                 label="Email"
                 placeholder="john.doe@gmail.com"
-                onKeyDown={(e) => FormUtil.navigateToNextInput(e, refPassword, 13)}
+                onKeyDown={(e) =>
+                  FormUtil.navigateToNextInput(e, refPassword, 13)
+                }
                 {...input}
                 meta={meta}
               />
@@ -79,7 +85,9 @@ export default function FormSignUp({}) {
                 icon="lock"
                 label="Mot de passe"
                 placeholder="Choisissez un bon mot de passe"
-                onKeyDown={(e) => FormUtil.withKeyCode(e, 13, () => handleSubmit(values))}
+                onKeyDown={(e) =>
+                  FormUtil.withKeyCode(e, 13, () => handleSubmit(values))
+                }
                 {...input}
                 meta={meta}
               />
@@ -92,9 +100,9 @@ export default function FormSignUp({}) {
               size="large"
               focus="primary"
               fluid
-              onClick={(event) => handleSubmit(values)}
+              onClick={() => handleSubmit(values)}
             >
-              S'inscrire
+              S&apos;inscrire
             </Button>
 
             <p className={styles.signUpForm__authGroup__separator}>
@@ -119,5 +127,5 @@ export default function FormSignUp({}) {
         </form>
       )}
     />
-  );
+  )
 }

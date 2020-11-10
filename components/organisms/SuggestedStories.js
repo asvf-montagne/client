@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import CardStory from '@components/molecules/CardStory';
-import styles from './SuggestedStories.module.css';
-import { posts } from '../../services/posts';
+import React from 'react'
+import PropTypes from 'prop-types'
+import CardStory from '@components/molecules/CardStory'
+import styles from './SuggestedStories.module.css'
+import { posts } from '../../services/posts'
 
 DefaultPageLayout.propTypes = {
   stories: PropTypes.array.isRequired,
-};
+}
 
 export default function DefaultPageLayout({ stories }) {
   return (
@@ -20,7 +20,9 @@ export default function DefaultPageLayout({ stories }) {
                 : styles.suggestedStories__titleEnd
             }
           >
-            {stories.length > 0 ? 'Continuer de lire ...' : `Bravo vous avez lu le dernier récit !`}
+            {stories.length > 0
+              ? 'Continuer de lire ...'
+              : `Bravo vous avez lu le dernier récit !`}
           </h1>
           {stories.length > 0 && (
             <div className={styles.suggestedStories__cards}>
@@ -41,5 +43,5 @@ export default function DefaultPageLayout({ stories }) {
         </div>
       </div>
     </section>
-  );
+  )
 }

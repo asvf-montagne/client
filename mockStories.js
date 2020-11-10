@@ -5,17 +5,20 @@ export default [
     images: [
       {
         alt: 'weweew',
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim',
       },
       {
         alt: 'weweew',
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wewe',
       },
       {
         alt: 'weweew',
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wqwqqwqw',
       },
     ],
@@ -91,15 +94,18 @@ export default [
     title: 'Pointe de Colomban 2455m (Lauzière)',
     images: [
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim',
       },
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wewe',
       },
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wqwqqwqw',
       },
     ],
@@ -175,15 +181,18 @@ export default [
     title: 'Crête de Brouffier (Taillefer)',
     images: [
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim',
       },
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wewe',
       },
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wqwqqwqw',
       },
     ],
@@ -259,15 +268,18 @@ export default [
     title: `Goulotte Zia et traversée d'arête !`,
     images: [
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim',
       },
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wewe',
       },
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wqwqqwqw',
       },
     ],
@@ -343,15 +355,18 @@ export default [
     title: 'Pointe de Colomban 2455m (Lauzière)',
     images: [
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim',
       },
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wewe',
       },
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wqwqqwqw',
       },
     ],
@@ -427,15 +442,18 @@ export default [
     title: 'Crête de Brouffier (Taillefer)',
     images: [
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'Pellentesque arcu dictumst sit imperdiet viverra mauris enim',
       },
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wewe',
       },
       {
-        src: 'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
+        src:
+          'https://cdn.mos.cms.futurecdn.net/AUujny9JfyXZfPKgAeZgy5-1200-80.jpg',
         caption: 'wqwqqwqw',
       },
     ],
@@ -506,4 +524,4 @@ export default [
     preview:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper consequat purus tempor quam phasellus. Pellentesque arcu dictumst sit imperbvbnjkljhgvbnmkjuhgbnjk hbnj uhbnmkiu hbnmkiu ijk iuh njkiuh jkiuhjk iuhj',
   },
-];
+]

@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import styles from './PartnersSlider.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
+import styles from './PartnersSlider.module.css'
 
 PartnerSlider.propTypes = {
   partners: PropTypes.array.isRequired,
-};
+}
 
 export default function PartnerSlider({ partners }) {
   return (
@@ -34,11 +34,15 @@ export default function PartnerSlider({ partners }) {
         {partners.map(({ name, url, link }, index) => (
           <SplideSlide key={index}>
             <div className={styles.partnersSlider__splideItem}>
-              <img alt={name} src={url} className={styles.partnersSlider__splideItem__image} />
+              <img
+                alt={name}
+                src={url}
+                className={styles.partnersSlider__splideItem__image}
+              />
             </div>
           </SplideSlide>
         ))}
       </Splide>
     </div>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
-import styles from './CardStoryMin.module.css';
+import PropTypes from 'prop-types'
+import { useRouter } from 'next/router'
+import styles from './CardStoryMin.module.css'
 
 CardStoryMin.propTypes = {
   id: PropTypes.number.isRequired,
@@ -8,14 +8,14 @@ CardStoryMin.propTypes = {
   author: PropTypes.string.isRequired,
   categories: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-};
+}
 
 export default function CardStoryMin({ id, title, author, categories, date }) {
-  const router = useRouter();
+  const router = useRouter()
 
   const handleRedirection = () => {
-    router.push(`/stories/${id}`);
-  };
+    router.push(`/stories/${id}`)
+  }
 
   return (
     <div className={styles.cardMin}>
@@ -30,5 +30,5 @@ export default function CardStoryMin({ id, title, author, categories, date }) {
         </span>
       </div>
     </div>
-  );
+  )
 }

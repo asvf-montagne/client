@@ -9,8 +9,9 @@ module.exports = {
     node: true,
     browser: true,
   },
+  parser: 'babel-eslint',
   parserOptions: {
-    ecmaVersion: 8,
+    ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
@@ -19,7 +20,10 @@ module.exports = {
   ignorePatterns: ['/node_modules/**', '.next/*', '/build/**'],
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'no-unused-vars': ['warn', { args: 'none', argsIgnorePattern: 'req|res|next|val' }],
+    'no-unused-vars': [
+      'warn',
+      { args: 'none', argsIgnorePattern: 'req|res|next|val' },
+    ],
     'prettier/prettier': ['error'],
   },
   settings: {
@@ -27,4 +31,4 @@ module.exports = {
       version: 'detect',
     },
   },
-};
+}

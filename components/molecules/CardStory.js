@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
-import styles from './CardStory.module.css';
+import PropTypes from 'prop-types'
+import { useRouter } from 'next/router'
+import styles from './CardStory.module.css'
 
 CardStory.propTypes = {
   id: PropTypes.number.isRequired,
@@ -12,7 +12,7 @@ CardStory.propTypes = {
   description: PropTypes.string,
   borderless: PropTypes.bool,
   shadow: PropTypes.bool,
-};
+}
 
 export default function CardStory({
   id,
@@ -25,17 +25,17 @@ export default function CardStory({
   borderless = false,
   shadow = true,
 }) {
-  const router = useRouter();
+  const router = useRouter()
 
   const handleRedirection = () => {
-    router.push(`/stories/${id}`);
-  };
+    router.push(`/stories/${id}`)
+  }
 
   return (
     <div
-      className={`${styles.cardStory} ${borderless ? styles.cardStoryBorderless : ''} ${
-        shadow ? styles.cardStoryShadow : ''
-      }`}
+      className={`${styles.cardStory} ${
+        borderless ? styles.cardStoryBorderless : ''
+      } ${shadow ? styles.cardStoryShadow : ''}`}
       onClick={handleRedirection}
     >
       <div className={styles.cardStory__image}>
@@ -44,10 +44,14 @@ export default function CardStory({
 
       <div className={styles.cardStory__content}>
         <div className={styles.cardStory__content__inner}>
-          <p className={styles.cardStory__content__inner__categories}>{categories}</p>
+          <p className={styles.cardStory__content__inner__categories}>
+            {categories}
+          </p>
           <h1 className={styles.cardStory__content__inner__title}>{title}</h1>
           {description && (
-            <p className={styles.cardStory__content__inner__description}>{description}</p>
+            <p className={styles.cardStory__content__inner__description}>
+              {description}
+            </p>
           )}
           <span className={styles.cardStory__content__inner__span}>
             <p>{author}</p>
@@ -56,5 +60,5 @@ export default function CardStory({
         </div>
       </div>
     </div>
-  );
+  )
 }
