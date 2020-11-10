@@ -11,8 +11,8 @@ export default function ForgotPassword() {
 
   return (
     <AuthLayout
-      title="S’inscrire"
-      helper={{ label: `Vous avez déjà un compte ?`, href: '/sign-in' }}
+      title="Changer de motde passe"
+      helper={{ label: `Vous avez déjà un compte ?`, href: '/auth/sign-in' }}
     >
       <FormForgotPassword
         email={email}

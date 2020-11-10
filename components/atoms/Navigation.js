@@ -78,7 +78,7 @@ export default function Navigation() {
   const isAuthenticated = false;
 
   const handleRedirection = () => {
-    router.push('/sign-up');
+    router.push('/auth/sign-up');
   };
 
   useEffect(() => {
@@ -123,7 +123,10 @@ export default function Navigation() {
           {(!isAuthenticated && (
             <>
               <li className={styles.header__list__item}>
-                <a className={styles.header__list__item__link} href="/sign-in">
+                <a
+                  className={styles.header__list__item__link}
+                  href="/auth/sign-in"
+                >
                   Connexion
                 </a>
               </li>
@@ -170,7 +173,7 @@ export default function Navigation() {
                 <li className={styles.header__menu__item}>
                   <a
                     className={styles.header__menu__item__link}
-                    href="/sign-in"
+                    href="/auth/sign-in"
                   >
                     Connexion
                   </a>
@@ -178,7 +181,7 @@ export default function Navigation() {
                 <li className={styles.header__menu__item}>
                   <a
                     className={styles.header__menu__item__link}
-                    href="/sign-up"
+                    href="/auth/sign-up"
                   >
                     Inscription
                   </a>

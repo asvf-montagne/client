@@ -1,53 +1,12 @@
 import React, { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import { Field, Form } from 'react-final-form';
 import Input from '@components/atoms/Input';
 import Button from '@components/atoms/Button';
-import styles from './ContactForm.module.css';
+import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError';
 import { contactFormSubmissions } from '../../services/contact-form-submissions';
 import services from '../../services';
-import Badge from '@components/atoms/Badge';
-import Icon from '@material-ui/core/Icon';
-import { Field, Form } from 'react-final-form';
 import { FormUtil } from '../../util/form';
-
-DisplaySuccessOrError.propTypes = {
-  success: PropTypes.bool,
-  error: PropTypes.object,
-};
-
-function DisplaySuccessOrError({ success, error }) {
-  return (
-    <div
-      style={{
-        alignItems: 'flex-start',
-        display: 'flex',
-        marginBottom: '20px',
-      }}
-    >
-      {success && (
-        <Badge color="green">
-          <Icon>check_circle</Icon>
-          <p
-            className={styles.landingContact__overlay__contacts__colorParagraph}
-          >
-            Votre message a été envoyé.
-          </p>
-        </Badge>
-      )}
-
-      {error && (
-        <Badge color="red">
-          <Icon>cancel</Icon>
-          <p
-            className={styles.landingContact__overlay__contacts__colorParagraph}
-          >
-            {error}
-          </p>
-        </Badge>
-      )}
-    </div>
-  );
-}
+import styles from './ContactForm.module.css';
 
 export default function ContactForm() {
   const [success, setSuccess] = useState(false);
@@ -66,7 +25,7 @@ export default function ContactForm() {
       FormUtil.reset(values, form);
     } catch (error) {
       console.error('error on submitting contact form', error);
-      return contactFormSubmissions.createResponseToError(error);
+      return contactFormSubmissions.validateFromBackend(error);
     }
   }
 
@@ -84,9 +43,11 @@ export default function ContactForm() {
               ${styles.landingContact__overlay__contacts__col__form}
             `}
             >
-              {(success || submitError) && (
-                <DisplaySuccessOrError success={success} error={submitError} />
-              )}
+              <DisplaySuccessOrError
+                success={success}
+                successMessage={'Votre message a été envoyé'}
+                error={submitError}
+              />
 
               <Field name="full_name">
                 {({ input, meta }) => (

@@ -1,120 +1,131 @@
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import Button from '@components/atoms/Button';
 import Input from '@components/atoms/Input';
 import styles from './FormSignIn.module.css';
 
 import GoogleLogoAsset from '@assets/images/logo_google.png';
+import { Field, Form } from 'react-final-form';
+import { FormUtil } from '../../util/form';
+import { Users } from '../../services/users';
+import services from '../../services';
+import { useRouter } from 'next/router';
+import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError';
 
-FormSignUp.propTypes = {
-  fullName: PropTypes.string.isRequired,
-  setFullName: PropTypes.func.isRequired,
-  email: PropTypes.string.isRequired,
-  setEmail: PropTypes.func.isRequired,
-  password: PropTypes.string.isRequired,
-  setPassword: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-};
+export default function FormSignUp({}) {
+  const router = useRouter();
 
-export default function FormSignUp({
-  fullName,
-  setFullName,
-  password,
-  setPassword,
-  email,
-  setEmail,
-  onSubmit,
-}) {
-  const refFullName = useRef(null);
+  const refUsername = useRef(null);
   const refEmail = useRef(null);
   const refPassword = useRef(null);
 
+  async function onSubmit(values) {
+    try {
+      const res = await services().users.signUp(values);
+
+      if (res.status === 200) {
+        await router.push('/auth/email-sent');
+      } else {
+        return Users.validateFromBackendSignUp(res);
+      }
+    } catch (error) {
+      console.error('error while submitting sign up form', error);
+    }
+  }
+
   useEffect(() => {
-    refFullName.current.focus();
+    refUsername.current.focus();
   }, []);
 
   return (
-    <form className={styles.signUpForm}>
-      <Input
-        autocomplete="name"
-        label="Nom et prénom"
-        placeholder="Jonh Doe"
-        ref={refFullName}
-        value={fullName}
-        onKeyDown={(event) => {
-          if (event.keyCode === 13) {
-            refEmail.current.focus();
-            event.preventDefault();
-          }
-        }}
-        onChange={setFullName}
-        meta={{}}
-        icon="person"
-      />
-      <Input
-        autocomplete="email"
-        label="Email"
-        placeholder="jonhdoe@example.com"
-        ref={refEmail}
-        value={email}
-        onKeyDown={(event) => {
-          if (event.keyCode === 13) {
-            refPassword.current.focus();
-            event.preventDefault();
-          }
-        }}
-        meta={{}}
-        onChange={setEmail}
-        icon="mail"
-      />
-      <Input
-        autocomplete="new-password"
-        type="password"
-        label="Mot de passe"
-        placeholder="password"
-        ref={refPassword}
-        value={password}
-        onKeyDown={(event) => {
-          if (event.keyCode === 13) {
-            onSubmit(event);
-            event.preventDefault();
-          }
-        }}
-        meta={{}}
-        onChange={setPassword}
-        icon="lock"
-      />
-
-      <div className={styles.signUpForm__authGroup}>
-        <Button
-          variant="primary"
-          size="large"
-          focus="primary"
-          fluid
-          onClick={(event) => onSubmit(event)}
-        >
-          Connexion
-        </Button>
-
-        <p className={styles.signUpForm__authGroup__separator}>
-          Ou bien se s&apos;inscrire avec
-        </p>
-
-        <Button
-          variant="light"
-          size="large"
-          focus="primary"
-          fluid
-          onClick={(event) => onSubmit(event)}
-        >
-          <img
-            alt="auth-google"
-            src={GoogleLogoAsset}
-            className={styles.signUpForm__authGroup__googleImg}
+    <Form
+      validate={Users.validateSignUp}
+      onSubmit={onSubmit}
+      render={({ submitError, handleSubmit, values }) => (
+        <form className={styles.signUpForm}>
+          <DisplaySuccessOrError
+            success={false}
+            error={submitError}
+            successMessage={''}
           />
-          Google
-        </Button>
-      </div>
-    </form>
+
+          <Field name="username" type="text">
+            {({ input, meta }) => (
+              <Input
+                ref={refUsername}
+                icon="person"
+                label="Nom d'utilisateur"
+                placeholder="john.doe"
+                onKeyDown={(e) => FormUtil.navigateToNextInput(e, refEmail, 13)}
+                {...input}
+                meta={meta}
+              />
+            )}
+          </Field>
+
+          <Field name="email" type="text">
+            {({ input, meta }) => (
+              <Input
+                ref={refEmail}
+                icon="mail"
+                label="Email"
+                placeholder="john.doe@gmail.com"
+                onKeyDown={(e) =>
+                  FormUtil.navigateToNextInput(e, refPassword, 13)
+                }
+                {...input}
+                meta={meta}
+              />
+            )}
+          </Field>
+
+          <Field name="password" type="password">
+            {({ input, meta }) => (
+              <Input
+                ref={refPassword}
+                icon="lock"
+                label="Mot de passe"
+                placeholder="Choisissez un bon mot de passe"
+                onKeyDown={(e) =>
+                  FormUtil.withKeyCode(e, 13, () => handleSubmit(values))
+                }
+                {...input}
+                meta={meta}
+              />
+            )}
+          </Field>
+
+          <div className={styles.signUpForm__authGroup}>
+            <Button
+              variant="primary"
+              size="large"
+              focus="primary"
+              fluid
+              onClick={() => handleSubmit(values)}
+            >
+              S&apos;inscrire
+            </Button>
+
+            <p className={styles.signUpForm__authGroup__separator}>
+              Ou bien se s&apos;inscrire avec
+            </p>
+
+            <Button
+              variant="light"
+              size="large"
+              focus="primary"
+              fluid
+              onClick={() => console.log('todo: go to goodle')}
+            >
+              <img
+                alt="auth-google"
+                src={GoogleLogoAsset}
+                className={styles.signUpForm__authGroup__googleImg}
+              />
+              Google
+            </Button>
+          </div>
+        </form>
+      )}
+    />
   );
 }

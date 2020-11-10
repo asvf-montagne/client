@@ -3,6 +3,7 @@ import postsService from './posts';
 import tagsService from './tags';
 import partnersService from './partners';
 import contactFormSubmissionsService from './contact-form-submissions';
+import usersService from './users';
 
 const baseURL =
   process.env.API_ENDPOINT ||
@@ -26,6 +27,7 @@ function services({ token } = {}) {
   }
 
   return {
+    users: usersService(client),
     posts: postsService(client),
     tags: tagsService(client),
     partners: partnersService(client),

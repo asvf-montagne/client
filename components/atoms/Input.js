@@ -39,25 +39,29 @@ const Input = forwardRef(
 
         <div
           className={`
-        ${styles.input__container}
-        ${
-          meta.touched && meta.error
-            ? styles.input__containerError
-            : focused && styles.input__containerFocused
-        }
-      `}
+            ${styles.input__container}
+            ${
+              meta.touched &&
+              (meta.error ||
+                (meta.submitError && !meta.modifiedSinceLastSubmit))
+                ? styles.input__containerError
+                : focused && styles.input__containerFocused
+            }
+          `}
         >
           {icon && (
             <div className={styles.input__container__iconBox}>
               <Icon
                 className={`
-              ${styles.input__container__iconBox__icon}
-              ${
-                meta.touched && meta.error
-                  ? styles.input__container__iconBox__iconError
-                  : focused && styles.input__container__iconBox__iconFocused
-              }
-            `}
+                  ${styles.input__container__iconBox__icon}
+                  ${
+                    meta.touched &&
+                    (meta.error ||
+                      (meta.submitError && !meta.modifiedSinceLastSubmit))
+                      ? styles.input__container__iconBox__iconError
+                      : focused && styles.input__container__iconBox__iconFocused
+                  }
+                `}
               >
                 {icon}
               </Icon>
@@ -104,9 +108,13 @@ const Input = forwardRef(
           )}
         </div>
 
-        {meta.touched && meta.error && (
-          <a className={styles.input__errorMsg}>{meta.error}</a>
-        )}
+        {meta.touched &&
+          (meta.error ||
+            (meta.submitError && !meta.modifiedSinceLastSubmit)) && (
+            <a className={styles.input__errorMsg}>
+              {meta.error || meta.submitError}
+            </a>
+          )}
       </div>
     );
   },
