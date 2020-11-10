@@ -48,7 +48,7 @@ export const navItems = [
               },
             ],
           },
-        ]
+        ],
       },
       {
         title: 'Récits',
