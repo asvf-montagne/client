@@ -21,8 +21,6 @@ const Input = forwardRef(({
                           }, ref) => {
   const [focused, setFocused] = useState(false)
 
-  console.log(meta)
-
   return (
     <div className={styles.input} {...props}>
       <span className={styles.input__span}>

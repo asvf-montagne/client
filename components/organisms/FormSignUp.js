@@ -18,22 +18,17 @@ export default function FormSignUp({}) {
   const refEmail = useRef(null);
   const refPassword = useRef(null);
 
-  async function onSubmit(values, form) {
-    console.log(values);
-
+  async function onSubmit(values) {
     try {
       const res = await services().users.signUp(values);
 
-      console.log(res.statusCode === 200, res);
       if (res.status === 200) {
         await router.push('/auth/email-sent');
       } else {
-        console.log(Users.validateFromBackendSignUp(res));
-
         return Users.validateFromBackendSignUp(res);
       }
-    } catch (ex) {
-      console.error(ex);
+    } catch (error) {
+      console.error('error while submitting sign up form', error);
     }
   }
 
@@ -45,7 +40,7 @@ export default function FormSignUp({}) {
     <Form
       validate={Users.validateSignUp}
       onSubmit={onSubmit}
-      render={({ submitError, handleSubmit, values, form }) => (
+      render={({ submitError, handleSubmit, values }) => (
         <form className={styles.signUpForm}>
           <DisplaySuccessOrError success={false} error={submitError} successMessage={''} />
 
@@ -81,10 +76,10 @@ export default function FormSignUp({}) {
             {({ input, meta }) => (
               <Input
                 ref={refPassword}
-                icon="password"
+                icon="lock"
                 label="Mot de passe"
                 placeholder="Choisissez un bon mot de passe"
-                onKeyDown={(e) => FormUtil.withKeyCode(e, 13, () => handleSubmit(values, form))}
+                onKeyDown={(e) => FormUtil.withKeyCode(e, 13, () => handleSubmit(values))}
                 {...input}
                 meta={meta}
               />
@@ -97,7 +92,7 @@ export default function FormSignUp({}) {
               size="large"
               focus="primary"
               fluid
-              onClick={(event) => handleSubmit(values, form)}
+              onClick={(event) => handleSubmit(values)}
             >
               S'inscrire
             </Button>
