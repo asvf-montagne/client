@@ -25,7 +25,7 @@ export default function FormSignUp({}) {
       if (res.status === 200) {
         await router.push('/auth/email-sent')
       } else {
-        return Users.validateFromBackendSignUp(res)
+        return Users.validateFromBackend(res)
       }
     } catch (error) {
       console.error('error while submitting sign up form', error)

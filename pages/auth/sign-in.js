@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import AuthLayout from '@components/atoms/AuthLayout'
 import FormSignIn from '@components/organisms/FormSignIn'
+import useUser from '@hooks/useUser'
 
 export default function SignIn() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const { mutate } = useUser()
 
-  const handleSubmit = () => {
-    console.log(email, password)
+  const handleSignInSuccess = (user) => {
+    mutate(user)
   }
 
   return (
@@ -15,13 +15,7 @@ export default function SignIn() {
       title="Se connecter"
       helper={{ label: `Vous n'avez pas de compte ?`, href: '/auth/sign-up' }}
     >
-      <FormSignIn
-        email={email}
-        setEmail={setEmail}
-        password={password}
-        setPassword={setPassword}
-        onSubmit={handleSubmit}
-      />
+      <FormSignIn onSignInSuccess={handleSignInSuccess} />
     </AuthLayout>
   )
 }

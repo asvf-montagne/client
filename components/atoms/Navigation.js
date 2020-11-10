@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Icon from '@material-ui/core/Icon'
 import Button from '@components/atoms/Button'
 import styles from './Navigation.module.css'
 import useWindowSize from '@hooks/useWindowSize'
+import useUser from '@hooks/useUser'
 
 const clubSubMenu = [
   {
@@ -73,6 +74,7 @@ function SubMenu() {
 
 export default function Navigation() {
   const router = useRouter()
+  const { user } = useUser()
   const { width: size } = useWindowSize()
   const [isMenuActive, setIsMenuActive] = useState(false)
   const isAuthenticated = false
@@ -86,6 +88,9 @@ export default function Navigation() {
       setIsMenuActive(false)
     }
   }, [size])
+
+  // todo: use for the dynamic navbar
+  console.log('user =', user)
 
   return (
     <nav className={styles.header}>

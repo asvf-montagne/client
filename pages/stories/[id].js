@@ -47,7 +47,13 @@ export default function Story({ story, suggestedStories }) {
 }
 
 export async function getServerSideProps(ctx) {
-  // todo: if the story is not found: => 404
+  // todo: if the story is not found: =>
+
+  // cache 5 min
+  ctx.res.setHeader(
+    'Cache-Control',
+    `s-maxage=${60 * 5}, stale-while-revalidate`,
+  )
 
   const story = await services().posts.find({ ...ctx.params })
   const suggestedStories = await services().posts.suggested({
