@@ -20,7 +20,7 @@ const MESSAGES = {
   EMAIL_REQUIRED: `Champ requis`,
   EMAIL_INVALID: `L'email est invalide`,
 
-  PASSWORD_REQUIRED: `Champ requis et valide`,
+  PASSWORD_REQUIRED: `Champ requis`,
   PASSWORD_INVALID_LENGTH: `Minimum 6 charactères`,
 }
 
@@ -47,7 +47,7 @@ const Users = {
     if (o.email === undefined) errors.email = MESSAGES.EMAIL_REQUIRED
     else if (!v.isEmail(o.email)) errors.email = MESSAGES.EMAIL_INVALID
 
-    if (o.password === undefined || v.isEmpty(o.password, { ['ignore_whitespace']: true }))
+    if (o.password === undefined)
       errors.password = MESSAGES.PASSWORD_REQUIRED
     else if (o.password.length < 6)
       errors.password = MESSAGES.PASSWORD_INVALID_LENGTH
