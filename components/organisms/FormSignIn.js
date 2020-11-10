@@ -14,7 +14,13 @@ FormSignIn.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default function FormSignIn({ email, setEmail, password, setPassword, onSubmit }) {
+export default function FormSignIn({
+  email,
+  setEmail,
+  password,
+  setPassword,
+  onSubmit,
+}) {
   const refEmail = useRef(null);
   const refPassword = useRef(null);
 
@@ -73,7 +79,9 @@ export default function FormSignIn({ email, setEmail, password, setPassword, onS
           Connexion
         </Button>
 
-        <p className={styles.signUpForm__authGroup__separator}>Ou bien se connecter avec</p>
+        <p className={styles.signUpForm__authGroup__separator}>
+          Ou bien se connecter avec
+        </p>
 
         <Button
           variant="light"

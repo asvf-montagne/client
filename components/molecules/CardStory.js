@@ -33,9 +33,9 @@ export default function CardStory({
 
   return (
     <div
-      className={`${styles.cardStory} ${borderless ? styles.cardStoryBorderless : ''} ${
-        shadow ? styles.cardStoryShadow : ''
-      }`}
+      className={`${styles.cardStory} ${
+        borderless ? styles.cardStoryBorderless : ''
+      } ${shadow ? styles.cardStoryShadow : ''}`}
       onClick={handleRedirection}
     >
       <div className={styles.cardStory__image}>
@@ -44,10 +44,14 @@ export default function CardStory({
 
       <div className={styles.cardStory__content}>
         <div className={styles.cardStory__content__inner}>
-          <p className={styles.cardStory__content__inner__categories}>{categories}</p>
+          <p className={styles.cardStory__content__inner__categories}>
+            {categories}
+          </p>
           <h1 className={styles.cardStory__content__inner__title}>{title}</h1>
           {description && (
-            <p className={styles.cardStory__content__inner__description}>{description}</p>
+            <p className={styles.cardStory__content__inner__description}>
+              {description}
+            </p>
           )}
           <span className={styles.cardStory__content__inner__span}>
             <p>{author}</p>

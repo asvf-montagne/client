@@ -22,7 +22,12 @@ export default function FlashInfo({ infos = [], handleClose }) {
         >
           {infos[index % infos.length].label}
         </a>
-        <Button variant="link" size="medium" focus="primary" onClick={handleClose}>
+        <Button
+          variant="link"
+          size="medium"
+          focus="primary"
+          onClick={handleClose}
+        >
           <Icon style={{ fontSize: 24 }}>close</Icon>
         </Button>
       </div>

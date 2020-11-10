@@ -17,11 +17,19 @@ DisplaySuccessOrError.propTypes = {
 
 function DisplaySuccessOrError({ success, error }) {
   return (
-    <div style={{ alignItems: 'flex-start', display: 'flex', marginBottom: '20px' }}>
+    <div
+      style={{
+        alignItems: 'flex-start',
+        display: 'flex',
+        marginBottom: '20px',
+      }}
+    >
       {success && (
         <Badge color="green">
           <Icon>check_circle</Icon>
-          <p className={styles.landingContact__overlay__contacts__colorParagraph}>
+          <p
+            className={styles.landingContact__overlay__contacts__colorParagraph}
+          >
             Votre message a été envoyé.
           </p>
         </Badge>
@@ -30,7 +38,11 @@ function DisplaySuccessOrError({ success, error }) {
       {error && (
         <Badge color="red">
           <Icon>cancel</Icon>
-          <p className={styles.landingContact__overlay__contacts__colorParagraph}>{error}</p>
+          <p
+            className={styles.landingContact__overlay__contacts__colorParagraph}
+          >
+            {error}
+          </p>
         </Badge>
       )}
     </div>
@@ -60,7 +72,9 @@ export default function ContactForm() {
 
   return (
     <div className={styles.landingContact__overlay__contacts__col}>
-      <div className={styles.landingContact__overlay__contacts__col__inner__form}>
+      <div
+        className={styles.landingContact__overlay__contacts__col__inner__form}
+      >
         <Form
           onSubmit={onSubmit}
           validate={contactFormSubmissions.validate}
@@ -81,7 +95,9 @@ export default function ContactForm() {
                     icon="person"
                     label="Nom et prénom"
                     placeholder="Jonh Doe"
-                    onKeyDown={(e) => FormUtil.navigateToNextInput(e, refEmail, 13)}
+                    onKeyDown={(e) =>
+                      FormUtil.navigateToNextInput(e, refEmail, 13)
+                    }
                     {...input}
                     meta={meta}
                   />
@@ -96,7 +112,9 @@ export default function ContactForm() {
                     label="Email"
                     placeholder="Jonh Doe"
                     {...input}
-                    onKeyDown={(e) => FormUtil.navigateToNextInput(e, refContent, 13)}
+                    onKeyDown={(e) =>
+                      FormUtil.navigateToNextInput(e, refContent, 13)
+                    }
                     meta={meta}
                   />
                 )}

@@ -96,7 +96,9 @@ export default function FormSignUp({
           Connexion
         </Button>
 
-        <p className={styles.signUpForm__authGroup__separator}>Ou bien se s&apos;inscrire avec</p>
+        <p className={styles.signUpForm__authGroup__separator}>
+          Ou bien se s&apos;inscrire avec
+        </p>
 
         <Button
           variant="light"

@@ -20,12 +20,16 @@ const contactFormSubmissions = {
   validate(o) {
     const errors = {};
 
-    if (o['full_name'] === undefined) errors['full_name'] = MESSAGES.FULL_NAME_REQUIRED;
+    if (o['full_name'] === undefined)
+      errors['full_name'] = MESSAGES.FULL_NAME_REQUIRED;
 
     if (o.email === undefined) errors.email = MESSAGES.EMAIL_REQUIRED;
     else if (!v.isEmail(o.email)) errors.email = MESSAGES.EMAIL_INVALID;
 
-    if (o.content === undefined || v.isEmpty(o.content, { ['ignore_whitespace']: true }))
+    if (
+      o.content === undefined ||
+      v.isEmpty(o.content, { ['ignore_whitespace']: true })
+    )
       errors.content = MESSAGES.CONTENT_REQUIRED;
 
     return errors;
@@ -37,7 +41,9 @@ const contactFormSubmissions = {
       content: JSON.stringify({
         time: 1602965428632,
         version: '2.19.0',
-        blocks: form.content.split('\n').map((text) => ({ type: 'paragraph', data: { text } })),
+        blocks: form.content
+          .split('\n')
+          .map((text) => ({ type: 'paragraph', data: { text } })),
       }),
     };
   },

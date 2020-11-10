@@ -104,7 +104,9 @@ const Input = forwardRef(
           )}
         </div>
 
-        {meta.touched && meta.error && <a className={styles.input__errorMsg}>{meta.error}</a>}
+        {meta.touched && meta.error && (
+          <a className={styles.input__errorMsg}>{meta.error}</a>
+        )}
       </div>
     );
   },

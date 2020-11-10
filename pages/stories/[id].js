@@ -29,7 +29,10 @@ export default function Story({ story, suggestedStories }) {
           image={posts.getFirstImage(story)}
         />
       </SplitBackgroundOverlay>
-      <Blog data={JSON.parse(story.content)} style={{ marginTop: !story.images.length ? 64 : 0 }} />
+      <Blog
+        data={JSON.parse(story.content)}
+        style={{ marginTop: !story.images.length ? 64 : 0 }}
+      />
       <Gallery
         images={story.images.map((image) => ({
           src: image.url,

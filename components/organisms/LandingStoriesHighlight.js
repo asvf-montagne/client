@@ -11,7 +11,10 @@ LandingStoriesHighlight.propTypes = {
   handleRedirection: PropTypes.func.isRequired,
 };
 
-export default function LandingStoriesHighlight({ highlightedStories, handleRedirection }) {
+export default function LandingStoriesHighlight({
+  highlightedStories,
+  handleRedirection,
+}) {
   const highlightedStory = highlightedStories[0];
 
   return (
@@ -20,9 +23,13 @@ export default function LandingStoriesHighlight({ highlightedStories, handleRedi
         <div className={styles.storiesHighlight__grid}>
           <div className={styles.storiesHighlight__inner__col}>
             <div className={styles.storiesHighlight__highlight}>
-              <div className={styles.storiesHighlight__highlight__backgroundRec} />
+              <div
+                className={styles.storiesHighlight__highlight__backgroundRec}
+              />
               <div className={styles.storiesHighlight__highlight__overlay}>
-                <div className={styles.storiesHighlight__highlight__overlay__inner}>
+                <div
+                  className={styles.storiesHighlight__highlight__overlay__inner}
+                >
                   <CardStory
                     shadow={false}
                     borderless
@@ -55,7 +62,9 @@ export default function LandingStoriesHighlight({ highlightedStories, handleRedi
         <span className={styles.storiesHighlight__span}>
           <Button variant="link" size="medium" onClick={handleRedirection}>
             Voir tous nos récits
-            <Icon style={{ fontSize: 24, margin: '2px 0 0 8px' }}>chevron_right</Icon>
+            <Icon style={{ fontSize: 24, margin: '2px 0 0 8px' }}>
+              chevron_right
+            </Icon>
           </Button>
         </span>
       </div>

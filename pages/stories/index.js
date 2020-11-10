@@ -20,9 +20,14 @@ function StoriesReducer(state, action) {
       };
     case StoriesActions.ADD_STORIES:
       const newStories = [...state.stories, ...action.params.stories];
-      return { stories: newStories, showFetchMoreStoriesBtn: action.params.stories.length >= 15 };
+      return {
+        stories: newStories,
+        showFetchMoreStoriesBtn: action.params.stories.length >= 15,
+      };
     default:
-      throw new Error(`action unorganized ${action.type} with parameter ${action.params}`);
+      throw new Error(
+        `action unorganized ${action.type} with parameter ${action.params}`,
+      );
   }
 }
 
@@ -34,7 +39,10 @@ Stories.propTypes = {
 export default function Stories({ tags, stories }) {
   const [search, setSearch] = useState('');
   const [tagId, setTagId] = useState('ALL');
-  const [state, dispatch] = useReducer(StoriesReducer, { stories, showFetchMoreStoriesBtn: true });
+  const [state, dispatch] = useReducer(StoriesReducer, {
+    stories,
+    showFetchMoreStoriesBtn: true,
+  });
 
   function getParamsForSearch(isSet = true) {
     const params = { start: isSet ? 0 : state.stories.length };

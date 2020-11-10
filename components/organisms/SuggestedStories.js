@@ -20,7 +20,9 @@ export default function DefaultPageLayout({ stories }) {
                 : styles.suggestedStories__titleEnd
             }
           >
-            {stories.length > 0 ? 'Continuer de lire ...' : `Bravo vous avez lu le dernier récit !`}
+            {stories.length > 0
+              ? 'Continuer de lire ...'
+              : `Bravo vous avez lu le dernier récit !`}
           </h1>
           {stories.length > 0 && (
             <div className={styles.suggestedStories__cards}>

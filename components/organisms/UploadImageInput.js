@@ -39,7 +39,13 @@ export default function UploadImageInput({ push }) {
     return fileId(f1) === fileId(f2);
   };
 
-  const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragAccept,
+    isDragReject,
+  } = useDropzone({
     accept: 'image/*',
     onDropAccepted: (acceptedFiles) => {
       setFiles([
@@ -49,7 +55,9 @@ export default function UploadImageInput({ push }) {
           if (files.some((f) => isFileEqual(f, file))) return list;
 
           // add to the file the preview (a blob object)
-          const fileWithPreview = Object.assign(file, { preview: URL.createObjectURL(file) });
+          const fileWithPreview = Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          });
 
           // add an entry to the form list and add the file to the list of additional data for the upper form
           push('files', fileWithPreview);
@@ -106,7 +114,11 @@ export default function UploadImageInput({ push }) {
 
                 return (
                   <div className={styles.img_preview__imagePreview} key={index}>
-                    <img alt="hello" className={styles.img_preview__img} src={f.preview} />
+                    <img
+                      alt="hello"
+                      className={styles.img_preview__img}
+                      src={f.preview}
+                    />
                     <div className={styles.img_preview__containedInputAndIcon}>
                       <div className={styles.img_preview__input}>
                         <Field name={`files.${index}.caption`} type="text">

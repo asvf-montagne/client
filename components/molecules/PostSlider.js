@@ -34,7 +34,9 @@ export default function PostSlider({ images }) {
                 className={styles.header__splideItem__image}
               />
               {caption !== undefined && (
-                <figcaption className={styles.header__splideItem__caption}>{caption}</figcaption>
+                <figcaption className={styles.header__splideItem__caption}>
+                  {caption}
+                </figcaption>
               )}
             </div>
           </SplideSlide>

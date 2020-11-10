@@ -14,7 +14,11 @@ export default function ForgotPassword() {
       title="S’inscrire"
       helper={{ label: `Vous avez déjà un compte ?`, href: '/sign-in' }}
     >
-      <FormForgotPassword email={email} setEmail={setEmail} onSubmit={handleSubmit} />
+      <FormForgotPassword
+        email={email}
+        setEmail={setEmail}
+        onSubmit={handleSubmit}
+      />
     </AuthLayout>
   );
 }

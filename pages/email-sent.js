@@ -5,7 +5,10 @@ export default function EmailSent() {
   return (
     <AuthLayout
       title="Bientôt terminé"
-      helper={{ label: `La page ne charge pas ? Se connecter`, href: '/sign-in' }}
+      helper={{
+        label: `La page ne charge pas ? Se connecter`,
+        href: '/sign-in',
+      }}
     >
       <BigIcon
         icon="email"

@@ -34,7 +34,11 @@ export default function PartnerSlider({ partners }) {
         {partners.map(({ name, url, link }, index) => (
           <SplideSlide key={index}>
             <div className={styles.partnersSlider__splideItem}>
-              <img alt={name} src={url} className={styles.partnersSlider__splideItem__image} />
+              <img
+                alt={name}
+                src={url}
+                className={styles.partnersSlider__splideItem__image}
+              />
             </div>
           </SplideSlide>
         ))}

@@ -6,7 +6,10 @@ export default function EmailVerify() {
   return (
     <AuthLayout
       title="Compte validé"
-      helper={{ label: `La page ne charge pas ? Se connecter`, href: '/sign-in' }}
+      helper={{
+        label: `La page ne charge pas ? Se connecter`,
+        href: '/sign-in',
+      }}
     >
       <BigIcon
         icon="check_circle"

@@ -52,7 +52,8 @@ function Home({ stories, partners }) {
     } else {
       const { value, createdAt } = JSON.parse(item);
       const oneDay = 86400;
-      const isExpired = new Date(createdAt).getTime() - new Date().getTime() > oneDay;
+      const isExpired =
+        new Date(createdAt).getTime() - new Date().getTime() > oneDay;
       if (isExpired) {
         window.localStorage.removeItem('flash');
       } else if (!value) {
