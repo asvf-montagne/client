@@ -5,9 +5,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 DisplaySuccessOrError.propTypes = {
-  success: PropTypes.bool.isRequired,
-  successMessage: PropTypes.bool.isRequired,
-  error: PropTypes.string.isRequired,
+  success: PropTypes.bool,
+  successMessage: PropTypes.string,
+  error: PropTypes.string,
 }
 
 export default function DisplaySuccessOrError({

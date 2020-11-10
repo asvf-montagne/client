@@ -5,7 +5,7 @@ import styles from './FormSignIn.module.css'
 
 import GoogleLogoAsset from '@assets/images/logo_google.png'
 import { Field, Form } from 'react-final-form'
-import { FormUtil } from '../../util/form'
+import { FormUtil } from '../../helpers/form'
 import { Users } from '../../services/users'
 import services from '../../services'
 import { useRouter } from 'next/router'
