@@ -5,7 +5,7 @@ import Button from '@components/atoms/Button'
 import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError'
 import { contactFormSubmissions } from '../../services/contact-form-submissions'
 import services from '../../services'
-import { FormUtil } from '../../util/form'
+import { FormUtil } from '../../helpers/form'
 import styles from './ContactForm.module.css'
 
 export default function ContactForm() {
