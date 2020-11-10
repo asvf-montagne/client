@@ -1,5 +1,5 @@
-import v from "validator";
-import { FORM_ERROR } from "final-form";
+import v from 'validator'
+import { FORM_ERROR } from 'final-form'
 
 const usersService = (client) => ({
   async signUp(data) {
@@ -8,7 +8,7 @@ const usersService = (client) => ({
     } catch (ex) {
       return ex.response
     }
-  }
+  },
 })
 
 const MESSAGES = {
@@ -26,7 +26,9 @@ const MESSAGES = {
 
 const STRAPI_TO_ERROR = {
   'Auth.form.error.email.taken': { email: 'Addresse email déjà utilisé' },
-  'Auth.form.error.username.taken': { username: "Nom d'utilisateur déjà utilisé" },
+  'Auth.form.error.username.taken': {
+    username: "Nom d'utilisateur déjà utilisé",
+  },
 }
 
 const usernameRegexp = /^(?=[a-zA-Z0-9._]{4,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/
@@ -39,7 +41,12 @@ const Users = {
       errors['username'] = MESSAGES.USERNAME_REQUIRED
     else if (o['username'].length < 4)
       errors['username'] = MESSAGES.USERNAME_INVALID_LENGTH
-    else if (o['username'].startsWith(".") || o['username'].startsWith("_") || o['username'].endsWith(".") || o['username'].endsWith("_"))
+    else if (
+      o['username'].startsWith('.') ||
+      o['username'].startsWith('_') ||
+      o['username'].endsWith('.') ||
+      o['username'].endsWith('_')
+    )
       errors['username'] = MESSAGES.USERNAME_INVALID_FORMAT_START_END
     else if (o['username'].match(usernameRegexp) === null)
       errors['username'] = MESSAGES.USERNAME_INVALID_FORMAT
@@ -47,8 +54,7 @@ const Users = {
     if (o.email === undefined) errors.email = MESSAGES.EMAIL_REQUIRED
     else if (!v.isEmail(o.email)) errors.email = MESSAGES.EMAIL_INVALID
 
-    if (o.password === undefined)
-      errors.password = MESSAGES.PASSWORD_REQUIRED
+    if (o.password === undefined) errors.password = MESSAGES.PASSWORD_REQUIRED
     else if (o.password.length < 6)
       errors.password = MESSAGES.PASSWORD_INVALID_LENGTH
 
@@ -59,13 +65,13 @@ const Users = {
     let errors = { [FORM_ERROR]: `Une erreur est survenu.` }
     const strResponse = JSON.stringify(response)
     Object.keys(STRAPI_TO_ERROR)
-      .filter(code => strResponse.includes(code))
-      .forEach(code => {
+      .filter((code) => strResponse.includes(code))
+      .forEach((code) => {
         errors = { ...errors, ...STRAPI_TO_ERROR[code] }
       })
 
     return errors
-  }
+  },
 }
 
 export default usersService

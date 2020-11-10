@@ -1,37 +1,39 @@
-import React, { useRef, useState } from 'react';
-import Input from '@components/atoms/Input';
-import Button from '@components/atoms/Button';
-import styles from './ContactForm.module.css';
-import { contactFormSubmissions } from '../../services/contact-form-submissions';
-import services from '../../services';
-import { Field, Form } from 'react-final-form';
-import { FormUtil } from '../../util/form';
-import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError';
+import React, { useRef, useState } from 'react'
+import { Field, Form } from 'react-final-form'
+import Input from '@components/atoms/Input'
+import Button from '@components/atoms/Button'
+import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError'
+import { contactFormSubmissions } from '../../services/contact-form-submissions'
+import services from '../../services'
+import { FormUtil } from '../../util/form'
+import styles from './ContactForm.module.css'
 
 export default function ContactForm() {
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(false)
 
-  const refFullName = useRef(null);
-  const refEmail = useRef(null);
-  const refContent = useRef(null);
+  const refFullName = useRef(null)
+  const refEmail = useRef(null)
+  const refContent = useRef(null)
 
   async function onSubmit(values, form) {
-    const data = contactFormSubmissions.prepareForCreate(values);
+    const data = contactFormSubmissions.prepareForCreate(values)
 
     try {
-      await services().contactFormSubmissions.create(data);
-      setSuccess(true);
+      await services().contactFormSubmissions.create(data)
+      setSuccess(true)
 
-      FormUtil.reset(values, form);
+      FormUtil.reset(values, form)
     } catch (error) {
-      console.error('error on submitting contact form', error);
-      return contactFormSubmissions.validateFromBackend(error);
+      console.error('error on submitting contact form', error)
+      return contactFormSubmissions.validateFromBackend(error)
     }
   }
 
   return (
     <div className={styles.landingContact__overlay__contacts__col}>
-      <div className={styles.landingContact__overlay__contacts__col__inner__form}>
+      <div
+        className={styles.landingContact__overlay__contacts__col__inner__form}
+      >
         <Form
           onSubmit={onSubmit}
           validate={contactFormSubmissions.validate}
@@ -54,7 +56,9 @@ export default function ContactForm() {
                     icon="person"
                     label="Nom et prénom"
                     placeholder="Jonh Doe"
-                    onKeyDown={(e) => FormUtil.navigateToNextInput(e, refEmail, 13)}
+                    onKeyDown={(e) =>
+                      FormUtil.navigateToNextInput(e, refEmail, 13)
+                    }
                     {...input}
                     meta={meta}
                   />
@@ -69,7 +73,9 @@ export default function ContactForm() {
                     label="Email"
                     placeholder="Jonh Doe"
                     {...input}
-                    onKeyDown={(e) => FormUtil.navigateToNextInput(e, refContent, 13)}
+                    onKeyDown={(e) =>
+                      FormUtil.navigateToNextInput(e, refContent, 13)
+                    }
                     meta={meta}
                   />
                 )}
@@ -83,8 +89,7 @@ export default function ContactForm() {
                     placeholder="Jonh Doe"
                     textArea
                     {...input}
-                    onKeyDown={() => {
-                    }}
+                    onKeyDown={() => {}}
                     meta={meta}
                   />
                 )}
@@ -104,5 +109,5 @@ export default function ContactForm() {
         />
       </div>
     </div>
-  );
+  )
 }

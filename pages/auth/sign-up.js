@@ -1,6 +1,6 @@
-import React from 'react';
-import AuthLayout from '@components/atoms/AuthLayout';
-import FormSignUp from '@components/organisms/FormSignUp';
+import React from 'react'
+import AuthLayout from '@components/atoms/AuthLayout'
+import FormSignUp from '@components/organisms/FormSignUp'
 
 export default function SignUp() {
   return (
@@ -10,5 +10,5 @@ export default function SignUp() {
     >
       <FormSignUp />
     </AuthLayout>
-  );
+  )
 }

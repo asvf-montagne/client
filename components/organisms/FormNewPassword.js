@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import Button from '@components/atoms/Button';
-import Input from '@components/atoms/Input';
-import styles from './FormNewPassword.module.css';
+import React, { useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
+import Button from '@components/atoms/Button'
+import Input from '@components/atoms/Input'
+import styles from './FormNewPassword.module.css'
 
 FormNewPassword.propTypes = {
   passwordConfirm: PropTypes.string.isRequired,
@@ -10,7 +10,7 @@ FormNewPassword.propTypes = {
   password: PropTypes.string.isRequired,
   setPassword: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-};
+}
 
 export default function FormNewPassword({
   password,
@@ -19,12 +19,12 @@ export default function FormNewPassword({
   setPasswordConfirm,
   onSubmit,
 }) {
-  const refPassword = useRef(null);
-  const refPasswordConfirm = useRef(null);
+  const refPassword = useRef(null)
+  const refPasswordConfirm = useRef(null)
 
   useEffect(() => {
-    refPassword.current.focus();
-  }, []);
+    refPassword.current.focus()
+  }, [])
 
   return (
     <form className={styles.signUpForm}>
@@ -37,8 +37,8 @@ export default function FormNewPassword({
         value={password}
         onKeyDown={(event) => {
           if (event.keyCode === 13) {
-            refPasswordConfirm.current.focus();
-            event.preventDefault();
+            refPasswordConfirm.current.focus()
+            event.preventDefault()
           }
         }}
         meta={{}}
@@ -55,8 +55,8 @@ export default function FormNewPassword({
         value={password}
         onKeyDown={(event) => {
           if (event.keyCode === 13) {
-            onSubmit(event);
-            event.preventDefault();
+            onSubmit(event)
+            event.preventDefault()
           }
         }}
         meta={{}}
@@ -76,5 +76,5 @@ export default function FormNewPassword({
         </Button>
       </div>
     </form>
-  );
+  )
 }

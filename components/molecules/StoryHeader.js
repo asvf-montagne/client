@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import Button from '@components/atoms/Button';
-import styles from './StoryHeader.module.css';
-import React from 'react';
+import PropTypes from 'prop-types'
+import Button from '@components/atoms/Button'
+import styles from './StoryHeader.module.css'
+import React from 'react'
 
 StoryHeader.propTypes = {
   tag: PropTypes.string,
@@ -9,7 +9,7 @@ StoryHeader.propTypes = {
   author: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   image: PropTypes.object,
-};
+}
 
 export default function StoryHeader({ tag, title, author, date, image }) {
   return (
@@ -18,7 +18,9 @@ export default function StoryHeader({ tag, title, author, date, image }) {
         <Button
           variant="link"
           focus="link"
-          onClick={() => console.log('todo: go on search story with tag filter: ' + tag)}
+          onClick={() =>
+            console.log('todo: go on search story with tag filter: ' + tag)
+          }
           style={{ marginBottom: 42 }}
         >
           {tag}
@@ -27,7 +29,13 @@ export default function StoryHeader({ tag, title, author, date, image }) {
       <h1 className={styles.storyHeader__title}>{title}</h1>
       <p className={styles.storyHeader__author}>{author}</p>
       <p className={styles.storyHeader__date}>{date}</p>
-      {image && <img src={image.url} className={styles.storyHeader__image} alt={image.name} />}
+      {image && (
+        <img
+          src={image.url}
+          className={styles.storyHeader__image}
+          alt={image.name}
+        />
+      )}
     </>
-  );
+  )
 }

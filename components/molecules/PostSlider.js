@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import styles from './PostSlider.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
+import styles from './PostSlider.module.css'
 
 PostSlider.propTypes = {
   images: PropTypes.array.isRequired,
-};
+}
 
 export default function PostSlider({ images }) {
   return (
@@ -34,12 +34,14 @@ export default function PostSlider({ images }) {
                 className={styles.header__splideItem__image}
               />
               {caption !== undefined && (
-                <figcaption className={styles.header__splideItem__caption}>{caption}</figcaption>
+                <figcaption className={styles.header__splideItem__caption}>
+                  {caption}
+                </figcaption>
               )}
             </div>
           </SplideSlide>
         ))}
       </Splide>
     </div>
-  );
+  )
 }

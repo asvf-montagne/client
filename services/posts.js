@@ -1,54 +1,50 @@
 import TimeAgo from 'javascript-time-ago'
 import fr from 'javascript-time-ago/locale/fr'
-import imageNotFound from "@assets/images/image_not_found.png";
+import imageNotFound from '@assets/images/image_not_found.png'
 
 TimeAgo.addLocale(fr)
 
 const timeAgo = new TimeAgo('fr-FR')
 
-const postsService = client => ({
+const postsService = (client) => ({
   async list({ limit = 5 }) {
     const res = await client.get(`/posts/view/search`, {
-        params: {
-          'limit': limit,
-          'start': 0
-        }
-      }
-    );
+      params: {
+        limit: limit,
+        start: 0,
+      },
+    })
     return res.data
   },
 
   async search(params) {
     const res = await client.get(`/posts/view/search`, {
-        params: {
-          'limit': 15,
-          ...params
-        }
-      }
-    );
+      params: {
+        limit: 15,
+        ...params,
+      },
+    })
     return res.data
   },
 
   async find({ id }) {
     const res = await client.get(`/posts/view/post`, {
-        params: {
-          id,
-        }
-      }
-    );
+      params: {
+        id,
+      },
+    })
     return res.data
   },
 
   async suggested({ date, limit = 2 }) {
     const res = await client.get(`/posts/view/search`, {
-        params: {
-          'limit': limit,
-          'publishedBefore': date,
-        }
-      }
-    );
+      params: {
+        limit: limit,
+        publishedBefore: date,
+      },
+    })
     return res.data
-  }
+  },
 })
 
 export const posts = {
@@ -70,7 +66,7 @@ export const posts = {
 
   getFirstImage(post) {
     if (post.images.length === 0) {
-      return { url: imageNotFound, name: "image not found" }
+      return { url: imageNotFound, name: 'image not found' }
     }
 
     return post.images[0]
@@ -86,8 +82,8 @@ export const posts = {
       return post['author']['username'] || 'unknown'
     }
 
-    return firstName[0].toUpperCase() + firstName.slice(1);
-  }
+    return firstName[0].toUpperCase() + firstName.slice(1)
+  },
 }
 
 export default postsService
