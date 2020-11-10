@@ -6,10 +6,10 @@ import Button from '@components/atoms/Button'
 import GoogleLogoAsset from '@assets/images/logo_google.png'
 import services from '../../services'
 import { Users } from '../../services/users'
-import { FormUtil } from '../../util/form'
 import FormSuccessOrError from '@components/atoms/FormSuccessOrError'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
+import { FormUtil } from '../../helpers/form'
 
 FormSignIn.propTypes = {
   onSignInSuccess: PropTypes.func,
@@ -26,8 +26,8 @@ export default function FormSignIn({ onSignInSuccess }) {
       const res = await services().users.signIn(values)
 
       if (res.status === 200) {
-        const { jwt, user } = res.data
-        services().auth.login(jwt)
+        const { jwt: token, user } = res.data
+        services({ token }).auth.login()
         onSignInSuccess(user)
         await router.push('/protected-example')
       } else {

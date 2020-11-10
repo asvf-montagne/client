@@ -73,10 +73,13 @@ const authService = (client) => ({
    * By default our backend generate a token for
    * 30 days so we set the cookie expiration 1 day after.
    *
-   * @param {string} token
    */
-  login(token) {
-    Cookies.set(JWT_COOKIE_KEY, token, { expires: 31 })
+  login() {
+    Cookies.set(JWT_COOKIE_KEY, client.metadata.token, { expires: 31 })
+  },
+
+  logout() {
+    Cookies.remove(JWT_COOKIE_KEY)
   },
 
   /**
@@ -101,6 +104,8 @@ const authService = (client) => ({
 
 const Auth = {
   jwtTokenKey: JWT_COOKIE_KEY,
+
+
 }
 
 export default authService
