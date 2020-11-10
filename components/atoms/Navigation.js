@@ -20,7 +20,10 @@ function NavLink({ url, title, subItems }) {
 
   return (
     <li className={styles.header__list__item}>
-      <a className={styles.header__list__item__link} onClick={() => router.push(url)}>
+      <a
+        className={styles.header__list__item__link}
+        onClick={() => router.push(url)}
+      >
         {title}
       </a>
       {!!subItems.length && size > 768 && (
@@ -59,30 +62,33 @@ function NavLinkMin({ url, title, subItems }) {
   return (
     <>
       <li className={styles.header__menu__item}>
-        <a className={styles.header__menu__item__link} onClick={() => router.push(url)}>
+        <a
+          className={styles.header__menu__item__link}
+          onClick={() => router.push(url)}
+        >
           {title}
         </a>
       </li>
       {!!subItems.length &&
-      subItems.map((item, index) => (
-        <div key={index}>
-          <li className={styles.header__menu__item}>
-            <p className={styles.header__menu__item__link_sub_title}>
-              {item.title}
-            </p>
-          </li>
-          {item.links.map((link, index) => (
-            <li key={index} className={styles.header__menu__item}>
-              <a
-                className={styles.header__menu__item__link_sub_link}
-                onClick={() => router.push(link.url)}
-              >
-                {link.label}
-              </a>
+        subItems.map((item, index) => (
+          <div key={index}>
+            <li className={styles.header__menu__item}>
+              <p className={styles.header__menu__item__link_sub_title}>
+                {item.title}
+              </p>
             </li>
-          ))}
-        </div>
-      ))}
+            {item.links.map((link, index) => (
+              <li key={index} className={styles.header__menu__item}>
+                <a
+                  className={styles.header__menu__item__link_sub_link}
+                  onClick={() => router.push(link.url)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </div>
+        ))}
     </>
   )
 }
@@ -132,16 +138,22 @@ export default function Navigation() {
         <div className={styles.header__container}>
           <ul className={styles.header__menu}>
             <>
-              <a className={styles.header__logo} onClick={() => router.push('/')}>
+              <a
+                className={styles.header__logo}
+                onClick={() => router.push('/')}
+              >
                 ASVF Montagne
               </a>
-              <a className={styles.header__logo__min} onClick={() => router.push('/')}>
+              <a
+                className={styles.header__logo__min}
+                onClick={() => router.push('/')}
+              >
                 ASVF
               </a>
             </>
 
             {isAuthenticated && (
-              <NavButton title="Logout" url="/auth/sign-up"/>
+              <NavButton title="Logout" url="/auth/sign-up" />
             )}
             {!isAuthenticated && (
               <NavLinkMin
@@ -151,7 +163,7 @@ export default function Navigation() {
               />
             )}
             {!isAuthenticated && (
-              <NavLinkMin title="Connexion" url="/auth/sign-in" subItems={[]}/>
+              <NavLinkMin title="Connexion" url="/auth/sign-in" subItems={[]} />
             )}
 
             {navItems
@@ -178,7 +190,10 @@ export default function Navigation() {
             <a className={styles.header__logo} onClick={() => router.push('/')}>
               ASVF Montagne
             </a>
-            <a className={styles.header__logo__min} onClick={() => router.push('/')}>
+            <a
+              className={styles.header__logo__min}
+              onClick={() => router.push('/')}
+            >
               ASVF
             </a>
           </>
@@ -186,17 +201,17 @@ export default function Navigation() {
           {navItems
             .find(({ type }) => type === 'links')
             .items.map(({ title, url, items = [] }, index) => (
-              <NavLink title={title} url={url} subItems={items} key={index}/>
+              <NavLink title={title} url={url} subItems={items} key={index} />
             ))}
         </ul>
 
         <ul className={styles.header__list}>
-          {isAuthenticated && <NavButton title="Logout" url="/auth/sign-up"/>}
+          {isAuthenticated && <NavButton title="Logout" url="/auth/sign-up" />}
           {!isAuthenticated && (
-            <NavLink title="Connexion" url="/auth/sign-in" subItems={[]}/>
+            <NavLink title="Connexion" url="/auth/sign-in" subItems={[]} />
           )}
           {!isAuthenticated && (
-            <NavButton title="Inscription" url="/auth/sign-up"/>
+            <NavButton title="Inscription" url="/auth/sign-up" />
           )}
 
           <li className={styles.header__list__item} id="burger">

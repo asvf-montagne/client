@@ -104,8 +104,6 @@ const authService = (client) => ({
 
 const Auth = {
   jwtTokenKey: JWT_COOKIE_KEY,
-
-
 }
 
 export default authService
