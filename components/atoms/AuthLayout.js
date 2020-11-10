@@ -1,19 +1,19 @@
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import Icon from '@material-ui/core/Icon';
-import Button from '@components/atoms/Button';
-import styles from './AuthLayout.module.css';
-import backgroundImage from '@assets/images/mont_blanc.jpg';
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
+import Icon from '@material-ui/core/Icon'
+import Button from '@components/atoms/Button'
+import styles from './AuthLayout.module.css'
+import backgroundImage from '@assets/images/mont_blanc.jpg'
 
 AuthLayout.propTypes = {
   title: PropTypes.string.isRequired,
   helper: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
-};
+}
 
 export default function AuthLayout({ title, helper, children }) {
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <>
@@ -64,5 +64,5 @@ export default function AuthLayout({ title, helper, children }) {
         </div>
       </main>
     </>
-  );
+  )
 }

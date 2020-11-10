@@ -1,10 +1,10 @@
-import React from 'react';
-import Layout from '@components/atoms/Layout';
-import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay';
-import PageHeader from '@components/atoms/PageHeader';
-import ContactForm from '@components/organisms/ContactForm';
-import styles from '../styles/Contact.module.css';
-import Icon from '@material-ui/core/Icon';
+import React from 'react'
+import Layout from '@components/atoms/Layout'
+import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
+import PageHeader from '@components/atoms/PageHeader'
+import ContactForm from '@components/organisms/ContactForm'
+import styles from '../styles/Contact.module.css'
+import Icon from '@material-ui/core/Icon'
 
 export default function Contact() {
   // const [fullName, setFullName] = useState('');
@@ -43,5 +43,5 @@ export default function Contact() {
         <ContactForm />
       </section>
     </Layout>
-  );
+  )
 }

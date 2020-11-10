@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
-import styles from './CardStory.module.css';
+import PropTypes from 'prop-types'
+import { useRouter } from 'next/router'
+import styles from './CardStory.module.css'
 
 CardStory.propTypes = {
   id: PropTypes.number.isRequired,
@@ -12,7 +12,7 @@ CardStory.propTypes = {
   description: PropTypes.string,
   borderless: PropTypes.bool,
   shadow: PropTypes.bool,
-};
+}
 
 export default function CardStory({
   id,
@@ -25,11 +25,11 @@ export default function CardStory({
   borderless = false,
   shadow = true,
 }) {
-  const router = useRouter();
+  const router = useRouter()
 
   const handleRedirection = () => {
-    router.push(`/stories/${id}`);
-  };
+    router.push(`/stories/${id}`)
+  }
 
   return (
     <div
@@ -60,5 +60,5 @@ export default function CardStory({
         </div>
       </div>
     </div>
-  );
+  )
 }

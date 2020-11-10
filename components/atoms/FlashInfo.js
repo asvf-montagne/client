@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import Icon from '@material-ui/core/Icon';
-import Button from '@components/atoms/Button';
-import styles from './FlashInfo.module.css';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import Icon from '@material-ui/core/Icon'
+import Button from '@components/atoms/Button'
+import styles from './FlashInfo.module.css'
 
 FlashInfo.propTypes = {
   infos: PropTypes.array,
   handleClose: PropTypes.func.isRequired,
-};
+}
 
 export default function FlashInfo({ infos = [], handleClose }) {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0)
 
   return (
     <div id="test" className={styles.flash}>
@@ -32,5 +32,5 @@ export default function FlashInfo({ infos = [], handleClose }) {
         </Button>
       </div>
     </div>
-  );
+  )
 }

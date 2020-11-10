@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import Button from '@components/atoms/Button';
-import styles from './StoryHeader.module.css';
-import React from 'react';
+import PropTypes from 'prop-types'
+import Button from '@components/atoms/Button'
+import styles from './StoryHeader.module.css'
+import React from 'react'
 
 StoryHeader.propTypes = {
   tag: PropTypes.string,
@@ -9,7 +9,7 @@ StoryHeader.propTypes = {
   author: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   image: PropTypes.object,
-};
+}
 
 export default function StoryHeader({ tag, title, author, date, image }) {
   return (
@@ -37,5 +37,5 @@ export default function StoryHeader({ tag, title, author, date, image }) {
         />
       )}
     </>
-  );
+  )
 }

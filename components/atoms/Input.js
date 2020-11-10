@@ -1,7 +1,7 @@
-import React, { forwardRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import Icon from '@material-ui/core/Icon';
-import styles from './Input.module.css';
+import React, { forwardRef, useState } from 'react'
+import PropTypes from 'prop-types'
+import Icon from '@material-ui/core/Icon'
+import styles from './Input.module.css'
 
 // eslint-disable-next-line react/display-name
 const Input = forwardRef(
@@ -24,7 +24,7 @@ const Input = forwardRef(
     },
     ref,
   ) => {
-    const [focused, setFocused] = useState(false);
+    const [focused, setFocused] = useState(false)
 
     return (
       <div className={styles.input} {...props}>
@@ -72,12 +72,12 @@ const Input = forwardRef(
               ref={ref}
               className={styles.input__container__textarea}
               onFocus={() => {
-                onFocus();
-                setFocused(true);
+                onFocus()
+                setFocused(true)
               }}
               onBlur={() => {
-                onBlur();
-                setFocused(false);
+                onBlur()
+                setFocused(false)
               }}
               onChange={(event) => onChange(event.target.value)}
               onKeyDown={onKeyDown}
@@ -93,12 +93,12 @@ const Input = forwardRef(
                 icon ? styles.input__container__input__iconless : ''
               }`}
               onFocus={() => {
-                onFocus();
-                setFocused(true);
+                onFocus()
+                setFocused(true)
               }}
               onBlur={() => {
-                onBlur();
-                setFocused(false);
+                onBlur()
+                setFocused(false)
               }}
               onChange={(event) => onChange(event.target.value)}
               onKeyDown={onKeyDown}
@@ -116,9 +116,9 @@ const Input = forwardRef(
             </a>
           )}
       </div>
-    );
+    )
   },
-);
+)
 
 Input.propTypes = {
   textArea: PropTypes.bool,
@@ -134,6 +134,6 @@ Input.propTypes = {
   icon: PropTypes.string,
   link: PropTypes.object,
   meta: PropTypes.object,
-};
+}
 
-export default Input;
+export default Input

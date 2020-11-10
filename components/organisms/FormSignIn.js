@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import Button from '@components/atoms/Button';
-import Input from '@components/atoms/Input';
-import styles from './FormSignIn.module.css';
+import React, { useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
+import Button from '@components/atoms/Button'
+import Input from '@components/atoms/Input'
+import styles from './FormSignIn.module.css'
 
-import GoogleLogoAsset from '@assets/images/logo_google.png';
+import GoogleLogoAsset from '@assets/images/logo_google.png'
 
 FormSignIn.propTypes = {
   email: PropTypes.string.isRequired,
@@ -12,7 +12,7 @@ FormSignIn.propTypes = {
   password: PropTypes.string.isRequired,
   setPassword: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-};
+}
 
 export default function FormSignIn({
   email,
@@ -21,12 +21,12 @@ export default function FormSignIn({
   setPassword,
   onSubmit,
 }) {
-  const refEmail = useRef(null);
-  const refPassword = useRef(null);
+  const refEmail = useRef(null)
+  const refPassword = useRef(null)
 
   useEffect(() => {
-    refEmail.current.focus();
-  }, []);
+    refEmail.current.focus()
+  }, [])
 
   return (
     <form className={styles.signUpForm}>
@@ -39,8 +39,8 @@ export default function FormSignIn({
         onChange={setEmail}
         onKeyDown={(event) => {
           if (event.keyCode === 13) {
-            refPassword.current.focus();
-            event.preventDefault();
+            refPassword.current.focus()
+            event.preventDefault()
           }
         }}
         meta={{}}
@@ -56,8 +56,8 @@ export default function FormSignIn({
         onChange={setPassword}
         onKeyDown={(event) => {
           if (event.keyCode === 13) {
-            onSubmit(event);
-            event.preventDefault();
+            onSubmit(event)
+            event.preventDefault()
           }
         }}
         meta={{}}
@@ -99,5 +99,5 @@ export default function FormSignIn({
         </Button>
       </div>
     </form>
-  );
+  )
 }

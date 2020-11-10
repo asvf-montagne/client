@@ -1,14 +1,14 @@
-import Badge from '@components/atoms/Badge';
-import Icon from '@material-ui/core/Icon';
-import styles from '@components/organisms/ContactForm.module.css';
-import React from 'react';
-import PropTypes from 'prop-types';
+import Badge from '@components/atoms/Badge'
+import Icon from '@material-ui/core/Icon'
+import styles from '@components/organisms/ContactForm.module.css'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 DisplaySuccessOrError.propTypes = {
   success: PropTypes.bool.isRequired,
   successMessage: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
-};
+}
 
 export default function DisplaySuccessOrError({
   success,
@@ -50,8 +50,8 @@ export default function DisplaySuccessOrError({
           </Badge>
         )}
       </div>
-    );
+    )
   } else {
-    return <></>;
+    return <></>
   }
 }

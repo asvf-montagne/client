@@ -524,4 +524,4 @@ export default [
     preview:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Semper consequat purus tempor quam phasellus. Pellentesque arcu dictumst sit imperbvbnjkljhgvbnmkjuhgbnjk hbnj uhbnmkiu hbnmkiu ijk iuh njkiuh jkiuhjk iuhj',
   },
-];
+]

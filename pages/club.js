@@ -1,10 +1,10 @@
-import Layout from '@components/atoms/Layout';
-import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay';
-import PageHeader from '@components/atoms/PageHeader';
-import Blog from '@components/atoms/Blog';
+import Layout from '@components/atoms/Layout'
+import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
+import PageHeader from '@components/atoms/PageHeader'
+import Blog from '@components/atoms/Blog'
 
-import mockStories from '../mockStories';
-import React from 'react';
+import mockStories from '../mockStories'
+import React from 'react'
 
 export default function Club() {
   return (
@@ -17,5 +17,5 @@ export default function Club() {
       </SplitBackgroundOverlay>
       <Blog data={mockStories[0].data} />
     </Layout>
-  );
+  )
 }

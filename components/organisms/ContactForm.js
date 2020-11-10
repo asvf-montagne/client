@@ -1,31 +1,31 @@
-import React, { useRef, useState } from 'react';
-import { Field, Form } from 'react-final-form';
-import Input from '@components/atoms/Input';
-import Button from '@components/atoms/Button';
-import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError';
-import { contactFormSubmissions } from '../../services/contact-form-submissions';
-import services from '../../services';
-import { FormUtil } from '../../util/form';
-import styles from './ContactForm.module.css';
+import React, { useRef, useState } from 'react'
+import { Field, Form } from 'react-final-form'
+import Input from '@components/atoms/Input'
+import Button from '@components/atoms/Button'
+import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError'
+import { contactFormSubmissions } from '../../services/contact-form-submissions'
+import services from '../../services'
+import { FormUtil } from '../../util/form'
+import styles from './ContactForm.module.css'
 
 export default function ContactForm() {
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(false)
 
-  const refFullName = useRef(null);
-  const refEmail = useRef(null);
-  const refContent = useRef(null);
+  const refFullName = useRef(null)
+  const refEmail = useRef(null)
+  const refContent = useRef(null)
 
   async function onSubmit(values, form) {
-    const data = contactFormSubmissions.prepareForCreate(values);
+    const data = contactFormSubmissions.prepareForCreate(values)
 
     try {
-      await services().contactFormSubmissions.create(data);
-      setSuccess(true);
+      await services().contactFormSubmissions.create(data)
+      setSuccess(true)
 
-      FormUtil.reset(values, form);
+      FormUtil.reset(values, form)
     } catch (error) {
-      console.error('error on submitting contact form', error);
-      return contactFormSubmissions.validateFromBackend(error);
+      console.error('error on submitting contact form', error)
+      return contactFormSubmissions.validateFromBackend(error)
     }
   }
 
@@ -109,5 +109,5 @@ export default function ContactForm() {
         />
       </div>
     </div>
-  );
+  )
 }

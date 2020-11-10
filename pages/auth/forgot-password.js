@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import AuthLayout from '@components/atoms/AuthLayout';
-import FormForgotPassword from '@components/organisms/FormForgotPassword';
+import React, { useState } from 'react'
+import AuthLayout from '@components/atoms/AuthLayout'
+import FormForgotPassword from '@components/organisms/FormForgotPassword'
 
 export default function ForgotPassword() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('')
 
   const handleSubmit = () => {
-    console.log(email);
-  };
+    console.log(email)
+  }
 
   return (
     <AuthLayout
@@ -20,5 +20,5 @@ export default function ForgotPassword() {
         onSubmit={handleSubmit}
       />
     </AuthLayout>
-  );
+  )
 }

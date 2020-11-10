@@ -1,16 +1,16 @@
-import AuthLayout from '@components/atoms/AuthLayout';
-import BigIcon from '@components/molecules/BigIcon';
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import AuthLayout from '@components/atoms/AuthLayout'
+import BigIcon from '@components/molecules/BigIcon'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export default function EmailVerify() {
-  const router = useRouter();
+  const router = useRouter()
 
   useEffect(() => {
     setTimeout(() => {
-      router.push('/auth/sign-in');
-    }, 2500);
-  }, [router]);
+      router.push('/auth/sign-in')
+    }, 2500)
+  }, [router])
 
   return (
     <AuthLayout
@@ -26,5 +26,5 @@ export default function EmailVerify() {
         description="Vous allez être redirigé sur la page de connexion"
       />
     </AuthLayout>
-  );
+  )
 }

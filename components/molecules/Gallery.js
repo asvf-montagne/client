@@ -1,26 +1,26 @@
-import React, { useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import GalleryProvider from 'react-photo-gallery';
-import Carousel, { Modal, ModalGateway } from 'react-images';
-import styles from './Gallery.module.css';
+import React, { useState, useCallback } from 'react'
+import PropTypes from 'prop-types'
+import GalleryProvider from 'react-photo-gallery'
+import Carousel, { Modal, ModalGateway } from 'react-images'
+import styles from './Gallery.module.css'
 
 Gallery.propTypes = {
   images: PropTypes.array,
-};
+}
 
 export default function Gallery({ images }) {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [viewerIsOpen, setViewerIsOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0)
+  const [viewerIsOpen, setViewerIsOpen] = useState(false)
 
   const openModal = useCallback((event, { photo, index }) => {
-    setCurrentImage(index);
-    setViewerIsOpen(true);
-  }, []);
+    setCurrentImage(index)
+    setViewerIsOpen(true)
+  }, [])
 
   const closeModal = () => {
-    setCurrentImage(0);
-    setViewerIsOpen(false);
-  };
+    setCurrentImage(0)
+    setViewerIsOpen(false)
+  }
 
   return (
     <div className={styles.gallery}>
@@ -33,5 +33,5 @@ export default function Gallery({ images }) {
         ) : null}
       </ModalGateway>
     </div>
-  );
+  )
 }

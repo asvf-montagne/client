@@ -1,6 +1,6 @@
-import AuthLayout from '@components/atoms/AuthLayout';
-import BigIcon from '@components/molecules/BigIcon';
-import React from 'react';
+import AuthLayout from '@components/atoms/AuthLayout'
+import BigIcon from '@components/molecules/BigIcon'
+import React from 'react'
 
 export default function EmailSent() {
   return (
@@ -14,5 +14,5 @@ export default function EmailSent() {
         description="Cliquez sur le lien dans votre boîte mail pour continuer."
       />
     </AuthLayout>
-  );
+  )
 }

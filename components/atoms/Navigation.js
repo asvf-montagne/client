@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Icon from '@material-ui/core/Icon';
-import Button from '@components/atoms/Button';
-import styles from './Navigation.module.css';
-import useWindowSize from '@hooks/useWindowSize';
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import Icon from '@material-ui/core/Icon'
+import Button from '@components/atoms/Button'
+import styles from './Navigation.module.css'
+import useWindowSize from '@hooks/useWindowSize'
 
 const clubSubMenu = [
   {
@@ -48,7 +48,7 @@ const clubSubMenu = [
       },
     ],
   },
-];
+]
 
 function SubMenu() {
   return (
@@ -68,24 +68,24 @@ function SubMenu() {
         </div>
       ))}
     </div>
-  );
+  )
 }
 
 export default function Navigation() {
-  const router = useRouter();
-  const { width: size } = useWindowSize();
-  const [isMenuActive, setIsMenuActive] = useState(false);
-  const isAuthenticated = false;
+  const router = useRouter()
+  const { width: size } = useWindowSize()
+  const [isMenuActive, setIsMenuActive] = useState(false)
+  const isAuthenticated = false
 
   const handleRedirection = () => {
-    router.push('/auth/sign-up');
-  };
+    router.push('/auth/sign-up')
+  }
 
   useEffect(() => {
     if (size > 768) {
-      setIsMenuActive(false);
+      setIsMenuActive(false)
     }
-  }, [size]);
+  }, [size])
 
   return (
     <nav className={styles.header}>
@@ -237,5 +237,5 @@ export default function Navigation() {
         </div>
       )}
     </nav>
-  );
+  )
 }

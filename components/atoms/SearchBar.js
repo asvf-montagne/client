@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Icon from '@material-ui/core/Icon';
-import Button from '@components/atoms/Button';
-import styles from './SearchBar.module.css';
-import useWindowSize from '@hooks/useWindowSize';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Icon from '@material-ui/core/Icon'
+import Button from '@components/atoms/Button'
+import styles from './SearchBar.module.css'
+import useWindowSize from '@hooks/useWindowSize'
 
 SearchBar.propTypes = {
   search: PropTypes.string.isRequired,
@@ -13,7 +13,7 @@ SearchBar.propTypes = {
   tags: PropTypes.array.isRequired,
   tagId: PropTypes.string.isRequired,
   setTagId: PropTypes.func.isRequired,
-};
+}
 
 export default function SearchBar({
   search,
@@ -25,7 +25,7 @@ export default function SearchBar({
   setTagId,
   ...props
 }) {
-  const { width: size } = useWindowSize();
+  const { width: size } = useWindowSize()
 
   return (
     <form className={styles.searchBar} {...props}>
@@ -54,8 +54,8 @@ export default function SearchBar({
         onChange={(event) => setSearch(event.target.value)}
         onKeyDown={(event) => {
           if (event.keyCode === 13) {
-            handleSearch(event);
-            event.preventDefault();
+            handleSearch(event)
+            event.preventDefault()
           }
         }}
         value={search}
@@ -73,5 +73,5 @@ export default function SearchBar({
         </Button>
       </div>
     </form>
-  );
+  )
 }

@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import styles from './PartnersSlider.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
+import styles from './PartnersSlider.module.css'
 
 PartnerSlider.propTypes = {
   partners: PropTypes.array.isRequired,
-};
+}
 
 export default function PartnerSlider({ partners }) {
   return (
@@ -44,5 +44,5 @@ export default function PartnerSlider({ partners }) {
         ))}
       </Splide>
     </div>
-  );
+  )
 }

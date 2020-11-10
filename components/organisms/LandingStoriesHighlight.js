@@ -1,21 +1,21 @@
-import PropTypes from 'prop-types';
-import CardStory from '@components/molecules/CardStory';
-import { posts } from '../../services/posts';
-import CardStoryMin from '@components/molecules/CardStoryMin';
-import Button from '@components/atoms/Button';
-import Icon from '@material-ui/core/Icon';
-import styles from './LandingStoriesHighlight.module.css';
+import PropTypes from 'prop-types'
+import CardStory from '@components/molecules/CardStory'
+import { posts } from '../../services/posts'
+import CardStoryMin from '@components/molecules/CardStoryMin'
+import Button from '@components/atoms/Button'
+import Icon from '@material-ui/core/Icon'
+import styles from './LandingStoriesHighlight.module.css'
 
 LandingStoriesHighlight.propTypes = {
   highlightedStories: PropTypes.array.isRequired,
   handleRedirection: PropTypes.func.isRequired,
-};
+}
 
 export default function LandingStoriesHighlight({
   highlightedStories,
   handleRedirection,
 }) {
-  const highlightedStory = highlightedStories[0];
+  const highlightedStory = highlightedStories[0]
 
   return (
     <section className={styles.storiesHighlight}>
@@ -69,5 +69,5 @@ export default function LandingStoriesHighlight({
         </span>
       </div>
     </section>
-  );
+  )
 }

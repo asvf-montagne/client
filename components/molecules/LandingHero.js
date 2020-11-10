@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './LandingHero.module.css';
-import backgroundImage from '@assets/images/cervin.jpg';
-import Button from '@components/atoms/Button';
-import Icon from '@material-ui/core/Icon';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styles from './LandingHero.module.css'
+import backgroundImage from '@assets/images/cervin.jpg'
+import Button from '@components/atoms/Button'
+import Icon from '@material-ui/core/Icon'
 
 LandingHero.propTypes = {
   handleRedirection: PropTypes.func.isRequired,
-};
+}
 
 export default function LandingHero({ handleRedirection }) {
   return (
@@ -33,5 +33,5 @@ export default function LandingHero({ handleRedirection }) {
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Icon from '@material-ui/core/Icon';
-import ContactForm from '@components/organisms/ContactForm';
-import styles from './LandingContact.module.css';
-import dynamic from 'next/dynamic';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Icon from '@material-ui/core/Icon'
+import ContactForm from '@components/organisms/ContactForm'
+import styles from './LandingContact.module.css'
+import dynamic from 'next/dynamic'
 
 const PartnersSlider = dynamic(
   () => import('@components/molecules/PartnersSlider'),
   {
     ssr: false,
   },
-);
+)
 
 LandingContact.propTypes = {
   partners: PropTypes.array.isRequired,
-};
+}
 
 export default function LandingContact({ partners }) {
   return (
@@ -133,5 +133,5 @@ export default function LandingContact({ partners }) {
         <div className={styles.landingContact__background__bottom} />
       </div>
     </section>
-  );
+  )
 }

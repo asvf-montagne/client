@@ -1,40 +1,40 @@
-import React, { useEffect, useRef } from 'react';
-import Button from '@components/atoms/Button';
-import Input from '@components/atoms/Input';
-import styles from './FormSignIn.module.css';
+import React, { useEffect, useRef } from 'react'
+import Button from '@components/atoms/Button'
+import Input from '@components/atoms/Input'
+import styles from './FormSignIn.module.css'
 
-import GoogleLogoAsset from '@assets/images/logo_google.png';
-import { Field, Form } from 'react-final-form';
-import { FormUtil } from '../../util/form';
-import { Users } from '../../services/users';
-import services from '../../services';
-import { useRouter } from 'next/router';
-import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError';
+import GoogleLogoAsset from '@assets/images/logo_google.png'
+import { Field, Form } from 'react-final-form'
+import { FormUtil } from '../../util/form'
+import { Users } from '../../services/users'
+import services from '../../services'
+import { useRouter } from 'next/router'
+import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError'
 
 export default function FormSignUp({}) {
-  const router = useRouter();
+  const router = useRouter()
 
-  const refUsername = useRef(null);
-  const refEmail = useRef(null);
-  const refPassword = useRef(null);
+  const refUsername = useRef(null)
+  const refEmail = useRef(null)
+  const refPassword = useRef(null)
 
   async function onSubmit(values) {
     try {
-      const res = await services().users.signUp(values);
+      const res = await services().users.signUp(values)
 
       if (res.status === 200) {
-        await router.push('/auth/email-sent');
+        await router.push('/auth/email-sent')
       } else {
-        return Users.validateFromBackendSignUp(res);
+        return Users.validateFromBackendSignUp(res)
       }
     } catch (error) {
-      console.error('error while submitting sign up form', error);
+      console.error('error while submitting sign up form', error)
     }
   }
 
   useEffect(() => {
-    refUsername.current.focus();
-  }, []);
+    refUsername.current.focus()
+  }, [])
 
   return (
     <Form
@@ -127,5 +127,5 @@ export default function FormSignUp({}) {
         </form>
       )}
     />
-  );
+  )
 }

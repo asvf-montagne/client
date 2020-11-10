@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import styles from './PostSlider.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
+import styles from './PostSlider.module.css'
 
 PostSlider.propTypes = {
   images: PropTypes.array.isRequired,
-};
+}
 
 export default function PostSlider({ images }) {
   return (
@@ -43,5 +43,5 @@ export default function PostSlider({ images }) {
         ))}
       </Splide>
     </div>
-  );
+  )
 }

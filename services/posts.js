@@ -1,10 +1,10 @@
-import TimeAgo from 'javascript-time-ago';
-import fr from 'javascript-time-ago/locale/fr';
-import imageNotFound from '@assets/images/image_not_found.png';
+import TimeAgo from 'javascript-time-ago'
+import fr from 'javascript-time-ago/locale/fr'
+import imageNotFound from '@assets/images/image_not_found.png'
 
-TimeAgo.addLocale(fr);
+TimeAgo.addLocale(fr)
 
-const timeAgo = new TimeAgo('fr-FR');
+const timeAgo = new TimeAgo('fr-FR')
 
 const postsService = (client) => ({
   async list({ limit = 5 }) {
@@ -13,8 +13,8 @@ const postsService = (client) => ({
         limit: limit,
         start: 0,
       },
-    });
-    return res.data;
+    })
+    return res.data
   },
 
   async search(params) {
@@ -23,8 +23,8 @@ const postsService = (client) => ({
         limit: 15,
         ...params,
       },
-    });
-    return res.data;
+    })
+    return res.data
   },
 
   async find({ id }) {
@@ -32,8 +32,8 @@ const postsService = (client) => ({
       params: {
         id,
       },
-    });
-    return res.data;
+    })
+    return res.data
   },
 
   async suggested({ date, limit = 2 }) {
@@ -42,48 +42,48 @@ const postsService = (client) => ({
         limit: limit,
         publishedBefore: date,
       },
-    });
-    return res.data;
+    })
+    return res.data
   },
-});
+})
 
 export const posts = {
   getFirstTag(post) {
     if (post.tags.length === 0) {
-      return 'unknown';
+      return 'unknown'
     }
 
-    return post.tags[0];
+    return post.tags[0]
   },
 
   getPreviewImage(post) {
     if (post.image === undefined) {
-      return imageNotFound;
+      return imageNotFound
     }
 
-    return post.image.url;
+    return post.image.url
   },
 
   getFirstImage(post) {
     if (post.images.length === 0) {
-      return { url: imageNotFound, name: 'image not found' };
+      return { url: imageNotFound, name: 'image not found' }
     }
 
-    return post.images[0];
+    return post.images[0]
   },
 
   getPublishedTimeAgo(post) {
-    return timeAgo.format(new Date(post['published_at']), 'round');
+    return timeAgo.format(new Date(post['published_at']), 'round')
   },
 
   getTitledAuthor(post) {
-    const firstName = post['author']['firstname'];
+    const firstName = post['author']['firstname']
     if (firstName === '') {
-      return post['author']['username'] || 'unknown';
+      return post['author']['username'] || 'unknown'
     }
 
-    return firstName[0].toUpperCase() + firstName.slice(1);
+    return firstName[0].toUpperCase() + firstName.slice(1)
   },
-};
+}
 
-export default postsService;
+export default postsService

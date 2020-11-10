@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Icon from '@material-ui/core/Icon';
-import CardStory from '@components/molecules/CardStory';
-import Button from '@components/atoms/Button';
-import styles from './StoriesGrid.module.css';
-import { posts } from '../../services/posts';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Icon from '@material-ui/core/Icon'
+import CardStory from '@components/molecules/CardStory'
+import Button from '@components/atoms/Button'
+import styles from './StoriesGrid.module.css'
+import { posts } from '../../services/posts'
 
 StoriesGrid.propTypes = {
   stories: PropTypes.array,
   handleFetchMoreStories: PropTypes.func,
   showFetchMoreStoriesBtn: PropTypes.bool,
-};
+}
 
 export default function StoriesGrid({
   stories = [],
@@ -54,5 +54,5 @@ export default function StoriesGrid({
         </Button>
       )}
     </section>
-  );
+  )
 }

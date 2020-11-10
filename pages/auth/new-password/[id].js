@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import AuthLayout from '@components/atoms/AuthLayout';
-import FormNewPassword from '@components/organisms/FormNewPassword';
+import React, { useState } from 'react'
+import AuthLayout from '@components/atoms/AuthLayout'
+import FormNewPassword from '@components/organisms/FormNewPassword'
 
 export default function NewPassword() {
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [password, setPassword] = useState('')
+  const [passwordConfirm, setPasswordConfirm] = useState('')
 
   const handleSubmit = () => {
-    console.log(password, passwordConfirm);
-  };
+    console.log(password, passwordConfirm)
+  }
 
   return (
     <AuthLayout
@@ -23,5 +23,5 @@ export default function NewPassword() {
         onSubmit={handleSubmit}
       />
     </AuthLayout>
-  );
+  )
 }

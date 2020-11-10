@@ -9,24 +9,24 @@ const FormUtil = {
   reset(values, form) {
     setTimeout(() => {
       Object.keys(values).forEach((key) => {
-        form.resetFieldState(key);
-      });
-      form.reset();
-    });
+        form.resetFieldState(key)
+      })
+      form.reset()
+    })
   },
 
   navigateToNextInput(event, refNext, keycode) {
     if (event.keyCode === keycode) {
-      refNext.current.focus();
-      event.preventDefault();
+      refNext.current.focus()
+      event.preventDefault()
     }
   },
 
   withKeyCode(event, keycode, f) {
     if (event.keyCode === keycode) {
-      f();
+      f()
     }
   },
-};
+}
 
-export { FormUtil };
+export { FormUtil }

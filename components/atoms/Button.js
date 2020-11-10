@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './Button.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styles from './Button.module.css'
 
 Button.propTypes = {
   size: PropTypes.oneOf(['medium', 'large']).isRequired,
@@ -10,7 +10,7 @@ Button.propTypes = {
   fluid: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
-};
+}
 
 export default function Button({
   size,
@@ -37,5 +37,5 @@ export default function Button({
     >
       <div className={styles.btn_inner}>{children}</div>
     </button>
-  );
+  )
 }

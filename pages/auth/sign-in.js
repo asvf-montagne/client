@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import AuthLayout from '@components/atoms/AuthLayout';
-import FormSignIn from '@components/organisms/FormSignIn';
+import React, { useState } from 'react'
+import AuthLayout from '@components/atoms/AuthLayout'
+import FormSignIn from '@components/organisms/FormSignIn'
 
 export default function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleSubmit = () => {
-    console.log(email, password);
-  };
+    console.log(email, password)
+  }
 
   return (
     <AuthLayout
@@ -23,5 +23,5 @@ export default function SignIn() {
         onSubmit={handleSubmit}
       />
     </AuthLayout>
-  );
+  )
 }
