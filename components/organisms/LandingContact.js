@@ -1,15 +1,13 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
-import ContactForm from '@components/organisms/ContactForm'
+import ContactForm from '@components/organisms/ContactForm';
 import styles from './LandingContact.module.css';
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
-// eslint-disable-next-line
-const PartnersSlider = dynamic(
-  () => import('@components/molecules/PartnersSlider'),
-  { ssr: false }
-)
+const PartnersSlider = dynamic(() => import('@components/molecules/PartnersSlider'), {
+  ssr: false,
+});
 
 LandingContact.propTypes = {
   partners: PropTypes.array.isRequired,
@@ -18,27 +16,21 @@ LandingContact.propTypes = {
 export default function LandingContact({ partners }) {
   return (
     <section className={styles.landingContact}>
-
       <div className={styles.landingContact__overlay}>
         <div className={styles.landingContact__overlay__inner}>
-          <h1 className={styles.landingContact__overlay__title}>
-            Nos partenaires
-          </h1>
-          <PartnersSlider partners={partners}/>
+          <h1 className={styles.landingContact__overlay__title}>Nos partenaires</h1>
+          <PartnersSlider partners={partners} />
         </div>
 
         <div className={styles.landingContact__overlay__contacts}>
           <div>
-            <h1 className={styles.landingContact__overlay__contacts__title}>
-              Nous contacter
-            </h1>
+            <h1 className={styles.landingContact__overlay__contacts__title}>Nous contacter</h1>
             <p className={styles.landingContact__overlay__contacts__description}>
               Remplissez le formulaire et nous vous répondrons le plus rapidement possible.
             </p>
 
             <div className={styles.landingContact__overlay__contacts__icons}>
               <div className={styles.landingContact__overlay__contacts__icons__inner}>
-
                 <button className={styles.landingContact__overlay__contacts__icons_btn}>
                   <Icon style={{ fontSize: 24, color: '#0C75FF', margin: '2px 0 0 8px' }}>
                     mail
@@ -77,8 +69,8 @@ export default function LandingContact({ partners }) {
       </div>
 
       <div className={styles.landingContact__background}>
-        <div className={styles.landingContact__background__top}/>
-        <div className={styles.landingContact__background__bottom}/>
+        <div className={styles.landingContact__background__top} />
+        <div className={styles.landingContact__background__bottom} />
       </div>
     </section>
   );

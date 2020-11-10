@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Button.module.css';
 
@@ -12,18 +12,30 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default function Button({ size, variant, focus = 'light', shadow = false, fluid = false, onClick, children, ...props }) {
+export default function Button({
+  size,
+  variant,
+  focus = 'light',
+  shadow = false,
+  fluid = false,
+  onClick,
+  children,
+  ...props
+}) {
   return (
-    <button type="button" onClick={onClick} {...props} className={`
+    <button
+      type="button"
+      onClick={onClick}
+      {...props}
+      className={`
       ${styles.btn}
       ${styles['btn_' + size]}
       ${styles['btn_' + variant]}
       ${styles['btn_focus_' + focus]}
       ${shadow ? styles['btn_shadow'] : ''}
-    `}>
-      <div className={styles.btn_inner}>
-        {children}
-      </div>
+    `}
+    >
+      <div className={styles.btn_inner}>{children}</div>
     </button>
   );
 }

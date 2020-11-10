@@ -82,9 +82,7 @@ function Home({ stories, partners }) {
         handleRedirection={handleStoriesRedirection}
       />
 
-      <LandingContact
-        partners={partners}
-      />
+      <LandingContact partners={partners} />
     </Layout>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useReducer, useState } from 'react';
+import PropTypes from 'prop-types';
 import Layout from '@components/atoms/Layout';
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay';
 import SearchHeader from '@components/molecules/SearchHeader';
@@ -24,6 +25,11 @@ function StoriesReducer(state, action) {
       throw new Error(`action unorganized ${action.type} with parameter ${action.params}`);
   }
 }
+
+Stories.propTypes = {
+  tags: PropTypes.array,
+  stories: PropTypes.array,
+};
 
 export default function Stories({ tags, stories }) {
   const [search, setSearch] = useState('');
