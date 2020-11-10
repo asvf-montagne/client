@@ -8,12 +8,12 @@ const contactFormSubmissionsService = client => ({
 })
 
 const MESSAGES = {
-  FULL_NAME_REQUIRED: `Le nom et le prénom sont vide`,
+  FULL_NAME_REQUIRED: `Champ requis`,
 
-  EMAIL_REQUIRED: `L'email est vide`,
+  EMAIL_REQUIRED: `Champ requis`,
   EMAIL_INVALID: `L'email est invalide`,
 
-  CONTENT_REQUIRED: `Le message est vide`,
+  CONTENT_REQUIRED: `Champ requis`,
 }
 
 const contactFormSubmissions = {
@@ -42,7 +42,7 @@ const contactFormSubmissions = {
     }
   },
 
-  createResponseToError() {
+  validateFromBackend() {
     return { [FORM_ERROR]: `Une erreur est survenu.` }
   }
 }
