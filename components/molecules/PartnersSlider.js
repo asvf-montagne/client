@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styles from './PartnersSlider.module.css'
 
 PartnerSlider.propTypes = {

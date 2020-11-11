@@ -1,37 +1,38 @@
-import React, { useEffect, useRef } from 'react'
-import Input from '@components/atoms/Input'
-import styles from './FormSignIn.module.css'
-import { Field, Form } from 'react-final-form'
-import Button from '@components/atoms/Button'
 import GoogleLogoAsset from '@assets/images/logo_google.png'
-import services from '../../services'
-import { Users } from '../../services/users'
+import Button from '@components/atoms/Button'
 import FormSuccessOrError from '@components/atoms/FormSuccessOrError'
+import Input from '@components/atoms/Input'
+import FormHelper from '@helpers/form'
+import TokenHelper from '@helpers/token'
+import ValidationHelper from '@helpers/validation'
+import useServices from '@hooks/useServices'
+import useUser from '@hooks/useUser'
 import { useRouter } from 'next/router'
-import PropTypes from 'prop-types'
-import { FormUtil } from '../../helpers/form'
+import React, { useEffect, useRef } from 'react'
+import { Field, Form } from 'react-final-form'
+import styles from './FormSignIn.module.css'
 
-FormSignIn.propTypes = {
-  onSignInSuccess: PropTypes.func,
-}
-
-export default function FormSignIn({ onSignInSuccess }) {
+export default function FormSignIn({}) {
+  const { setUser } = useUser()
+  const { auth } = useServices()
   const router = useRouter()
 
   const refIdentifier = useRef(null)
   const refPassword = useRef(null)
 
-  async function onSubmit(values) {
+  async function handleSubmit(values) {
     try {
-      const res = await services().users.signIn(values)
+      const res = await auth.api.signIn(values)
 
       if (res.status === 200) {
         const { jwt: token, user } = res.data
-        services({ token }).auth.login()
-        onSignInSuccess(user)
+
+        TokenHelper.setToken(token)
+        setUser(user)
+
         await router.push('/protected-example')
       } else {
-        return Users.validateFromBackend(res)
+        return ValidationHelper.validateFromBackend(res.data)
       }
     } catch (error) {
       console.error('error while submitting sign up form', error)
@@ -44,7 +45,8 @@ export default function FormSignIn({ onSignInSuccess }) {
 
   return (
     <Form
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
+      validate={auth.validations.signIn}
       render={({ submitError, handleSubmit, values }) => (
         <form className={styles.signUpForm}>
           <FormSuccessOrError
@@ -63,7 +65,7 @@ export default function FormSignIn({ onSignInSuccess }) {
                 meta={meta}
                 icon="person"
                 onKeyDown={(e) =>
-                  FormUtil.navigateToNextInput(e, refPassword, 13)
+                  FormHelper.navigateToNextInput(e, refPassword, 13)
                 }
               />
             )}
@@ -79,7 +81,7 @@ export default function FormSignIn({ onSignInSuccess }) {
                 {...input}
                 meta={meta}
                 onKeyDown={(e) =>
-                  FormUtil.withKeyCode(e, 13, () => handleSubmit(values))
+                  FormHelper.withKeyCode(e, 13, () => handleSubmit(values))
                 }
                 icon="lock"
               />
@@ -106,7 +108,7 @@ export default function FormSignIn({ onSignInSuccess }) {
               size="large"
               focus="primary"
               fluid
-              onClick={(event) => onSubmit(event)}
+              onClick={(event) => handleSubmit(event)}
             >
               <img
                 alt="auth-google"

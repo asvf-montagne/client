@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types'
 import Icon from '@material-ui/core/Icon'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styles from './BigIcon.module.css'
 
 BigIcon.propTypes = {

@@ -1,7 +1,7 @@
 import AuthLayout from '@components/atoms/AuthLayout'
 import BigIcon from '@components/molecules/BigIcon'
-import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import React, { useEffect } from 'react'
 
 export default function EmailVerify() {
   const router = useRouter()

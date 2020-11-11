@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Icon from '@material-ui/core/Icon'
-import CardStory from '@components/molecules/CardStory'
 import Button from '@components/atoms/Button'
+import CardStory from '@components/molecules/CardStory'
+import Icon from '@material-ui/core/Icon'
+import posts from '@services/posts'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styles from './StoriesGrid.module.css'
-import { posts } from '../../services/posts'
 
 StoriesGrid.propTypes = {
   stories: PropTypes.array,
@@ -17,6 +17,8 @@ export default function StoriesGrid({
   handleFetchMoreStories,
   showFetchMoreStoriesBtn,
 }) {
+  const { view } = posts()
+
   return (
     <section className={styles.grid}>
       <h3 className={styles.grid__result}>
@@ -33,10 +35,10 @@ export default function StoriesGrid({
             id={story.id}
             title={story.title}
             description={story.content}
-            image={posts.getPreviewImage(story)}
+            image={view.getPreviewImage(story)}
             author={story.author}
             categories={story.tags[0]}
-            date={posts.getPublishedTimeAgo(story)}
+            date={view.getPublishedTimeAgo(story)}
           />
         ))}
       </div>

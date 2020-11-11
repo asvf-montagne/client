@@ -1,7 +1,7 @@
-import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
-import GalleryProvider from 'react-photo-gallery'
+import React, { useCallback, useState } from 'react'
 import Carousel, { Modal, ModalGateway } from 'react-images'
+import GalleryProvider from 'react-photo-gallery'
 import styles from './Gallery.module.css'
 
 Gallery.propTypes = {

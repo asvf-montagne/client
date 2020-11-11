@@ -1,10 +1,10 @@
-import React, { useMemo, useState } from 'react'
-import PropTypes from 'prop-types'
-import { useDropzone } from 'react-dropzone'
 import Input from '@components/atoms/Input'
 import Icon from '@material-ui/core/Icon'
-import { FieldArray } from 'react-final-form-arrays'
+import PropTypes from 'prop-types'
+import React, { useMemo, useState } from 'react'
+import { useDropzone } from 'react-dropzone'
 import { Field } from 'react-final-form'
+import { FieldArray } from 'react-final-form-arrays'
 import styles from './UploadImageInput.module.css'
 
 UploadImageInput.propTypes = {
@@ -24,7 +24,7 @@ UploadImageInput.propTypes = {
  * When you instantiate UploadImageInput, pass form.mutators.push.
  * For validating input you will see a 'files' key.
  *
- * @param push from final-form-arrays
+ * @param {function} push - from final-form-arrays
  * @returns {JSX.Element}
  * @constructor
  */

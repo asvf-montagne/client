@@ -1,14 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import CardStory from '@components/molecules/CardStory'
+import posts from '@services/posts'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styles from './SuggestedStories.module.css'
-import { posts } from '../../services/posts'
 
 DefaultPageLayout.propTypes = {
   stories: PropTypes.array.isRequired,
 }
 
 export default function DefaultPageLayout({ stories }) {
+  const { view } = posts()
+
   return (
     <section className={styles.suggestedStories}>
       <div className={styles.suggestedStories__inner}>
@@ -32,10 +34,10 @@ export default function DefaultPageLayout({ stories }) {
                   id={story.id}
                   title={story.title}
                   description={story.content}
-                  image={posts.getPreviewImage(story)}
+                  image={view.getPreviewImage(story)}
                   author={story.author}
                   categories={story.tags[0]}
-                  date={posts.getPublishedTimeAgo(story)}
+                  date={view.getPublishedTimeAgo(story)}
                 />
               ))}
             </div>

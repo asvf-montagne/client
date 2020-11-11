@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     padding: 64px 0;
-    background: rgb(255,244,240);
-    background: linear-gradient(180deg, rgba(255,244,240,1) 0%, rgba(255,255,255,1) 100%);
+    background: rgb(255, 244, 240);
+    background: linear-gradient(180deg, rgba(255, 244, 240, 1) 0%, rgba(255, 255, 255, 1) 100%);
     /*Image skip 4px at bottom event tho it's 100% height 🤷*/
     margin-top: -7px;
 }
@@ -12,10 +12,11 @@
     margin: 0 auto;
     padding: 0 24px;
 }
+
 .storiesHighlight__grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-gap: 64px;
     gap: 64px;
     margin-bottom: 16px;
@@ -76,7 +77,7 @@
 
 @media screen and (max-width: 576px) {
     .storiesHighlight__grid {
-        grid-template-columns: repeat(1,minmax(0,1fr));
+        grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 
     .storiesHighlight__inner__col:nth-child(1) {
@@ -86,7 +87,7 @@
 
 @media screen and (min-width: 576px) and (max-width: 768px) {
     .storiesHighlight__grid {
-        grid-template-columns: repeat(1,minmax(0,1fr));
+        grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 
     .storiesHighlight__inner__col:nth-child(1) {
@@ -100,7 +101,7 @@
     }
 
     .storiesHighlight__grid {
-        grid-template-columns: repeat(1,minmax(0,1fr));
+        grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 
     .storiesHighlight__inner__col:nth-child(1) {

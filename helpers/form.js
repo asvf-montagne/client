@@ -1,4 +1,4 @@
-const FormUtil = {
+const FormHelper = {
   /**
    * react-final-form detect that we can't reset form in submit method and
    * suggest itself to use setTimeout to reset the form after submitting.
@@ -29,4 +29,4 @@ const FormUtil = {
   },
 }
 
-export { FormUtil }
+export default FormHelper

@@ -1,8 +1,8 @@
 import Badge from '@components/atoms/Badge'
-import Icon from '@material-ui/core/Icon'
 import styles from '@components/organisms/ContactForm.module.css'
-import React from 'react'
+import Icon from '@material-ui/core/Icon'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 DisplaySuccessOrError.propTypes = {
   success: PropTypes.any,

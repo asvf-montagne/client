@@ -1,111 +1,130 @@
-import Cookies from 'js-cookie'
-import jwtDecode from 'jwt-decode'
+import ValidationHelper from '../helpers/validation'
+import v from 'validator'
 
-const JWT_COOKIE_KEY = 'token'
+const auth = (client) => ({
+  api: {
+    async signIn(data) {
+      try {
+        return await client.post('/auth/local', data)
+      } catch (ex) {
+        return ex.response
+      }
+    },
 
-/**
- * Definition of an user:
- *
- * @typedef {Object} User
- * @property {number} id
- * @property {string} username
- * @property {string} provider
- * @property {string} created_at
- * @property {string} updated_at
- * @property {boolean} confirmed
- * @property {Object} role
- * @property {string} [lastname]
- * @property {string} [firstname]
- * @property {string} [phone]
- */
+    async signUp(data) {
+      try {
+        return await client.post('/auth/local/register', data)
+      } catch (ex) {
+        return ex.response
+      }
+    },
 
-const authService = (client) => ({
-  /**
-   * Check if the user is authenticated on the website with the
-   * jwt and then get the user. It return false if the user is not authenticated.
-   *
-   * @param {boolean} isServer
-   * @returns {Promise<boolean|User>}
-   */
-  async getUser(isServer = false) {
-    if (client.metadata === undefined) {
-      return undefined
-    }
+    async forgotPassword(data) {
+      try {
+        return await client.post('/auth/forgot-password', data)
+      } catch (ex) {
+        return ex.response
+      }
+    },
 
-    const token = client.metadata.token
+    async resetPassword(data) {
+      try {
+        return await client.post('/auth/reset-password', data)
+      } catch (ex) {
+        return ex.response
+      }
+    },
+  },
 
-    if (token === undefined) {
-      console.warn(
-        'Maybe you are forgetting to pass the token inside the services() function in serverSideProps ?',
+  validations: {
+    signIn(o) {
+      const errors = {}
+
+      if (o.identifier === undefined)
+        errors.identifier = ValidationHelper.messages.required
+      if (o.password === undefined)
+        errors.password = ValidationHelper.messages.required
+
+      return errors
+    },
+
+    forgotPassword(o) {
+      const errors = {}
+
+      if (o.email === undefined)
+        errors.email = ValidationHelper.messages.required
+      else if (!v.isEmail(o.email))
+        errors.email = ValidationHelper.messages.email
+
+      return errors
+    },
+
+    resetPassword(o) {
+      const errors = {}
+
+      const passwordError = ValidationHelper.fieldValidations.password(
+        o.password,
       )
-      return undefined
-    }
+      if (passwordError !== undefined) errors.password = passwordError
 
-    const decodedToken = jwtDecode(token)
+      if (o.passwordConfirmation === undefined)
+        errors.passwordConfirmation = ValidationHelper.messages.required
+      if (o.passwordConfirmation !== o.password)
+        errors.passwordConfirmation = ValidationHelper.messages.notIdentical(
+          'mot de passe',
+        )
 
-    if (decodedToken === undefined) {
-      if (!isServer) {
-        Cookies.remove(JWT_COOKIE_KEY)
+      return errors
+    },
+
+    signUp(o) {
+      const errors = {}
+
+      const usernameError = ValidationHelper.fieldValidations.username(
+        o.username,
+      )
+      if (usernameError !== undefined) errors.username = usernameError
+
+      if (o.email === undefined)
+        errors.email = ValidationHelper.messages.required
+      else if (!v.isEmail(o.email))
+        errors.email = ValidationHelper.messages.email
+
+      const passwordError = ValidationHelper.fieldValidations.password(
+        o.password,
+      )
+      if (passwordError !== undefined) errors.password = passwordError
+
+      return errors
+    },
+  },
+
+  helpers: {
+    /**
+     * Only usable on the server side
+     * @param {function} users - user service api
+     * @param res
+     * @returns {Promise<User|undefined>}
+     */
+    async shouldRedirectIfNotAuthenticated({ me }, { res }) {
+      if (!client.metadata.isServer) {
+        console.warn(
+          "[service:auth] function 'shouldRedirectIfNotAuthenticated' is only usavle with getServerSideProps",
+        )
+        return undefined
       }
 
-      return undefined
-    }
+      const user = await me()
 
-    // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-    // checking that the token is not expired.
-    if (new Date(decodedToken.exp * 1000) < new Date()) {
-      if (!isServer) {
-        Cookies.remove(JWT_COOKIE_KEY)
+      if (!user) {
+        res.statusCode = 302
+        res.setHeader('Location', `/auth/sign-in`)
+        return
       }
 
-      return false
-    }
-
-    try {
-      return (await client.get('/users/me')).data
-    } catch ({ response }) {
-      return undefined
-    }
-  },
-
-  /**
-   * Set the token inside the cookies.
-   * By default our backend generate a token for
-   * 30 days so we set the cookie expiration 1 day after.
-   *
-   */
-  login() {
-    Cookies.set(JWT_COOKIE_KEY, client.metadata.token, { expires: 31 })
-  },
-
-  logout() {
-    Cookies.remove(JWT_COOKIE_KEY)
-  },
-
-  /**
-   * Fetch the user, if the user cannot be fetched
-   * redirect the user to the login page.
-   *
-   * @param res
-   * @returns {Promise<User|undefined>}
-   */
-  async shouldRedirectIfNotAuthenticated({ res }) {
-    const user = await this.getUser(true)
-
-    if (!user) {
-      res.statusCode = 302
-      res.setHeader('Location', `/auth/sign-in`)
-      return
-    }
-
-    return user
+      return user
+    },
   },
 })
 
-const Auth = {
-  jwtTokenKey: JWT_COOKIE_KEY,
-}
-
-export default authService
-
-export { Auth }
+export default auth

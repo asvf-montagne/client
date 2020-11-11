@@ -1,9 +1,8 @@
-import React from 'react'
+import Footer from '@components/atoms/Footer'
+import Navigation from '@components/atoms/Navigation'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
-// import NextSeo from 'next-seo';
-import Navigation from '@components/atoms/Navigation'
-import Footer from '@components/atoms/Footer'
+import React from 'react'
 import styles from './Layout.module.css'
 
 // const DEFAULT_SEO = {

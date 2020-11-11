@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styles from './LandingHero.module.css'
 import backgroundImage from '@assets/images/cervin.jpg'
 import Button from '@components/atoms/Button'
 import Icon from '@material-ui/core/Icon'
+import PropTypes from 'prop-types'
+import React from 'react'
+import styles from './LandingHero.module.css'
 
 LandingHero.propTypes = {
   handleRedirection: PropTypes.func.isRequired,

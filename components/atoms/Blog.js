@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styles from './Blog.module.css'
 
 const EditorRendererProvider = dynamic(

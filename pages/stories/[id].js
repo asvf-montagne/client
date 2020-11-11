@@ -1,20 +1,22 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import Blog from '@components/atoms/Blog'
 import Layout from '@components/atoms/Layout'
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
-import StoryHeader from '@components/molecules/StoryHeader'
-import Blog from '@components/atoms/Blog'
 import Gallery from '@components/molecules/Gallery'
+import StoryHeader from '@components/molecules/StoryHeader'
 import SuggestedStories from '@components/organisms/SuggestedStories'
-import services from '../../services'
-import { posts } from '../../services/posts'
+import services from '@services/index'
+import posts from '@services/posts'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 Story.propTypes = {
-  story: PropTypes.string,
+  story: PropTypes.object,
   suggestedStories: PropTypes.array,
 }
 
 export default function Story({ story, suggestedStories }) {
+  const view = posts().view
+
   return (
     <Layout>
       <SplitBackgroundOverlay
@@ -22,11 +24,11 @@ export default function Story({ story, suggestedStories }) {
         topHalfHeight={!!story.images.length ? 60 : 100}
       >
         <StoryHeader
-          tag={posts.getFirstTag(story)}
+          tag={view.getFirstTag(story)}
           title={story.title}
-          author={posts.getTitledAuthor(story)}
-          date={posts.getPublishedTimeAgo(story)}
-          image={posts.getFirstImage(story)}
+          author={view.getTitledAuthor(story)}
+          date={view.getPublishedTimeAgo(story)}
+          image={view.getFirstImage(story)}
         />
       </SplitBackgroundOverlay>
       <Blog
@@ -47,6 +49,7 @@ export default function Story({ story, suggestedStories }) {
 }
 
 export async function getServerSideProps(ctx) {
+  const { posts } = services({ isServer: true })
   // todo: if the story is not found: =>
 
   // cache 5 min
@@ -55,8 +58,8 @@ export async function getServerSideProps(ctx) {
     `s-maxage=${60 * 5}, stale-while-revalidate`,
   )
 
-  const story = await services().posts.find({ ...ctx.params })
-  const suggestedStories = await services().posts.suggested({
+  const story = await posts.api.find({ ...ctx.params })
+  const suggestedStories = await posts.api.suggested({
     limit: 2,
     date: story['published_at'],
   })

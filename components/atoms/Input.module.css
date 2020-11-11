@@ -28,7 +28,7 @@
 .input__span__link {
     font-size: var(--text-size-medium);
     font-weight: var(--font-weight-regular);
-    color:var(--font-color-link);
+    color: var(--font-color-link);
     text-decoration: none;
 }
 

@@ -18,7 +18,7 @@
     padding: 0 32px 0 8px;
 }
 
-.searchBar__select  {
+.searchBar__select {
     font-size: var(--text-size-large);
     font-weight: var(--font-weight-regular);
     color: var(--font-color-gray1);
