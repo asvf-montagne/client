@@ -1,31 +1,31 @@
-import React, { useEffect, useRef } from 'react'
+import GoogleLogoAsset from '@assets/images/logo_google.png'
 import Button from '@components/atoms/Button'
+import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError'
 import Input from '@components/atoms/Input'
+import FormHelper from '@helpers/form'
+import ValidationHelper from '@helpers/validation'
+import useServices from '@hooks/useServices'
+import { useRouter } from 'next/router'
+import React, { useEffect, useRef } from 'react'
+import { Field, Form } from 'react-final-form'
 import styles from './FormSignIn.module.css'
 
-import GoogleLogoAsset from '@assets/images/logo_google.png'
-import { Field, Form } from 'react-final-form'
-import { FormUtil } from '../../helpers/form'
-import { Users } from '../../services/users'
-import services from '../../services'
-import { useRouter } from 'next/router'
-import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError'
-
 export default function FormSignUp({}) {
+  const { auth } = useServices()
   const router = useRouter()
 
   const refUsername = useRef(null)
   const refEmail = useRef(null)
   const refPassword = useRef(null)
 
-  async function onSubmit(values) {
+  async function handleSubmit(values) {
     try {
-      const res = await services().users.signUp(values)
+      const res = await auth.api.signUp(values)
 
       if (res.status === 200) {
-        await router.push('/auth/email-sent')
+        await router.push('/auth/sign-up-email-sent')
       } else {
-        return Users.validateFromBackend(res)
+        return ValidationHelper.validateFromBackend(res.data)
       }
     } catch (error) {
       console.error('error while submitting sign up form', error)
@@ -38,8 +38,8 @@ export default function FormSignUp({}) {
 
   return (
     <Form
-      validate={Users.validateSignUp}
-      onSubmit={onSubmit}
+      validate={auth.validations.signUp}
+      onSubmit={handleSubmit}
       render={({ submitError, handleSubmit, values }) => (
         <form className={styles.signUpForm}>
           <DisplaySuccessOrError
@@ -55,7 +55,9 @@ export default function FormSignUp({}) {
                 icon="person"
                 label="Nom d'utilisateur"
                 placeholder="john.doe"
-                onKeyDown={(e) => FormUtil.navigateToNextInput(e, refEmail, 13)}
+                onKeyDown={(e) =>
+                  FormHelper.navigateToNextInput(e, refEmail, 13)
+                }
                 {...input}
                 meta={meta}
               />
@@ -70,7 +72,7 @@ export default function FormSignUp({}) {
                 label="Email"
                 placeholder="john.doe@gmail.com"
                 onKeyDown={(e) =>
-                  FormUtil.navigateToNextInput(e, refPassword, 13)
+                  FormHelper.navigateToNextInput(e, refPassword, 13)
                 }
                 {...input}
                 meta={meta}
@@ -86,7 +88,7 @@ export default function FormSignUp({}) {
                 label="Mot de passe"
                 placeholder="Choisissez un bon mot de passe"
                 onKeyDown={(e) =>
-                  FormUtil.withKeyCode(e, 13, () => handleSubmit(values))
+                  FormHelper.withKeyCode(e, 13, () => handleSubmit(values))
                 }
                 {...input}
                 meta={meta}

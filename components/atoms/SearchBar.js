@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Icon from '@material-ui/core/Icon'
 import Button from '@components/atoms/Button'
-import styles from './SearchBar.module.css'
 import useWindowSize from '@hooks/useWindowSize'
+import Icon from '@material-ui/core/Icon'
+import PropTypes from 'prop-types'
+import React from 'react'
+import styles from './SearchBar.module.css'
 
 SearchBar.propTypes = {
   search: PropTypes.string.isRequired,

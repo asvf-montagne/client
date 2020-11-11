@@ -1,52 +1,79 @@
-import React, { useEffect, useRef } from 'react'
-import PropTypes from 'prop-types'
 import Button from '@components/atoms/Button'
+import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError'
 import Input from '@components/atoms/Input'
+import FormHelper from '@helpers/form'
+import ValidationHelper from '@helpers/validation'
+import useServices from '@hooks/useServices'
+import { useRouter } from 'next/router'
+import React, { useEffect, useRef } from 'react'
+import { Field, Form } from 'react-final-form'
 import styles from './FormForgotPassword.module.css'
 
-FormForgotPassword.propTypes = {
-  email: PropTypes.string.isRequired,
-  setEmail: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-}
-
-export default function FormForgotPassword({ email, setEmail, onSubmit }) {
+export default function FormForgotPassword({}) {
+  const { auth } = useServices()
+  const router = useRouter()
   const refEmail = useRef(null)
+
+  async function handleSubmit(values) {
+    try {
+      const res = await auth.api.forgotPassword(values)
+
+      if (res.status === 200) {
+        await router.push('/auth/forgot-password-email-sent')
+      } else {
+        return ValidationHelper.validateFromBackend(res.data)
+      }
+    } catch (error) {
+      console.error('error while submitting forgot password form', error)
+    }
+  }
 
   useEffect(() => {
     refEmail.current.focus()
   }, [])
 
   return (
-    <form className={styles.signUpForm}>
-      <Input
-        autocomplete="email"
-        label="Email de votre compte"
-        placeholder="jonhdoe@example.com"
-        ref={refEmail}
-        value={email}
-        onKeyDown={(event) => {
-          if (event.keyCode === 13) {
-            onSubmit(event)
-            event.preventDefault()
-          }
-        }}
-        meta={{}}
-        onChange={(event) => setEmail(event.target.value)}
-        icon="mail"
-      />
+    <Form
+      onSubmit={handleSubmit}
+      validate={auth.validations.forgotPassword}
+      render={({ submitError, values, handleSubmit }) => (
+        <form className={styles.signUpForm}>
+          <DisplaySuccessOrError
+            success={false}
+            error={submitError}
+            successMessage=""
+          />
 
-      <div className={styles.signUpForm__authGroup}>
-        <Button
-          variant="primary"
-          size="large"
-          focus="primary"
-          fluid
-          onClick={(event) => onSubmit(event)}
-        >
-          Envoyer
-        </Button>
-      </div>
-    </form>
+          <Field name="email">
+            {({ input, meta }) => (
+              <Input
+                autocomplete="email"
+                label="Email de votre compte"
+                placeholder="jonhdoe@example.com"
+                ref={refEmail}
+                onKeyDown={(e) =>
+                  FormHelper.withKeyCode(e, 13, () => handleSubmit(values))
+                }
+                {...input}
+                meta={meta}
+                icon="mail"
+              />
+            )}
+          </Field>
+
+          <div className={styles.signUpForm__authGroup}>
+            <Button
+              variant="primary"
+              size="large"
+              focus="primary"
+              fluid
+              onClick={() => handleSubmit(values)}
+            >
+              Envoyer
+            </Button>
+          </div>
+        </form>
+      )}
+    />
   )
 }

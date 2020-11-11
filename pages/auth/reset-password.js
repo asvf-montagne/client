@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
 import AuthLayout from '@components/atoms/AuthLayout'
-import FormNewPassword from '@components/organisms/FormNewPassword'
+import FormResetPassword from '@components/organisms/FormResetPassword'
+import React, { useState } from 'react'
 
 export default function NewPassword() {
   const [password, setPassword] = useState('')
@@ -15,7 +15,7 @@ export default function NewPassword() {
       title="Nouveau mot de passe"
       helper={{ label: `Vous avez déjà un compte ?`, href: '/sign-in' }}
     >
-      <FormNewPassword
+      <FormResetPassword
         passwordConfirm={passwordConfirm}
         setPasswordConfirm={setPasswordConfirm}
         password={password}

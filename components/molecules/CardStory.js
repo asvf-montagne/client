@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
 import styles from './CardStory.module.css'
 
 CardStory.propTypes = {

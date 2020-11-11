@@ -4,6 +4,7 @@
     padding: 5px 10px 5px 10px;
     background-color: gray;
 }
+
 .badge__inner {
     display: flex;
     flex-direction: row;

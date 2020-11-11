@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Icon from '@material-ui/core/Icon'
 import ContactForm from '@components/organisms/ContactForm'
-import styles from './LandingContact.module.css'
+import Icon from '@material-ui/core/Icon'
 import dynamic from 'next/dynamic'
+import PropTypes from 'prop-types'
+import React from 'react'
+import styles from './LandingContact.module.css'
 
 const PartnersSlider = dynamic(
   () => import('@components/molecules/PartnersSlider'),

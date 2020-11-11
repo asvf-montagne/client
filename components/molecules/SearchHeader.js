@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types'
 import SearchBar from '@components/atoms/SearchBar'
-import styles from './SearchHeader.module.css'
+import PropTypes from 'prop-types'
 import React from 'react'
+import styles from './SearchHeader.module.css'
 
 SearchHeader.propTypes = {
   title: PropTypes.string.isRequired,

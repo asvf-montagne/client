@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import { useRouter } from 'next/router'
-import Icon from '@material-ui/core/Icon'
 import Button from '@components/atoms/Button'
-import useWindowSize from '@hooks/useWindowSize'
-import { navItems } from '../../helpers/config'
-import styles from './Navigation.module.css'
+import { navItems } from '@helpers/config'
 import useUser from '@hooks/useUser'
+import useWindowSize from '@hooks/useWindowSize'
+import Icon from '@material-ui/core/Icon'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react'
+import styles from './Navigation.module.css'
 
 NavLink.propTypes = {
   url: PropTypes.string.isRequired,
@@ -129,8 +129,6 @@ export default function Navigation() {
       setIsMenuActive(false)
     }
   }, [size])
-
-  console.log('user', user)
 
   if (onSmallDevice) {
     return (

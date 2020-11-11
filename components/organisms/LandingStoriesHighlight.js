@@ -1,9 +1,10 @@
-import PropTypes from 'prop-types'
-import CardStory from '@components/molecules/CardStory'
-import { posts } from '../../services/posts'
-import CardStoryMin from '@components/molecules/CardStoryMin'
 import Button from '@components/atoms/Button'
+import CardStory from '@components/molecules/CardStory'
+import CardStoryMin from '@components/molecules/CardStoryMin'
 import Icon from '@material-ui/core/Icon'
+import posts from '@services/posts'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styles from './LandingStoriesHighlight.module.css'
 
 LandingStoriesHighlight.propTypes = {
@@ -15,6 +16,7 @@ export default function LandingStoriesHighlight({
   highlightedStories,
   handleRedirection,
 }) {
+  const view = posts().view
   const highlightedStory = highlightedStories[0]
 
   return (
@@ -36,10 +38,10 @@ export default function LandingStoriesHighlight({
                     id={highlightedStory.id}
                     title={highlightedStory.title}
                     description={highlightedStory.content}
-                    image={posts.getPreviewImage(highlightedStory)}
+                    image={view.getPreviewImage(highlightedStory)}
                     author={highlightedStory.author}
                     categories={highlightedStory.tags[0]}
-                    date={posts.getPublishedTimeAgo(highlightedStory)}
+                    date={view.getPublishedTimeAgo(highlightedStory)}
                   />
                 </div>
               </div>
@@ -53,7 +55,7 @@ export default function LandingStoriesHighlight({
                 title={story.title}
                 author={story.author}
                 categories={story.tags[0]}
-                date={posts.getPublishedTimeAgo(story)}
+                date={view.getPublishedTimeAgo(story)}
               />
             ))}
           </div>

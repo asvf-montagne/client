@@ -1,10 +1,10 @@
+import backgroundImage from '@assets/images/mont_blanc.jpg'
+import Button from '@components/atoms/Button'
+import Icon from '@material-ui/core/Icon'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
-import Icon from '@material-ui/core/Icon'
-import Button from '@components/atoms/Button'
 import styles from './AuthLayout.module.css'
-import backgroundImage from '@assets/images/mont_blanc.jpg'
 
 AuthLayout.propTypes = {
   title: PropTypes.string.isRequired,

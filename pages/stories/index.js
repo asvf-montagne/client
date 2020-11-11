@@ -1,9 +1,10 @@
-import React, { useReducer, useState } from 'react'
-import PropTypes from 'prop-types'
 import Layout from '@components/atoms/Layout'
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
 import SearchHeader from '@components/molecules/SearchHeader'
 import StoriesGrid from '@components/organisms/StoriesGrid'
+import useServices from '@hooks/useServices'
+import PropTypes from 'prop-types'
+import React, { useReducer, useState } from 'react'
 import services from '../../services'
 
 const StoriesActions = {
@@ -37,6 +38,9 @@ Stories.propTypes = {
 }
 
 export default function Stories({ tags, stories }) {
+  const {
+    posts: { api },
+  } = useServices()
   const [search, setSearch] = useState('')
   const [tagId, setTagId] = useState('ALL')
   const [state, dispatch] = useReducer(StoriesReducer, {
@@ -57,17 +61,17 @@ export default function Stories({ tags, stories }) {
     return params
   }
 
-  const handleSearch = async () => {
-    const posts = await services().posts.search(getParamsForSearch())
+  async function handleSearch() {
+    const stories = await api.search(getParamsForSearch())
 
-    dispatch({ type: StoriesActions.SET_STORIES, params: { stories: posts } })
+    dispatch({ type: StoriesActions.SET_STORIES, params: { stories } })
   }
 
-  const handleFetchMoreStories = async () => {
-    const posts = await services().posts.search(getParamsForSearch(false))
+  async function handleFetchMoreStories() {
+    const stories = await api.search(getParamsForSearch(false))
 
     const scrollOrigin = window.scrollY
-    dispatch({ type: StoriesActions.ADD_STORIES, params: { stories: posts } })
+    dispatch({ type: StoriesActions.ADD_STORIES, params: { stories } })
 
     // this in order to get the user view facing to the first new fetched story
     if (window.scrollY > scrollOrigin) {
@@ -100,9 +104,11 @@ export default function Stories({ tags, stories }) {
 }
 
 export async function getStaticProps() {
+  const servicesList = services({ isServer: true })
+
   const [tags, stories] = await Promise.all([
-    services().tags.list(),
-    services().posts.list({ limit: 15 }),
+    servicesList.tags.api.list(),
+    servicesList.posts.api.list({ limit: 15 }),
   ])
 
   return {

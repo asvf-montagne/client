@@ -57,12 +57,12 @@
 
 .btn_focus_primary:focus {
     border-color: var(--font-color-link);
-    box-shadow: 0 0 0 0.2rem rgba(12,117,255,.5);
+    box-shadow: 0 0 0 0.2rem rgba(12, 117, 255, .5);
 }
 
 .btn_focus_light:focus {
     border-color: var(--font-color-contrast);
-    box-shadow: 0 0 0 0.2rem rgba(255,255,255,.5);
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, .5);
 }
 
 .btn_shadow {

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
-import { useRouter } from 'next/router'
-import Layout from '@components/atoms/Layout'
 import FlashInfo from '@components/atoms/FlashInfo'
+import Layout from '@components/atoms/Layout'
 import LandingHero from '@components/molecules/LandingHero'
-import LandingStoriesHighlight from '@components/organisms/LandingStoriesHighlight'
 
 import LandingContact from '@components/organisms/LandingContact'
-import services from '../services'
+import LandingStoriesHighlight from '@components/organisms/LandingStoriesHighlight'
+import services from '@services/index'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react'
 
 const infos = [
   {
@@ -89,9 +89,11 @@ function Home({ stories, partners }) {
 }
 
 export async function getStaticProps() {
+  const servicesList = services()
+
   const [stories, partners] = await Promise.all([
-    services().posts.list({ limit: 4 }),
-    services().partners.list(),
+    servicesList.posts.api.list({ limit: 4 }),
+    servicesList.partners.api.list(),
   ])
 
   return {

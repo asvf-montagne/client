@@ -1,18 +1,17 @@
 import services from '../services'
-import { Auth } from '../services/auth'
 import useSWR from 'swr'
-import Cookies from 'js-cookie'
+import TokenHelper from '../helpers/token'
 
 /**
  * Get the authenticated user (if not undefined)
  *
- * @returns {{user: User|undefined, mutate: function}}
+ * @returns {{user: User|undefined, setUser: function}}
  */
 export default function useUser() {
-  const { data: user, mutate } = useSWR(
-    () => ['useUser', Cookies.get(Auth.jwtTokenKey)],
-    (namespace, token) => services({ token }).auth.getUser(false),
+  const { data: user, mutate: setUser } = useSWR(
+    () => ['useUser', TokenHelper.getToken()],
+    (namespace, token) => services({ token, isServer: false }).users.api.me(),
   )
 
-  return { user, mutate }
+  return { user, setUser }
 }

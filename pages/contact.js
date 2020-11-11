@@ -1,20 +1,12 @@
-import React from 'react'
 import Layout from '@components/atoms/Layout'
-import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
 import PageHeader from '@components/atoms/PageHeader'
+import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
 import ContactForm from '@components/organisms/ContactForm'
-import styles from '../styles/Contact.module.css'
 import Icon from '@material-ui/core/Icon'
+import React from 'react'
+import styles from '../styles/Contact.module.css'
 
 export default function Contact() {
-  // const [fullName, setFullName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [message, setMessage] = useState('');
-  //
-  // const handleSubmit = () => {
-  //   console.log(fullName, email, message);
-  // };
-
   return (
     <Layout>
       <SplitBackgroundOverlay padding="96px 0 96px 0" topHalfHeight={90}>

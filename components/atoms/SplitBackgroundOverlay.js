@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import styles from './SplitBackgroundOverlay.module.css'
 import React from 'react'
+import styles from './SplitBackgroundOverlay.module.css'
 
 SplitBackgroundOverlay.propTypes = {
   padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

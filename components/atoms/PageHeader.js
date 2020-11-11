@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import styles from './PageHeader.module.css'
 import React from 'react'
+import styles from './PageHeader.module.css'
 
 PageHeader.propTypes = {
   title: PropTypes.string.isRequired,

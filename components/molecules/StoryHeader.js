@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types'
 import Button from '@components/atoms/Button'
-import styles from './StoryHeader.module.css'
+import PropTypes from 'prop-types'
 import React from 'react'
+import styles from './StoryHeader.module.css'
 
 StoryHeader.propTypes = {
   tag: PropTypes.string,
@@ -17,6 +17,7 @@ export default function StoryHeader({ tag, title, author, date, image }) {
       {tag !== undefined && (
         <Button
           variant="link"
+          size="medium"
           focus="link"
           onClick={() =>
             console.log('todo: go on search story with tag filter: ' + tag)
