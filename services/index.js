@@ -4,6 +4,7 @@ import tagsService from './tags'
 import partnersService from './partners'
 import contactFormSubmissionsService from './contact-form-submissions'
 import usersService from './users'
+import authService from './auth'
 
 const baseURL =
   process.env.API_ENDPOINT ||
@@ -24,10 +25,13 @@ function services({ token } = {}) {
       res.headers['Authorization'] = `Bearer ${token}`
       return res
     })
+
+    client.metadata = { token }
   }
 
   return {
     users: usersService(client),
+    auth: authService(client),
     posts: postsService(client),
     tags: tagsService(client),
     partners: partnersService(client),

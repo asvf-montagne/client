@@ -1,103 +1,123 @@
 import React, { useEffect, useRef } from 'react'
-import PropTypes from 'prop-types'
-import Button from '@components/atoms/Button'
 import Input from '@components/atoms/Input'
 import styles from './FormSignIn.module.css'
-
+import { Field, Form } from 'react-final-form'
+import Button from '@components/atoms/Button'
 import GoogleLogoAsset from '@assets/images/logo_google.png'
+import services from '../../services'
+import { Users } from '../../services/users'
+import FormSuccessOrError from '@components/atoms/FormSuccessOrError'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
+import { FormUtil } from '../../helpers/form'
 
 FormSignIn.propTypes = {
-  email: PropTypes.string.isRequired,
-  setEmail: PropTypes.func.isRequired,
-  password: PropTypes.string.isRequired,
-  setPassword: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  onSignInSuccess: PropTypes.func,
 }
 
-export default function FormSignIn({
-  email,
-  setEmail,
-  password,
-  setPassword,
-  onSubmit,
-}) {
-  const refEmail = useRef(null)
+export default function FormSignIn({ onSignInSuccess }) {
+  const router = useRouter()
+
+  const refIdentifier = useRef(null)
   const refPassword = useRef(null)
 
+  async function onSubmit(values) {
+    try {
+      const res = await services().users.signIn(values)
+
+      if (res.status === 200) {
+        const { jwt: token, user } = res.data
+        services({ token }).auth.login()
+        onSignInSuccess(user)
+        await router.push('/protected-example')
+      } else {
+        return Users.validateFromBackend(res)
+      }
+    } catch (error) {
+      console.error('error while submitting sign up form', error)
+    }
+  }
+
   useEffect(() => {
-    refEmail.current.focus()
+    refIdentifier.current.focus()
   }, [])
 
   return (
-    <form className={styles.signUpForm}>
-      <Input
-        autocomplete="email"
-        label="Email"
-        placeholder="jonhdoe@example.com"
-        ref={refEmail}
-        value={email}
-        onChange={setEmail}
-        onKeyDown={(event) => {
-          if (event.keyCode === 13) {
-            refPassword.current.focus()
-            event.preventDefault()
-          }
-        }}
-        meta={{}}
-        icon="mail"
-      />
-      <Input
-        autocomplete="current-password"
-        type="password"
-        label="Mot de passe"
-        placeholder="password"
-        ref={refPassword}
-        value={password}
-        onChange={setPassword}
-        onKeyDown={(event) => {
-          if (event.keyCode === 13) {
-            onSubmit(event)
-            event.preventDefault()
-          }
-        }}
-        meta={{}}
-        icon="lock"
-        link={{
-          title: 'Mot de passe oublié ?',
-          ref: '/forgot-password',
-        }}
-      />
-
-      <div className={styles.signUpForm__authGroup}>
-        <Button
-          variant="primary"
-          size="large"
-          focus="primary"
-          fluid
-          onClick={(event) => onSubmit(event)}
-        >
-          Connexion
-        </Button>
-
-        <p className={styles.signUpForm__authGroup__separator}>
-          Ou bien se connecter avec
-        </p>
-
-        <Button
-          variant="light"
-          size="large"
-          focus="primary"
-          fluid
-          onClick={(event) => onSubmit(event)}
-        >
-          <img
-            alt="auth-google"
-            src={GoogleLogoAsset}
-            className={styles.signUpForm__authGroup__googleImg}
+    <Form
+      onSubmit={onSubmit}
+      render={({ submitError, handleSubmit, values }) => (
+        <form className={styles.signUpForm}>
+          <FormSuccessOrError
+            success={false}
+            error={submitError}
+            successMessage={''}
           />
-          Google
-        </Button>
-      </div>
-    </form>
+
+          <Field name="identifier" type="text">
+            {({ input, meta }) => (
+              <Input
+                label="Nom d'utilisateur ou email"
+                placeholder="jonhdoe@example.com ou john.doe"
+                ref={refIdentifier}
+                {...input}
+                meta={meta}
+                icon="person"
+                onKeyDown={(e) =>
+                  FormUtil.navigateToNextInput(e, refPassword, 13)
+                }
+              />
+            )}
+          </Field>
+
+          <Field name="password" type="password">
+            {({ input, meta }) => (
+              <Input
+                autocomplete="current-password"
+                label="Mot de passe"
+                placeholder="Votre mot de passe"
+                ref={refPassword}
+                {...input}
+                meta={meta}
+                onKeyDown={(e) =>
+                  FormUtil.withKeyCode(e, 13, () => handleSubmit(values))
+                }
+                icon="lock"
+              />
+            )}
+          </Field>
+
+          <div className={styles.signUpForm__authGroup}>
+            <Button
+              variant="primary"
+              size="large"
+              focus="primary"
+              fluid
+              onClick={() => handleSubmit(values)}
+            >
+              Connexion
+            </Button>
+
+            <p className={styles.signUpForm__authGroup__separator}>
+              Ou bien se connecter avec
+            </p>
+
+            <Button
+              variant="light"
+              size="large"
+              focus="primary"
+              fluid
+              onClick={(event) => onSubmit(event)}
+            >
+              <img
+                alt="auth-google"
+                src={GoogleLogoAsset}
+                className={styles.signUpForm__authGroup__googleImg}
+              />
+              Google
+            </Button>
+          </div>
+        </form>
+      )}
+    />
   )
 }

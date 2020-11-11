@@ -6,6 +6,10 @@
     background-color: var(--primary-blue-bg-color);
 }
 
+.header a {
+    cursor: pointer;
+}
+
 .header__container {
     height: 100%;
     width: 100%;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 import Icon from '@material-ui/core/Icon'
@@ -6,6 +6,7 @@ import Button from '@components/atoms/Button'
 import useWindowSize from '@hooks/useWindowSize'
 import { navItems } from '../../helpers/config'
 import styles from './Navigation.module.css'
+import useUser from '@hooks/useUser'
 
 NavLink.propTypes = {
   url: PropTypes.string.isRequired,
@@ -14,11 +15,15 @@ NavLink.propTypes = {
 }
 
 function NavLink({ url, title, subItems }) {
+  const router = useRouter()
   const { width: size } = useWindowSize()
 
   return (
     <li className={styles.header__list__item}>
-      <a className={styles.header__list__item__link} href={url}>
+      <a
+        className={styles.header__list__item__link}
+        onClick={() => router.push(url)}
+      >
         {title}
       </a>
       {!!subItems.length && size > 768 && (
@@ -31,7 +36,7 @@ function NavLink({ url, title, subItems }) {
                   <a
                     key={index}
                     className={styles.submenu_group_link}
-                    href={link.url}
+                    onClick={() => router.push(link.url)}
                   >
                     {link.label}
                   </a>
@@ -52,10 +57,15 @@ NavLinkMin.propTypes = {
 }
 
 function NavLinkMin({ url, title, subItems }) {
+  const router = useRouter()
+
   return (
     <>
       <li className={styles.header__menu__item}>
-        <a className={styles.header__menu__item__link} href={url}>
+        <a
+          className={styles.header__menu__item__link}
+          onClick={() => router.push(url)}
+        >
           {title}
         </a>
       </li>
@@ -71,7 +81,7 @@ function NavLinkMin({ url, title, subItems }) {
               <li key={index} className={styles.header__menu__item}>
                 <a
                   className={styles.header__menu__item__link_sub_link}
-                  href={link.url}
+                  onClick={() => router.push(link.url)}
                 >
                   {link.label}
                 </a>
@@ -106,10 +116,13 @@ function NavButton({ url, title }) {
 }
 
 export default function Navigation() {
+  const { user } = useUser()
   const { width: size } = useWindowSize()
+  const router = useRouter()
   const [isMenuActive, setIsMenuActive] = useState(false)
+
   const onSmallDevice = size < 768 && isMenuActive
-  const isAuthenticated = false
+  const isAuthenticated = user !== undefined
 
   useEffect(() => {
     if (size > 768) {
@@ -117,16 +130,24 @@ export default function Navigation() {
     }
   }, [size])
 
+  console.log('user', user)
+
   if (onSmallDevice) {
     return (
       <nav className={styles.header}>
         <div className={styles.header__container}>
           <ul className={styles.header__menu}>
             <>
-              <a className={styles.header__logo} href="/">
+              <a
+                className={styles.header__logo}
+                onClick={() => router.push('/')}
+              >
                 ASVF Montagne
               </a>
-              <a className={styles.header__logo__min} href="/">
+              <a
+                className={styles.header__logo__min}
+                onClick={() => router.push('/')}
+              >
                 ASVF
               </a>
             </>
@@ -166,10 +187,13 @@ export default function Navigation() {
       <div className={styles.header__container}>
         <ul className={styles.header__list}>
           <>
-            <a className={styles.header__logo} href="/">
+            <a className={styles.header__logo} onClick={() => router.push('/')}>
               ASVF Montagne
             </a>
-            <a className={styles.header__logo__min} href="/">
+            <a
+              className={styles.header__logo__min}
+              onClick={() => router.push('/')}
+            >
               ASVF
             </a>
           </>
