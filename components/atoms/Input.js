@@ -30,13 +30,13 @@ const Input = forwardRef(
       <div className={styles.input} {...props}>
         {label && (
           <span className={styles.input__span}>
-          <label className={styles.input__span__label}>{label}</label>
+            <label className={styles.input__span__label}>{label}</label>
             {link && (
               <a className={styles.input__span__link} href={link.ref}>
                 {link.title}
               </a>
             )}
-        </span>
+          </span>
         )}
 
         <div

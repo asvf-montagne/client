@@ -31,48 +31,20 @@ function FieldCustom({ name, type, label, description, placeholder, icon }) {
 }
 
 FormAccount.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  fields: PropTypes.array.isRequired,
   submitError: PropTypes.func,
   handleSubmit: PropTypes.func,
   values: PropTypes.object,
 }
 
-export default function FormAccount({ title, submitError, handleSubmit, values }) {
-  const fields = [
-    {
-      name: 'lastName',
-      type: 'text',
-      label: 'Nom',
-      description: 'Votre nom est personel il ne sera pas affiché en public.',
-      placeholder: 'Nom de famille',
-      icon: 'person',
-    },
-    {
-      name: 'firstName',
-      type: 'text',
-      label: 'Prénom',
-      description: 'Le prénom est utilisé lorsque vous publiez des articles ou sorties.',
-      placeholder: 'Prénom',
-      icon: 'person',
-    },
-    {
-      name: 'username',
-      type: 'text',
-      label: 'Nom d’utilisateur',
-      description: 'Le nom d’utilissateur est utilisé lorsque vous publiez des commentaires.',
-      placeholder: 'Nom de compte',
-      icon: 'person',
-    },
-    {
-      name: 'email',
-      type: 'text',
-      label: 'Addresse email',
-      description: 'L’addresse email est utilisé pour vous avertir d’évènements, de changements lié au site ect. Elle reste privé.',
-      placeholder: 'Email',
-      icon: 'mail',
-    },
-  ]
-
+export default function FormAccount({
+  title,
+  fields,
+  submitError,
+  handleSubmit,
+  values,
+}) {
   return (
     <form className={styles.form}>
       <span className={styles.form_header}>

@@ -1,8 +1,12 @@
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 0 auto;
     padding: 96px 16px;
+}
+
+.container > form:not(:first-child) {
+    margin-top: 64px;
 }
 
 /* Small devices (landscape phones, 576px and up) */
