@@ -49,7 +49,9 @@ export default function AuthLayout({ title, helper, children }) {
             </div>
 
             <div className={styles.authLayout__right__inner}>
-              {children}
+              <div className={styles.authLayout__right__inner_inner}>
+                {children}
+              </div>
               <div className={styles.authLayout__right__helper}>
                 <Button
                   variant="link"

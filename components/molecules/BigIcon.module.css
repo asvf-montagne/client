@@ -1,5 +1,4 @@
 .bigIcon {
-    height: calc(100vh - 290px);
     display: flex;
     flex-direction: column;
     align-items: center;
