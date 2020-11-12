@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Layout from '@components/atoms/Layout'
-import AccountNavigation from '@components/molecules/AccountNavigation';
+import AccountLayout from '@components/atoms/AccountLayout'
+import AccountNavigation from '@components/molecules/AccountNavigation'
 import services from '../../services'
 
 Stories.propTypes = {
@@ -18,7 +19,9 @@ export default function Stories({ user }) {
   return (
     <Layout>
       <AccountNavigation />
-      {/*<p>Ceci est une page protégé {JSON.stringify(user)}</p>*/}
+      <AccountLayout>
+        <p>Ceci est une page protégé {JSON.stringify(user)}</p>
+      </AccountLayout>
     </Layout>
   )
 }

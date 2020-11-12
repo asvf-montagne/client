@@ -28,14 +28,16 @@ const Input = forwardRef(
 
     return (
       <div className={styles.input} {...props}>
-        <span className={styles.input__span}>
+        {label && (
+          <span className={styles.input__span}>
           <label className={styles.input__span__label}>{label}</label>
-          {link && (
-            <a className={styles.input__span__link} href={link.ref}>
-              {link.title}
-            </a>
-          )}
+            {link && (
+              <a className={styles.input__span__link} href={link.ref}>
+                {link.title}
+              </a>
+            )}
         </span>
+        )}
 
         <div
           className={`
@@ -124,13 +126,13 @@ Input.propTypes = {
   textArea: PropTypes.bool,
   autocomplete: PropTypes.string,
   type: PropTypes.oneOf(['text', 'password']),
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  onKeyDown: PropTypes.func.isRequired,
-  onFocus: PropTypes.func.isRequired,
-  onBlur: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   icon: PropTypes.string,
   link: PropTypes.object,
   meta: PropTypes.object,

@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    padding: 96px 16px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (max-width: 576px) {
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (min-width: 576px) and (max-width: 795px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 768px) and (max-width: 1080px) {
+}
+
+/* Extra large devices (large desktops, 1268px and up) */
+@media screen and (min-width: 1080px) {
+    .container {
+        max-width: 1040px;
+    }
+}
