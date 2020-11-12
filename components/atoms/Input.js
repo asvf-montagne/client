@@ -7,6 +7,7 @@ import styles from './Input.module.css'
 const Input = forwardRef(
   (
     {
+      disabled = false,
       textArea = false,
       autocomplete = 'off',
       type = 'text',
@@ -28,18 +29,21 @@ const Input = forwardRef(
 
     return (
       <div className={styles.input} {...props}>
-        <span className={styles.input__span}>
-          <label className={styles.input__span__label}>{label}</label>
-          {link && (
-            <a className={styles.input__span__link} href={link.ref}>
-              {link.title}
-            </a>
-          )}
-        </span>
+        {label && (
+          <span className={styles.input__span}>
+            <label className={styles.input__span__label}>{label}</label>
+            {link && (
+              <a className={styles.input__span__link} href={link.ref}>
+                {link.title}
+              </a>
+            )}
+          </span>
+        )}
 
         <div
           className={`
             ${styles.input__container}
+            ${disabled ? styles.input__container_disabled : ''}
             ${
               meta.touched &&
               (meta.error ||
@@ -70,10 +74,13 @@ const Input = forwardRef(
           {(textArea && (
             <textarea
               ref={ref}
+              disabled={disabled}
               className={styles.input__container__textarea}
               onFocus={() => {
-                onFocus()
-                setFocused(true)
+                if (!disabled) {
+                  setFocused(true)
+                  onFocus()
+                }
               }}
               onBlur={() => {
                 onBlur()
@@ -88,13 +95,16 @@ const Input = forwardRef(
             <input
               ref={ref}
               type={type}
+              disabled={disabled}
               autoComplete={autocomplete}
               className={`${styles.input__container__input} ${
                 icon ? styles.input__container__input__iconless : ''
               }`}
               onFocus={() => {
-                onFocus()
-                setFocused(true)
+                if (!disabled) {
+                  setFocused(true)
+                  onFocus()
+                }
               }}
               onBlur={() => {
                 onBlur()
@@ -121,16 +131,17 @@ const Input = forwardRef(
 )
 
 Input.propTypes = {
+  disabled: PropTypes.bool,
   textArea: PropTypes.bool,
   autocomplete: PropTypes.string,
   type: PropTypes.oneOf(['text', 'password']),
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  onKeyDown: PropTypes.func.isRequired,
-  onFocus: PropTypes.func.isRequired,
-  onBlur: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   icon: PropTypes.string,
   link: PropTypes.object,
   meta: PropTypes.object,

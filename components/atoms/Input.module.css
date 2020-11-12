@@ -47,6 +47,10 @@
     margin-bottom: 28px;
 }
 
+.input__container_disabled {
+    background-color: rgba(196, 196, 196, 0.2);
+}
+
 .input__containerFocused {
     border: 2px solid var(--font-color-link);
 }
@@ -103,6 +107,10 @@
 
 .input__container__input::placeholder {
     color: var(--font-color-gray2);
+}
+
+.input__container__input:disabled {
+    background-color: transparent;
 }
 
 .input__container__textarea::placeholder {

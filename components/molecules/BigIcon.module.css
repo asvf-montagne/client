@@ -1,5 +1,4 @@
 .bigIcon {
-    height: calc(100vh - 290px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,6 +11,10 @@
 
 .bigIcon__iconPrimary {
     color: var(--font-color-link)
+}
+
+.bigIcon__iconMuted {
+    color: #C4C4C4;
 }
 
 .bigIcon__iconSuccess {
@@ -28,4 +31,5 @@
     color: var(--font-color-gray1);
     font-weight: var(--font-weight-regular);
     text-align: center;
+    max-width: 500px;
 }

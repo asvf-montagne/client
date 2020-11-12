@@ -9,7 +9,7 @@ import users from './users'
 const baseURL =
   process.env.API_ENDPOINT ||
   process.env.NEXT_PUBLIC_API_ENDPOINT ||
-  'https://dashboard.asvf-montagne.fr'
+  'https://backend.asvf-montagne.fr'
 
 function services({ token, isServer } = { token: undefined, isServer: false }) {
   const client = axios.create({

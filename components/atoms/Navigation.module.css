@@ -59,6 +59,7 @@
     top: 64px;
     z-index: 0;
     transition: 0.3s;
+    box-shadow: var(--shadow-active);
 }
 
 .header__list > .header__list__item[id="burger"] > button > span {
