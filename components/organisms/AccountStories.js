@@ -15,7 +15,12 @@ export default function AccountStories({ title, stories, handleClick }) {
     <div className={styles.container}>
       <span className={styles.container_header}>
         <h1 className={styles.container_header_title}>{title}</h1>
-        <Button onClick={handleClick} size="medium" variant="success" focus="success">
+        <Button
+          onClick={handleClick}
+          size="medium"
+          variant="success"
+          focus="success"
+        >
           Nouveau
         </Button>
       </span>
