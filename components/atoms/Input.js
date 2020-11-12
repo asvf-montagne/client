@@ -7,6 +7,7 @@ import styles from './Input.module.css'
 const Input = forwardRef(
   (
     {
+      disabled = false,
       textArea = false,
       autocomplete = 'off',
       type = 'text',
@@ -42,6 +43,7 @@ const Input = forwardRef(
         <div
           className={`
             ${styles.input__container}
+            ${disabled ? styles.input__container_disabled : ''}
             ${
               meta.touched &&
               (meta.error ||
@@ -72,10 +74,13 @@ const Input = forwardRef(
           {(textArea && (
             <textarea
               ref={ref}
+              disabled={disabled}
               className={styles.input__container__textarea}
               onFocus={() => {
-                onFocus()
-                setFocused(true)
+                if (!disabled) {
+                  setFocused(true)
+                  onFocus()
+                }
               }}
               onBlur={() => {
                 onBlur()
@@ -90,13 +95,16 @@ const Input = forwardRef(
             <input
               ref={ref}
               type={type}
+              disabled={disabled}
               autoComplete={autocomplete}
               className={`${styles.input__container__input} ${
                 icon ? styles.input__container__input__iconless : ''
               }`}
               onFocus={() => {
-                onFocus()
-                setFocused(true)
+                if (!disabled) {
+                  setFocused(true)
+                  onFocus()
+                }
               }}
               onBlur={() => {
                 onBlur()
@@ -123,6 +131,7 @@ const Input = forwardRef(
 )
 
 Input.propTypes = {
+  disabled: PropTypes.bool,
   textArea: PropTypes.bool,
   autocomplete: PropTypes.string,
   type: PropTypes.oneOf(['text', 'password']),

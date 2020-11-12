@@ -42,7 +42,15 @@ export default function Button({
       ${styles['btn_' + variant]}
       ${styles['btn_focus_' + focus]}
       ${shadow ? styles['btn_shadow'] : ''}
-      ${disabled ? styles.btn_disabled : ''}
+      ${
+        disabled && ['primary', 'success'].includes(variant)
+          ? styles.btn_primary_disabled
+          : ''
+      }
+      ${
+        disabled && ['light'].includes(variant) ? styles.btn_light_disabled : ''
+      }
+      ${disabled && ['link'].includes(variant) ? styles.btn_link_disabled : ''}
     `}
     >
       <div className={styles.btn_inner}>{children}</div>

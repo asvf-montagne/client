@@ -23,7 +23,13 @@ function FieldCustom({ name, type, label, description, placeholder, icon }) {
             <label className={styles.wideInput_col_label}>{label}</label>
             <p className={styles.wideInput_col_description}>{description}</p>
           </div>
-          <Input {...input} placeholder={placeholder} meta={meta} icon={icon} />
+          <Input
+            {...input}
+            disabled={name === 'email'}
+            placeholder={placeholder}
+            meta={meta}
+            icon={icon}
+          />
         </div>
       )}
     </Field>
