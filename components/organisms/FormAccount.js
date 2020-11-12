@@ -49,13 +49,12 @@ export default function FormAccount({
     <form className={styles.form}>
       <span className={styles.form_header}>
         <h1 className={styles.form_header_title}>{title}</h1>
+        <FormSuccessOrError
+          success={false}
+          error={submitError}
+          successMessage={''}
+        />
       </span>
-
-      <FormSuccessOrError
-        success={false}
-        error={submitError}
-        successMessage={''}
-      />
 
       {fields.map((field, index) => (
         <FieldCustom
