@@ -1,11 +1,11 @@
+import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+import { useRouter } from 'next/router'
 import Button from '@components/atoms/Button'
 import { navItems } from '@helpers/config'
 import useUser from '@hooks/useUser'
 import useWindowSize from '@hooks/useWindowSize'
 import Icon from '@material-ui/core/Icon'
-import { useRouter } from 'next/router'
-import PropTypes from 'prop-types'
-import React, { useEffect, useState } from 'react'
 import styles from './Navigation.module.css'
 
 NavLink.propTypes = {

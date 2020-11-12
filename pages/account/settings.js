@@ -4,6 +4,7 @@ import { Form } from 'react-final-form'
 import Layout from '@components/atoms/Layout'
 import AccountLayout from '@components/atoms/AccountLayout'
 import AccountNavigation from '@components/molecules/AccountNavigation'
+import AccountLinkWithGoogle from '@components/molecules/AccountLinkWithGoogle'
 import FormAccount from '@components/organisms/FormAccount'
 import services from '../../services'
 
@@ -29,6 +30,14 @@ export default function Settings({ user }) {
   async function handleChangePassword(values) {
     try {
       console.log('wewewe', values)
+    } catch (error) {
+      console.error('error while submitting sign up form', error)
+    }
+  }
+
+  async function handleLinkWithGoogle(event) {
+    try {
+      console.log('link')
     } catch (error) {
       console.error('error while submitting sign up form', error)
     }
@@ -130,6 +139,12 @@ export default function Settings({ user }) {
               values={values}
             />
           )}
+        />
+
+        <AccountLinkWithGoogle
+          label="Lier mon compte google"
+          description="Pour plus de simplicité connectez vous avec votre compte google en cliquant sur bouton ci-contre."
+          onClick={handleLinkWithGoogle}
         />
       </AccountLayout>
     </Layout>
