@@ -5,7 +5,7 @@ import styles from './BigIcon.module.css'
 
 BigIcon.propTypes = {
   icon: PropTypes.string.isRequired,
-  variant: PropTypes.oneOf(['primary', 'success', 'error']).isRequired,
+  variant: PropTypes.oneOf(['primary', 'success', 'error', 'muted']).isRequired,
   description: PropTypes.string,
 }
 
@@ -16,6 +16,7 @@ export default function BigIcon({ icon, variant, description }) {
         className={`
         ${styles.bigIcon__icon}
         ${variant === 'primary' ? styles.bigIcon__iconPrimary : ''}
+        ${variant === 'muted' ? styles.bigIcon__iconMuted : ''}
         ${variant === 'success' ? styles.bigIcon__iconSuccess : ''}
         ${variant === 'error' ? styles.bigIcon__iconError : ''}
       `}

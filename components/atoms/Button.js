@@ -4,8 +4,8 @@ import styles from './Button.module.css'
 
 Button.propTypes = {
   size: PropTypes.oneOf(['medium', 'large']).isRequired,
-  variant: PropTypes.oneOf(['primary', 'light', 'link']).isRequired,
-  focus: PropTypes.oneOf(['primary', 'light', 'link']),
+  variant: PropTypes.oneOf(['primary', 'light', 'link', 'success']).isRequired,
+  focus: PropTypes.oneOf(['primary', 'light', 'link', 'success']),
   shadow: PropTypes.bool,
   fluid: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
