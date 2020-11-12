@@ -57,9 +57,18 @@ export default function Settings({ user }) {
       type: 'text',
       label: 'Nom d’utilisateur',
       description:
-        'Le nom d’utilissateur est utilisé lorsque vous publiez des commentaires.',
+        'Le nom d’utilisateur est utilisé lorsque vous publiez des commentaires.',
       placeholder: 'Nom de compte',
       icon: 'person',
+    },
+    {
+      name: 'phone',
+      type: 'text',
+      label: 'Numéro de téléphone',
+      description:
+        'Le numéro de téléphone est utilisé lorsque vous publiez des sorties et que vous êtes responsable.',
+      placeholder: 'Numéro de téléphone',
+      icon: 'phone',
     },
     {
       name: 'email',
@@ -77,7 +86,8 @@ export default function Settings({ user }) {
       name: 'password',
       type: 'password',
       label: 'Changer votre mot de passe',
-      description: 'Il est recommandé d’utiliser un gestionnaire de mot de passe.',
+      description:
+        'Il est recommandé d’utiliser un gestionnaire de mot de passe.',
       placeholder: '********',
       icon: 'lock',
     },
@@ -94,6 +104,7 @@ export default function Settings({ user }) {
             firstName: user.firstName,
             lastName: user.lastname,
             username: user.username,
+            phone: user.phone,
             email: user.email,
           }}
           render={({ submitError, handleSubmit, values }) => (

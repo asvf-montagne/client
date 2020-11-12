@@ -19,6 +19,10 @@
 
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width: 768px) and (max-width: 1080px) {
+    .container {
+        margin-left: 64px;
+        margin-right: 64px;
+    }
 }
 
 /* Extra large devices (large desktops, 1268px and up) */
@@ -26,4 +30,10 @@
     .container {
         max-width: 1040px;
     }
+
+    .container {
+        margin-left: 64px;
+        margin-right: 64px;
+    }
 }
+

@@ -33,11 +33,11 @@ export default function AccountNavigation() {
       icon: 'menu_book',
       url: '/account/stories',
     },
-    {
-      name: 'Sorties',
-      icon: 'event',
-      url: '/account/stories',
-    },
+    // {
+    //   name: 'Sorties',
+    //   icon: 'event',
+    //   url: '/account/stories',
+    // },
   ]
 
   return (
