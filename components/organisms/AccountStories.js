@@ -31,8 +31,8 @@ export default function AccountStories({ title, stories, handleClick }) {
             key={index}
             id={story.id}
             title={story.title}
-            author={story.author}
-            categories={story.tags[0]}
+            badge={{ color: 'yellow', label: 'wewewe' }}
+            categories={story.tags}
             date="wewe"
           />
         ))}
