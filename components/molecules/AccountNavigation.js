@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Icon from '@material-ui/core/Icon'
 import styles from './AccountNavigation.module.css'
@@ -16,7 +17,7 @@ function NavLink({ name, icon, url }) {
   return (
     <li className={`${styles.link} ${active ? styles.link_active : ''}`}>
       {icon && <Icon>{icon}</Icon>}
-      <a href={url}>{name}</a>
+      <Link href={url}>{name}</Link>
     </li>
   )
 }
@@ -42,16 +43,18 @@ export default function AccountNavigation() {
 
   return (
     <div className={styles.container}>
-      <ul className={styles.links}>
-        {links.map((link, index) => (
-          <NavLink
-            key={index}
-            name={link.name}
-            icon={link.icon}
-            url={link.url}
-          />
-        ))}
-      </ul>
+      <div className={styles.container_inner}>
+        <ul className={styles.links}>
+          {links.map((link, index) => (
+            <NavLink
+              key={index}
+              name={link.name}
+              icon={link.icon}
+              url={link.url}
+            />
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }
