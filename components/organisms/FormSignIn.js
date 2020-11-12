@@ -30,7 +30,7 @@ export default function FormSignIn({}) {
         TokenHelper.setToken(token)
         setUser(user)
 
-        await router.push('/protected-example')
+        await router.push('/')
       } else {
         return ValidationHelper.validateFromBackend(res.data)
       }

@@ -1,9 +1,10 @@
-import Layout from '@components/atoms/Layout'
 import PropTypes from 'prop-types'
 import React from 'react'
+import Layout from '@components/atoms/Layout'
+import AccountNavigation from '@components/molecules/AccountNavigation'
 import services from '../../services'
 
-Index.propTypes = {
+Settings.propTypes = {
   user: PropTypes.object,
 }
 
@@ -13,10 +14,11 @@ Index.propTypes = {
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Index({ user }) {
+export default function Settings({ user }) {
   return (
     <Layout>
-      <p>Ceci est une page protégé {JSON.stringify(user.username)}</p>
+      <AccountNavigation />
+      {/*<p>Ceci est une page protégé {JSON.stringify(user)}</p>*/}
     </Layout>
   )
 }
@@ -27,7 +29,7 @@ export async function getServerSideProps(ctx) {
     users: { api },
   } = services({ token: ctx.req.cookies.token, isServer: true })
 
-  const user = await auth.helpers.shouldRedirectIfNotAuthenticated(api, ctx.res)
+  const user = await auth.helpers.shouldRedirectIfNotAuthenticated(api, ctx)
 
   if (user) {
     return {
