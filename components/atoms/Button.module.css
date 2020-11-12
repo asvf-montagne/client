@@ -43,6 +43,7 @@
     background-color: var(--tertiary-blue-bg-color);
     color: var(--font-color-contrast);
 }
+
 .btn_success, .btn_success > .btn_inner, .btn_success > .btn_inner > span {
     border: none;
     background-color: var(--font-color-status-success);
@@ -87,4 +88,16 @@
 .btn_shadow:focus {
     transition: ease-in-out 0.12s;
     box-shadow: var(--shadow-active);
+}
+
+.btn_disabled, .btn_disabled > .btn_inner, .btn_disabled > .btn_inner > span {
+    box-shadow: none;
+    border: none;
+    background-color: #C4C4C4;
+    color: var(--font-color-contrast);
+}
+
+.btn_disabled:focus {
+    border: none;
+    box-shadow: none;
 }

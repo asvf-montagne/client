@@ -29,7 +29,7 @@ export default function AccountStories({ title, stories, handleClick }) {
         stories.map((story, index) => (
           <CardStoryMin
             key={index}
-            id={story.id}
+            id={+story.id}
             title={story.title}
             badge={{ color: 'yellow', label: 'wewewe' }}
             categories={story.tags}

@@ -15,7 +15,14 @@ CardStoryMin.propTypes = {
   date: PropTypes.string.isRequired,
 }
 
-export default function CardStoryMin({ id, title, author, badge, categories, date }) {
+export default function CardStoryMin({
+  id,
+  title,
+  author,
+  badge,
+  categories,
+  date,
+}) {
   const router = useRouter()
 
   const handleRedirection = () => {
