@@ -1,5 +1,6 @@
 import AuthLayout from '@components/atoms/AuthLayout'
 import BigIcon from '@components/molecules/BigIcon'
+import services from '@services/index'
 import React from 'react'
 
 export default function EmailSent() {
@@ -15,4 +16,10 @@ export default function EmailSent() {
       />
     </AuthLayout>
   )
+}
+
+export async function getServerSideProps(ctx) {
+  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(ctx)
+
+  return { props: {} }
 }

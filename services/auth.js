@@ -109,7 +109,7 @@ const auth = (client) => ({
     async shouldRedirectIfNotAuthenticated({ me }, { res }) {
       if (!client.metadata.isServer) {
         console.warn(
-          "[service:auth] function 'shouldRedirectIfNotAuthenticated' is only usavle with getServerSideProps",
+          "[service:auth] function 'shouldRedirectIfNotAuthenticated' is only usable with getServerSideProps",
         )
         return undefined
       }
@@ -124,7 +124,30 @@ const auth = (client) => ({
 
       return user
     },
+
+    /**
+     * Only usable on the server side
+     * Only need the server ctx (the token will be detected by that)
+     * @param {object} ctx - server side ctx provided by vercel
+     * @returns {Promise<void>}
+     */
+    async shouldRedirectIfAuthenticated(ctx) {
+      if (!client.metadata.isServer) {
+        console.warn(
+          "[service:auth] function 'shouldRedirectIfAuthenticated' is only usable with getServerSideProps",
+        )
+        return undefined
+      }
+
+      if (ctx.req.cookies.token !== undefined) {
+        ctx.res.statusCode = 302
+        ctx.res.setHeader('Location', `/`)
+        return undefined
+      }
+    }
   },
+
+
 })
 
 export default auth

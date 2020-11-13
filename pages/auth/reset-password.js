@@ -1,5 +1,6 @@
 import AuthLayout from '@components/atoms/AuthLayout'
 import FormResetPassword from '@components/organisms/FormResetPassword'
+import services from '@services/index'
 import React, { useState } from 'react'
 
 export default function NewPassword() {
@@ -24,4 +25,10 @@ export default function NewPassword() {
       />
     </AuthLayout>
   )
+}
+
+export async function getServerSideProps(ctx) {
+  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(ctx)
+
+  return { props: {} }
 }

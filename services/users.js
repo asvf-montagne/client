@@ -5,6 +5,7 @@ import TokenHelper from '../helpers/token'
  *
  * @typedef {Object} User
  * @property {number} id
+ * @property {string} email
  * @property {string} username
  * @property {string} provider
  * @property {string} created_at

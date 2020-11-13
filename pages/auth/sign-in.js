@@ -1,6 +1,7 @@
 import AuthLayout from '@components/atoms/AuthLayout'
 import FormSignIn from '@components/organisms/FormSignIn'
 import useUser from '@hooks/useUser'
+import services from '@services/index'
 import React from 'react'
 
 export default function SignIn() {
@@ -15,7 +16,13 @@ export default function SignIn() {
       title="Se connecter"
       helper={{ label: `Vous n'avez pas de compte ?`, href: '/auth/sign-up' }}
     >
-      <FormSignIn onSignInSuccess={handleSignInSuccess} />
+      <FormSignIn onSignInSuccess={handleSignInSuccess}/>
     </AuthLayout>
   )
+}
+
+export async function getServerSideProps(ctx) {
+  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(ctx)
+
+  return { props: {} }
 }
