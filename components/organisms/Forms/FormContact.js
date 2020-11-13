@@ -6,9 +6,9 @@ import ValidationHelper from '@helpers/validation'
 import useServices from '@hooks/useServices'
 import React, { useRef, useState } from 'react'
 import { Field, Form } from 'react-final-form'
-import styles from './ContactForm.module.css'
+import styles from './FormContact.module.css'
 
-export default function ContactForm() {
+export default function FormContact() {
   const [success, setSuccess] = useState(false)
   const { contactFormSubmissions } = useServices()
 
@@ -40,7 +40,14 @@ export default function ContactForm() {
         <Form
           onSubmit={onSubmit}
           validate={contactFormSubmissions.validations.validateCreate}
-          render={({ submitError, handleSubmit, values, form }) => (
+          render={({
+            submitError,
+            handleSubmit,
+            values,
+            form,
+            pristine,
+            submitting,
+          }) => (
             <form
               className={`
               ${styles.landingContact__overlay__contacts__col__form}
@@ -88,8 +95,8 @@ export default function ContactForm() {
                 {({ input, meta }) => (
                   <Input
                     ref={refContent}
-                    label="Nom et prénom"
-                    placeholder="Jonh Doe"
+                    label="Message"
+                    placeholder="Un super message pour l’asvf montagne !"
                     textArea
                     {...input}
                     onKeyDown={() => {}}
@@ -103,6 +110,7 @@ export default function ContactForm() {
                 size="medium"
                 variant="primary"
                 focus="primary"
+                loading={submitting}
                 style={{ marginLeft: 'auto' }}
               >
                 Envoyer le message

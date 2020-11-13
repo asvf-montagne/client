@@ -1,3 +1,4 @@
+/*SHARED STYLE START*/
 .btn {
     display: flex;
     flex-direction: row;
@@ -7,7 +8,6 @@
     background-color: var(--primary-bg-color);
     border: 2px solid rgba(12, 117, 255, 0.2);
     transition: ease-in-out .16s;
-    padding: 6px 12px;
     cursor: pointer;
 }
 
@@ -20,6 +20,17 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+/*SHARED STYLE STOP*/
+
+
+
+/*SIZE START*/
+.btn_medium {
+    padding: 6px 12px;
+}
+
+.btn_medium > .btn_inner {
     font-size: var(--text-size-medium);
     font-weight: var(--font-weight-medium) !important;
     color: var(--font-color-secondary);
@@ -32,9 +43,15 @@
 
 .btn_large > .btn_inner {
     font-size: var(--text-size-large);
+    font-weight: var(--font-weight-medium) !important;
+    color: var(--font-color-secondary);
     min-width: 150px;
 }
+/*SIZE STOP*/
 
+
+
+/*VARIANT START*/
 .btn_primary, .btn_primary > .btn_inner, .btn_primary > .btn_inner > span {
     border: none;
     background-color: var(--tertiary-blue-bg-color);
@@ -47,18 +64,6 @@
     color: var(--font-color-contrast);
 }
 
-.btn_primary_disabled, .btn_primary_disabled > .btn_inner, .btn_primary_disabled > .btn_inner > span {
-    box-shadow: none;
-    border: none;
-    background-color: #C4C4C4;
-    color: var(--font-color-contrast);
-}
-
-.btn_primary_disabled:focus {
-    border: none;
-    box-shadow: none;
-}
-
 .btn_link, .btn_link > .btn_inner, .btn_link > .btn_inner > span {
     border: none;
     background-color: transparent;
@@ -69,19 +74,11 @@
     background-color: transparent;
     color: var(--font-color-link);
 }
+/*VARIANT STOP*/
 
-.btn_link_disabled, .btn_link_disabled > .btn_inner, .btn_link_disabled > .btn_inner > span {
-    box-shadow: none;
-    border: none;
-    color: #C4C4C4;
-}
 
-.btn_link_disabled:focus {
-    border: none;
-    box-shadow: none;
-    color: #C4C4C4;
-}
 
+/*FOCUS START*/
 .btn_focus_primary:focus {
     box-shadow: 0 0 0 0.2rem rgba(12, 117, 255, .5);
 }
@@ -95,19 +92,11 @@
     border-color: var(--font-color-contrast);
     box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, .5);
 }
+/*FOCUS STOP*/
 
-.btn_light_disabled, .btn_light_disabled > .btn_inner, .btn_light_disabled > .btn_inner > span {
-    box-shadow: none;
-    color: #C4C4C4;
-    border-color: #C4C4C4;
-}
 
-.btn_light_disabled:focus {
-    box-shadow: none;
-    border-color: #C4C4C4;
-    color: #C4C4C4;
-}
 
+/*SHADOW START*/
 .btn_shadow {
     transition: ease-in-out 0.12s;
     box-shadow: var(--shadow);
@@ -122,3 +111,73 @@
     transition: ease-in-out 0.12s;
     box-shadow: var(--shadow-active);
 }
+/*SHADOW STOP*/
+
+
+
+/*DISABLED STATE START*/
+.btn_primary_disabled, .btn_primary_disabled > .btn_inner, .btn_primary_disabled > .btn_inner > span {
+    box-shadow: none;
+    cursor: default;
+    border: none;
+    background-color: #C4C4C4;
+    color: var(--font-color-contrast);
+}
+
+.btn_primary_disabled:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.btn_light_disabled, .btn_light_disabled > .btn_inner, .btn_light_disabled > .btn_inner > span {
+    box-shadow: none;
+    cursor: default;
+    color: #C4C4C4;
+    border-color: #C4C4C4;
+}
+
+.btn_light_disabled:focus {
+    box-shadow: none;
+    border-color: #C4C4C4;
+    color: #C4C4C4;
+}
+
+.btn_link_disabled, .btn_link_disabled > .btn_inner, .btn_link_disabled > .btn_inner > span {
+    box-shadow: none;
+    cursor: default;
+    border: none;
+    color: #C4C4C4;
+}
+
+.btn_link_disabled:focus {
+    border: none;
+    box-shadow: none;
+    color: #C4C4C4;
+}
+/*DISABLED STATE START*/
+
+
+
+/*LOADING STATE START*/
+.btn_primary_loading, .btn_primary_loading > .btn_inner {
+    background-image: linear-gradient(
+        270deg,
+        rgba(196, 196, 196, 1),
+        rgba(236, 236, 236, 1),
+        rgba(236, 236, 236, 1),
+        rgba(196, 196, 196, 1)
+    );
+    cursor: default;
+    background-size: 400% 100%;
+    animation: loading 8s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+/*LOADING STATE END*/

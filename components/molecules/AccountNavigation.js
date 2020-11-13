@@ -27,12 +27,12 @@ export default function AccountNavigation() {
     {
       name: 'Mes détails',
       icon: 'settings',
-      url: '/account/settings',
+      url: '/dashboard/settings',
     },
     {
       name: 'Récits',
       icon: 'menu_book',
-      url: '/account/stories',
+      url: '/dashboard/stories',
     },
     // {
     //   name: 'Sorties',

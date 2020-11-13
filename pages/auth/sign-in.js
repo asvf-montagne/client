@@ -1,5 +1,5 @@
 import AuthLayout from '@components/atoms/AuthLayout'
-import FormSignIn from '@components/organisms/FormSignIn'
+import FormSignIn from '@components/organisms/Forms/FormSignIn'
 import useUser from '@hooks/useUser'
 import services from '@services/index'
 import React from 'react'

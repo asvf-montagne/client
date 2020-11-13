@@ -1,36 +1,29 @@
 import GoogleLogoAsset from '@assets/images/logo_google.png'
 import Button from '@components/atoms/Button'
-import FormSuccessOrError from '@components/atoms/FormSuccessOrError'
+import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError'
 import Input from '@components/atoms/Input'
 import FormHelper from '@helpers/form'
-import TokenHelper from '@helpers/token'
 import ValidationHelper from '@helpers/validation'
 import useServices from '@hooks/useServices'
-import useUser from '@hooks/useUser'
 import { useRouter } from 'next/router'
 import React, { useEffect, useRef } from 'react'
 import { Field, Form } from 'react-final-form'
 import styles from './FormSignIn.module.css'
 
-export default function FormSignIn({}) {
-  const { setUser } = useUser()
+export default function FormSignUp({}) {
   const { auth } = useServices()
   const router = useRouter()
 
-  const refIdentifier = useRef(null)
+  const refUsername = useRef(null)
+  const refEmail = useRef(null)
   const refPassword = useRef(null)
 
   async function handleSubmit(values) {
     try {
-      const res = await auth.api.signIn(values)
+      const res = await auth.api.signUp(values)
 
       if (res.status === 200) {
-        const { jwt: token, user } = res.data
-
-        TokenHelper.setToken(token)
-        setUser(user)
-
-        await router.push('/')
+        await router.push('/auth/sign-up-email-sent')
       } else {
         return ValidationHelper.validateFromBackend(res.data)
       }
@@ -40,33 +33,49 @@ export default function FormSignIn({}) {
   }
 
   useEffect(() => {
-    refIdentifier.current.focus()
+    refUsername.current.focus()
   }, [])
 
   return (
     <Form
+      validate={auth.validations.signUp}
       onSubmit={handleSubmit}
-      validate={auth.validations.signIn}
-      render={({ submitError, handleSubmit, values }) => (
+      render={({ submitError, handleSubmit, values, pristine, submitting }) => (
         <form className={styles.signUpForm}>
-          <FormSuccessOrError
+          <DisplaySuccessOrError
             success={false}
             error={submitError}
             successMessage={''}
           />
 
-          <Field name="identifier" type="text">
+          <Field name="username" type="text">
             {({ input, meta }) => (
               <Input
-                label="Nom d'utilisateur ou email"
-                placeholder="jonhdoe@example.com ou john.doe"
-                ref={refIdentifier}
+                ref={refUsername}
+                icon="person"
+                label="Nom d'utilisateur"
+                placeholder="john.doe"
+                onKeyDown={(e) =>
+                  FormHelper.navigateToNextInput(e, refEmail, 13)
+                }
                 {...input}
                 meta={meta}
-                icon="person"
+              />
+            )}
+          </Field>
+
+          <Field name="email" type="text">
+            {({ input, meta }) => (
+              <Input
+                ref={refEmail}
+                icon="mail"
+                label="Email"
+                placeholder="john.doe@gmail.com"
                 onKeyDown={(e) =>
                   FormHelper.navigateToNextInput(e, refPassword, 13)
                 }
+                {...input}
+                meta={meta}
               />
             )}
           </Field>
@@ -74,16 +83,15 @@ export default function FormSignIn({}) {
           <Field name="password" type="password">
             {({ input, meta }) => (
               <Input
-                autocomplete="current-password"
-                label="Mot de passe"
-                placeholder="Votre mot de passe"
                 ref={refPassword}
-                {...input}
-                meta={meta}
+                icon="lock"
+                label="Mot de passe"
+                placeholder="Choisissez un bon mot de passe"
                 onKeyDown={(e) =>
                   FormHelper.withKeyCode(e, 13, () => handleSubmit(values))
                 }
-                icon="lock"
+                {...input}
+                meta={meta}
               />
             )}
           </Field>
@@ -94,13 +102,14 @@ export default function FormSignIn({}) {
               size="large"
               focus="primary"
               fluid
+              loading={submitting}
               onClick={() => handleSubmit(values)}
             >
-              Connexion
+              S&apos;inscrire
             </Button>
 
             <p className={styles.signUpForm__authGroup__separator}>
-              Ou bien se connecter avec
+              Ou bien se s&apos;inscrire avec
             </p>
 
             <Button
@@ -108,7 +117,7 @@ export default function FormSignIn({}) {
               size="large"
               focus="primary"
               fluid
-              onClick={(event) => handleSubmit(event)}
+              onClick={() => console.log('todo: go to goodle')}
             >
               <img
                 alt="auth-google"

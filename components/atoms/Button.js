@@ -7,6 +7,7 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['primary', 'light', 'link', 'success']).isRequired,
   focus: PropTypes.oneOf(['primary', 'light', 'link', 'success']),
   disabled: PropTypes.bool,
+  loading: PropTypes.bool,
   shadow: PropTypes.bool,
   fluid: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
@@ -20,22 +21,17 @@ export default function Button({
   shadow = false,
   fluid = false,
   disabled = false,
+  loading = false,
   onClick,
   children,
   ...props
 }) {
-  const action = (event) => {
-    if (!disabled) {
-      onClick(event)
-    }
-    event.preventDefault()
-  }
-
   return (
     <button
       type="button"
-      onClick={action}
+      onClick={onClick}
       {...props}
+      disabled={disabled || loading}
       className={`
       ${styles.btn}
       ${styles['btn_' + size]}
@@ -51,6 +47,12 @@ export default function Button({
         disabled && ['light'].includes(variant) ? styles.btn_light_disabled : ''
       }
       ${disabled && ['link'].includes(variant) ? styles.btn_link_disabled : ''}
+      ${
+        loading && ['primary', 'success'].includes(variant)
+          ? styles.btn_primary_loading
+          : ''
+      }
+      ${loading && ['light'].includes(variant) ? styles.btn_light_loading : ''}
     `}
     >
       <div className={styles.btn_inner}>{children}</div>

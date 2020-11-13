@@ -1,5 +1,5 @@
 import Badge from '@components/atoms/Badge'
-import styles from '@components/organisms/ContactForm.module.css'
+import styles from '@components/organisms/Forms/FormContact.module.css'
 import Icon from '@material-ui/core/Icon'
 import PropTypes from 'prop-types'
 import React from 'react'

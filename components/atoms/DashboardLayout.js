@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
-import styles from './AccountLayout.module.css'
+import styles from './DashboardLayout.module.css'
 
-AccountLayout.propTypes = {
+DashboardLayout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default function AccountLayout({ children }) {
+export default function DashboardLayout({ children }) {
   return <div className={styles.container}>{children}</div>
 }

@@ -1,3 +1,7 @@
+.form > div:not(:nth-last-child(2)) {
+    border-bottom: 1px solid #C4C4C4;
+}
+
 .form_header {
     display: flex;
     flex-direction: row;
@@ -9,10 +13,6 @@
     color: var(--font-color-secondary);
     font-weight: var(--font-weight-bold);
     font-size: var(--title-size-large);
-}
-
-.form > div:not(:nth-last-child(2)) {
-    border-bottom: 1px solid #C4C4C4;
 }
 
 .wideInput {
