@@ -18,6 +18,11 @@ const posts = (client) => ({
       return res.data
     },
 
+    async ids() {
+      const res = await client.get(`/posts/view/ids`)
+      return res.data
+    },
+
     async search(params) {
       const res = await client.get(`/posts/view/search`, {
         params: {
