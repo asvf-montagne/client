@@ -111,6 +111,7 @@
 
 .input__container__input:disabled {
     background-color: transparent;
+    color: var(--font-color-gray2);
 }
 
 .input__container__textarea::placeholder {
