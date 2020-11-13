@@ -39,7 +39,7 @@ const users = (client) => ({
 
     async updateUser(data) {
       try {
-        return (await client.put('/extend/users/me', data))
+        return await client.put('/extend/users/me', data)
       } catch ({ response }) {
         return response
       }
@@ -50,7 +50,9 @@ const users = (client) => ({
     updateUser(o) {
       const errors = {}
 
-      const usernameError = ValidationHelper.fieldValidations.username(o.username)
+      const usernameError = ValidationHelper.fieldValidations.username(
+        o.username,
+      )
       if (usernameError !== undefined) errors.username = usernameError
 
       if (o.firstname !== undefined && o.firstname !== '') {
@@ -64,7 +66,6 @@ const users = (client) => ({
           errors.lastname = ValidationHelper.messages.notBlank
         }
       }
-
 
       const phoneError = ValidationHelper.fieldValidations.phone(o.phone, false)
       if (phoneError !== undefined) errors.phone = phoneError
@@ -81,8 +82,8 @@ const users = (client) => ({
       o.lastname = o.lastname.trim()
 
       return o
-    }
-  }
+    },
+  },
 })
 
 export default users

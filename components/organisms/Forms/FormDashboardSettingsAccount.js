@@ -16,7 +16,7 @@ FormDashboardSettingsAccount.propTypes = {
 export default function FormDashboardSettingsAccount({ user = {} }) {
   const [success, setSuccess] = useState(false)
   const { setUser } = useUser()
-  const { users } = useServices()
+  const { users } = useServices(null)
 
   async function handleSubmit(values) {
     try {
@@ -25,6 +25,7 @@ export default function FormDashboardSettingsAccount({ user = {} }) {
       if (res.status === 200) {
         setUser(res.data)
         setSuccess(true)
+        refMessage.scrollTo({ behavior: 'smooth' })
       } else {
         return ValidationHelper.validateFromBackend(res.data)
       }
