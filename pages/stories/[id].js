@@ -43,7 +43,7 @@ export default function Story({ story, suggestedStories }) {
           width: image.width,
         }))}
       />
-      <SuggestedStories stories={suggestedStories}/>
+      <SuggestedStories stories={suggestedStories} />
     </Layout>
   )
 }
@@ -51,7 +51,9 @@ export default function Story({ story, suggestedStories }) {
 export async function getStaticPaths() {
   const { posts } = services({ isServer: true })
 
-  const paths = (await posts.api.ids()).map(id => ({ params: { id: id.toString() } }))
+  const paths = (await posts.api.ids()).map((id) => ({
+    params: { id: id.toString() },
+  }))
 
   return {
     paths,
