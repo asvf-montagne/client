@@ -6,7 +6,7 @@ import ValidationHelper from '@helpers/validation'
 import useServices from '@hooks/useServices'
 import React, { useEffect, useRef, useState } from 'react'
 import { Field, Form } from 'react-final-form'
-import styles from './FormNewPassword.module.css'
+import styles from './FormResetPassword.module.css'
 
 export default function FormResetPassword({}) {
   const { auth } = useServices()
@@ -41,7 +41,7 @@ export default function FormResetPassword({}) {
     <Form
       onSubmit={handleSubmit}
       validate={auth.validations.resetPassword}
-      render={({ handleSubmit, values, submitError, form }) => (
+      render={({ handleSubmit, values, submitError, form, pristine, submitting }) => (
         <form className={styles.signUpForm}>
           <DisplaySuccessOrError
             success={success}
@@ -87,6 +87,7 @@ export default function FormResetPassword({}) {
               size="large"
               focus="primary"
               fluid
+              loading={submitting}
               onClick={() => handleSubmit(values, form)}
             >
               Changer le mot de passe

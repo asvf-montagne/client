@@ -55,7 +55,7 @@ export const navItems = [
         url: '/stories',
       },
       {
-        title: 'Contact',
+        title: 'FormContact',
         url: '/contact',
       },
     ],

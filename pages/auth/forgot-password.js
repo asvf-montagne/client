@@ -1,5 +1,5 @@
 import AuthLayout from '@components/atoms/AuthLayout'
-import FormForgotPassword from '@components/organisms/FormForgotPassword'
+import FormForgotPassword from '@components/organisms/Forms/FormForgotPassword'
 import services from '@services/index'
 import React from 'react'
 

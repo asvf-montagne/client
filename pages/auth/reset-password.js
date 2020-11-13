@@ -1,5 +1,5 @@
 import AuthLayout from '@components/atoms/AuthLayout'
-import FormResetPassword from '@components/organisms/FormResetPassword'
+import FormResetPassword from '@components/organisms/Forms/FormResetPassword'
 import services from '@services/index'
 import React, { useState } from 'react'
 

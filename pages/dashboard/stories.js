@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Layout from '@components/atoms/Layout'
 import Button from '@components/atoms/Button'
 import BigIcon from '@components/molecules/BigIcon'
-import AccountLayout from '@components/atoms/AccountLayout'
+import DashboardLayout from '@components/atoms/DashboardLayout'
 import AccountNavigation from '@components/molecules/AccountNavigation'
 import AccountStories from '@components/organisms/AccountStories'
 import services from '../../services'
@@ -34,7 +34,7 @@ export default function Stories({ user }) {
   return (
     <Layout>
       <AccountNavigation />
-      <AccountLayout>
+      <DashboardLayout>
         {user.role.name === 'Authenticated' && (
           <>
             <BigIcon
@@ -60,7 +60,7 @@ export default function Stories({ user }) {
             handleClick={handleCreateStory}
           />
         )}
-      </AccountLayout>
+      </DashboardLayout>
     </Layout>
   )
 }

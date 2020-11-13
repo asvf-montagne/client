@@ -1,7 +1,7 @@
 import Layout from '@components/atoms/Layout'
 import PageHeader from '@components/atoms/PageHeader'
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
-import ContactForm from '@components/organisms/ContactForm'
+import FormContact from '@components/organisms/Forms/FormContact'
 import Icon from '@material-ui/core/Icon'
 import React from 'react'
 import styles from '../styles/Contact.module.css'
@@ -32,7 +32,7 @@ export default function Contact() {
             </button>
           </div>
         </div>
-        <ContactForm />
+        <FormContact />
       </section>
     </Layout>
   )

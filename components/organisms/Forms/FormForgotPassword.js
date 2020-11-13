@@ -36,7 +36,7 @@ export default function FormForgotPassword({}) {
     <Form
       onSubmit={handleSubmit}
       validate={auth.validations.forgotPassword}
-      render={({ submitError, values, handleSubmit }) => (
+      render={({ submitError, values, handleSubmit, pristine, submitting }) => (
         <form className={styles.signUpForm}>
           <DisplaySuccessOrError
             success={false}
@@ -67,6 +67,7 @@ export default function FormForgotPassword({}) {
               size="large"
               focus="primary"
               fluid
+              loading={submitting}
               onClick={() => handleSubmit(values)}
             >
               Envoyer

@@ -1,4 +1,4 @@
-import ContactForm from '@components/organisms/ContactForm'
+import FormContact from '@components/organisms/Forms/FormContact'
 import Icon from '@material-ui/core/Icon'
 import dynamic from 'next/dynamic'
 import PropTypes from 'prop-types'
@@ -124,7 +124,7 @@ export default function LandingContact({ partners }) {
             </div>
           </div>
 
-          <ContactForm />
+          <FormContact />
         </div>
       </div>
 
