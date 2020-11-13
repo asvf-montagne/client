@@ -25,7 +25,6 @@ export default function FormDashboardSettingsAccount({ user = {} }) {
       if (res.status === 200) {
         setUser(res.data)
         setSuccess(true)
-        refMessage.scrollTo({ behavior: 'smooth' })
       } else {
         return ValidationHelper.validateFromBackend(res.data)
       }
