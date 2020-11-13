@@ -118,6 +118,7 @@
 /*DISABLED STATE START*/
 .btn_primary_disabled, .btn_primary_disabled > .btn_inner, .btn_primary_disabled > .btn_inner > span {
     box-shadow: none;
+    cursor: default;
     border: none;
     background-color: #C4C4C4;
     color: var(--font-color-contrast);
@@ -130,6 +131,7 @@
 
 .btn_light_disabled, .btn_light_disabled > .btn_inner, .btn_light_disabled > .btn_inner > span {
     box-shadow: none;
+    cursor: default;
     color: #C4C4C4;
     border-color: #C4C4C4;
 }
@@ -142,6 +144,7 @@
 
 .btn_link_disabled, .btn_link_disabled > .btn_inner, .btn_link_disabled > .btn_inner > span {
     box-shadow: none;
+    cursor: default;
     border: none;
     color: #C4C4C4;
 }
@@ -164,6 +167,7 @@
         rgba(236, 236, 236, 1),
         rgba(196, 196, 196, 1)
     );
+    cursor: default;
     background-size: 400% 100%;
     animation: loading 8s ease-in-out infinite;
 }

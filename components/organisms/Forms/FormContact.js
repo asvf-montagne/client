@@ -95,8 +95,8 @@ export default function FormContact() {
                 {({ input, meta }) => (
                   <Input
                     ref={refContent}
-                    label="Nom et prénom"
-                    placeholder="Jonh Doe"
+                    label="Message"
+                    placeholder="Un super message pour l’asvf montagne !"
                     textArea
                     {...input}
                     onKeyDown={() => {}}
