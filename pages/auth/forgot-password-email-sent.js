@@ -19,7 +19,9 @@ export default function EmailSent() {
 }
 
 export async function getServerSideProps(ctx) {
-  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(ctx)
+  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(
+    ctx,
+  )
 
   return { props: {} }
 }

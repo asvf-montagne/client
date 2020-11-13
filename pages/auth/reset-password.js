@@ -28,7 +28,9 @@ export default function NewPassword() {
 }
 
 export async function getServerSideProps(ctx) {
-  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(ctx)
+  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(
+    ctx,
+  )
 
   return { props: {} }
 }

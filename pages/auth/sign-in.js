@@ -16,13 +16,15 @@ export default function SignIn() {
       title="Se connecter"
       helper={{ label: `Vous n'avez pas de compte ?`, href: '/auth/sign-up' }}
     >
-      <FormSignIn onSignInSuccess={handleSignInSuccess}/>
+      <FormSignIn onSignInSuccess={handleSignInSuccess} />
     </AuthLayout>
   )
 }
 
 export async function getServerSideProps(ctx) {
-  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(ctx)
+  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(
+    ctx,
+  )
 
   return { props: {} }
 }

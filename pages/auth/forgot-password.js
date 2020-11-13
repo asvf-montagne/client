@@ -12,13 +12,15 @@ export default function ForgotPassword() {
         href: '/auth/sign-in',
       }}
     >
-      <FormForgotPassword/>
+      <FormForgotPassword />
     </AuthLayout>
   )
 }
 
 export async function getServerSideProps(ctx) {
-  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(ctx)
+  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(
+    ctx,
+  )
 
   return { props: {} }
 }

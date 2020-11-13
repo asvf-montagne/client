@@ -144,10 +144,8 @@ const auth = (client) => ({
         ctx.res.setHeader('Location', `/`)
         return undefined
       }
-    }
+    },
   },
-
-
 })
 
 export default auth

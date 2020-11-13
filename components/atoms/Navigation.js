@@ -71,25 +71,25 @@ function NavLinkMin({ url, title, subItems }) {
         </a>
       </li>
       {!!subItems.length &&
-      subItems.map((item, index) => (
-        <div key={index}>
-          <li className={styles.header__menu__item}>
-            <p className={styles.header__menu__item__link_sub_title}>
-              {item.title}
-            </p>
-          </li>
-          {item.links.map((link, index) => (
-            <li key={index} className={styles.header__menu__item}>
-              <a
-                className={styles.header__menu__item__link_sub_link}
-                onClick={() => router.push(link.url)}
-              >
-                {link.label}
-              </a>
+        subItems.map((item, index) => (
+          <div key={index}>
+            <li className={styles.header__menu__item}>
+              <p className={styles.header__menu__item__link_sub_title}>
+                {item.title}
+              </p>
             </li>
-          ))}
-        </div>
-      ))}
+            {item.links.map((link, index) => (
+              <li key={index} className={styles.header__menu__item}>
+                <a
+                  className={styles.header__menu__item__link_sub_link}
+                  onClick={() => router.push(link.url)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </div>
+        ))}
     </>
   )
 }
@@ -158,7 +158,7 @@ export default function Navigation() {
             </>
 
             {isAuthenticated && (
-              <NavButton title="Logout" url="/auth/sign-up"/>
+              <NavButton title="Logout" url="/auth/sign-up" />
             )}
             {!isAuthenticated && (
               <NavLinkMin
@@ -168,7 +168,7 @@ export default function Navigation() {
               />
             )}
             {!isAuthenticated && (
-              <NavLinkMin title="Connexion" url="/auth/sign-in" subItems={[]}/>
+              <NavLinkMin title="Connexion" url="/auth/sign-in" subItems={[]} />
             )}
 
             {navItems
@@ -206,20 +206,26 @@ export default function Navigation() {
           {navItems
             .find(({ type }) => type === 'links')
             .items.map(({ title, url, items = [] }, index) => (
-              <NavLink title={title} url={url} subItems={items} key={index}/>
+              <NavLink title={title} url={url} subItems={items} key={index} />
             ))}
         </ul>
 
         <ul className={styles.header__list}>
-          {isAuthenticated && <NavButton title="Logout" url="/auth/sign-up" onClickBefore={() => {
-            setUser(undefined)
-            TokenHelper.removeToken()
-          }}/>}
-          {!isAuthenticated && (
-            <NavLink title="Connexion" url="/auth/sign-in" subItems={[]}/>
+          {isAuthenticated && (
+            <NavButton
+              title="Logout"
+              url="/auth/sign-up"
+              onClickBefore={() => {
+                setUser(undefined)
+                TokenHelper.removeToken()
+              }}
+            />
           )}
           {!isAuthenticated && (
-            <NavButton title="Inscription" url="/auth/sign-up"/>
+            <NavLink title="Connexion" url="/auth/sign-in" subItems={[]} />
+          )}
+          {!isAuthenticated && (
+            <NavButton title="Inscription" url="/auth/sign-up" />
           )}
 
           <li className={styles.header__list__item} id="burger">
