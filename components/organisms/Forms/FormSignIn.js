@@ -94,6 +94,7 @@ export default function FormSignIn({}) {
               size="large"
               focus="primary"
               fluid
+              loading={submitting}
               onClick={() => handleSubmit(values)}
             >
               Connexion
@@ -108,7 +109,6 @@ export default function FormSignIn({}) {
               size="large"
               focus="primary"
               fluid
-              loading={submitting}
               onClick={(event) => handleSubmit(event)}
             >
               <img
