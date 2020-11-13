@@ -172,6 +172,10 @@
     animation: loading 8s ease-in-out infinite;
 }
 
+.btn_primary_loading > .btn_inner {
+    background-color: transparent;
+}
+
 @keyframes loading {
     0% {
         background-position: 200% 0;
