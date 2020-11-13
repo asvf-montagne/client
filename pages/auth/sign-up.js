@@ -1,5 +1,6 @@
 import AuthLayout from '@components/atoms/AuthLayout'
 import FormSignUp from '@components/organisms/FormSignUp'
+import services from '@services/index'
 import React from 'react'
 
 export default function SignUp() {
@@ -11,4 +12,12 @@ export default function SignUp() {
       <FormSignUp />
     </AuthLayout>
   )
+}
+
+export async function getServerSideProps(ctx) {
+  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(
+    ctx,
+  )
+
+  return { props: {} }
 }

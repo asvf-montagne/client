@@ -1,6 +1,7 @@
 import AuthLayout from '@components/atoms/AuthLayout'
 import FormSignIn from '@components/organisms/FormSignIn'
 import useUser from '@hooks/useUser'
+import services from '@services/index'
 import React from 'react'
 
 export default function SignIn() {
@@ -18,4 +19,12 @@ export default function SignIn() {
       <FormSignIn onSignInSuccess={handleSignInSuccess} />
     </AuthLayout>
   )
+}
+
+export async function getServerSideProps(ctx) {
+  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(
+    ctx,
+  )
+
+  return { props: {} }
 }

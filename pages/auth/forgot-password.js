@@ -1,5 +1,6 @@
 import AuthLayout from '@components/atoms/AuthLayout'
 import FormForgotPassword from '@components/organisms/FormForgotPassword'
+import services from '@services/index'
 import React from 'react'
 
 export default function ForgotPassword() {
@@ -14,4 +15,12 @@ export default function ForgotPassword() {
       <FormForgotPassword />
     </AuthLayout>
   )
+}
+
+export async function getServerSideProps(ctx) {
+  await services({ isServer: true }).auth.helpers.shouldRedirectIfAuthenticated(
+    ctx,
+  )
+
+  return { props: {} }
 }

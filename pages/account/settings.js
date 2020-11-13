@@ -110,7 +110,7 @@ export default function Settings({ user }) {
           onSubmit={handleSubmit}
           validate={null}
           initialValues={{
-            firstName: user.firstName,
+            firstName: user.firstname,
             lastName: user.lastname,
             username: user.username,
             phone: user.phone,

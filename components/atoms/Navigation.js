@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import { useRouter } from 'next/router'
 import Button from '@components/atoms/Button'
 import { navItems } from '@helpers/config'
+import TokenHelper from '@helpers/token'
 import useUser from '@hooks/useUser'
 import useWindowSize from '@hooks/useWindowSize'
 import Icon from '@material-ui/core/Icon'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react'
 import styles from './Navigation.module.css'
 
 NavLink.propTypes = {
@@ -96,16 +97,22 @@ function NavLinkMin({ url, title, subItems }) {
 NavButton.propTypes = {
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  onClickBefore: PropTypes.func,
 }
 
-function NavButton({ url, title }) {
+function NavButton({ url, title, onClickBefore }) {
   const router = useRouter()
 
   return (
     <li className={styles.header__list__item}>
       <Button
         size="medium"
-        onClick={() => router.push(url)}
+        onClick={() => {
+          if (onClickBefore) {
+            onClickBefore()
+          }
+          router.push(url)
+        }}
         variant="light"
         focus="light"
       >
@@ -116,7 +123,7 @@ function NavButton({ url, title }) {
 }
 
 export default function Navigation() {
-  const { user } = useUser()
+  const { user, setUser } = useUser()
   const { width: size } = useWindowSize()
   const router = useRouter()
   const [isMenuActive, setIsMenuActive] = useState(false)
@@ -204,7 +211,16 @@ export default function Navigation() {
         </ul>
 
         <ul className={styles.header__list}>
-          {isAuthenticated && <NavButton title="Logout" url="/auth/sign-up" />}
+          {isAuthenticated && (
+            <NavButton
+              title="Logout"
+              url="/auth/sign-in"
+              onClickBefore={() => {
+                setUser(undefined)
+                TokenHelper.removeToken()
+              }}
+            />
+          )}
           {!isAuthenticated && (
             <NavLink title="Connexion" url="/auth/sign-in" subItems={[]} />
           )}
