@@ -40,7 +40,14 @@ export default function FormContact() {
         <Form
           onSubmit={onSubmit}
           validate={contactFormSubmissions.validations.validateCreate}
-          render={({ submitError, handleSubmit, values, form, pristine, submitting }) => (
+          render={({
+            submitError,
+            handleSubmit,
+            values,
+            form,
+            pristine,
+            submitting,
+          }) => (
             <form
               className={`
               ${styles.landingContact__overlay__contacts__col__form}

@@ -41,7 +41,14 @@ export default function FormResetPassword({}) {
     <Form
       onSubmit={handleSubmit}
       validate={auth.validations.resetPassword}
-      render={({ handleSubmit, values, submitError, form, pristine, submitting }) => (
+      render={({
+        handleSubmit,
+        values,
+        submitError,
+        form,
+        pristine,
+        submitting,
+      }) => (
         <form className={styles.signUpForm}>
           <DisplaySuccessOrError
             success={success}
