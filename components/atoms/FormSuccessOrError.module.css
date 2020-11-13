@@ -1,3 +1,8 @@
+.container {
+    align-items: flex-start;
+    display: flex;
+}
+
 .landingContact__overlay__contacts__col {
     display: flex;
     flex-direction: column;
@@ -15,10 +20,6 @@
     padding: 32px;
     border-radius: var(--border-radius-medium);
     background-color: var(--primary-bg-color);
-}
-
-.landingContact__overlay__contacts__col__form > div:first-child {
-    margin-bottom: 32px;
 }
 
 .landingContact__overlay__contacts__colorParagraph {

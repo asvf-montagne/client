@@ -1,8 +1,8 @@
-import Badge from '@components/atoms/Badge'
-import styles from '@components/organisms/Forms/FormContact.module.css'
-import Icon from '@material-ui/core/Icon'
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
+import Icon from '@material-ui/core/Icon'
+import Badge from '@components/atoms/Badge'
+import styles from './FormSuccessOrError.module.css'
 
 DisplaySuccessOrError.propTypes = {
   success: PropTypes.any,
@@ -17,13 +17,7 @@ export default function DisplaySuccessOrError({
 }) {
   if (success || error) {
     return (
-      <div
-        style={{
-          alignItems: 'flex-start',
-          display: 'flex',
-          marginBottom: '20px',
-        }}
-      >
+      <div className={styles.container}>
         {success && (
           <Badge color="green">
             <Icon>check_circle</Icon>

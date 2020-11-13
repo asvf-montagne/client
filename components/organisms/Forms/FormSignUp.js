@@ -8,7 +8,7 @@ import useServices from '@hooks/useServices'
 import { useRouter } from 'next/router'
 import React, { useEffect, useRef } from 'react'
 import { Field, Form } from 'react-final-form'
-import styles from './FormSignIn.module.css'
+import styles from './FormSignUp.module.css'
 
 export default function FormSignUp({}) {
   const { auth } = useServices()
