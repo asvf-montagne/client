@@ -214,7 +214,7 @@ export default function Navigation() {
           {isAuthenticated && (
             <NavButton
               title="Logout"
-              url="/auth/sign-up"
+              url="/auth/sign-in"
               onClickBefore={() => {
                 setUser(undefined)
                 TokenHelper.removeToken()
