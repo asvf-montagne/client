@@ -154,6 +154,7 @@ export default function FormDashboardSettingsAccount({ user = {} }) {
             <Button
               size="medium"
               variant="primary"
+              focus="primary"
               onClick={handleSubmit}
               loading={submitting}
             >

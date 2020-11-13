@@ -57,6 +57,7 @@ export default function FormDashboardSettingsPassword() {
             <Button
               size="medium"
               variant="primary"
+              focus="primary"
               onClick={handleSubmit}
               loading={submitting}
             >
