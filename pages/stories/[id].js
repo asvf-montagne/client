@@ -48,17 +48,23 @@ export default function Story({ story, suggestedStories }) {
   )
 }
 
-export async function getServerSideProps(ctx) {
+export async function getStaticPaths() {
   const { posts } = services({ isServer: true })
-  // todo: if the story is not found: =>
 
-  // cache 5 min
-  ctx.res.setHeader(
-    'Cache-Control',
-    `s-maxage=${60 * 5}, stale-while-revalidate`,
-  )
+  const paths = (await posts.api.ids()).map((id) => ({
+    params: { id: id.toString() },
+  }))
 
-  const story = await posts.api.find({ ...ctx.params })
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const { posts } = services({ isServer: true })
+
+  const story = await posts.api.find({ id: params.id })
   const suggestedStories = await posts.api.suggested({
     limit: 2,
     date: story['published_at'],
