@@ -160,7 +160,7 @@
 
 /*LOADING STATE START*/
 .btn_primary_loading {
-    background-image: linear-gradient(to right, rgba(196, 196, 196, 1)  10%, var(--font-color-link) 38%, rgba(196, 196, 196, 1) 58%);
+    background-image: linear-gradient(to right, rgba(196, 196, 196, 1)  10%, rgb(230, 230, 230) 38%, rgba(196, 196, 196, 1) 58%);
     background-repeat: repeat;
     cursor: default;
     background-size: 400% 100%;
