@@ -2,6 +2,7 @@ import { FORM_ERROR } from 'final-form'
 
 const formats = {
   username: /^(?=[a-zA-Z0-9._]{4,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/,
+  phone: /^(\+33\d\d{8})|(0\d\d{8})$/,
 }
 
 const strapiErrors = {
@@ -24,6 +25,14 @@ const strapiErrors = {
   'Auth.form.error.code.provide': {
     [FORM_ERROR]: 'Vous avez déjà réinitialisé votre mot de passe',
   },
+
+  'Auth.form.error.username.format': {
+    username: "Nom d'utilisateur invalide",
+  },
+
+  'Auth.form.error.phone.format': {
+    phone: 'Numéro de téléphone invalide',
+  },
 }
 
 const ValidationHelper = {
@@ -37,6 +46,7 @@ const ValidationHelper = {
 
     // custom logic messages format
     usernameFormat: `Accepte lettres, chiffres, le . et _`,
+    phoneFormat: `Numéro de téléphone invalide`,
   },
 
   validations: {
@@ -58,6 +68,14 @@ const ValidationHelper = {
         return ValidationHelper.messages.shouldStartOrEndWithAlphaOrNumber
       else if (username.match(formats.username) === null)
         return ValidationHelper.messages.usernameFormat
+    },
+
+    phone(phone, required = true) {
+      if ((!required && phone === undefined) || phone === '') return
+
+      if (phone === undefined) return ValidationHelper.messages.required
+      else if (phone.match(formats.phone) === null)
+        return ValidationHelper.messages.phoneFormat
     },
 
     password(password) {

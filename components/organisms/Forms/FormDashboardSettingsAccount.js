@@ -1,9 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Field, Form } from 'react-final-form'
 import Button from '@components/atoms/Button'
-import Input from '@components/atoms/Input'
 import FormSuccessOrError from '@components/atoms/FormSuccessOrError'
+import Input from '@components/atoms/Input'
+import FormHelper from '@helpers/form'
+import ValidationHelper from '@helpers/validation'
+import useServices from '@hooks/useServices'
+import useUser from '@hooks/useUser'
+import PropTypes from 'prop-types'
+import React, { useRef, useState } from 'react'
+import { Field, Form } from 'react-final-form'
 import styles from './FormDashboardSettingsAccount.module.css'
 
 FormDashboardSettingsAccount.propTypes = {
@@ -11,39 +15,65 @@ FormDashboardSettingsAccount.propTypes = {
 }
 
 export default function FormDashboardSettingsAccount({ user = {} }) {
-  function handleSubmit(values) {
-    try {
-      console.log('wewewe', values)
-    } catch (error) {
-      console.error('error while submitting sign up form', error)
-    }
+  const [success, setSuccess] = useState(false)
+  const { setUser } = useUser()
+  const { users } = useServices(null)
+  const messageRef = useRef(null)
+
+  const scrollToMessage = () => {
+    if (messageRef.current)
+      messageRef.current.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  async function handleSubmit(values) {
+    const res = await FormHelper.fakeDelay(async () => {
+      try {
+        const updatedUser = users.validations.prepareUpdateUser(values)
+        const res = await users.api.updateUser(updatedUser)
+        if (res.status === 200) {
+          setUser(res.data)
+          setSuccess(true)
+        } else {
+          setSuccess(false)
+          return ValidationHelper.validateFromBackend(res.data)
+        }
+      } catch (err) {
+        console.error('error while submitting dashboard settings account', err)
+      }
+    })
+
+    scrollToMessage()
+
+    return res
   }
 
   return (
     <Form
       onSubmit={handleSubmit}
-      validate={null}
+      validate={users.validations.updateUser}
       initialValues={{
-        firstName: (user && user.firstName) || '',
-        lastName: (user && user.lastname) || '',
+        firstname: (user && user.firstname) || '',
+        lastname: (user && user.lastname) || '',
         username: (user && user.username) || '',
         phone: (user && user.phone) || '',
         email: (user && user.email) || '',
       }}
-      render={({ submitError, handleSubmit, values, pristine, submitting }) => (
+      render={({ submitError, handleSubmit, values, submitting }) => (
         <form className={styles.form}>
           <span className={styles.form_header}>
             <h1 className={styles.form_header_title}>
               Informations personnelles
             </h1>
-            <FormSuccessOrError
-              success={false}
-              error={submitError}
-              successMessage={''}
-            />
+            <div ref={messageRef}>
+              <FormSuccessOrError
+                success={success}
+                error={submitError}
+                successMessage={'Vos informations ont été mises à jour'}
+              />
+            </div>
           </span>
 
-          <Field name="lastName" type="text">
+          <Field name="lastname" type="text">
             {({ input, meta }) => (
               <div className={styles.wideInput}>
                 <div className={styles.wideInput_col}>
@@ -62,7 +92,7 @@ export default function FormDashboardSettingsAccount({ user = {} }) {
             )}
           </Field>
 
-          <Field name="firstName" type="text">
+          <Field name="firstname" type="text">
             {({ input, meta }) => (
               <div className={styles.wideInput}>
                 <div className={styles.wideInput_col}>
@@ -155,7 +185,7 @@ export default function FormDashboardSettingsAccount({ user = {} }) {
               size="medium"
               variant="primary"
               focus="primary"
-              onClick={handleSubmit}
+              onClick={() => handleSubmit(values)}
               loading={submitting}
             >
               Sauvegarder
