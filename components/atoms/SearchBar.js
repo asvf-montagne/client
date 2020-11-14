@@ -13,6 +13,7 @@ SearchBar.propTypes = {
   tags: PropTypes.array.isRequired,
   tagId: PropTypes.string.isRequired,
   setTagId: PropTypes.func.isRequired,
+  loading: PropTypes.bool
 }
 
 export default function SearchBar({
@@ -23,6 +24,7 @@ export default function SearchBar({
   tags,
   tagId,
   setTagId,
+  loading,
   ...props
 }) {
   const { width: size } = useWindowSize()
@@ -67,6 +69,7 @@ export default function SearchBar({
           variant="primary"
           size="medium"
           focus="primary"
+          loading={loading}
           onClick={handleSearch}
         >
           {size > 768 ? 'Rechercher' : <Icon>search</Icon>}

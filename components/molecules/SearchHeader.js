@@ -12,6 +12,7 @@ SearchHeader.propTypes = {
   tags: PropTypes.array.isRequired,
   tagId: PropTypes.string.isRequired,
   setTagId: PropTypes.func.isRequired,
+  loading: PropTypes.bool
 }
 
 export default function SearchHeader({
@@ -23,6 +24,7 @@ export default function SearchHeader({
   tags,
   tagId,
   setTagId,
+  loading
 }) {
   return (
     <>
@@ -36,6 +38,7 @@ export default function SearchHeader({
         tagId={tagId}
         setTagId={setTagId}
         style={{ marginTop: 64 }}
+        loading={loading}
       />
     </>
   )
