@@ -1,3 +1,7 @@
+function wait(delay) {
+  return new Promise(resolve => setTimeout(resolve, delay));
+}
+
 const FormHelper = {
   /**
    * react-final-form detect that we can't reset form in submit method and
@@ -27,6 +31,16 @@ const FormHelper = {
       f()
     }
   },
+
+  async fakeDelay(f, delay = 500) {
+    const now = new Date()
+    const res = await f()
+    console.log((new Date() - now) )
+    const canReturn = (new Date() - now) > 1500
+    if (!canReturn) await wait(delay)
+
+    return res
+  }
 }
 
 export default FormHelper

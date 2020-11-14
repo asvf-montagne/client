@@ -1,11 +1,12 @@
 import Button from '@components/atoms/Button'
 import FormSuccessOrError from '@components/atoms/FormSuccessOrError'
 import Input from '@components/atoms/Input'
+import FormHelper from '@helpers/form'
 import ValidationHelper from '@helpers/validation'
 import useServices from '@hooks/useServices'
 import useUser from '@hooks/useUser'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Field, Form } from 'react-final-form'
 import styles from './FormDashboardSettingsAccount.module.css'
 
@@ -17,20 +18,32 @@ export default function FormDashboardSettingsAccount({ user = {} }) {
   const [success, setSuccess] = useState(false)
   const { setUser } = useUser()
   const { users } = useServices(null)
+  const messageRef = useRef(null)
+
+  const scrollToMessage = () => {
+    if (messageRef.current) messageRef.current.scrollIntoView({ behavior: 'smooth' })
+  }
 
   async function handleSubmit(values) {
-    try {
-      const updatedUser = users.validations.prepareUpdateUser(values)
-      const res = await users.api.updateUser(updatedUser)
-      if (res.status === 200) {
-        setUser(res.data)
-        setSuccess(true)
-      } else {
-        return ValidationHelper.validateFromBackend(res.data)
+    const res = await FormHelper.fakeDelay(async () => {
+      try {
+        const updatedUser = users.validations.prepareUpdateUser(values)
+        const res = await users.api.updateUser(updatedUser)
+        if (res.status === 200) {
+          setUser(res.data)
+          setSuccess(true)
+        } else {
+          setSuccess(false)
+          return ValidationHelper.validateFromBackend(res.data)
+        }
+      } catch (err) {
+        console.error('error while submitting dashboard settings account', err)
       }
-    } catch (err) {
-      console.error('error while submitting dashboard settings account', err)
-    }
+    })
+
+    scrollToMessage()
+
+    return res
   }
 
   return (
@@ -50,11 +63,13 @@ export default function FormDashboardSettingsAccount({ user = {} }) {
             <h1 className={styles.form_header_title}>
               Informations personnelles
             </h1>
-            <FormSuccessOrError
-              success={success}
-              error={submitError}
-              successMessage={'Vos informations ont été mises à jour'}
-            />
+            <div ref={messageRef}>
+              <FormSuccessOrError
+                success={success}
+                error={submitError}
+                successMessage={'Vos informations ont été mises à jour'}
+              />
+            </div>
           </span>
 
           <Field name="lastname" type="text">

@@ -1,33 +1,45 @@
-import React from 'react'
-import { Field, Form } from 'react-final-form'
 import Button from '@components/atoms/Button'
-import Input from '@components/atoms/Input'
 import FormSuccessOrError from '@components/atoms/FormSuccessOrError'
+import Input from '@components/atoms/Input'
+import FormHelper from '@helpers/form'
+import ValidationHelper from '@helpers/validation'
+import useServices from '@hooks/useServices'
+import React, { useState } from 'react'
+import { Field, Form } from 'react-final-form'
 import styles from './FormDashboardSettingsAccount.module.css'
 
 export default function FormDashboardSettingsPassword() {
-  function handleSubmit(values) {
+  const [success, setSuccess] = useState(false)
+  const { auth } = useServices()
+
+  async function handleSubmit(values, form) {
     try {
-      console.log('wewewe', values)
+      const res = await FormHelper.fakeDelay(async () => auth.api.updatePassword(values))
+      if (res.status === 200) {
+        setSuccess(true)
+        FormHelper.reset(values, form)
+      } else {
+        return ValidationHelper.validateFromBackend(res.data)
+      }
     } catch (error) {
-      console.error('error while submitting sign up form', error)
+      console.error('error while submitting dashboard setting password change', error)
     }
   }
 
   return (
     <Form
       onSubmit={handleSubmit}
-      validate={null}
-      render={({ submitError, handleSubmit, values, pristine, submitting }) => (
+      validate={auth.validations.updatePassword}
+      render={({ submitError, handleSubmit, values, submitting }) => (
         <form className={styles.form}>
           <span className={styles.form_header}>
             <h1 className={styles.form_header_title}>
               Sécurité de votre compte
             </h1>
             <FormSuccessOrError
-              success={false}
+              success={success}
               error={submitError}
-              successMessage={''}
+              successMessage={'Votre mot de passe a été changé'}
             />
           </span>
 
@@ -58,10 +70,10 @@ export default function FormDashboardSettingsPassword() {
               size="medium"
               variant="primary"
               focus="primary"
-              onClick={handleSubmit}
+              onClick={() => handleSubmit(values, values)}
               loading={submitting}
             >
-              Sauvegarder
+              Changer le mot de passe
             </Button>
           </span>
         </form>

@@ -34,6 +34,15 @@ const auth = (client) => ({
         return ex.response
       }
     },
+
+    // user is authenticated
+    async updatePassword({ password }) {
+      try {
+        return await client.put('/extend/users/me', { password })
+      } catch ({ response }) {
+        return response
+      }
+    }
   },
 
   validations: {
@@ -97,6 +106,15 @@ const auth = (client) => ({
 
       return errors
     },
+
+    updatePassword(o) {
+      const errors = {}
+
+      const passwordError = ValidationHelper.fieldValidations.password(o.password)
+      if (passwordError !== undefined) errors.password = passwordError
+
+      return errors
+    }
   },
 
   helpers: {
