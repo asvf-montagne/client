@@ -15,6 +15,11 @@ Story.propTypes = {
   suggestedStories: PropTypes.array,
 }
 
+function haveImage(story, loading) {
+  if (loading) return true
+  return story.images.length > 0
+}
+
 export default function Story({ story, suggestedStories }) {
   const { isFallback: loading } = useRouter()
   const view = posts().view
@@ -24,7 +29,7 @@ export default function Story({ story, suggestedStories }) {
     <Layout>
       <SplitBackgroundOverlay
         padding="96px 0 64px 0"
-        topHalfHeight={!!story.images.length ? 60 : 100}
+        topHalfHeight={haveImage(story, loading) ? 60 : 100}
       >
         {loading ? (
           <StoryHeader loading={true} />
