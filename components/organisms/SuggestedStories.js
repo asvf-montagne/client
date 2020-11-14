@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './SuggestedStories.module.css'
 
-DefaultPageLayout.propTypes = {
+SuggestedStories.propTypes = {
   stories: PropTypes.array.isRequired,
 }
 
-export default function DefaultPageLayout({ stories }) {
+export default function SuggestedStories({ stories }) {
   const { view } = posts()
 
   return (

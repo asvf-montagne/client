@@ -6,6 +6,7 @@ import StoryHeader from '@components/molecules/StoryHeader'
 import SuggestedStories from '@components/organisms/SuggestedStories'
 import services from '@services/index'
 import posts from '@services/posts'
+import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -15,35 +16,51 @@ Story.propTypes = {
 }
 
 export default function Story({ story, suggestedStories }) {
+  const { isFallback: loading } = useRouter()
   const view = posts().view
 
+  console.log('LOADING', loading)
   return (
     <Layout>
       <SplitBackgroundOverlay
         padding="96px 0 64px 0"
         topHalfHeight={!!story.images.length ? 60 : 100}
       >
-        <StoryHeader
-          tag={view.getFirstTag(story)}
-          title={story.title}
-          author={view.getTitledAuthor(story)}
-          date={view.getPublishedTimeAgo(story)}
-          image={view.getFirstImage(story)}
-        />
+        {loading ? (
+          <StoryHeader loading={true} />
+        ) : (
+          <StoryHeader
+            tag={view.getFirstTag(story)}
+            title={story.title}
+            author={view.getTitledAuthor(story)}
+            date={view.getPublishedTimeAgo(story)}
+            image={view.getFirstImage(story)}
+          />
+        )}
       </SplitBackgroundOverlay>
-      <Blog
-        data={JSON.parse(story.content)}
-        style={{ marginTop: !story.images.length ? 64 : 0 }}
-      />
-      <Gallery
-        images={story.images.map((image) => ({
-          src: image.url,
-          alt: image.caption,
-          height: image.height,
-          width: image.width,
-        }))}
-      />
-      <SuggestedStories stories={suggestedStories} />
+
+      {loading ? (
+        <Blog loading={true} />
+      ) : (
+        <Blog
+          data={JSON.parse(story.content)}
+          style={{ marginTop: !story.images.length ? 64 : 0 }}
+        />
+      )}
+
+      {!loading && (
+        <>
+          <Gallery
+            images={story.images.map((image) => ({
+              src: image.url,
+              alt: image.caption,
+              height: image.height,
+              width: image.width,
+            }))}
+          />
+          <SuggestedStories stories={suggestedStories} />
+        </>
+      )}
     </Layout>
   )
 }
@@ -51,13 +68,13 @@ export default function Story({ story, suggestedStories }) {
 export async function getStaticPaths() {
   const { posts } = services({ isServer: true })
 
-  const paths = (await posts.api.ids()).map((id) => ({
+  const paths = (await posts.api.ids({ limit: 25 })).map((id) => ({
     params: { id: id.toString() },
   }))
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   }
 }
 
@@ -72,5 +89,6 @@ export async function getStaticProps({ params }) {
 
   return {
     props: { story, suggestedStories },
+    revalidate: 2,
   }
 }

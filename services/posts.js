@@ -1,6 +1,6 @@
+import imageNotFound from '@assets/images/image_not_found.png'
 import TimeAgo from 'javascript-time-ago'
 import fr from 'javascript-time-ago/locale/fr'
-import imageNotFound from '@assets/images/image_not_found.png'
 
 TimeAgo.addLocale(fr)
 
@@ -18,8 +18,8 @@ const posts = (client) => ({
       return res.data
     },
 
-    async ids() {
-      const res = await client.get(`/posts/view/ids`)
+    async ids({ limit = 25 }) {
+      const res = await client.get(`/posts/view/ids`, { params: { limit } })
       return res.data
     },
 
