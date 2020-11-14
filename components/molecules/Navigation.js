@@ -214,13 +214,7 @@ export default function Navigation() {
 
         <ul className={styles.header__list}>
           {isAuthenticated && (
-            <NavLink
-              title="alexis"
-              url="/dashboard/settings"
-              subItems={[
-
-              ]}
-            />
+            <NavLink title="alexis" url="/dashboard/settings" subItems={[]} />
           )}
           {isAuthenticated && (
             <NavButton

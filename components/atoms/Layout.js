@@ -1,8 +1,9 @@
-import Footer from '@components/atoms/Footer'
-import Navigation from '@components/molecules/Navigation'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
-import React from 'react'
+import Footer from '@components/atoms/Footer'
+import Navigation from '@components/molecules/Navigation'
+import FlashInfo from '@components/atoms/FlashInfo'
 import styles from './Layout.module.css'
 
 // const DEFAULT_SEO = {
@@ -22,12 +23,68 @@ import styles from './Layout.module.css'
 //   }
 // };
 
+const infos = [
+  {
+    label: 'dim 08 nov 2020 / VTT, FTT et Handbike / Handisport',
+    redirect: '/',
+  },
+  {
+    label: 'dim 15 nov 2020 / Sortie VTT – 25 à 35km / VTT',
+    redirect: '/',
+  },
+]
+
 Layout.propTypes = {
   less: PropTypes.bool,
   children: PropTypes.node.isRequired,
 }
 
 export default function Layout({ less = false, children }) {
+  const [flash, setFlash] = useState(true)
+
+  useEffect(() => {
+    const item = window.localStorage.getItem('flash')
+
+    if (!item) {
+      setFlash(true)
+      window.localStorage.setItem(
+        'flash',
+        JSON.stringify({
+          value: true,
+          createdAt: new Date(),
+        }),
+      )
+    } else {
+      const { value, createdAt } = JSON.parse(item)
+      const oneDay = 86400
+      const isExpired =
+        new Date(createdAt).getTime() - new Date().getTime() > oneDay
+      if (isExpired) {
+        window.localStorage.removeItem('flash')
+      } else if (!value) {
+        setFlash(false)
+      } else {
+        setFlash(true)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    console.log('flash', flash)
+  }, [flash])
+
+  const toggleFlash = () => {
+    setFlash(false)
+    window.localStorage.removeItem('flash')
+    window.localStorage.setItem(
+      'flash',
+      JSON.stringify({
+        value: false,
+        createdAt: new Date(),
+      }),
+    )
+  }
+
   return (
     <>
       <Head>
@@ -35,9 +92,23 @@ export default function Layout({ less = false, children }) {
         {/*<link rel="icon" href="/favicon.ico" />*/}
       </Head>
       {/*<NextSeo config={DEFAULT_SEO} />*/}
-      {!less && <Navigation />}
-      <main className={styles.container}>{children}</main>
-      {!less && <Footer />}
+      {flash && (
+        <>
+          <FlashInfo infos={infos} handleClose={() => toggleFlash()} />
+          <div className={styles.container_flash}>
+            {!less && <Navigation />}
+            <main className={styles.container}>{children}</main>
+            {!less && <Footer />}
+          </div>
+        </>
+      )}
+      {!flash && (
+        <>
+          {!less && <Navigation />}
+          <main className={styles.container}>{children}</main>
+          {!less && <Footer />}
+        </>
+      )}
     </>
   )
 }
