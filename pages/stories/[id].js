@@ -24,7 +24,7 @@ export default function Story({ story, suggestedStories }) {
   const { isFallback: loading } = useRouter()
   const view = posts().view
 
-  console.log('LOADING', loading)
+  if (loading) console.log('[router] this page is loading, its content will be generated statically')
   return (
     <Layout>
       <SplitBackgroundOverlay
@@ -73,7 +73,7 @@ export default function Story({ story, suggestedStories }) {
 export async function getStaticPaths() {
   const { posts } = services({ isServer: true })
 
-  const paths = (await posts.api.ids({ limit: 25 })).map((id) => ({
+  const paths = (await posts.api.ids({ limit: 15 })).map((id) => ({
     params: { id: id.toString() },
   }))
 
