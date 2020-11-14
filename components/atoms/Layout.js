@@ -1,5 +1,5 @@
 import Footer from '@components/atoms/Footer'
-import Navigation from '@components/atoms/Navigation'
+import Navigation from '@components/molecules/Navigation'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
 import React from 'react'

@@ -73,4 +73,34 @@ export const navItems = [
       },
     ],
   },
+  {
+    type: 'session',
+    items: [
+      {
+        url: '/dashboard/settings',
+        items: [
+          {
+            links: [
+              {
+                label: 'Mes details',
+                url: '/',
+              },
+              {
+                label: 'Recits',
+                url: '/',
+              },
+              {
+                label: 'Sorties',
+                url: '/',
+              },
+              {
+                label: 'Déconnexion',
+                action: '/',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ]

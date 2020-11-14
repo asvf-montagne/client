@@ -1,12 +1,12 @@
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import Icon from '@material-ui/core/Icon'
 import Button from '@components/atoms/Button'
 import { navItems } from '@helpers/config'
 import TokenHelper from '@helpers/token'
 import useUser from '@hooks/useUser'
 import useWindowSize from '@hooks/useWindowSize'
-import Icon from '@material-ui/core/Icon'
-import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
-import React, { useEffect, useState } from 'react'
 import styles from './Navigation.module.css'
 
 NavLink.propTypes = {
@@ -26,6 +26,7 @@ function NavLink({ url, title, subItems }) {
         onClick={() => router.push(url)}
       >
         {title}
+        {!!subItems.length && <Icon>keyboard_arrow_down</Icon>}
       </a>
       {!!subItems.length && size > 768 && (
         <div className={styles.submenu_container}>
@@ -68,6 +69,7 @@ function NavLinkMin({ url, title, subItems }) {
           onClick={() => router.push(url)}
         >
           {title}
+          {!!subItems.length && <Icon>keyboard_arrow_down</Icon>}
         </a>
       </li>
       {!!subItems.length &&
@@ -211,6 +213,15 @@ export default function Navigation() {
         </ul>
 
         <ul className={styles.header__list}>
+          {isAuthenticated && (
+            <NavLink
+              title="alexis"
+              url="/dashboard/settings"
+              subItems={[
+
+              ]}
+            />
+          )}
           {isAuthenticated && (
             <NavButton
               title="Logout"

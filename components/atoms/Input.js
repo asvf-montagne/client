@@ -1,6 +1,6 @@
-import Icon from '@material-ui/core/Icon'
 import PropTypes from 'prop-types'
 import React, { forwardRef, useState } from 'react'
+import Icon from '@material-ui/core/Icon'
 import styles from './Input.module.css'
 
 // eslint-disable-next-line react/display-name

@@ -81,10 +81,18 @@
 }
 
 .header__list__item__link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     font-size: var(--text-size-large);
     color: var(--font-color-contrast);
     font-weight: var(--font-weight-regular);
     text-decoration: none;
+}
+
+.header__list__item__link > span {
+    font-weight: var(--font-weight-regular);
+    margin-left: 8px;
 }
 
 .header__menu {
