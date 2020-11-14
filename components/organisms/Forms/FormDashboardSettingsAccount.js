@@ -21,7 +21,8 @@ export default function FormDashboardSettingsAccount({ user = {} }) {
   const messageRef = useRef(null)
 
   const scrollToMessage = () => {
-    if (messageRef.current) messageRef.current.scrollIntoView({ behavior: 'smooth' })
+    if (messageRef.current)
+      messageRef.current.scrollIntoView({ behavior: 'smooth' })
   }
 
   async function handleSubmit(values) {

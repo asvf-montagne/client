@@ -42,7 +42,7 @@ const auth = (client) => ({
       } catch ({ response }) {
         return response
       }
-    }
+    },
   },
 
   validations: {
@@ -110,11 +110,13 @@ const auth = (client) => ({
     updatePassword(o) {
       const errors = {}
 
-      const passwordError = ValidationHelper.fieldValidations.password(o.password)
+      const passwordError = ValidationHelper.fieldValidations.password(
+        o.password,
+      )
       if (passwordError !== undefined) errors.password = passwordError
 
       return errors
-    }
+    },
   },
 
   helpers: {

@@ -1,5 +1,5 @@
 function wait(delay) {
-  return new Promise(resolve => setTimeout(resolve, delay));
+  return new Promise((resolve) => setTimeout(resolve, delay))
 }
 
 const FormHelper = {
@@ -35,12 +35,12 @@ const FormHelper = {
   async fakeDelay(f, delay = 500) {
     const now = new Date()
     const res = await f()
-    console.log((new Date() - now) )
-    const canReturn = (new Date() - now) > 1500
+    console.log(new Date() - now)
+    const canReturn = new Date() - now > 1500
     if (!canReturn) await wait(delay)
 
     return res
-  }
+  },
 }
 
 export default FormHelper

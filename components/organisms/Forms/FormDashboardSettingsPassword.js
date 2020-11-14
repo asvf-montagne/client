@@ -14,7 +14,9 @@ export default function FormDashboardSettingsPassword() {
 
   async function handleSubmit(values, form) {
     try {
-      const res = await FormHelper.fakeDelay(async () => auth.api.updatePassword(values))
+      const res = await FormHelper.fakeDelay(async () =>
+        auth.api.updatePassword(values),
+      )
       if (res.status === 200) {
         setSuccess(true)
         FormHelper.reset(values, form)
@@ -22,7 +24,10 @@ export default function FormDashboardSettingsPassword() {
         return ValidationHelper.validateFromBackend(res.data)
       }
     } catch (error) {
-      console.error('error while submitting dashboard setting password change', error)
+      console.error(
+        'error while submitting dashboard setting password change',
+        error,
+      )
     }
   }
 
