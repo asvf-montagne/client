@@ -15,7 +15,7 @@ Story.propTypes = {
   suggestedStories: PropTypes.array,
 }
 
-function haveImage(story, loading) {
+function storyHasImage(story, loading) {
   if (loading) return true
   return story.images.length > 0
 }
@@ -29,7 +29,7 @@ export default function Story({ story, suggestedStories }) {
     <Layout>
       <SplitBackgroundOverlay
         padding="96px 0 64px 0"
-        topHalfHeight={haveImage(story, loading) ? 60 : 100}
+        topHalfHeight={storyHasImage(story, loading) ? 60 : 100}
       >
         {loading ? (
           <StoryHeader loading={true} />
