@@ -13,7 +13,7 @@ SearchBar.propTypes = {
   tags: PropTypes.array.isRequired,
   tagId: PropTypes.string.isRequired,
   setTagId: PropTypes.func.isRequired,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
 }
 
 export default function SearchBar({

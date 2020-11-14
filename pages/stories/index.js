@@ -66,7 +66,9 @@ export default function Stories({ tags, stories }) {
   async function handleSearch() {
     serLoading(true)
 
-    const stories = await FormHelper.fakeDelay(async () => await api.search(getParamsForSearch()))
+    const stories = await FormHelper.fakeDelay(
+      async () => await api.search(getParamsForSearch()),
+    )
     dispatch({ type: StoriesActions.SET_STORIES, params: { stories } })
 
     serLoading(false)
@@ -75,7 +77,9 @@ export default function Stories({ tags, stories }) {
   async function handleFetchMoreStories() {
     serLoading(true)
 
-    const stories = await FormHelper.fakeDelay(async () => await api.search(getParamsForSearch(false)))
+    const stories = await FormHelper.fakeDelay(
+      async () => await api.search(getParamsForSearch(false)),
+    )
 
     const scrollOrigin = window.scrollY
     dispatch({ type: StoriesActions.ADD_STORIES, params: { stories } })

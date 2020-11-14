@@ -24,7 +24,10 @@ export default function Story({ story, suggestedStories }) {
   const { isFallback: loading } = useRouter()
   const view = posts().view
 
-  if (loading) console.log('[router] this page is loading, its content will be generated statically')
+  if (loading)
+    console.log(
+      '[router] this page is loading, its content will be generated statically',
+    )
   return (
     <Layout>
       <SplitBackgroundOverlay
