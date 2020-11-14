@@ -10,12 +10,14 @@ StoriesGrid.propTypes = {
   stories: PropTypes.array,
   handleFetchMoreStories: PropTypes.func,
   showFetchMoreStoriesBtn: PropTypes.bool,
+  loading: PropTypes.bool,
 }
 
 export default function StoriesGrid({
   stories = [],
   handleFetchMoreStories,
   showFetchMoreStoriesBtn,
+  loading,
 }) {
   const { view } = posts()
 
@@ -42,18 +44,26 @@ export default function StoriesGrid({
           />
         ))}
       </div>
-      {showFetchMoreStoriesBtn && (
+
+      {loading ? (
+        <Button variant="primary" size="large" focus="primary" loading={true}>
+          Chargement ...
+        </Button>
+      ) : showFetchMoreStoriesBtn ? (
         <Button
           variant="light"
           size="medium"
           onClick={handleFetchMoreStories}
           focus="primary"
+          loading={loading}
         >
           Charger plus
           <Icon style={{ fontSize: 24, margin: '2px 0 0 8px' }}>
             keyboard_arrow_down
           </Icon>
         </Button>
+      ) : (
+        <></>
       )}
     </section>
   )

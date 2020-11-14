@@ -2,6 +2,7 @@ import Layout from '@components/atoms/Layout'
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
 import SearchHeader from '@components/molecules/SearchHeader'
 import StoriesGrid from '@components/organisms/StoriesGrid'
+import FormHelper from '@helpers/form'
 import useServices from '@hooks/useServices'
 import PropTypes from 'prop-types'
 import React, { useReducer, useState } from 'react'
@@ -41,6 +42,7 @@ export default function Stories({ tags, stories }) {
   const {
     posts: { api },
   } = useServices()
+  const [loading, serLoading] = useState(false)
   const [search, setSearch] = useState('')
   const [tagId, setTagId] = useState('ALL')
   const [state, dispatch] = useReducer(StoriesReducer, {
@@ -62,13 +64,22 @@ export default function Stories({ tags, stories }) {
   }
 
   async function handleSearch() {
-    const stories = await api.search(getParamsForSearch())
+    serLoading(true)
 
+    const stories = await FormHelper.fakeDelay(
+      async () => await api.search(getParamsForSearch()),
+    )
     dispatch({ type: StoriesActions.SET_STORIES, params: { stories } })
+
+    serLoading(false)
   }
 
   async function handleFetchMoreStories() {
-    const stories = await api.search(getParamsForSearch(false))
+    serLoading(true)
+
+    const stories = await FormHelper.fakeDelay(
+      async () => await api.search(getParamsForSearch(false)),
+    )
 
     const scrollOrigin = window.scrollY
     dispatch({ type: StoriesActions.ADD_STORIES, params: { stories } })
@@ -77,6 +88,8 @@ export default function Stories({ tags, stories }) {
     if (window.scrollY > scrollOrigin) {
       window.scrollTo({ behavior: 'auto', top: scrollOrigin, left: 0 })
     }
+
+    serLoading(false)
   }
 
   return (
@@ -91,6 +104,7 @@ export default function Stories({ tags, stories }) {
           setSearch={setSearch}
           handleSearch={handleSearch}
           placeholder="Essayer de rechercher 'chamonix' ou bien '6c'"
+          loading={loading}
         />
       </SplitBackgroundOverlay>
 
@@ -98,6 +112,7 @@ export default function Stories({ tags, stories }) {
         stories={state.stories}
         handleFetchMoreStories={handleFetchMoreStories}
         showFetchMoreStoriesBtn={state.showFetchMoreStoriesBtn}
+        loading={loading}
       />
     </Layout>
   )
