@@ -47,15 +47,13 @@ export default function FormDashboardSettingsPassword() {
             />
           </span>
 
-
           <div className={styles.wideInput}>
             <div className={styles.wideInput_col}>
               <label className={styles.wideInput_col_label}>
                 Changer votre mot de passe
               </label>
               <p className={styles.wideInput_col_description}>
-                Il est recommandé d’utiliser un gestionnaire de mot de
-                passe.
+                Il est recommandé d’utiliser un gestionnaire de mot de passe.
               </p>
             </div>
             <Field name="password" type="password">
@@ -63,14 +61,15 @@ export default function FormDashboardSettingsPassword() {
                 <Input
                   {...input}
                   meta={meta}
-                  onKeyDown={(e) => FormHelper.withKeyCode(e, 13, () => handleSubmit(values))}
+                  onKeyDown={(e) =>
+                    FormHelper.withKeyCode(e, 13, () => handleSubmit(values))
+                  }
                   placeholder="********"
                   icon="lock"
                 />
               )}
             </Field>
           </div>
-
 
           <span className={styles.form_footer}>
             <Button
