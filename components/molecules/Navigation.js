@@ -215,11 +215,13 @@ function NavLinkWithDropDown({ title, onSmallDevice, children }) {
   useEffect(() => {
     const item = window.localStorage.getItem('flash')
 
-    const { value } = JSON.parse(item)
-    if (!value) {
-      setFlash(false)
-    } else {
-      setFlash(true)
+    if (item) {
+      const { value } = JSON.parse(item)
+      if (!value) {
+        setFlash(false)
+      } else {
+        setFlash(true)
+      }
     }
   }, [])
 
