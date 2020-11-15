@@ -26,7 +26,7 @@ export default function Navigation() {
     if (!onSmallDevice && isMenuActive) {
       setIsMenuActive(false)
     }
-  }, [onSmallDevice])
+  }, [onSmallDevice, isMenuActive])
 
   return (
     <header className={styles.header}>
