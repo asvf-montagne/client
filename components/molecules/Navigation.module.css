@@ -98,7 +98,7 @@
     opacity: 0;
     position: absolute;
     margin-left: -32px;
-    top: 64px;
+    top: 52px;
     z-index: 0;
     transition: 0.3s;
     box-shadow: var(--shadow-active);
@@ -120,16 +120,6 @@
 
 .header_dropdown_inner_2 {
     grid-template-columns: repeat(2, 1fr);
-}
-
-.header_dropdown_inner::after {
-    content: '';
-    position: absolute;
-    left: 52px;
-    top: -10px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid var(--primary-bg-color);
 }
 
 .header_dropdown_inner_col {
