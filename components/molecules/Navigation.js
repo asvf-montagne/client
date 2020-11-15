@@ -131,14 +131,9 @@ export default function Navigation() {
                         Mes details
                       </DropDownItem>
                       <DropDownItem
-                        onClick={() => router.push('/dashboard/settings')}
+                        onClick={() => router.push('/dashboard/stories')}
                       >
                         Recits
-                      </DropDownItem>
-                      <DropDownItem
-                        onClick={() => router.push('/dashboard/settings')}
-                      >
-                        Sorties
                       </DropDownItem>
                       <DropDownItem onClick={onLogout}>
                         {!onSmallDevice && (

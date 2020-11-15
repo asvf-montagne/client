@@ -1,6 +1,7 @@
 .header {
     background-color: var(--primary-blue-bg-color);
     padding: 0 16px;
+    z-index: 100;
 }
 
 .header_inner {
@@ -97,9 +98,9 @@
 .header_dropdown {
     opacity: 0;
     position: absolute;
+    z-index: -10;
     margin-left: -32px;
     top: 52px;
-    z-index: 0;
     transition: 0.3s;
     box-shadow: var(--shadow-active);
 }
