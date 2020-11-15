@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Icon from '@material-ui/core/Icon'
 import PropTypes from 'prop-types'
