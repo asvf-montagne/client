@@ -1,6 +1,7 @@
 .header {
     background-color: var(--primary-blue-bg-color);
     padding: 0 16px;
+    z-index: 100;
 }
 
 .header_inner {
