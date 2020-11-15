@@ -1,4 +1,4 @@
-import backgroundImage from '@assets/images/mont_blanc.jpg'
+import backgroundImage from '@assets/images/mont_blanc.webp'
 import Button from '@components/atoms/Button'
 import Icon from '@material-ui/core/Icon'
 import Head from 'next/head'

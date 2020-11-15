@@ -1,4 +1,4 @@
-import backgroundImage from '@assets/images/cervin.jpg'
+import backgroundImage from '@assets/images/cervin.webp'
 import Button from '@components/atoms/Button'
 import Icon from '@material-ui/core/Icon'
 import PropTypes from 'prop-types'
