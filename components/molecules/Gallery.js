@@ -28,7 +28,17 @@ export default function Gallery({ images }) {
       <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeModal}>
-            <Carousel currentIndex={currentImage} views={images} />
+            <Carousel
+              styles={{
+                footerCaption(base, state) {
+                  base.fontWeight = 'bolder'
+                  base.fontSize = '18px'
+                  return base
+                },
+              }}
+              currentIndex={currentImage}
+              views={images}
+            />
           </Modal>
         ) : null}
       </ModalGateway>

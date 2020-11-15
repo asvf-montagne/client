@@ -62,6 +62,7 @@ export default function Story({ story, suggestedStories }) {
             images={story.images.map((image) => ({
               src: image.url,
               alt: image.caption,
+              caption: image.caption,
               height: image.height,
               width: image.width,
             }))}
