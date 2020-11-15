@@ -198,22 +198,43 @@ NavLinkWithDropDown.propTypes = {
 }
 
 function NavLinkWithDropDown({ title, onSmallDevice, children }) {
+  const [isMenuActive, setIsMenuActive] = useState(false)
   const count = Children.count(children)
 
   return (
     <>
-      <a className={styles.header_item}>
+      <a
+        className={styles.header_item}
+        onClick={() => {
+          if (onSmallDevice) {
+            setIsMenuActive(!isMenuActive)
+          }
+        }}
+      >
         {title}
-        <Icon>keyboard_arrow_down</Icon>
+        <Icon>
+          {isMenuActive ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+        </Icon>
       </a>
-      {!onSmallDevice ? (
+      {!onSmallDevice && (
         <div className={styles.header_dropdown}>
           <div className={styles[`header_dropdown_inner_${count}`]}>
             {children}
           </div>
         </div>
-      ) : (
-        <></>
+      )}
+      {onSmallDevice && isMenuActive && (
+        <>
+          <a className={styles.header_item}>
+            wewewe
+          </a>
+          <a className={styles.header_item}>
+            wewewe
+          </a>
+          <a className={styles.header_item}>
+            wewewe
+          </a>
+        </>
       )}
     </>
   )

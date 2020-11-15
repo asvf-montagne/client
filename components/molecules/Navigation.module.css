@@ -192,7 +192,7 @@
 
 .header_inner_nav_reduced {
     width: 100%;
-    margin-bottom: 13.5px;
+    margin-bottom: 16px;
     flex-direction: column-reverse;
     align-items: flex-start;
 }
@@ -203,11 +203,11 @@
 }
 
 .header_inner_nav_reduced > .header_inner_left > .header_inner_left_item {
-    margin: 0;
+    margin: 16px 0 0 0;
 }
 
-.header_inner_nav_reduced > .header_inner_right > .header_inner_right_item {
-    margin: 0;
+.header_inner_nav_reduced > .header_inner_right > .header_inner_right_item:not(:first-child) {
+    margin: 16px 0 0 0;
 }
 /*REDUCED PROPS STOP*/
 
