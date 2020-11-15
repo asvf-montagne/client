@@ -104,6 +104,10 @@
     box-shadow: var(--shadow-active);
 }
 
+.header_dropdown_lower {
+    top: 104px;
+}
+
 .header_dropdown_inner {
     padding: 24px;
     max-width: 600px;

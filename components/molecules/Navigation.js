@@ -205,11 +205,23 @@ NavLinkWithDropDown.propTypes = {
 
 function NavLinkWithDropDown({ title, onSmallDevice, children }) {
   const [isMenuActive, setIsMenuActive] = useState(false)
+  const [flash, setFlash] = useState(true)
   const count = Children.count(children)
   const showDropDown = useMemo(
     () => !onSmallDevice || (onSmallDevice && isMenuActive),
     [onSmallDevice, isMenuActive],
   )
+
+  useEffect(() => {
+    const item = window.localStorage.getItem('flash')
+
+    const { value } = JSON.parse(item)
+    if (!value) {
+      setFlash(false)
+    } else {
+      setFlash(true)
+    }
+  }, [])
 
   useEffect(() => {
     if (!onSmallDevice && isMenuActive) {
@@ -234,11 +246,13 @@ function NavLinkWithDropDown({ title, onSmallDevice, children }) {
       </a>
       {showDropDown && (
         <div
-          className={
+          className={`${
             onSmallDevice
               ? styles.header_dropdown_reduced
               : styles.header_dropdown
           }
+            ${flash ? styles.header_dropdown_lower : ''}
+          `}
         >
           <div
             className={`${styles.header_dropdown_inner} ${
