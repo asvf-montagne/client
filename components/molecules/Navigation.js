@@ -1,349 +1,249 @@
-import { useEffect } from 'react'
+import { Children, useMemo, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Icon from '@material-ui/core/Icon'
 import PropTypes from 'prop-types'
-// import Button from '@components/atoms/Button'
-// import useUser from '@hooks/useUser'
+import Icon from '@material-ui/core/Icon'
+import Button from '@components/atoms/Button'
+import useUser from '@hooks/useUser'
 import useWindowSize from '@hooks/useWindowSize'
-import { navItems } from '@helpers/config'
-// import TokenHelper from '@helpers/token'
+import TokenHelper from '@helpers/token'
 import styles from './Navigation.module.css'
 
 export default function Navigation() {
-  // const { user, setUser } = useUser()
-  const { width: size } = useWindowSize()
   const router = useRouter()
-  // const [isMenuActive, setIsMenuActive] = useState(false)
+  const { user, setUser } = useUser()
+  const { width: size } = useWindowSize()
+  const isAuthenticated = useMemo(() => user !== undefined, [user])
+  const onSmallDevice = useMemo(() => size < 768, [size])
+  const [isMenuActive, setIsMenuActive] = useState(false)
 
-  // const onSmallDevice = size < 768 && isMenuActive
-  // const isAuthenticated = user !== undefined
+  function onLogout() {
+    setUser(undefined)
+    TokenHelper.removeToken()
+    router.push('/auth/sign-in')
+  }
 
   useEffect(() => {
-    if (size > 768) {
+    if (!onSmallDevice && isMenuActive) {
       setIsMenuActive(false)
     }
-  }, [size])
+  }, [onSmallDevice])
 
   return (
-    <nav className={styles.header}>
-      <div className={styles.header_inner}>
-        <ul className={styles.header_inner_left}>
-          <li className={styles.header_inner_left_item}>
-            <a
-              className={styles.header_inner_left_item_logo}
-              onClick={() => router.push('/')}
+    <header className={styles.header}>
+      <div
+        className={`${styles.header_inner} ${
+          onSmallDevice ? styles.header_inner_reduced : ''
+        }`}
+      >
+        <div
+          className={`${styles.header_inner_header} ${
+            onSmallDevice ? styles.header_inner_header_reduced : ''
+          }`}
+        >
+          <a
+            className={styles.header_inner_header_logo}
+            onClick={() => router.push('/')}
+          >
+            {onSmallDevice ? 'ASVF' : 'ASVF Montagne'}
+          </a>
+          {onSmallDevice && (
+            <Button
+              onClick={() => setIsMenuActive(!isMenuActive)}
+              size="medium"
+              variant="light"
+              focus="light"
             >
-              ASVF Montagne
-            </a>
-          </li>
-          {navItems
-            .find(({ type }) => type === 'links')
-            .items.map(({ title, url, items = [] }, index) => (
-              <li className={styles.header_inner_left_item} key={index}>
-                <NavLink title={title} url={url} subItems={items} />
+              <Icon style={{ fontSize: 22 }}>
+                {isMenuActive ? 'close' : 'menu'}
+              </Icon>
+            </Button>
+          )}
+        </div>
+
+        {!(!isMenuActive && onSmallDevice) && (
+          <nav
+            className={`${styles.header_inner_nav} ${
+              onSmallDevice ? styles.header_inner_nav_reduced : ''
+            }`}
+          >
+            <ul className={styles.header_inner_left}>
+              <li className={styles.header_inner_left_item}>
+                <NavLinkWithDropDown
+                  title="Le Club"
+                  onSmallDevice={onSmallDevice}
+                >
+                  <DropDownCol title="nouveau ?">
+                    <DropDownItem onClick={() => router.push('/club')}>
+                      Presentation du club
+                    </DropDownItem>
+                    <DropDownItem onClick={() => router.push('/club')}>
+                      Ecole d&apos;escalade
+                    </DropDownItem>
+                    <DropDownItem onClick={() => router.push('/club')}>
+                      Le mur d&apos;escalade
+                    </DropDownItem>
+                    <DropDownItem onClick={() => router.push('/club')}>
+                      Inscription au club
+                    </DropDownItem>
+                  </DropDownCol>
+
+                  <DropDownCol title="adhérent">
+                    <DropDownItem onClick={() => router.push('/club')}>
+                      Prochaines sorties
+                    </DropDownItem>
+                    <DropDownItem onClick={() => router.push('/club')}>
+                      reglement interieur
+                    </DropDownItem>
+                    <DropDownItem onClick={() => router.push('/club')}>
+                      Location materiel
+                    </DropDownItem>
+                    <DropDownItem onClick={() => router.push('/club')}>
+                      COVID-19
+                    </DropDownItem>
+                  </DropDownCol>
+                </NavLinkWithDropDown>
               </li>
-            ))}
-        </ul>
+              <li className={styles.header_inner_left_item}>
+                <NavLink
+                  title="Récits"
+                  onClick={() => router.push('/stories')}
+                />
+              </li>
+              <li className={styles.header_inner_left_item}>
+                <NavLink
+                  title="Contact"
+                  onClick={() => router.push('/contact')}
+                />
+              </li>
+            </ul>
 
-        <ul className={styles.header_inner_right}>
-          <li className={styles.header_inner_right_item}></li>
-        </ul>
+            <ul className={styles.header_inner_right}>
+              {isAuthenticated && (
+                <li className={styles.header_inner_right_item}>
+                  <NavLinkWithDropDown
+                    title={user.username}
+                    onSmallDevice={onSmallDevice}
+                  >
+                    <DropDownCol>
+                      <DropDownItem
+                        onClick={() => router.push('/dashboard/settings')}
+                      >
+                        Mes details
+                      </DropDownItem>
+                      <DropDownItem
+                        onClick={() => router.push('/dashboard/settings')}
+                      >
+                        Recits
+                      </DropDownItem>
+                      <DropDownItem
+                        onClick={() => router.push('/dashboard/settings')}
+                      >
+                        Sorties
+                      </DropDownItem>
+                      <a
+                        className={styles.header_dropdown_inner_col_item_logout}
+                        onClick={onLogout}
+                      >
+                        Déconnexion
+                      </a>
+                    </DropDownCol>
+                  </NavLinkWithDropDown>
+                </li>
+              )}
+              {!isAuthenticated && (
+                <>
+                  <li className={styles.header_inner_right_item}>
+                    <NavLink
+                      title="Connexion"
+                      onClick={() => router.push('/auth/sign-in')}
+                    />
+                  </li>
+                  <li className={styles.header_inner_right_item}>
+                    <Button
+                      size="medium"
+                      onClick={() => router.push('/auth/sign-up')}
+                      variant="light"
+                      focus="light"
+                    >
+                      Inscription
+                    </Button>
+                  </li>
+                </>
+              )}
+            </ul>
+          </nav>
+        )}
       </div>
-
-      {/*<div className={styles.header__container}>*/}
-      {/*  <ul className={styles.header__list}>*/}
-      {/*    <>*/}
-      {/*      <a className={styles.header__logo} onClick={() => router.push('/')}>*/}
-      {/*        ASVF Montagne*/}
-      {/*      </a>*/}
-      {/*      <a*/}
-      {/*        className={styles.header__logo__min}*/}
-      {/*        onClick={() => router.push('/')}*/}
-      {/*      >*/}
-      {/*        ASVF*/}
-      {/*      </a>*/}
-      {/*    </>*/}
-
-      {/*    {navItems*/}
-      {/*      .find(({ type }) => type === 'links')*/}
-      {/*      .items.map(({ title, url, items = [] }, index) => (*/}
-      {/*        <NavLink title={title} url={url} subItems={items} key={index} />*/}
-      {/*      ))}*/}
-      {/*  </ul>*/}
-
-      {/*  <ul className={styles.header__list}>*/}
-      {/*    {isAuthenticated && (*/}
-      {/*      <NavLink title="alexis" url="/dashboard/settings" subItems={[]} />*/}
-      {/*    )}*/}
-      {/*    {isAuthenticated && (*/}
-      {/*      <NavButton*/}
-      {/*        title="Logout"*/}
-      {/*        url="/auth/sign-in"*/}
-      {/*        onClickBefore={() => {*/}
-      {/*          setUser(undefined)*/}
-      {/*          TokenHelper.removeToken()*/}
-      {/*        }}*/}
-      {/*      />*/}
-      {/*    )}*/}
-      {/*    {!isAuthenticated && (*/}
-      {/*      <NavLink title="Connexion" url="/auth/sign-in" subItems={[]} />*/}
-      {/*    )}*/}
-      {/*    {!isAuthenticated && (*/}
-      {/*      <NavButton title="Inscription" url="/auth/sign-up" />*/}
-      {/*    )}*/}
-
-      {/*    <li className={styles.header__list__item} id="burger">*/}
-      {/*      <Button*/}
-      {/*        onClick={() => setIsMenuActive(!isMenuActive)}*/}
-      {/*        size="medium"*/}
-      {/*        variant="light"*/}
-      {/*        focus="light"*/}
-      {/*      >*/}
-      {/*        <Icon>{isMenuActive ? 'close' : 'menu'}</Icon>*/}
-      {/*      </Button>*/}
-      {/*    </li>*/}
-      {/*  </ul>*/}
-      {/*</div>*/}
-    </nav>
+    </header>
   )
 }
 
 NavLink.propTypes = {
-  url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  subItems: PropTypes.array,
+  onClick: PropTypes.func.isRequired,
 }
 
-function NavLink({ url, title, subItems }) {
-  const router = useRouter()
-  const { width: size } = useWindowSize()
+function NavLink({ title, onClick }) {
+  return (
+    <a className={styles.header_item} onClick={onClick}>
+      {title}
+    </a>
+  )
+}
+
+NavLinkWithDropDown.propTypes = {
+  title: PropTypes.string.isRequired,
+  onSmallDevice: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
+}
+
+function NavLinkWithDropDown({ title, onSmallDevice, children }) {
+  const count = Children.count(children)
 
   return (
     <>
-      <a
-        className={styles.header__list__item__link}
-        onClick={() => router.push(url)}
-      >
+      <a className={styles.header_item}>
         {title}
-        {!!subItems.length && <Icon>keyboard_arrow_down</Icon>}
+        <Icon>keyboard_arrow_down</Icon>
       </a>
-      {!!subItems.length && size > 768 && (
-        <div className={styles.submenu_container}>
-          <div className={styles.submenu}>
-            {subItems.map((item, index) => (
-              <div key={index} className={styles.submenu_group}>
-                <h6 className={styles.submenu_group_title}>{item.title}</h6>
-                {item.links.map((link, index) => (
-                  <a
-                    key={index}
-                    className={styles.submenu_group_link}
-                    onClick={() => router.push(link.url)}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            ))}
+      {!onSmallDevice ? (
+        <div className={styles.header_dropdown}>
+          <div className={styles[`header_dropdown_inner_${count}`]}>
+            {children}
           </div>
         </div>
+      ) : (
+        <></>
       )}
     </>
   )
 }
 
-// NavLinkMin.propTypes = {
-//   url: PropTypes.string.isRequired,
-//   title: PropTypes.string.isRequired,
-//   subItems: PropTypes.array,
-// }
-//
-// function NavLinkMin({ url, title, subItems }) {
-//   const router = useRouter()
-//
-//   return (
-//     <>
-//       <li className={styles.header__menu__item}>
-//         <a
-//           className={styles.header__menu__item__link}
-//           onClick={() => router.push(url)}
-//         >
-//           {title}
-//           {!!subItems.length && <Icon>keyboard_arrow_down</Icon>}
-//         </a>
-//       </li>
-//       {!!subItems.length &&
-//         subItems.map((item, index) => (
-//           <div key={index}>
-//             <li className={styles.header__menu__item}>
-//               <p className={styles.header__menu__item__link_sub_title}>
-//                 {item.title}
-//               </p>
-//             </li>
-//             {item.links.map((link, index) => (
-//               <li key={index} className={styles.header__menu__item}>
-//                 <a
-//                   className={styles.header__menu__item__link_sub_link}
-//                   onClick={() => router.push(link.url)}
-//                 >
-//                   {link.label}
-//                 </a>
-//               </li>
-//             ))}
-//           </div>
-//         ))}
-//     </>
-//   )
-// }
-//
-// NavButton.propTypes = {
-//   url: PropTypes.string.isRequired,
-//   title: PropTypes.string.isRequired,
-//   onClickBefore: PropTypes.func,
-// }
-//
-// function NavButton({ url, title, onClickBefore }) {
-//   const router = useRouter()
-//
-//   return (
-//     <li className={styles.header__list__item}>
-//       <Button
-//         size="medium"
-//         onClick={() => {
-//           if (onClickBefore) {
-//             onClickBefore()
-//           }
-//           router.push(url)
-//         }}
-//         variant="light"
-//         focus="light"
-//       >
-//         {title}
-//       </Button>
-//     </li>
-//   )
-// }
-//
-// export default function Navigation() {
-//   const { user, setUser } = useUser()
-//   const { width: size } = useWindowSize()
-//   const router = useRouter()
-//   const [isMenuActive, setIsMenuActive] = useState(false)
-//
-//   const onSmallDevice = size < 768 && isMenuActive
-//   const isAuthenticated = user !== undefined
-//
-//   useEffect(() => {
-//     if (size > 768) {
-//       setIsMenuActive(false)
-//     }
-//   }, [size])
-//
-//   if (onSmallDevice) {
-//     return (
-//       <nav className={styles.header}>
-//         <div className={styles.header__container}>
-//           <ul className={styles.header__menu}>
-//             <>
-//               <a
-//                 className={styles.header__logo}
-//                 onClick={() => router.push('/')}
-//               >
-//                 ASVF Montagne
-//               </a>
-//               <a
-//                 className={styles.header__logo__min}
-//                 onClick={() => router.push('/')}
-//               >
-//                 ASVF
-//               </a>
-//             </>
-//
-//             {isAuthenticated && (
-//               <NavButton title="Logout" url="/auth/sign-up" />
-//             )}
-//             {!isAuthenticated && (
-//               <NavLinkMin
-//                 title="Inscription"
-//                 url="/auth/sign-up"
-//                 subItems={[]}
-//               />
-//             )}
-//             {!isAuthenticated && (
-//               <NavLinkMin title="Connexion" url="/auth/sign-in" subItems={[]} />
-//             )}
-//
-//             {navItems
-//               .find(({ type }) => type === 'links')
-//               .items.map(({ title, url, items = [] }, index) => (
-//                 <NavLinkMin
-//                   title={title}
-//                   url={url}
-//                   subItems={items}
-//                   key={index}
-//                 />
-//               ))}
-//           </ul>
-//         </div>
-//       </nav>
-//     )
-//   }
-//
-//   return (
-//     <nav className={styles.header}>
-//       <div className={styles.header__container}>
-//         <ul className={styles.header__list}>
-//           <>
-//             <a className={styles.header__logo} onClick={() => router.push('/')}>
-//               ASVF Montagne
-//             </a>
-//             <a
-//               className={styles.header__logo__min}
-//               onClick={() => router.push('/')}
-//             >
-//               ASVF
-//             </a>
-//           </>
-//
-//           {navItems
-//             .find(({ type }) => type === 'links')
-//             .items.map(({ title, url, items = [] }, index) => (
-//               <NavLink title={title} url={url} subItems={items} key={index} />
-//             ))}
-//         </ul>
-//
-//         <ul className={styles.header__list}>
-//           {isAuthenticated && (
-//             <NavLink title="alexis" url="/dashboard/settings" subItems={[]} />
-//           )}
-//           {isAuthenticated && (
-//             <NavButton
-//               title="Logout"
-//               url="/auth/sign-in"
-//               onClickBefore={() => {
-//                 setUser(undefined)
-//                 TokenHelper.removeToken()
-//               }}
-//             />
-//           )}
-//           {!isAuthenticated && (
-//             <NavLink title="Connexion" url="/auth/sign-in" subItems={[]} />
-//           )}
-//           {!isAuthenticated && (
-//             <NavButton title="Inscription" url="/auth/sign-up" />
-//           )}
-//
-//           <li className={styles.header__list__item} id="burger">
-//             <Button
-//               onClick={() => setIsMenuActive(!isMenuActive)}
-//               size="medium"
-//               variant="light"
-//               focus="light"
-//             >
-//               <Icon>{isMenuActive ? 'close' : 'menu'}</Icon>
-//             </Button>
-//           </li>
-//         </ul>
-//       </div>
-//     </nav>
-//   )
-// }
+DropDownCol.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.node.isRequired,
+}
+
+function DropDownCol({ title, children }) {
+  return (
+    <div className={styles.header_dropdown_inner_col}>
+      {title && (
+        <h6 className={styles.header_dropdown_inner_col_title}>{title}</h6>
+      )}
+      {children}
+    </div>
+  )
+}
+
+DropDownItem.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+}
+
+function DropDownItem({ onClick, children }) {
+  return (
+    <a className={styles.header_dropdown_inner_col_item} onClick={onClick}>
+      {children}
+    </a>
+  )
+}
