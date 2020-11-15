@@ -150,16 +150,7 @@ export default function Navigation() {
                             Déconnexion
                           </span>
                         )}
-                        {onSmallDevice && (
-                          <Button
-                            onClick={() => setIsMenuActive(!isMenuActive)}
-                            size="medium"
-                            variant="light"
-                            focus="light"
-                          >
-                            Déconnexion
-                          </Button>
-                        )}
+                        {onSmallDevice && 'Déconnexion'}
                       </DropDownItem>
                     </DropDownCol>
                   </NavLinkWithDropDown>

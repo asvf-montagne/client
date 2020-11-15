@@ -222,6 +222,10 @@
     border-radius: unset;
 }
 
+.header_dropdown_reduced > .header_dropdown_inner > .header_dropdown_inner_col {
+    margin: 16px 0 0 0;
+}
+
 .header_dropdown_reduced > .header_dropdown_inner > .header_dropdown_inner_col > .header_dropdown_inner_col_title {
     font-size: var(--text-size-medium);
     color: var(--font-color-gray2);
