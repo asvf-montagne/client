@@ -140,12 +140,27 @@ export default function Navigation() {
                       >
                         Sorties
                       </DropDownItem>
-                      <a
-                        className={styles.header_dropdown_inner_col_item_logout}
-                        onClick={onLogout}
-                      >
-                        Déconnexion
-                      </a>
+                      <DropDownItem onClick={onLogout}>
+                        {!onSmallDevice && (
+                          <span
+                            className={
+                              styles.header_dropdown_inner_col_item_logout
+                            }
+                          >
+                            Déconnexion
+                          </span>
+                        )}
+                        {onSmallDevice && (
+                          <Button
+                            onClick={() => setIsMenuActive(!isMenuActive)}
+                            size="medium"
+                            variant="light"
+                            focus="light"
+                          >
+                            Déconnexion
+                          </Button>
+                        )}
+                      </DropDownItem>
                     </DropDownCol>
                   </NavLinkWithDropDown>
                 </li>
@@ -200,6 +215,16 @@ NavLinkWithDropDown.propTypes = {
 function NavLinkWithDropDown({ title, onSmallDevice, children }) {
   const [isMenuActive, setIsMenuActive] = useState(false)
   const count = Children.count(children)
+  const showDropDown = useMemo(
+    () => !onSmallDevice || (onSmallDevice && isMenuActive),
+    [onSmallDevice, isMenuActive],
+  )
+
+  useEffect(() => {
+    if (!onSmallDevice && isMenuActive) {
+      setIsMenuActive(false)
+    }
+  }, [onSmallDevice, isMenuActive])
 
   return (
     <>
@@ -216,25 +241,22 @@ function NavLinkWithDropDown({ title, onSmallDevice, children }) {
           {isMenuActive ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
         </Icon>
       </a>
-      {!onSmallDevice && (
-        <div className={styles.header_dropdown}>
-          <div className={styles[`header_dropdown_inner_${count}`]}>
+      {showDropDown && (
+        <div
+          className={
+            onSmallDevice
+              ? styles.header_dropdown_reduced
+              : styles.header_dropdown
+          }
+        >
+          <div
+            className={`${styles.header_dropdown_inner} ${
+              styles[`header_dropdown_inner_${count}`]
+            }`}
+          >
             {children}
           </div>
         </div>
-      )}
-      {onSmallDevice && isMenuActive && (
-        <>
-          <a className={styles.header_item}>
-            wewewe
-          </a>
-          <a className={styles.header_item}>
-            wewewe
-          </a>
-          <a className={styles.header_item}>
-            wewewe
-          </a>
-        </>
       )}
     </>
   )
@@ -245,9 +267,9 @@ DropDownCol.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-function DropDownCol({ title, children }) {
+function DropDownCol({ title, children, ...props }) {
   return (
-    <div className={styles.header_dropdown_inner_col}>
+    <div className={styles.header_dropdown_inner_col} {...props}>
       {title && (
         <h6 className={styles.header_dropdown_inner_col_title}>{title}</h6>
       )}
@@ -261,10 +283,14 @@ DropDownItem.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-function DropDownItem({ onClick, children }) {
+function DropDownItem({ onClick, children, ...props }) {
   return (
-    <a className={styles.header_dropdown_inner_col_item} onClick={onClick}>
+    <div
+      className={styles.header_dropdown_inner_col_item}
+      onClick={onClick}
+      {...props}
+    >
       {children}
-    </a>
+    </div>
   )
 }
