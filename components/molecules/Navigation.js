@@ -1,13 +1,115 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Icon from '@material-ui/core/Icon'
+import PropTypes from 'prop-types'
 import Button from '@components/atoms/Button'
-import { navItems } from '@helpers/config'
-import TokenHelper from '@helpers/token'
 import useUser from '@hooks/useUser'
 import useWindowSize from '@hooks/useWindowSize'
-import PropTypes from 'prop-types'
+import { navItems } from '@helpers/config'
+import TokenHelper from '@helpers/token'
 import styles from './Navigation.module.css'
+
+export default function Navigation() {
+  const { user, setUser } = useUser()
+  const { width: size } = useWindowSize()
+  const router = useRouter()
+  const [isMenuActive, setIsMenuActive] = useState(false)
+
+  const onSmallDevice = size < 768 && isMenuActive
+  const isAuthenticated = user !== undefined
+
+  useEffect(() => {
+    if (size > 768) {
+      setIsMenuActive(false)
+    }
+  }, [size])
+
+  return (
+    <nav className={styles.header}>
+      <div className={styles.header_inner}>
+        <ul className={styles.header_inner_left}>
+          <li className={styles.header_inner_left_item}>
+            <a
+              className={styles.header_inner_left_item_logo}
+              onClick={() => router.push('/')}
+            >
+              ASVF Montagne
+            </a>
+          </li>
+          {navItems
+            .find(({ type }) => type === 'links')
+            .items.map(({ title, url, items = [] }, index) => (
+              <li className={styles.header_inner_left_item} key={index}>
+                <NavLink title={title} url={url} subItems={items} />
+              </li>
+            ))}
+        </ul>
+
+        <ul className={styles.header_inner_right}>
+          <li className={styles.header_inner_right_item}>
+          </li>
+        </ul>
+      </div>
+
+
+
+      {/*<div className={styles.header__container}>*/}
+      {/*  <ul className={styles.header__list}>*/}
+      {/*    <>*/}
+      {/*      <a className={styles.header__logo} onClick={() => router.push('/')}>*/}
+      {/*        ASVF Montagne*/}
+      {/*      </a>*/}
+      {/*      <a*/}
+      {/*        className={styles.header__logo__min}*/}
+      {/*        onClick={() => router.push('/')}*/}
+      {/*      >*/}
+      {/*        ASVF*/}
+      {/*      </a>*/}
+      {/*    </>*/}
+      
+      {/*    {navItems*/}
+      {/*      .find(({ type }) => type === 'links')*/}
+      {/*      .items.map(({ title, url, items = [] }, index) => (*/}
+      {/*        <NavLink title={title} url={url} subItems={items} key={index} />*/}
+      {/*      ))}*/}
+      {/*  </ul>*/}
+      
+      {/*  <ul className={styles.header__list}>*/}
+      {/*    {isAuthenticated && (*/}
+      {/*      <NavLink title="alexis" url="/dashboard/settings" subItems={[]} />*/}
+      {/*    )}*/}
+      {/*    {isAuthenticated && (*/}
+      {/*      <NavButton*/}
+      {/*        title="Logout"*/}
+      {/*        url="/auth/sign-in"*/}
+      {/*        onClickBefore={() => {*/}
+      {/*          setUser(undefined)*/}
+      {/*          TokenHelper.removeToken()*/}
+      {/*        }}*/}
+      {/*      />*/}
+      {/*    )}*/}
+      {/*    {!isAuthenticated && (*/}
+      {/*      <NavLink title="Connexion" url="/auth/sign-in" subItems={[]} />*/}
+      {/*    )}*/}
+      {/*    {!isAuthenticated && (*/}
+      {/*      <NavButton title="Inscription" url="/auth/sign-up" />*/}
+      {/*    )}*/}
+      
+      {/*    <li className={styles.header__list__item} id="burger">*/}
+      {/*      <Button*/}
+      {/*        onClick={() => setIsMenuActive(!isMenuActive)}*/}
+      {/*        size="medium"*/}
+      {/*        variant="light"*/}
+      {/*        focus="light"*/}
+      {/*      >*/}
+      {/*        <Icon>{isMenuActive ? 'close' : 'menu'}</Icon>*/}
+      {/*      </Button>*/}
+      {/*    </li>*/}
+      {/*  </ul>*/}
+      {/*</div>*/}
+    </nav>
+  )
+}
 
 NavLink.propTypes = {
   url: PropTypes.string.isRequired,
@@ -20,7 +122,7 @@ function NavLink({ url, title, subItems }) {
   const { width: size } = useWindowSize()
 
   return (
-    <li className={styles.header__list__item}>
+    <>
       <a
         className={styles.header__list__item__link}
         onClick={() => router.push(url)}
@@ -48,203 +150,203 @@ function NavLink({ url, title, subItems }) {
           </div>
         </div>
       )}
-    </li>
-  )
-}
-
-NavLinkMin.propTypes = {
-  url: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  subItems: PropTypes.array,
-}
-
-function NavLinkMin({ url, title, subItems }) {
-  const router = useRouter()
-
-  return (
-    <>
-      <li className={styles.header__menu__item}>
-        <a
-          className={styles.header__menu__item__link}
-          onClick={() => router.push(url)}
-        >
-          {title}
-          {!!subItems.length && <Icon>keyboard_arrow_down</Icon>}
-        </a>
-      </li>
-      {!!subItems.length &&
-        subItems.map((item, index) => (
-          <div key={index}>
-            <li className={styles.header__menu__item}>
-              <p className={styles.header__menu__item__link_sub_title}>
-                {item.title}
-              </p>
-            </li>
-            {item.links.map((link, index) => (
-              <li key={index} className={styles.header__menu__item}>
-                <a
-                  className={styles.header__menu__item__link_sub_link}
-                  onClick={() => router.push(link.url)}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </div>
-        ))}
     </>
   )
 }
 
-NavButton.propTypes = {
-  url: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  onClickBefore: PropTypes.func,
-}
-
-function NavButton({ url, title, onClickBefore }) {
-  const router = useRouter()
-
-  return (
-    <li className={styles.header__list__item}>
-      <Button
-        size="medium"
-        onClick={() => {
-          if (onClickBefore) {
-            onClickBefore()
-          }
-          router.push(url)
-        }}
-        variant="light"
-        focus="light"
-      >
-        {title}
-      </Button>
-    </li>
-  )
-}
-
-export default function Navigation() {
-  const { user, setUser } = useUser()
-  const { width: size } = useWindowSize()
-  const router = useRouter()
-  const [isMenuActive, setIsMenuActive] = useState(false)
-
-  const onSmallDevice = size < 768 && isMenuActive
-  const isAuthenticated = user !== undefined
-
-  useEffect(() => {
-    if (size > 768) {
-      setIsMenuActive(false)
-    }
-  }, [size])
-
-  if (onSmallDevice) {
-    return (
-      <nav className={styles.header}>
-        <div className={styles.header__container}>
-          <ul className={styles.header__menu}>
-            <>
-              <a
-                className={styles.header__logo}
-                onClick={() => router.push('/')}
-              >
-                ASVF Montagne
-              </a>
-              <a
-                className={styles.header__logo__min}
-                onClick={() => router.push('/')}
-              >
-                ASVF
-              </a>
-            </>
-
-            {isAuthenticated && (
-              <NavButton title="Logout" url="/auth/sign-up" />
-            )}
-            {!isAuthenticated && (
-              <NavLinkMin
-                title="Inscription"
-                url="/auth/sign-up"
-                subItems={[]}
-              />
-            )}
-            {!isAuthenticated && (
-              <NavLinkMin title="Connexion" url="/auth/sign-in" subItems={[]} />
-            )}
-
-            {navItems
-              .find(({ type }) => type === 'links')
-              .items.map(({ title, url, items = [] }, index) => (
-                <NavLinkMin
-                  title={title}
-                  url={url}
-                  subItems={items}
-                  key={index}
-                />
-              ))}
-          </ul>
-        </div>
-      </nav>
-    )
-  }
-
-  return (
-    <nav className={styles.header}>
-      <div className={styles.header__container}>
-        <ul className={styles.header__list}>
-          <>
-            <a className={styles.header__logo} onClick={() => router.push('/')}>
-              ASVF Montagne
-            </a>
-            <a
-              className={styles.header__logo__min}
-              onClick={() => router.push('/')}
-            >
-              ASVF
-            </a>
-          </>
-
-          {navItems
-            .find(({ type }) => type === 'links')
-            .items.map(({ title, url, items = [] }, index) => (
-              <NavLink title={title} url={url} subItems={items} key={index} />
-            ))}
-        </ul>
-
-        <ul className={styles.header__list}>
-          {isAuthenticated && (
-            <NavLink title="alexis" url="/dashboard/settings" subItems={[]} />
-          )}
-          {isAuthenticated && (
-            <NavButton
-              title="Logout"
-              url="/auth/sign-in"
-              onClickBefore={() => {
-                setUser(undefined)
-                TokenHelper.removeToken()
-              }}
-            />
-          )}
-          {!isAuthenticated && (
-            <NavLink title="Connexion" url="/auth/sign-in" subItems={[]} />
-          )}
-          {!isAuthenticated && (
-            <NavButton title="Inscription" url="/auth/sign-up" />
-          )}
-
-          <li className={styles.header__list__item} id="burger">
-            <Button
-              onClick={() => setIsMenuActive(!isMenuActive)}
-              size="medium"
-              variant="light"
-              focus="light"
-            >
-              <Icon>{isMenuActive ? 'close' : 'menu'}</Icon>
-            </Button>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  )
-}
+// NavLinkMin.propTypes = {
+//   url: PropTypes.string.isRequired,
+//   title: PropTypes.string.isRequired,
+//   subItems: PropTypes.array,
+// }
+//
+// function NavLinkMin({ url, title, subItems }) {
+//   const router = useRouter()
+//
+//   return (
+//     <>
+//       <li className={styles.header__menu__item}>
+//         <a
+//           className={styles.header__menu__item__link}
+//           onClick={() => router.push(url)}
+//         >
+//           {title}
+//           {!!subItems.length && <Icon>keyboard_arrow_down</Icon>}
+//         </a>
+//       </li>
+//       {!!subItems.length &&
+//         subItems.map((item, index) => (
+//           <div key={index}>
+//             <li className={styles.header__menu__item}>
+//               <p className={styles.header__menu__item__link_sub_title}>
+//                 {item.title}
+//               </p>
+//             </li>
+//             {item.links.map((link, index) => (
+//               <li key={index} className={styles.header__menu__item}>
+//                 <a
+//                   className={styles.header__menu__item__link_sub_link}
+//                   onClick={() => router.push(link.url)}
+//                 >
+//                   {link.label}
+//                 </a>
+//               </li>
+//             ))}
+//           </div>
+//         ))}
+//     </>
+//   )
+// }
+//
+// NavButton.propTypes = {
+//   url: PropTypes.string.isRequired,
+//   title: PropTypes.string.isRequired,
+//   onClickBefore: PropTypes.func,
+// }
+//
+// function NavButton({ url, title, onClickBefore }) {
+//   const router = useRouter()
+//
+//   return (
+//     <li className={styles.header__list__item}>
+//       <Button
+//         size="medium"
+//         onClick={() => {
+//           if (onClickBefore) {
+//             onClickBefore()
+//           }
+//           router.push(url)
+//         }}
+//         variant="light"
+//         focus="light"
+//       >
+//         {title}
+//       </Button>
+//     </li>
+//   )
+// }
+//
+// export default function Navigation() {
+//   const { user, setUser } = useUser()
+//   const { width: size } = useWindowSize()
+//   const router = useRouter()
+//   const [isMenuActive, setIsMenuActive] = useState(false)
+//
+//   const onSmallDevice = size < 768 && isMenuActive
+//   const isAuthenticated = user !== undefined
+//
+//   useEffect(() => {
+//     if (size > 768) {
+//       setIsMenuActive(false)
+//     }
+//   }, [size])
+//
+//   if (onSmallDevice) {
+//     return (
+//       <nav className={styles.header}>
+//         <div className={styles.header__container}>
+//           <ul className={styles.header__menu}>
+//             <>
+//               <a
+//                 className={styles.header__logo}
+//                 onClick={() => router.push('/')}
+//               >
+//                 ASVF Montagne
+//               </a>
+//               <a
+//                 className={styles.header__logo__min}
+//                 onClick={() => router.push('/')}
+//               >
+//                 ASVF
+//               </a>
+//             </>
+//
+//             {isAuthenticated && (
+//               <NavButton title="Logout" url="/auth/sign-up" />
+//             )}
+//             {!isAuthenticated && (
+//               <NavLinkMin
+//                 title="Inscription"
+//                 url="/auth/sign-up"
+//                 subItems={[]}
+//               />
+//             )}
+//             {!isAuthenticated && (
+//               <NavLinkMin title="Connexion" url="/auth/sign-in" subItems={[]} />
+//             )}
+//
+//             {navItems
+//               .find(({ type }) => type === 'links')
+//               .items.map(({ title, url, items = [] }, index) => (
+//                 <NavLinkMin
+//                   title={title}
+//                   url={url}
+//                   subItems={items}
+//                   key={index}
+//                 />
+//               ))}
+//           </ul>
+//         </div>
+//       </nav>
+//     )
+//   }
+//
+//   return (
+//     <nav className={styles.header}>
+//       <div className={styles.header__container}>
+//         <ul className={styles.header__list}>
+//           <>
+//             <a className={styles.header__logo} onClick={() => router.push('/')}>
+//               ASVF Montagne
+//             </a>
+//             <a
+//               className={styles.header__logo__min}
+//               onClick={() => router.push('/')}
+//             >
+//               ASVF
+//             </a>
+//           </>
+//
+//           {navItems
+//             .find(({ type }) => type === 'links')
+//             .items.map(({ title, url, items = [] }, index) => (
+//               <NavLink title={title} url={url} subItems={items} key={index} />
+//             ))}
+//         </ul>
+//
+//         <ul className={styles.header__list}>
+//           {isAuthenticated && (
+//             <NavLink title="alexis" url="/dashboard/settings" subItems={[]} />
+//           )}
+//           {isAuthenticated && (
+//             <NavButton
+//               title="Logout"
+//               url="/auth/sign-in"
+//               onClickBefore={() => {
+//                 setUser(undefined)
+//                 TokenHelper.removeToken()
+//               }}
+//             />
+//           )}
+//           {!isAuthenticated && (
+//             <NavLink title="Connexion" url="/auth/sign-in" subItems={[]} />
+//           )}
+//           {!isAuthenticated && (
+//             <NavButton title="Inscription" url="/auth/sign-up" />
+//           )}
+//
+//           <li className={styles.header__list__item} id="burger">
+//             <Button
+//               onClick={() => setIsMenuActive(!isMenuActive)}
+//               size="medium"
+//               variant="light"
+//               focus="light"
+//             >
+//               <Icon>{isMenuActive ? 'close' : 'menu'}</Icon>
+//             </Button>
+//           </li>
+//         </ul>
+//       </div>
+//     </nav>
+//   )
+// }

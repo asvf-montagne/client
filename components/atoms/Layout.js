@@ -69,10 +69,6 @@ export default function Layout({ less = false, children }) {
     }
   }, [])
 
-  useEffect(() => {
-    console.log('flash', flash)
-  }, [flash])
-
   const toggleFlash = () => {
     setFlash(false)
     window.localStorage.removeItem('flash')

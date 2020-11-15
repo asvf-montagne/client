@@ -1,13 +1,10 @@
-import FlashInfo from '@components/atoms/FlashInfo'
 import Layout from '@components/atoms/Layout'
 import LandingHero from '@components/molecules/LandingHero'
-
 import LandingContact from '@components/organisms/LandingContact'
 import LandingStoriesHighlight from '@components/organisms/LandingStoriesHighlight'
 import services from '@services/index'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
-import React, { useEffect, useState } from 'react'
 
 Home.propTypes = {
   stories: PropTypes.array,
@@ -17,21 +14,13 @@ Home.propTypes = {
 function Home({ stories, partners }) {
   const router = useRouter()
 
-  const handleStoriesClub = () => {
-    router.push('/club')
-  }
-
-  const handleStoriesRedirection = () => {
-    router.push('/stories')
-  }
-
   return (
     <>
       <Layout>
-        <LandingHero handleRedirection={handleStoriesClub} />
+        <LandingHero handleRedirection={() => router.push('/club')} />
         <LandingStoriesHighlight
           highlightedStories={stories}
-          handleRedirection={handleStoriesRedirection}
+          handleRedirection={() => router.push('/stories')}
         />
 
         <LandingContact partners={partners} />
