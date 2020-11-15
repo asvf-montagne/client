@@ -2,21 +2,21 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Icon from '@material-ui/core/Icon'
 import PropTypes from 'prop-types'
-import Button from '@components/atoms/Button'
-import useUser from '@hooks/useUser'
+// import Button from '@components/atoms/Button'
+// import useUser from '@hooks/useUser'
 import useWindowSize from '@hooks/useWindowSize'
 import { navItems } from '@helpers/config'
-import TokenHelper from '@helpers/token'
+// import TokenHelper from '@helpers/token'
 import styles from './Navigation.module.css'
 
 export default function Navigation() {
-  const { user, setUser } = useUser()
+  // const { user, setUser } = useUser()
   const { width: size } = useWindowSize()
   const router = useRouter()
-  const [isMenuActive, setIsMenuActive] = useState(false)
+  // const [isMenuActive, setIsMenuActive] = useState(false)
 
-  const onSmallDevice = size < 768 && isMenuActive
-  const isAuthenticated = user !== undefined
+  // const onSmallDevice = size < 768 && isMenuActive
+  // const isAuthenticated = user !== undefined
 
   useEffect(() => {
     if (size > 768) {
@@ -46,12 +46,9 @@ export default function Navigation() {
         </ul>
 
         <ul className={styles.header_inner_right}>
-          <li className={styles.header_inner_right_item}>
-          </li>
+          <li className={styles.header_inner_right_item}></li>
         </ul>
       </div>
-
-
 
       {/*<div className={styles.header__container}>*/}
       {/*  <ul className={styles.header__list}>*/}
@@ -66,14 +63,14 @@ export default function Navigation() {
       {/*        ASVF*/}
       {/*      </a>*/}
       {/*    </>*/}
-      
+
       {/*    {navItems*/}
       {/*      .find(({ type }) => type === 'links')*/}
       {/*      .items.map(({ title, url, items = [] }, index) => (*/}
       {/*        <NavLink title={title} url={url} subItems={items} key={index} />*/}
       {/*      ))}*/}
       {/*  </ul>*/}
-      
+
       {/*  <ul className={styles.header__list}>*/}
       {/*    {isAuthenticated && (*/}
       {/*      <NavLink title="alexis" url="/dashboard/settings" subItems={[]} />*/}
@@ -94,7 +91,7 @@ export default function Navigation() {
       {/*    {!isAuthenticated && (*/}
       {/*      <NavButton title="Inscription" url="/auth/sign-up" />*/}
       {/*    )}*/}
-      
+
       {/*    <li className={styles.header__list__item} id="burger">*/}
       {/*      <Button*/}
       {/*        onClick={() => setIsMenuActive(!isMenuActive)}*/}
