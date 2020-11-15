@@ -52,18 +52,26 @@
 
 
 /*VARIANT START*/
-.btn_primary > .btn_inner > span {
-    color: var(--font-color-contrast);
-}
-
 .btn_primary {
     border: none;
     background-color: var(--tertiary-blue-bg-color);
 }
 
+.btn_primary > .btn_inner {
+    color: var(--font-color-contrast);
+}
+
+.btn_primary > .btn_inner > span {
+    color: var(--font-color-contrast);
+}
+
 .btn_success {
     border: none;
     background-color: var(--font-color-status-success);
+}
+
+.btn_success > .btn_inner {
+    color: var(--font-color-contrast);
 }
 
 .btn_success > .btn_inner > span {
@@ -73,6 +81,10 @@
 .btn_link {
     border: none;
     background-color: transparent;
+}
+
+.btn_link > .btn_inner {
+    color: var(--font-color-link);
 }
 
 .btn_link > .btn_inner > span {
