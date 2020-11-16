@@ -1,5 +1,6 @@
 .select {
     position: relative;
+    min-width: 218px;
 }
 
 .select_control {
@@ -77,6 +78,6 @@
 }
 
 .select_menu_option:hover, .select_menu_option[aria-selected="true"] {
-    background-color: #f2f9fc;
+    background-color: rgba(12, 117, 255, 0.08);
     color: var(--font-color-secondary);
 }
