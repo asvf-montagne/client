@@ -65,6 +65,7 @@
 }
 
 .select_menu_option {
+    user-select: none;
     box-sizing: border-box;
     font-size: var(--text-size-medium);
     font-weight: var(--font-weight-regular);
