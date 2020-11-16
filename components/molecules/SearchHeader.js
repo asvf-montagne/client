@@ -1,4 +1,4 @@
-import SearchBar from '@components/atoms/SearchBar'
+import SearchBar from '@components/molecules/SearchBar'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './SearchHeader.module.css'
