@@ -1,14 +1,14 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import { useRouter } from 'next/router'
 import Layout from '@components/atoms/Layout'
 import Button from '@components/atoms/Button'
 import BigIcon from '@components/molecules/BigIcon'
 import DashboardLayout from '@components/atoms/DashboardLayout'
 import AccountNavigation from '@components/molecules/AccountNavigation'
 import AccountStories from '@components/organisms/AccountStories'
-import services from '../../services'
+import services from '@services/index'
 
-import mockStories from '../../mockStories'
+import mockStories from '../../../mockStories'
 
 Stories.propTypes = {
   user: PropTypes.object,
@@ -21,8 +21,10 @@ Stories.propTypes = {
  * @constructor
  */
 export default function Stories({ user }) {
+  const router = useRouter()
+
   function handleCreateStory() {
-    console.log('wewewe')
+    router.push('/dashboard/stories/new')
   }
 
   function handleGetAccess() {

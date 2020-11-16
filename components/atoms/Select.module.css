@@ -1,0 +1,83 @@
+.select {
+    position: relative;
+    min-width: 218px;
+}
+
+.select_control {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--font-color-gray2);
+    border-radius: var(--border-radius-medium);
+    box-sizing: border-box;
+    outline: none;
+    padding: 8px 14px;
+    transition: all 200ms ease;
+    cursor: pointer;
+}
+
+.select_control_borderless {
+    border: none;
+}
+
+.select_placeholder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: var(--text-size-medium);
+    font-weight: var(--font-weight-regular);
+    color: var(--font-color-secondary);
+}
+
+.select_placeholder[aria-selected="false"] {
+    color: var(--font-color-gray2)
+}
+
+.select_placeholder_icon {
+    margin-right: 8px;
+    color: var(--font-color-gray2)
+}
+
+.select_arrow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 14px;
+    color: var(--font-color-gray2)
+}
+
+.select_menu {
+    background-color: white;
+    overflow: hidden;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-active);
+    box-sizing: border-box;
+    margin-top: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 1000;
+}
+
+.select_menu_option {
+    user-select: none;
+    box-sizing: border-box;
+    font-size: var(--text-size-medium);
+    font-weight: var(--font-weight-regular);
+    color: var(--font-color-gray2);
+    cursor: pointer;
+    display: block;
+    padding: 8px 10px;
+    transition: 0.2s;
+}
+
+.select_menu_option:hover, .select_menu_option[aria-selected="true"] {
+    background-color: rgba(12, 117, 255, 0.08);
+    color: var(--font-color-secondary);
+}
