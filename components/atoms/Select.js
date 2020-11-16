@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import Icon from '@material-ui/core/Icon'
 import styles from './Select.module.css'
@@ -23,6 +23,7 @@ export default function Select({
   setValue,
   placeholder,
 }) {
+  const wrapperRef = useRef(null)
   const [menu, setMenu] = useState(false)
 
   function handleSelectOption(option) {
@@ -30,13 +31,28 @@ export default function Select({
     setMenu(false)
   }
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setMenu(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [wrapperRef])
+
   return (
     <div className={styles.select}>
       <div
+        ref={wrapperRef}
         className={`${styles.select_control} ${
           borderless ? styles.select_control_borderless : ''
         }`}
         onClick={() => setMenu(!menu)}
+        onBlur={() => setMenu(false)}
       >
         <div
           className={styles.select_placeholder}

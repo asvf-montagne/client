@@ -1,8 +1,8 @@
-import Button from '@components/atoms/Button'
-import useWindowSize from '@hooks/useWindowSize'
-import Icon from '@material-ui/core/Icon'
 import PropTypes from 'prop-types'
-import React from 'react'
+import Icon from '@material-ui/core/Icon'
+import Button from '@components/atoms/Button'
+import Select from '@components/atoms/Select'
+import useWindowSize from '@hooks/useWindowSize'
 import styles from './SearchBar.module.css'
 
 SearchBar.propTypes = {
@@ -28,24 +28,35 @@ export default function SearchBar({
   ...props
 }) {
   const { width: size } = useWindowSize()
+  const options = tags.map((tag) => ({
+    label: tag.tag,
+    value: tag.id,
+  }))
 
   return (
     <form className={styles.searchBar} {...props}>
       <div className={styles.searchBar__selectContainer}>
-        <select
+        <Select
+          borderless
+          options={options}
           value={tagId}
-          onChange={(event) => setTagId(event.target.value)}
-          className={styles.searchBar__select}
-        >
-          <option value="ALL" key="default">
-            Toutes les catégories
-          </option>
-          {tags.map((t, index) => (
-            <option value={t.id} key={index}>
-              {t.tag}
-            </option>
-          ))}
-        </select>
+          setValue={setTagId}
+          placeholder="Catégorie"
+        />
+        {/*<select*/}
+        {/*  value={tagId}*/}
+        {/*  onChange={(event) => setTagId(event.target.value)}*/}
+        {/*  className={styles.searchBar__select}*/}
+        {/*>*/}
+        {/*  <option value="ALL" key="default">*/}
+        {/*    Toutes les catégories*/}
+        {/*  </option>*/}
+        {/*  {tags.map((t, index) => (*/}
+        {/*    <option value={t.id} key={index}>*/}
+        {/*      {t.tag}*/}
+        {/*    </option>*/}
+        {/*  ))}*/}
+        {/*</select>*/}
       </div>
 
       <div className={styles.searchBar__separator} />
