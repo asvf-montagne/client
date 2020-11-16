@@ -42,7 +42,11 @@ export default function Select({
   }, [wrapperRef])
 
   return (
-    <div className={styles.select} ref={wrapperRef} style={{ marginRight: 'auto' }}>
+    <div
+      className={styles.select}
+      ref={wrapperRef}
+      style={{ marginRight: 'auto' }}
+    >
       <div
         className={`${styles.select_control} ${
           borderless ? styles.select_control_borderless : ''
