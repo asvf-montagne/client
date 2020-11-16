@@ -59,7 +59,7 @@ export default function Select({
           )}
           {value.label || placeholder}
         </div>
-        {menu ? (
+        {!menu ? (
           <Icon className={styles.select_arrow}>keyboard_arrow_down</Icon>
         ) : (
           <Icon className={styles.select_arrow}>keyboard_arrow_up</Icon>
