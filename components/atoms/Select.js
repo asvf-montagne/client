@@ -38,16 +38,15 @@ export default function Select({
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside)
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [wrapperRef])
 
   return (
-    <div className={styles.select}>
+    <div className={styles.select} ref={wrapperRef}>
       <div
-        ref={wrapperRef}
         className={`${styles.select_control} ${
           borderless ? styles.select_control_borderless : ''
         }`}
