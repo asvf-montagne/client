@@ -44,14 +44,14 @@ export default function Select({
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
         setMenu(false)
         setFocus(false)
-        if (!!handleFocus) {
+        if (!!handleBlur) {
           handleBlur()
         }
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [wrapperRef])
+  }, [wrapperRef, handleBlur])
 
   return (
     <div className={styles.select_container}>
