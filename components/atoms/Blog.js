@@ -39,6 +39,9 @@ export default function Blog({ data, loading, ...props }) {
               quote: {
                 disable: true,
               },
+              table: {
+                disable: true,
+              },
             }}
             data={data}
           />
