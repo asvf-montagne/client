@@ -45,6 +45,7 @@ const Input = forwardRef(
             ${styles.input__container}
             ${disabled ? styles.input__container_disabled : ''}
             ${
+              meta &&
               meta.touched &&
               (meta.error ||
                 (meta.submitError && !meta.modifiedSinceLastSubmit))
@@ -59,6 +60,7 @@ const Input = forwardRef(
                 className={`
                   ${styles.input__container__iconBox__icon}
                   ${
+                    meta &&
                     meta.touched &&
                     (meta.error ||
                       (meta.submitError && !meta.modifiedSinceLastSubmit))
@@ -79,11 +81,15 @@ const Input = forwardRef(
               onFocus={() => {
                 if (!disabled) {
                   setFocused(true)
-                  onFocus()
+                  if (!!onFocus) {
+                    onFocus()
+                  }
                 }
               }}
               onBlur={() => {
-                onBlur()
+                if (!!onBlur) {
+                  onBlur()
+                }
                 setFocused(false)
               }}
               onChange={(event) => onChange(event.target.value)}
@@ -103,11 +109,15 @@ const Input = forwardRef(
               onFocus={() => {
                 if (!disabled) {
                   setFocused(true)
-                  onFocus()
+                  if (!!onFocus) {
+                    onFocus()
+                  }
                 }
               }}
               onBlur={() => {
-                onBlur()
+                if (!!onBlur) {
+                  onBlur()
+                }
                 setFocused(false)
               }}
               onChange={(event) => onChange(event.target.value)}
@@ -118,7 +128,8 @@ const Input = forwardRef(
           )}
         </div>
 
-        {meta.touched &&
+        {meta &&
+          meta.touched &&
           (meta.error ||
             (meta.submitError && !meta.modifiedSinceLastSubmit)) && (
             <a className={styles.input__errorMsg}>
