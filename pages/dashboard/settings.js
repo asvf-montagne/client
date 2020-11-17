@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Layout from '@components/atoms/Layout'
 import DashboardLayout from '@components/atoms/DashboardLayout'
-import AccountNavigation from '@components/molecules/AccountNavigation'
-import AccountLinkWithGoogle from '@components/molecules/AccountLinkWithGoogle'
+import DashboardNavigation from '@components/molecules/DashboardNavigation'
+import DashboardLinkWithGoogle from '@components/molecules/DashboardLinkWithGoogle'
 import FormDashboardSettingsAccount from '@components/organisms/Forms/FormDashboardSettingsAccount'
 import FormDashboardSettingsPassword from '@components/organisms/Forms/FormDashboardSettingsPassword'
 import services from '../../services'
@@ -29,13 +29,13 @@ export default function Settings({ user }) {
 
   return (
     <Layout>
-      <AccountNavigation />
+      <DashboardNavigation />
       <DashboardLayout>
         <FormDashboardSettingsAccount user={user} />
 
         <FormDashboardSettingsPassword />
 
-        <AccountLinkWithGoogle
+        <DashboardLinkWithGoogle
           label="Lier mon compte google"
           description="Pour plus de simplicité connectez vous avec votre compte google en cliquant sur bouton ci-contre."
           onClick={handleLinkWithGoogle}

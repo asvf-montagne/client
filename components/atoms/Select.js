@@ -14,8 +14,8 @@ Select.propTypes = {
         .isRequired,
     }),
   ).isRequired,
-  value: PropTypes.string.isRequired,
-  setValue: PropTypes.func.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   handleFocus: PropTypes.func,
   handleBlur: PropTypes.func,
@@ -28,7 +28,7 @@ export default function Select({
   borderless = false,
   options,
   value,
-  setValue,
+  onChange,
   placeholder,
   handleFocus,
   handleBlur,
@@ -40,8 +40,13 @@ export default function Select({
   const [menu, setMenu] = useState(false)
 
   function handleSelectOption(option) {
-    setValue(option)
+    onChange(option.value)
     setMenu(false)
+  }
+
+  function currentLabel() {
+    const selectedOption = options.filter((option) => option.value === value)[0]
+    return !!selectedOption && selectedOption.label
   }
 
   useEffect(() => {
@@ -81,9 +86,7 @@ export default function Select({
           className={`${styles.select_control} ${
             borderless ? styles.select_control_borderless : ''
           }`}
-          aria-selected={
-            meta && meta.touched && focus ? 'focused' : 'unfocused'
-          }
+          aria-selected={focus ? 'focused' : 'unfocused'}
           onClick={() => {
             if (!disabled) {
               setMenu(!menu)
@@ -94,24 +97,19 @@ export default function Select({
             }
           }}
         >
-          <div
-            className={styles.select_placeholder}
-            aria-selected={!!value.label}
-          >
+          <div className={styles.select_placeholder} aria-selected={!!value}>
             {!borderless && (
               <div className={styles.select_placeholder_icon_container}>
                 <Icon
                   className={styles.select_placeholder_icon}
-                  aria-selected={
-                    meta && meta.touched && focus ? 'focused' : 'unfocused'
-                  }
+                  aria-selected={focus ? 'focused' : 'unfocused'}
                 >
                   inbox
                 </Icon>
               </div>
             )}
             <div className={styles.select_placeholder_inner}>
-              {value.label || placeholder}
+              {currentLabel() || placeholder}
             </div>
           </div>
           {!menu ? (

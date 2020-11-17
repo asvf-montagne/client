@@ -1,15 +1,19 @@
 import PropTypes from 'prop-types'
 import Button from '@components/atoms/Button'
 import GoogleLogoAsset from '@assets/images/logo_google.png'
-import styles from './AccountLinkWithGoogle.module.css'
+import styles from './DashboardLinkWithGoogle.module.css'
 
-AccountLinkWithGoogle.propTypes = {
+DashboardLinkWithGoogle.propTypes = {
   label: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 }
 
-export default function AccountLinkWithGoogle({ label, description, onClick }) {
+export default function DashboardLinkWithGoogle({
+  label,
+  description,
+  onClick,
+}) {
   return (
     <div className={styles.container}>
       <div className={styles.container_col}>

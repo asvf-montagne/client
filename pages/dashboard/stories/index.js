@@ -4,8 +4,8 @@ import Layout from '@components/atoms/Layout'
 import Button from '@components/atoms/Button'
 import BigIcon from '@components/molecules/BigIcon'
 import DashboardLayout from '@components/atoms/DashboardLayout'
-import AccountNavigation from '@components/molecules/AccountNavigation'
-import AccountStories from '@components/organisms/AccountStories'
+import DashboardNavigation from '@components/molecules/DashboardNavigation'
+import DashboardStories from '@components/organisms/DashboardStories'
 import services from '@services/index'
 import React from 'react'
 
@@ -36,7 +36,7 @@ export default function Stories({ user }) {
 
   return (
     <Layout>
-      <AccountNavigation />
+      <DashboardNavigation />
       <DashboardLayout>
         {user.role.name === 'Authenticated' && (
           <>
@@ -57,7 +57,7 @@ export default function Stories({ user }) {
           </>
         )}
         {user.role.name === 'Editor' && (
-          <AccountStories
+          <DashboardStories
             title="Mes récits (3)"
             stories={mockStories}
             handleClick={handleCreateStory}

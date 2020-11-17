@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types'
 import CardStoryMin from '@components/molecules/CardStoryMin'
-import styles from './AccountStories.module.css'
 import Button from '@components/atoms/Button'
 import BigIcon from '@components/molecules/BigIcon'
+import styles from './DashboardStories.module.css'
 
-AccountStories.propTypes = {
+DashboardStories.propTypes = {
   title: PropTypes.string.isRequired,
   stories: PropTypes.array.isRequired,
   handleClick: PropTypes.func.isRequired,
 }
 
-export default function AccountStories({ title, stories, handleClick }) {
+export default function DashboardStories({ title, stories, handleClick }) {
   return (
     <div className={styles.container}>
       <span className={styles.container_header}>
