@@ -2,47 +2,47 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 :root {
-  --border-radius-small: 3px;
-  --border-radius-medium: 7px;
+    --border-radius-small: 3px;
+    --border-radius-medium: 7px;
 
-  --shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  --shadow-active: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    --shadow-active: 0 2px 8px rgba(0, 0, 0, 0.08);
 
-  --primary-bg-color: rgba(255, 255 ,255, 1);
-  --secondary-bg-color: rgba(255, 244, 240, 1);
-  --primary-blue-bg-color: rgba(2, 4, 74, 1);
-  --secondary-blue-bg-color: rgba(0, 23, 104, 1);
-  --tertiary-blue-bg-color: rgba(12, 117, 255, 1);
+    --primary-bg-color: rgba(255, 255, 255, 1);
+    --secondary-bg-color: rgba(255, 244, 240, 1);
+    --primary-blue-bg-color: rgba(2, 4, 74, 1);
+    --secondary-blue-bg-color: rgba(0, 23, 104, 1);
+    --tertiary-blue-bg-color: rgba(12, 117, 255, 1);
 
-  --title-size-large: 2.25rem;
-  --title-size-medium: 1.5rem;
-  --title-size-small: 1.125rem;
+    --title-size-large: 2.25rem;
+    --title-size-medium: 1.5rem;
+    --title-size-small: 1.125rem;
 
-  --text-size-large: 1rem;
-  --text-size-medium: 0.875rem;
-  --text-size-small: 0.8125rem;
+    --text-size-large: 1rem;
+    --text-size-medium: 0.875rem;
+    --text-size-small: 0.8125rem;
 
-  --font-color-primary: rgba(1, 2, 43, 1);
-  --font-color-secondary: rgba(0, 23, 104, 1);
-  --font-color-secondaryActive: rgba(0, 39, 178, 1);
-  --font-color-contrast: rgba(255, 255, 255, 1);
-  --font-color-status-success: rgba(51, 168, 82, 1);
-  --font-color-status-error: rgba(252, 80, 85, 1);
-  --font-color-link: rgba(12, 117, 255, 1);
-  --font-color-linkActive: rgb(77,154,255);
-  --font-color-gray1: rgba(110, 121, 140, 1);
-  --font-color-gray2: rgba(196, 196, 196, 1);
-  --font-color-gray3: rgba(229, 229, 229, 1);
+    --font-color-primary: rgba(1, 2, 43, 1);
+    --font-color-secondary: rgba(0, 23, 104, 1);
+    --font-color-secondaryActive: rgba(0, 39, 178, 1);
+    --font-color-contrast: rgba(255, 255, 255, 1);
+    --font-color-status-success: rgba(51, 168, 82, 1);
+    --font-color-status-error: rgba(252, 80, 85, 1);
+    --font-color-link: rgba(12, 117, 255, 1);
+    --font-color-linkActive: rgb(77, 154, 255);
+    --font-color-gray1: rgba(110, 121, 140, 1);
+    --font-color-gray2: rgba(196, 196, 196, 1);
+    --font-color-gray3: rgba(229, 229, 229, 1);
 
-  --font-weight-thin: 100;
-  --font-weight-extraLight: 200;
-  --font-weight-light: 300;
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semiBold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extraBold: 800;
-  --font-weight-black: 900;
+    --font-weight-thin: 100;
+    --font-weight-extraLight: 200;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semiBold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extraBold: 800;
+    --font-weight-black: 900;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -58,43 +58,58 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-family: 'Inter', sans-serif;
-  vertical-align: baseline;
-  line-height: 1.6em;
-  letter-spacing: -0.02em;
-  scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Inter', sans-serif;
+    vertical-align: baseline;
+    line-height: 1.6em;
+    letter-spacing: -0.02em;
+    scroll-behavior: smooth;
 }
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block;
+    display: block;
 }
 
 body {
-  letter-spacing: 0.005em;
+    letter-spacing: 0.005em;
 }
 
 p {
-  line-height: 1.5em;
+    line-height: 1.5em;
 }
 
 ol, ul {
-  list-style: none;
+    list-style: none;
 }
 
 blockquote, q {
-  quotes: none;
+    quotes: none;
 }
 
 blockquote:before, blockquote:after,
 q:before, q:after {
-  content: none;
+    content: none;
 }
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* STYLES CALENDAR PICKER OVERRIDE  */
+.nice-dates-day:before {
+    background-color: var(--font-color-link) !important;
+}
+
+.nice-dates-day:after {
+    border: 2px solid var(--font-color-link) !important;
+}
+
+.nice-dates-popover {
+    margin-top: 0 !important;
+    border: 1px solid #ddd;
+    max-width: 430px !important;
 }

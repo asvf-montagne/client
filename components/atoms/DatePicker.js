@@ -16,6 +16,7 @@ export default function DatePicker({ meta, input }) {
       date={input.value || undefined}
       onDateChange={(date) => input.onChange(date)}
       locale={fr}
+      format=""
     >
       {({ inputProps, focused }) => {
         return (
