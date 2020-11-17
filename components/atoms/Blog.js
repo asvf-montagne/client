@@ -1,13 +1,7 @@
-import dynamic from 'next/dynamic'
 import PropTypes from 'prop-types'
-import React from 'react'
+import EditorRendererProvider from 'react-editorjs-renderer'
 import Skeleton from 'react-loading-skeleton'
 import styles from './Blog.module.css'
-
-const EditorRendererProvider = dynamic(
-  () => import('react-editorjs-renderer'),
-  { ssr: false },
-)
 
 Blog.propTypes = {
   data: PropTypes.object,
