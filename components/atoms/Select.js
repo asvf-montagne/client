@@ -6,6 +6,7 @@ import styles from './Select.module.css'
 Select.propTypes = {
   label: PropTypes.string,
   borderless: PropTypes.bool,
+  disabled: PropTypes.bool,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
@@ -18,10 +19,12 @@ Select.propTypes = {
   placeholder: PropTypes.string.isRequired,
   handleFocus: PropTypes.func,
   handleBlur: PropTypes.func,
+  meta: PropTypes.object,
 }
 
 export default function Select({
   label,
+  disabled = false,
   borderless = false,
   options,
   value,
@@ -29,6 +32,8 @@ export default function Select({
   placeholder,
   handleFocus,
   handleBlur,
+  meta,
+  ...props
 }) {
   const wrapperRef = useRef(null)
   const [focus, setFocus] = useState(false)
@@ -54,24 +59,38 @@ export default function Select({
   }, [wrapperRef, handleBlur])
 
   return (
-    <div className={styles.select_container}>
+    <div
+      className={`${styles.select_container} ${
+        borderless ? styles.select_container_borderless : ''
+      }`}
+      {...props}
+    >
       {label && (
         <span className={styles.select_header}>
           <label className={styles.select_header_label}>{label}</label>
         </span>
       )}
 
-      <div className={styles.select} ref={wrapperRef}>
+      <div
+        className={`${styles.select} ${
+          borderless ? styles.select_borderless : ''
+        }`}
+        ref={wrapperRef}
+      >
         <div
           className={`${styles.select_control} ${
             borderless ? styles.select_control_borderless : ''
           }`}
-          aria-selected={focus ? 'focused' : 'unfocused'}
+          aria-selected={
+            meta && meta.touched && focus ? 'focused' : 'unfocused'
+          }
           onClick={() => {
-            setMenu(!menu)
-            setFocus(true)
-            if (!!handleFocus) {
-              handleFocus()
+            if (!disabled) {
+              setMenu(!menu)
+              setFocus(true)
+              if (!!handleFocus) {
+                handleFocus()
+              }
             }
           }}
         >
@@ -83,7 +102,9 @@ export default function Select({
               <div className={styles.select_placeholder_icon_container}>
                 <Icon
                   className={styles.select_placeholder_icon}
-                  aria-selected={focus ? 'focused' : 'unfocused'}
+                  aria-selected={
+                    meta && meta.touched && focus ? 'focused' : 'unfocused'
+                  }
                 >
                   inbox
                 </Icon>
