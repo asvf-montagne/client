@@ -24,18 +24,18 @@ Select.propTypes = {
 }
 
 export default function Select({
-                                 label,
-                                 disabled = false,
-                                 borderless = false,
-                                 options,
-                                 value,
-                                 onChange,
-                                 placeholder,
-                                 handleFocus,
-                                 handleBlur,
-                                 meta,
-                                 ...props
-                               }) {
+  label,
+  disabled = false,
+  borderless = false,
+  options,
+  value,
+  onChange,
+  placeholder,
+  handleFocus,
+  handleBlur,
+  meta,
+  ...props
+}) {
   const wrapperRef = useRef(null)
   const [focus, setFocus] = useState(false)
   const [menu, setMenu] = useState(false)
@@ -72,7 +72,7 @@ export default function Select({
       }`}
       {...props}
     >
-      {label && <InputLabel label={label}/>}
+      {label && <InputLabel label={label} />}
 
       <div
         className={`${styles.select} ${

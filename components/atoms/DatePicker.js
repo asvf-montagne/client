@@ -9,14 +9,13 @@ import 'react-nice-dates/build/style.css'
 DatePicker.propTypes = {
   meta: PropTypes.object,
   input: PropTypes.object,
-  label: PropTypes.string
+  label: PropTypes.string,
 }
 
 export default function DatePicker({ meta, input, label }) {
   return (
-
     <div>
-      {label && <InputLabel label={label}/>}
+      {label && <InputLabel label={label} />}
       <DatePickerComponent
         date={input.value || undefined}
         onDateChange={(date) => input.onChange(date)}
