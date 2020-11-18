@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import PropTypes from 'prop-types'
 import arrayMutators from 'final-form-arrays'
+import React from 'react'
 import { Field, Form } from 'react-final-form'
 import Button from '@components/atoms/Button'
 import DatePicker from '@components/atoms/DatePicker'
@@ -101,7 +102,10 @@ export default function FormCreateStory({ tags }) {
           <div className={styles.form_pictures}>
             <Field name="files">
               {({ input, meta }) => (
-                <UploadImageInput push={form.mutators.push} />
+                <UploadImageInput
+                  label="Images associés au récit"
+                  push={form.mutators.push}
+                />
               )}
             </Field>
           </div>

@@ -1,4 +1,5 @@
 import Input from '@components/atoms/Input'
+import InputLabel from '@components/atoms/InputLabel'
 import Icon from '@material-ui/core/Icon'
 import PropTypes from 'prop-types'
 import React, { useMemo, useState } from 'react'
@@ -9,6 +10,7 @@ import styles from './UploadImageInput.module.css'
 
 UploadImageInput.propTypes = {
   push: PropTypes.func.isRequired,
+  label: PropTypes.string,
 }
 
 /**
@@ -28,7 +30,7 @@ UploadImageInput.propTypes = {
  * @returns {JSX.Element}
  * @constructor
  */
-export default function UploadImageInput({ push }) {
+export default function UploadImageInput({ push, label }) {
   const [files, setFiles] = useState([])
 
   const fileId = (f) => {
@@ -80,6 +82,7 @@ export default function UploadImageInput({ push }) {
 
   return (
     <section className="container">
+      {label && <InputLabel label={label} />}
       <div
         {...getRootProps({
           className: `
