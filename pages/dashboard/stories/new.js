@@ -4,6 +4,7 @@ import DashboardLayout from '@components/atoms/DashboardLayout'
 import DashboardNavigation from '@components/molecules/DashboardNavigation'
 import DashboardStoryCreator from '@components/organisms/DashboardStoryCreator'
 import services from '@services/index'
+import React from 'react'
 
 NewStories.propTypes = {
   tags: PropTypes.array,

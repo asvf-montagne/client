@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
-import PropTypes from 'prop-types'
+import InputLabel from '@components/atoms/InputLabel'
 import Icon from '@material-ui/core/Icon'
+import PropTypes from 'prop-types'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './Select.module.css'
 
 Select.propTypes = {
@@ -23,18 +24,18 @@ Select.propTypes = {
 }
 
 export default function Select({
-  label,
-  disabled = false,
-  borderless = false,
-  options,
-  value,
-  onChange,
-  placeholder,
-  handleFocus,
-  handleBlur,
-  meta,
-  ...props
-}) {
+                                 label,
+                                 disabled = false,
+                                 borderless = false,
+                                 options,
+                                 value,
+                                 onChange,
+                                 placeholder,
+                                 handleFocus,
+                                 handleBlur,
+                                 meta,
+                                 ...props
+                               }) {
   const wrapperRef = useRef(null)
   const [focus, setFocus] = useState(false)
   const [menu, setMenu] = useState(false)
@@ -59,6 +60,7 @@ export default function Select({
         }
       }
     }
+
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [wrapperRef, handleBlur])
@@ -70,11 +72,7 @@ export default function Select({
       }`}
       {...props}
     >
-      {label && (
-        <span className={styles.select_header}>
-          <label className={styles.select_header_label}>{label}</label>
-        </span>
-      )}
+      {label && <InputLabel label={label}/>}
 
       <div
         className={`${styles.select} ${

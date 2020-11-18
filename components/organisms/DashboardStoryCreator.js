@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types'
 import FormCreateStory from '@components/organisms/Forms/FormCreateStory'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styles from './DashboardStories.module.css'
 
 DashboardStoryCreator.propTypes = {
@@ -14,7 +15,7 @@ export default function DashboardStoryCreator({ title, tags }) {
         <h1 className={styles.container_header_title}>{title}</h1>
       </span>
 
-      <FormCreateStory tags={tags} />
+      <FormCreateStory tags={tags}/>
     </div>
   )
 }

@@ -1,5 +1,11 @@
+.editor__wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 .editor {
-    padding: 14px 0 14px 14px;
+    padding: 14px 0 14px 0;
     width: 100%;
     border: 2px solid var(--font-color-gray2);
     border-radius: var(--border-radius-medium);
