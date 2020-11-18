@@ -26,6 +26,9 @@
     margin-bottom: 44px;
 }
 
+.form_pictures > section {
+    flex: 1;
+}
 
 @media screen and (max-width: 576px) {
     .form_meta {
