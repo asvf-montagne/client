@@ -1,0 +1,25 @@
+.span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.label {
+    font-size: var(--text-size-large);
+    font-weight: var(--font-weight-regular);
+    color: var(--font-color-secondary);
+}
+
+.link {
+    font-size: var(--text-size-medium);
+    font-weight: var(--font-weight-regular);
+    color: var(--font-color-link);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: var(--font-color-linkActive);
+}
