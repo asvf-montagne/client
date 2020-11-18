@@ -21,7 +21,7 @@
 
 .editor_input {
     width: calc(100% - 64px);
-    padding: 48px 32px;
+    padding: 32px;
     display: flex;
     flex: 1;
 }
