@@ -72,7 +72,7 @@ export default function EditorInput({ input, meta, label, placeholder = '' }) {
       setInitialized(true)
       return editor.destroy
     }
-  }, [editorRef, initialized])
+  }, [editorRef, initialized, input, getValue, placeholder])
 
   return (
     <div>
