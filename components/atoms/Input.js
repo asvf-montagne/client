@@ -13,6 +13,7 @@ const Input = forwardRef(
       autocomplete = 'off',
       type = 'text',
       label,
+      date = false,
       placeholder,
       value,
       onChange,
@@ -113,7 +114,10 @@ const Input = forwardRef(
                 }
                 setFocused(false)
               }}
-              onChange={(event) => onChange(event.target.value)}
+              onChange={(event) => {
+                if (date) onChange(event)
+                else onChange(event.target.value)
+              }}
               onKeyDown={onKeyDown}
               value={value}
               placeholder={placeholder}
@@ -135,6 +139,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   textArea: PropTypes.bool,
   autocomplete: PropTypes.string,
+  date: PropTypes.bool,
   type: PropTypes.oneOf(['text', 'password']),
   label: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
