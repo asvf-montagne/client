@@ -1,20 +1,27 @@
-.editor__wrapper {
+.editor {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.editor_container {
     display: flex;
     flex-direction: column;
-    flex: 1;
-}
-
-.editor {
-    padding: 14px 0 14px 0;
-    width: 100%;
-    border: 2px solid var(--font-color-gray2);
+    align-items: center;
     border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    border: 2px solid var(--font-color-gray2);
+    margin-bottom: 28px;
 }
 
-.editor_focused {
+.editor_container[aria-selected="true"] {
     border: 2px solid var(--font-color-link);
 }
 
-.editor_error {
-    border: 2px solid var(--font-color-status-error);
+.editor_input {
+    width: calc(100% - 64px);
+    padding: 48px 32px;
+    display: flex;
+    flex: 1;
 }

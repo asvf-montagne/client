@@ -10,7 +10,7 @@
     border-style: dashed;
     color: var(--font-color-secondary);
     outline: none;
-    transition: border .24s ease-in-out;
+    transition: .2s;
     cursor: pointer;
 }
 

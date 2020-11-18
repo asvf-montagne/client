@@ -76,15 +76,11 @@ export default function EditorInput({ input, meta, label, placeholder = '' }) {
   }, [editorRef, initialized])
 
   return (
-    <div>
+    <div className={styles.editor}>
       {label && <InputLabel label={label} />}
-      <div
-        className={`
-          ${styles.editor} 
-          ${focus ? styles.editor_focused : ''}
-        `}
-        ref={editorRef}
-      />
+      <div className={styles.editor_container} aria-selected={focus}>
+        <div className={styles.editor_input} ref={editorRef} />
+      </div>
     </div>
   )
 }
