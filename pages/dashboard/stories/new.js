@@ -19,7 +19,7 @@ NewStories.propTypes = {
 export default function NewStories({ tags }) {
   return (
     <Layout>
-      <AccountNavigation/>
+      <AccountNavigation />
       <DashboardLayout>
         <Form
           onSubmit={(values) => console.log('test:', values)}
@@ -27,10 +27,15 @@ export default function NewStories({ tags }) {
             <div>
               <Field name="datepicker">
                 {({ input, meta }) => (
-                  <EditorInput label="Test" placeholder="Commencez à écrire ..." meta={meta} input={input}/>
+                  <EditorInput
+                    label="Test"
+                    placeholder="Commencez à écrire ..."
+                    meta={meta}
+                    input={input}
+                  />
                 )}
               </Field>
-              <br/>
+              <br />
               <Button
                 size="medium"
                 variant="primary"
