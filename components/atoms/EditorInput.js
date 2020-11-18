@@ -72,7 +72,8 @@ export default function EditorInput({ input, meta, label, placeholder = '' }) {
       setInitialized(true)
       return editor.destroy
     }
-  }, [editorRef, initialized, input, getValue, placeholder])
+    // eslint-disable-next-line
+  }, [editorRef, initialized])
 
   return (
     <div>
