@@ -116,7 +116,7 @@ table {
 
 @media screen and (max-width: 430px) {
     .nice-dates-popover {
-        max-width: 350px !important;
+        max-width: 340px !important;
     }
 }
 
