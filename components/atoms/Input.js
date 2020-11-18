@@ -1,6 +1,7 @@
+import InputLabel from '@components/atoms/InputLabel'
+import Icon from '@material-ui/core/Icon'
 import PropTypes from 'prop-types'
 import React, { forwardRef, useState } from 'react'
-import Icon from '@material-ui/core/Icon'
 import styles from './Input.module.css'
 
 // eslint-disable-next-line react/display-name
@@ -27,28 +28,22 @@ const Input = forwardRef(
   ) => {
     const [focused, setFocused] = useState(false)
 
+    const hasError =
+      meta &&
+      meta.touched &&
+      (meta.error || (meta.submitError && !meta.modifiedSinceLastSubmit))
+
     return (
       <div className={styles.input} {...props}>
-        {label && (
-          <span className={styles.input__span}>
-            <label className={styles.input__span__label}>{label}</label>
-            {link && (
-              <a className={styles.input__span__link} href={link.ref}>
-                {link.title}
-              </a>
-            )}
-          </span>
-        )}
+        {label && <InputLabel label={label} link={link} />}
 
         <div
           className={`
             ${styles.input__container}
             ${disabled ? styles.input__container_disabled : ''}
+            
             ${
-              meta &&
-              meta.touched &&
-              (meta.error ||
-                (meta.submitError && !meta.modifiedSinceLastSubmit))
+              hasError
                 ? styles.input__containerError
                 : focused && styles.input__containerFocused
             }
@@ -59,11 +54,9 @@ const Input = forwardRef(
               <Icon
                 className={`
                   ${styles.input__container__iconBox__icon}
+                  
                   ${
-                    meta &&
-                    meta.touched &&
-                    (meta.error ||
-                      (meta.submitError && !meta.modifiedSinceLastSubmit))
+                    hasError
                       ? styles.input__container__iconBox__iconError
                       : focused && styles.input__container__iconBox__iconFocused
                   }
@@ -128,14 +121,11 @@ const Input = forwardRef(
           )}
         </div>
 
-        {meta &&
-          meta.touched &&
-          (meta.error ||
-            (meta.submitError && !meta.modifiedSinceLastSubmit)) && (
-            <a className={styles.input__errorMsg}>
-              {meta.error || meta.submitError}
-            </a>
-          )}
+        {hasError && (
+          <a className={styles.input__errorMsg}>
+            {meta.error || meta.submitError}
+          </a>
+        )}
       </div>
     )
   },

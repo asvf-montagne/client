@@ -7,6 +7,7 @@ import DashboardLayout from '@components/atoms/DashboardLayout'
 import AccountNavigation from '@components/molecules/AccountNavigation'
 import AccountStories from '@components/organisms/AccountStories'
 import services from '@services/index'
+import React from 'react'
 
 import mockStories from '../../../mockStories'
 

@@ -1,0 +1,14 @@
+.editor {
+    padding: 14px 0 14px 14px;
+    width: 100%;
+    border: 2px solid var(--font-color-gray2);
+    border-radius: var(--border-radius-medium);
+}
+
+.editor_focused {
+    border: 2px solid var(--font-color-link);
+}
+
+.editor_error {
+    border: 2px solid var(--font-color-status-error);
+}
