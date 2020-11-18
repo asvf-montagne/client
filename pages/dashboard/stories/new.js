@@ -5,7 +5,7 @@ import AccountNavigation from '@components/molecules/AccountNavigation'
 import services from '@services/index'
 import dynamic from 'next/dynamic'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React from 'react'
 import { Field, Form } from 'react-final-form'
 
 const EditorInput = dynamic(() => import('@components/atoms/EditorInput'), {
@@ -19,7 +19,7 @@ NewStories.propTypes = {
 export default function NewStories({ tags }) {
   return (
     <Layout>
-      <AccountNavigation />
+      <AccountNavigation/>
       <DashboardLayout>
         <Form
           onSubmit={(values) => console.log('test:', values)}
@@ -27,10 +27,10 @@ export default function NewStories({ tags }) {
             <div>
               <Field name="datepicker">
                 {({ input, meta }) => (
-                  <EditorInput label="Test" meta={meta} input={input} />
+                  <EditorInput label="Test" placeholder="Commencez à écrire ..." meta={meta} input={input}/>
                 )}
               </Field>
-              <br />
+              <br/>
               <Button
                 size="medium"
                 variant="primary"

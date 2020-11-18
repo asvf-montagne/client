@@ -11,9 +11,10 @@ EditorInput.propTypes = {
   input: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
   label: PropTypes.string,
+  placeholder: PropTypes.string,
 }
 
-export default function EditorInput({ input, meta, label }) {
+export default function EditorInput({ input, meta, label, placeholder = '' }) {
   const editorRef = useRef(null)
   const [focus, setFocus] = useState(false)
   const [initialized, setInitialized] = useState(false)
@@ -58,7 +59,7 @@ export default function EditorInput({ input, meta, label }) {
           },
           quote: Quote,
         },
-        placeholder: 'Commencez à écrire ici ...',
+        placeholder: placeholder,
         minHeight: 32,
         holder: editorRef.current,
         data: getValue(),
