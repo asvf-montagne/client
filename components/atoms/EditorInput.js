@@ -59,7 +59,7 @@ export default function EditorInput({ input, meta, label }) {
           quote: Quote,
         },
         placeholder: 'Commencez à écrire ici ...',
-        minHeight: 70,
+        minHeight: 32,
         holder: editorRef.current,
         data: getValue(),
         async onChange(api) {
@@ -68,8 +68,6 @@ export default function EditorInput({ input, meta, label }) {
         },
       })
 
-      editor.focus()
-
       setInitialized(true)
       return editor.destroy
     }
@@ -77,9 +75,7 @@ export default function EditorInput({ input, meta, label }) {
 
   return (
     <div>
-      {label && (
-        <InputLabel label={label}/>
-      )}
+      {label && <InputLabel label={label} />}
       <div
         className={`
           ${styles.editor} 
@@ -88,6 +84,5 @@ export default function EditorInput({ input, meta, label }) {
         ref={editorRef}
       />
     </div>
-
   )
 }

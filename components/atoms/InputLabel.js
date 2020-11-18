@@ -7,8 +7,8 @@ InputLabel.propTypes = {
   label: PropTypes.string.isRequired,
   link: PropTypes.shape({
     ref: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
-  })
+    title: PropTypes.string.isRequired,
+  }),
 }
 
 export default function InputLabel({ label, link }) {

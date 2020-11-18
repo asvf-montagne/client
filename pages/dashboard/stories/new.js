@@ -26,7 +26,9 @@ export default function NewStories({ tags }) {
           render={({ values, handleSubmit }) => (
             <div>
               <Field name="datepicker">
-                {({ input, meta }) => <EditorInput label="Test" meta={meta} input={input} />}
+                {({ input, meta }) => (
+                  <EditorInput label="Test" meta={meta} input={input} />
+                )}
               </Field>
               <br />
               <Button

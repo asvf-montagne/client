@@ -1,9 +1,8 @@
 .editor {
-    padding-top: 15px;
+    padding: 14px 0 14px 14px;
     width: 100%;
     border: 2px solid var(--font-color-gray2);
     border-radius: var(--border-radius-medium);
-    margin-bottom: 28px;
 }
 
 .editor_focused {
