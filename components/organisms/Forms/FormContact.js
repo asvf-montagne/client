@@ -28,7 +28,7 @@ export default function FormContact() {
         return ValidationHelper.validateFromBackend(res.data)
       }
     } catch (error) {
-      console.log('error while submiting contact form', error)
+      console.error('error while submiting contact form', error)
     }
   }
 

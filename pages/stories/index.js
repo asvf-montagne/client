@@ -1,11 +1,11 @@
+import React, { useReducer, useState } from 'react'
+import PropTypes from 'prop-types'
 import Layout from '@components/atoms/Layout'
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
 import SearchHeader from '@components/molecules/SearchHeader'
 import StoriesGrid from '@components/organisms/StoriesGrid'
 import FormHelper from '@helpers/form'
 import useServices from '@hooks/useServices'
-import PropTypes from 'prop-types'
-import React, { useReducer, useState } from 'react'
 import services from '../../services'
 
 const StoriesActions = {

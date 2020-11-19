@@ -35,7 +35,6 @@ const FormHelper = {
   async fakeDelay(f, delay = 500) {
     const now = new Date()
     const res = await f()
-    console.log(new Date() - now)
     const canReturn = new Date() - now > 1500
     if (!canReturn) await wait(delay)
 

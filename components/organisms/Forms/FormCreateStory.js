@@ -26,7 +26,7 @@ export default function FormCreateStory({ tags }) {
   }))
 
   function handleSubmit() {
-    console.log('wewe')
+    console.log('CREATE STORY')
   }
 
   return (

@@ -29,7 +29,7 @@ export default function Stories({ user }) {
   }
 
   function handleGetAccess() {
-    console.log('wewewe')
+    console.log('GET CREATE STORY PERMISSION')
   }
 
   user.role.name = 'Editor'
