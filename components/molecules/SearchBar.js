@@ -40,7 +40,7 @@ export default function SearchBar({
           borderless
           options={options}
           value={tagId}
-          setValue={setTagId}
+          onChange={setTagId}
           placeholder="Catégorie"
         />
         {/*<select*/}
