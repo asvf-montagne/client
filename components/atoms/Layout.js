@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
 import Footer from '@components/atoms/Footer'
@@ -41,6 +42,7 @@ Layout.propTypes = {
 
 export default function Layout({ less = false, children }) {
   const [flash, setFlash] = useState(true)
+  const router = useRouter()
 
   useEffect(() => {
     const item = window.localStorage.getItem('flash')
@@ -81,6 +83,30 @@ export default function Layout({ less = false, children }) {
     )
   }
 
+  function CurrentPageInner() {
+    return (
+      <>
+        {!less && <Navigation />}
+        <main className={styles.container}>{children}</main>
+        {!less && <Footer />}
+      </>
+    )
+  }
+
+  function CurrentPage() {
+    if (flash && router.pathname === '/') {
+      return (
+        <>
+          <FlashInfo infos={infos} handleClose={() => toggleFlash()} />
+          <div className={styles.container_flash}>
+            <CurrentPageInner />
+          </div>
+        </>
+      )
+    }
+    return <CurrentPageInner />
+  }
+
   return (
     <>
       <Head>
@@ -88,23 +114,7 @@ export default function Layout({ less = false, children }) {
         {/*<link rel="icon" href="/favicon.ico" />*/}
       </Head>
       {/*<NextSeo config={DEFAULT_SEO} />*/}
-      {flash && (
-        <>
-          <FlashInfo infos={infos} handleClose={() => toggleFlash()} />
-          <div className={styles.container_flash}>
-            {!less && <Navigation />}
-            <main className={styles.container}>{children}</main>
-            {!less && <Footer />}
-          </div>
-        </>
-      )}
-      {!flash && (
-        <>
-          {!less && <Navigation />}
-          <main className={styles.container}>{children}</main>
-          {!less && <Footer />}
-        </>
-      )}
+      <CurrentPage />
     </>
   )
 }
