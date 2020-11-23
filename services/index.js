@@ -1,3 +1,4 @@
+import uploader from '@services/uploader'
 import axios from 'axios'
 import auth from './auth'
 import contactFormSubmissions from './contactFormSubmissions'
@@ -34,6 +35,7 @@ function services({ token, isServer } = { token: undefined, isServer: false }) {
     auth: auth(client),
     posts: posts(client),
     tags: tags(client),
+    uploader: uploader(client),
     partners: partners(client),
     contactFormSubmissions: contactFormSubmissions(client),
   }

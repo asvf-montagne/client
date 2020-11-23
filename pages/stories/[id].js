@@ -41,7 +41,7 @@ export default function Story({ story, suggestedStories }) {
             tag={view.getFirstTag(story)}
             title={story.title}
             author={view.getTitledAuthor(story)}
-            date={view.getPublishedTimeAgo(story)}
+            date={view.getTimeAgo(story)}
             image={view.getFirstImage(story)}
           />
         )}

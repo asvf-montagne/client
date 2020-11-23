@@ -48,3 +48,14 @@
 
 @media screen and (min-width: 1080px) {
 }
+
+.state {
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    color: var(--font-color-status-success)
+}
+
+.state__loading {
+    color: var(--font-color-gray1);
+}

@@ -95,6 +95,19 @@
     background-color: transparent;
     color: var(--font-color-link);
 }
+
+.btn_error {
+    border: none;
+    background-color: var(--font-color-status-error);
+}
+
+.btn_error > .btn_inner {
+    color: var(--font-color-contrast);
+}
+
+.btn_error > .btn_inner > span {
+    color: var(--font-color-contrast);
+}
 /*VARIANT STOP*/
 
 
@@ -107,6 +120,11 @@
 .btn_focus_success:focus {
     border-color: var(--font-color-link);
     box-shadow: 0 0 0 0.2rem rgba(51, 168, 82, .5);
+}
+
+.btn_focus_error:focus {
+    border-color: var(--font-color-link);
+    box-shadow: 0 0 0 0.2rem rgba(253, 120, 123, 0.5);
 }
 
 .btn_focus_light:focus {

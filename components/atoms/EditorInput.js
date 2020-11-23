@@ -15,6 +15,7 @@ EditorInput.propTypes = {
 }
 
 export default function EditorInput({ input, meta, label, placeholder = '' }) {
+  const prevRef = useRef('[]')
   const editorRef = useRef(null)
   const [focus, setFocus] = useState(false)
   const [initialized, setInitialized] = useState(false)
@@ -26,8 +27,14 @@ export default function EditorInput({ input, meta, label, placeholder = '' }) {
     return undefined
   }
 
-  const setFocusOn = () => setFocus(true)
-  const setFocusOff = () => setFocus(false)
+  const setFocusOn = () => {
+    setFocus(true)
+    input.onFocus()
+  }
+  const setFocusOff = () => {
+    setFocus(false)
+    input.onBlur()
+  }
 
   useEffect(() => {
     if (editorRef) {
@@ -65,6 +72,13 @@ export default function EditorInput({ input, meta, label, placeholder = '' }) {
         data: getValue(),
         async onChange(api) {
           const saved = await api.saver.save()
+          delete saved.time
+
+          if (prevRef.current === JSON.stringify(saved.blocks)) {
+            return
+          }
+
+          prevRef.current = JSON.stringify(saved.blocks)
           input.onChange(saved)
         },
       })

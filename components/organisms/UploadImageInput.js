@@ -1,8 +1,12 @@
 import Input from '@components/atoms/Input'
 import InputLabel from '@components/atoms/InputLabel'
 import Icon from '@material-ui/core/Icon'
+import {
+  filesReducerActions,
+  filesReducerCreateAction,
+} from '@reducers/FilesReducer'
 import PropTypes from 'prop-types'
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { Field } from 'react-final-form'
 import { FieldArray } from 'react-final-form-arrays'
@@ -10,6 +14,9 @@ import styles from './UploadImageInput.module.css'
 
 UploadImageInput.propTypes = {
   push: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  deleteImage: PropTypes.func.isRequired,
+  files: PropTypes.array.isRequired,
   label: PropTypes.string,
 }
 
@@ -27,14 +34,22 @@ UploadImageInput.propTypes = {
  * For validating input you will see a 'files' key.
  *
  * @param {function} push - from final-form-arrays
+ * @param {string} label - label of the form
+ * @param {function} deleteImage - notify that an image is deleted
+ * @param {function} dispatch - reducer which dispatch files action
+ * @param {FileInfo} files - state
  * @returns {JSX.Element}
  * @constructor
  */
-export default function UploadImageInput({ push, label }) {
-  const [files, setFiles] = useState([])
-
+export default function UploadImageInput({
+  push,
+  label,
+  dispatch,
+  files,
+  deleteImage,
+}) {
   const fileId = (f) => {
-    return `${f.path}${f.size}${f.lastModified}`
+    return `${f.file.path}${f.file.size}${f.file.lastModified}`
   }
 
   const isFileEqual = (f1, f2) => {
@@ -50,23 +65,27 @@ export default function UploadImageInput({ push, label }) {
   } = useDropzone({
     accept: 'image/*',
     onDropAccepted: (acceptedFiles) => {
-      setFiles([
-        ...files,
-        ...acceptedFiles.reduce((list, file) => {
-          // if the file is already present, don't add it
-          if (files.some((f) => isFileEqual(f, file))) return list
+      const toPush = []
 
-          // add to the file the preview (a blob object)
-          const fileWithPreview = Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          })
+      dispatch(
+        filesReducerCreateAction({
+          type: filesReducerActions.ADD,
+          data: acceptedFiles.reduce((list, file) => {
+            // if the file is already present, don't add it
+            if (files.some((f) => isFileEqual(f, { file }))) return list
 
-          // add an entry to the form list and add the file to the list of additional data for the upper form
-          push('files', fileWithPreview)
+            // add to the file the preview (a blob object)
+            const fileWithPreview = { file, preview: URL.createObjectURL(file) }
 
-          return [...list, fileWithPreview]
-        }, []),
-      ])
+            // add an entry to the form list and add the file to the list of additional data for the upper form
+            toPush.push(fileWithPreview)
+
+            return [...list, fileWithPreview]
+          }, []),
+        }),
+      )
+
+      toPush.forEach((f) => push('files', f))
     },
   })
 
@@ -75,10 +94,6 @@ export default function UploadImageInput({ push, label }) {
     if (isDragAccept) return 'accept'
     if (isDragActive) return 'active'
   }, [isDragActive, isDragReject, isDragAccept])
-
-  const deleteFile = (f) => {
-    setFiles(files.filter((file) => file.preview !== f.preview))
-  }
 
   return (
     <section className="container">
@@ -130,18 +145,49 @@ export default function UploadImageInput({ push, label }) {
                               label="Légende"
                               placeholder="Des jolies montagnes ..."
                               icon="text_format"
-                              {...input}
-                              onKeyDown={() => {}}
                               meta={meta}
+                              {...input}
+                              onChange={(e) => {
+                                dispatch(
+                                  filesReducerCreateAction({
+                                    type: filesReducerActions.MODIFY,
+                                    index,
+                                    data: { ...f, caption: e },
+                                  }),
+                                )
+
+                                // notify form from chngin the caption of a file
+                                input.onChange(e)
+                              }}
                             />
                           )}
                         </Field>
                       </div>
                       <Icon
-                        className={styles.img_preview__contained_del}
+                        className={`
+                          ${styles.img_preview__contained_del}
+                          ${
+                            f.id === undefined
+                              ? styles.img_preview__contained_del__disabled
+                              : ''
+                          }
+                        `}
                         onClick={() => {
-                          fields.remove(index)
-                          deleteFile(f)
+                          if (f.id !== undefined) {
+                            // delete the image api side
+                            deleteImage(f)
+
+                            // remote the image in the state
+                            dispatch(
+                              filesReducerCreateAction({
+                                type: filesReducerActions.REMOVE,
+                                data: index,
+                              }),
+                            )
+
+                            // notify form of deletion for an entry
+                            fields.remove(index)
+                          }
                         }}
                       >
                         delete

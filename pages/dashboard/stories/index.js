@@ -9,19 +9,19 @@ import DashboardStories from '@components/organisms/DashboardStories'
 import services from '@services/index'
 import React from 'react'
 
-import mockStories from '../../../mockStories'
-
 Stories.propTypes = {
   user: PropTypes.object,
+  posts: PropTypes.array,
 }
 
 /**
  *
  * @param {User} user
+ * @param {Array} posts
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Stories({ user }) {
+export default function Stories({ user, posts }) {
   const router = useRouter()
 
   function handleCreateStory() {
@@ -29,10 +29,8 @@ export default function Stories({ user }) {
   }
 
   function handleGetAccess() {
-    console.log('wewewe')
+    console.log('todo: request access')
   }
-
-  user.role.name = 'Editor'
 
   return (
     <Layout>
@@ -58,8 +56,8 @@ export default function Stories({ user }) {
         )}
         {user.role.name === 'Editor' && (
           <DashboardStories
-            title="Mes récits (3)"
-            stories={mockStories}
+            title={`Mes récit (${posts.length})`}
+            stories={posts}
             handleClick={handleCreateStory}
           />
         )}
@@ -71,14 +69,21 @@ export default function Stories({ user }) {
 export async function getServerSideProps(ctx) {
   const {
     auth,
+    posts,
     users: { api },
   } = services({ token: ctx.req.cookies.token, isServer: true })
 
   const user = await auth.helpers.shouldRedirectIfNotAuthenticated(api, ctx)
 
+  const postList = await posts.api.search({
+    limit: 2000,
+    author: user.id,
+    published: false,
+  })
+
   if (user) {
     return {
-      props: { user },
+      props: { user, posts: postList },
     }
   }
 }

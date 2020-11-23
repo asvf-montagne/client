@@ -1,7 +1,9 @@
+import useServices from '@hooks/useServices'
 import PropTypes from 'prop-types'
 import CardStoryMin from '@components/molecules/CardStoryMin'
 import Button from '@components/atoms/Button'
 import BigIcon from '@components/molecules/BigIcon'
+import React from 'react'
 import styles from './DashboardStories.module.css'
 
 DashboardStories.propTypes = {
@@ -11,6 +13,9 @@ DashboardStories.propTypes = {
 }
 
 export default function DashboardStories({ title, stories, handleClick }) {
+  const {
+    posts: { view },
+  } = useServices()
   return (
     <div className={styles.container}>
       <span className={styles.container_header}>
@@ -31,9 +36,12 @@ export default function DashboardStories({ title, stories, handleClick }) {
             key={index}
             id={+story.id}
             title={story.title}
-            badge={{ color: 'yellow', label: 'wewewe' }}
-            categories={story.tags}
-            date="wewe"
+            badge={{
+              color: story.published_at === null ? 'yellow' : 'blue',
+              label: story.published_at === null ? 'brouillon' : 'publié',
+            }}
+            categories={view.getFirstTag(story)}
+            date={view.getTimeAgo(story)}
           />
         ))}
       {!stories.length && (

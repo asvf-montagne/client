@@ -89,6 +89,10 @@
     cursor: pointer;
 }
 
+.img_preview__contained_del__disabled {
+    cursor: not-allowed;
+}
+
 .img_preview__contained_del:hover {
     color: var(--font-color-status-error);
 }

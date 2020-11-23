@@ -1,4 +1,4 @@
-import FormCreateStory from '@components/organisms/Forms/FormCreateStory'
+import FormCreateOrUpdateStory from '@components/organisms/Forms/FormCreateOrUpdateStory'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './DashboardStories.module.css'
@@ -6,16 +6,17 @@ import styles from './DashboardStories.module.css'
 DashboardStoryCreator.propTypes = {
   title: PropTypes.string.isRequired,
   tags: PropTypes.array.isRequired,
+  user: PropTypes.object,
 }
 
-export default function DashboardStoryCreator({ title, tags }) {
+export default function DashboardStoryCreator({ title, tags, user }) {
   return (
     <div className={styles.container}>
       <span className={styles.container_header}>
         <h1 className={styles.container_header_title}>{title}</h1>
       </span>
 
-      <FormCreateStory tags={tags} />
+      <FormCreateOrUpdateStory tags={tags} author={user.id} />
     </div>
   )
 }

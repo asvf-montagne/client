@@ -3,6 +3,7 @@ import Icon from '@material-ui/core/Icon'
 import Button from '@components/atoms/Button'
 import Select from '@components/atoms/Select'
 import useWindowSize from '@hooks/useWindowSize'
+import React from 'react'
 import styles from './SearchBar.module.css'
 
 SearchBar.propTypes = {
@@ -40,7 +41,7 @@ export default function SearchBar({
           borderless
           options={options}
           value={tagId}
-          setValue={setTagId}
+          onChange={setTagId}
           placeholder="Catégorie"
         />
         {/*<select*/}

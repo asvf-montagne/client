@@ -19,6 +19,9 @@
       ],
       "@services/*": [
         "services/*"
+      ],
+      "@reducers/*": [
+        "reducers/*"
       ]
     }
   }

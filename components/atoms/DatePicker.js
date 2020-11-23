@@ -26,7 +26,7 @@ export default function DatePicker({ meta, input, label }) {
           return (
             <Input
               {...inputProps}
-              placeholder="jour/mois/année"
+              placeholder="jour / mois / année"
               date
               meta={meta}
               icon="calendar_today"

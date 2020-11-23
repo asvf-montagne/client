@@ -18,8 +18,8 @@ Select.propTypes = {
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
-  handleFocus: PropTypes.func,
-  handleBlur: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   meta: PropTypes.object,
 }
 
@@ -31,8 +31,8 @@ export default function Select({
   value,
   onChange,
   placeholder,
-  handleFocus,
-  handleBlur,
+  onFocus,
+  onBlur,
   meta,
   ...props
 }) {
@@ -55,15 +55,15 @@ export default function Select({
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
         setMenu(false)
         setFocus(false)
-        if (!!handleBlur) {
-          handleBlur()
+        if (!!onBlur) {
+          onBlur()
         }
       }
     }
 
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [wrapperRef, handleBlur])
+  }, [wrapperRef, onBlur])
 
   return (
     <div
@@ -89,8 +89,8 @@ export default function Select({
             if (!disabled) {
               setMenu(!menu)
               setFocus(true)
-              if (!!handleFocus) {
-                handleFocus()
+              if (!!onFocus) {
+                onFocus()
               }
             }
           }}
