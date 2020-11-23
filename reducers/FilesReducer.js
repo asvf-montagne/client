@@ -24,7 +24,10 @@ export function filesReducer(state, action) {
         files: [...state.files.filter((_, index) => index !== action.data)],
       }
     case filesReducerActions.MODIFY:
-      state.files[action.index] = { ...state.files[action.index], ...action.data }
+      state.files[action.index] = {
+        ...state.files[action.index],
+        ...action.data,
+      }
       return { files: [...state.files] }
     default:
       throw new Error(

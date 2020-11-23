@@ -80,7 +80,9 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
     value: tag.id,
   }))
 
-  const createOrUpdatePost = useDebounce(state, async (currentState, { values }) => {
+  const createOrUpdatePost = useDebounce(
+    state,
+    async (currentState, { values }) => {
       const filesDiff = diff(refPreviousForm.current.files, values.files)
       refPreviousForm.current = values
 
@@ -104,7 +106,8 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
           // only update images if there is a change in files
           if (Object.keys(filesDiff).length > 0) {
             await FormHelper.fakeDelay(
-              async () => await uploadOrUpdateImages(currentState.files, res.data.id),
+              async () =>
+                await uploadOrUpdateImages(currentState.files, res.data.id),
             )
           }
         }
@@ -221,9 +224,7 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
       render={({ form, values, valid, submitting }) => (
         <form>
           {JSON.stringify(state)}
-          <FormHelper.FormOnChangeHandler
-            onChange={createOrUpdatePost}
-          />
+          <FormHelper.FormOnChangeHandler onChange={createOrUpdatePost} />
 
           <div className={styles.form_title}>
             <Field name="title" type="text">

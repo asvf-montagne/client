@@ -45,21 +45,20 @@ const FormHelper = {
   },
 
   FormOnChangeHandler({ onChange }) {
-    const ref = useRef("")
+    const ref = useRef('')
 
-    useFormState(
-      {
-        onChange: ({ values, valid }) => {
-          if (valid && ref.current !== JSON.stringify(values)) {
-            ref.current = JSON.stringify(values)
-            onChange({values, valid})
-          }
-        },
-        subscription: { values: true, valid: true }
-      })
+    useFormState({
+      onChange: ({ values, valid }) => {
+        if (valid && ref.current !== JSON.stringify(values)) {
+          ref.current = JSON.stringify(values)
+          onChange({ values, valid })
+        }
+      },
+      subscription: { values: true, valid: true },
+    })
 
     return null
   },
 }
 
-  export default FormHelper
+export default FormHelper
