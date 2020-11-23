@@ -32,6 +32,10 @@ export default function FormSignUp({}) {
     }
   }
 
+  // function registerWithGoogle() {
+  //   console.log('REGISTER WITH GOOGLE')
+  // }
+
   useEffect(() => {
     refUsername.current.focus()
   }, [])
@@ -117,7 +121,7 @@ export default function FormSignUp({}) {
               size="large"
               focus="primary"
               fluid
-              onClick={() => console.log('todo: go to goodle')}
+              // onClick={registerWithGoogle}
             >
               <img
                 alt="auth-google"

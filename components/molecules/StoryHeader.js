@@ -17,9 +17,9 @@ function DisplayTag({ tag }) {
           variant="link"
           size="medium"
           focus="link"
-          onClick={() =>
-            console.log('todo: go on search story with tag filter: ' + tag)
-          }
+          // onClick={() =>
+          //   console.log('todo: go on search story with tag filter: ' + tag)
+          // }
           style={{ marginBottom: 42 }}
         >
           {tag}

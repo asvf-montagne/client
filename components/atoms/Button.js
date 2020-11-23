@@ -11,7 +11,7 @@ Button.propTypes = {
   loading: PropTypes.bool,
   shadow: PropTypes.bool,
   fluid: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
 }
 

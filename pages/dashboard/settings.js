@@ -19,13 +19,13 @@ Settings.propTypes = {
  * @constructor
  */
 export default function Settings({ user }) {
-  async function handleLinkWithGoogle(event) {
-    try {
-      console.log('link')
-    } catch (error) {
-      console.error('error while submitting sign up form', error)
-    }
-  }
+  // async function handleLinkWithGoogle(event) {
+  //   try {
+  //     console.log('LINK WITH GOOGLE ACCOUNT')
+  //   } catch (error) {
+  //     console.error('error while submitting sign up form', error)
+  //   }
+  // }
 
   return (
     <Layout>
@@ -38,7 +38,7 @@ export default function Settings({ user }) {
         <DashboardLinkWithGoogle
           label="Lier mon compte google"
           description="Pour plus de simplicité connectez vous avec votre compte google en cliquant sur bouton ci-contre."
-          onClick={handleLinkWithGoogle}
+          // onClick={handleLinkWithGoogle}
         />
       </DashboardLayout>
     </Layout>
