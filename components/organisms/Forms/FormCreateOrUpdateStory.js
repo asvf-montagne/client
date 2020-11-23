@@ -19,22 +19,12 @@ import arrayMutators from 'final-form-arrays'
 import dynamic from 'next/dynamic'
 import PropTypes from 'prop-types'
 import React, { useReducer, useRef } from 'react'
-import { Field, Form, FormSpy } from 'react-final-form'
+import { Field, Form } from 'react-final-form'
 import styles from './FormCreateStory.module.css'
 
 const EditorInput = dynamic(() => import('@components/atoms/EditorInput'), {
   ssr: false,
 })
-
-function hasFormChanged(previousForm, currentForm) {
-  const p = { ...previousForm }
-  const c = { ...currentForm }
-
-  if (p.content !== undefined) delete p.content.time
-  if (c.content !== undefined) delete c.content.time
-
-  return Object.keys(diff(p, c)).length !== 0
-}
 
 const statuses = {
   INITIAL: 'INITIAL',
@@ -90,11 +80,7 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
     value: tag.id,
   }))
 
-  const createOrUpdatePost = useDebounce(
-    state,
-    async ({ values, valid }) => {
-      if (!valid || !hasFormChanged(refPreviousForm.current, values)) return
-
+  const createOrUpdatePost = useDebounce(state, async (currentState, { values }) => {
       const filesDiff = diff(refPreviousForm.current.files, values.files)
       refPreviousForm.current = values
 
@@ -106,7 +92,8 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
             posts.validations.prepareCreate({
               ...values,
               author,
-              id: state.storyId,
+              publish: currentState.published,
+              id: currentState.storyId,
             }),
           ),
         )
@@ -117,7 +104,7 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
           // only update images if there is a change in files
           if (Object.keys(filesDiff).length > 0) {
             await FormHelper.fakeDelay(
-              async () => await uploadOrUpdateImages(state.files, res.data.id),
+              async () => await uploadOrUpdateImages(currentState.files, res.data.id),
             )
           }
         }
@@ -158,7 +145,7 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
               filesReducerCreateAction({
                 type: filesReducerActions.MODIFY,
                 index: i,
-                data: { ...image, id: res.data[0].id },
+                data: { id: res.data[0].id },
               }),
             )
         } else {
@@ -234,8 +221,7 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
       render={({ form, values, valid, submitting }) => (
         <form>
           {JSON.stringify(state)}
-          <FormSpy
-            subscription={{ values: true, valid: true }}
+          <FormHelper.FormOnChangeHandler
             onChange={createOrUpdatePost}
           />
 

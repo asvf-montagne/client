@@ -152,11 +152,11 @@ export default function UploadImageInput({
                                   filesReducerCreateAction({
                                     type: filesReducerActions.MODIFY,
                                     index,
-                                    data: { ...f, caption: e },
+                                    data: { caption: e },
                                   }),
                                 )
 
-                                // notify form from chngin the caption of a file
+                                // notify form from chang in the caption of a file
                                 input.onChange(e)
                               }}
                             />

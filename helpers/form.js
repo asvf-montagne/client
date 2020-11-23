@@ -1,3 +1,6 @@
+import { useRef } from 'react'
+import { useFormState } from 'react-final-form'
+
 function wait(delay) {
   return new Promise((resolve) => setTimeout(resolve, delay))
 }
@@ -40,6 +43,23 @@ const FormHelper = {
 
     return res
   },
+
+  FormOnChangeHandler({ onChange }) {
+    const ref = useRef("")
+
+    useFormState(
+      {
+        onChange: ({ values, valid }) => {
+          if (valid && ref.current !== JSON.stringify(values)) {
+            ref.current = JSON.stringify(values)
+            onChange({values, valid})
+          }
+        },
+        subscription: { values: true, valid: true }
+      })
+
+    return null
+  },
 }
 
-export default FormHelper
+  export default FormHelper

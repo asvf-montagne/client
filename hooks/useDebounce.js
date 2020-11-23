@@ -5,6 +5,7 @@ import { useCallback, useRef } from 'react'
  * the latest call.
  *
  *
+ * @param state
  * @param {function} fn
  * @param {number} delay
  * @returns {function}
@@ -13,35 +14,38 @@ export default function useDebounce(state, fn, delay = 0) {
   const ref = useRef({
     lastTimeoutId: undefined,
     args: {},
+    state,
     promisePending: false,
     argsWaitingPromise: undefined,
   })
 
-  async function execute(isCallWaitingRelease = false) {
-    ref.current.promisePending = true
-
-    let args
-
-    if (isCallWaitingRelease) {
-      args = ref.current.argsWaitingPromise
-      ref.current.argsWaitingPromise = undefined
-    } else {
-      args = ref.current.args
-      ref.current.args = undefined
-    }
-
-    await fn(args)
-
-    if (ref.current.argsWaitingPromise !== undefined) {
-      await execute(true)
-    }
-
-    ref.current.promisePending = false
-  }
+  ref.current.state = state
 
   return useCallback(
     ({ ...args }) => {
-      if (ref.current.promisePending) {
+      async function execute(isCallWaitingRelease = false) {
+        ref.current.promisePending = true
+
+        let args
+
+        if (isCallWaitingRelease) {
+          args = ref.current.argsWaitingPromise
+          ref.current.argsWaitingPromise = undefined
+        } else {
+          args = ref.current.args
+          ref.current.args = undefined
+        }
+
+        await fn(ref.current.state, args)
+
+        if (ref.current.argsWaitingPromise !== undefined) {
+          await execute(true)
+        }
+
+        ref.current.promisePending = false
+      }
+
+      if (ref.current.promisePending === true) {
         ref.current.argsWaitingPromise = args
         return
       }
@@ -53,6 +57,6 @@ export default function useDebounce(state, fn, delay = 0) {
 
       ref.current.lastTimeoutId = setTimeout(execute, delay)
     },
-    [state, delay],
+    [delay],
   )
 }
