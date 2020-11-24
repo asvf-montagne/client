@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container:not(:last-child) {
+    margin-bottom: 32px;
+}
+
+.container_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 52px;
+}
+
+.container_header_title {
+    color: var(--font-color-secondary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--title-size-large);
+}

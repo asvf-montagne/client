@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
-import PropTypes from 'prop-types'
+import InputLabel from '@components/atoms/InputLabel'
 import Icon from '@material-ui/core/Icon'
+import PropTypes from 'prop-types'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './Select.module.css'
 
 Select.propTypes = {
@@ -14,11 +15,11 @@ Select.propTypes = {
         .isRequired,
     }),
   ).isRequired,
-  value: PropTypes.string.isRequired,
-  setValue: PropTypes.func.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
-  handleFocus: PropTypes.func,
-  handleBlur: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   meta: PropTypes.object,
 }
 
@@ -28,10 +29,10 @@ export default function Select({
   borderless = false,
   options,
   value,
-  setValue,
+  onChange,
   placeholder,
-  handleFocus,
-  handleBlur,
+  onFocus,
+  onBlur,
   meta,
   ...props
 }) {
@@ -40,8 +41,13 @@ export default function Select({
   const [menu, setMenu] = useState(false)
 
   function handleSelectOption(option) {
-    setValue(option)
+    onChange(option.value)
     setMenu(false)
+  }
+
+  function currentLabel() {
+    const selectedOption = options.filter((option) => option.value === value)[0]
+    return !!selectedOption && selectedOption.label
   }
 
   useEffect(() => {
@@ -49,14 +55,15 @@ export default function Select({
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
         setMenu(false)
         setFocus(false)
-        if (!!handleBlur) {
-          handleBlur()
+        if (!!onBlur) {
+          onBlur()
         }
       }
     }
+
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [wrapperRef, handleBlur])
+  }, [wrapperRef, onBlur])
 
   return (
     <div
@@ -65,11 +72,7 @@ export default function Select({
       }`}
       {...props}
     >
-      {label && (
-        <span className={styles.select_header}>
-          <label className={styles.select_header_label}>{label}</label>
-        </span>
-      )}
+      {label && <InputLabel label={label} />}
 
       <div
         className={`${styles.select} ${
@@ -81,37 +84,30 @@ export default function Select({
           className={`${styles.select_control} ${
             borderless ? styles.select_control_borderless : ''
           }`}
-          aria-selected={
-            meta && meta.touched && focus ? 'focused' : 'unfocused'
-          }
+          aria-selected={focus ? 'focused' : 'unfocused'}
           onClick={() => {
             if (!disabled) {
               setMenu(!menu)
               setFocus(true)
-              if (!!handleFocus) {
-                handleFocus()
+              if (!!onFocus) {
+                onFocus()
               }
             }
           }}
         >
-          <div
-            className={styles.select_placeholder}
-            aria-selected={!!value.label}
-          >
+          <div className={styles.select_placeholder} aria-selected={!!value}>
             {!borderless && (
               <div className={styles.select_placeholder_icon_container}>
                 <Icon
                   className={styles.select_placeholder_icon}
-                  aria-selected={
-                    meta && meta.touched && focus ? 'focused' : 'unfocused'
-                  }
+                  aria-selected={focus ? 'focused' : 'unfocused'}
                 >
                   inbox
                 </Icon>
               </div>
             )}
             <div className={styles.select_placeholder_inner}>
-              {value.label || placeholder}
+              {currentLabel() || placeholder}
             </div>
           </div>
           {!menu ? (

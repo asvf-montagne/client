@@ -25,13 +25,6 @@
     margin-bottom: 16px;
 }
 
-.select_header_label {
-    font-size: var(--text-size-large);
-    font-weight: var(--font-weight-regular);
-    color: var(--font-color-secondary);
-}
-
-
 .select_control {
     background-color: white;
     display: flex;
@@ -87,7 +80,7 @@
 
 .select_placeholder_inner {
     flex: 1;
-    padding: 14px;
+    padding: 11px;
     border: none;
 }
 

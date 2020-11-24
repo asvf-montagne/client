@@ -37,7 +37,7 @@ export default function SuggestedStories({ stories }) {
                   image={view.getPreviewImage(story)}
                   author={story.author}
                   categories={story.tags[0]}
-                  date={view.getPublishedTimeAgo(story)}
+                  date={view.getTimeAgo(story)}
                 />
               ))}
             </div>

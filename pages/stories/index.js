@@ -1,26 +1,26 @@
+import React, { useReducer, useState } from 'react'
+import PropTypes from 'prop-types'
 import Layout from '@components/atoms/Layout'
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
 import SearchHeader from '@components/molecules/SearchHeader'
 import StoriesGrid from '@components/organisms/StoriesGrid'
 import FormHelper from '@helpers/form'
 import useServices from '@hooks/useServices'
-import PropTypes from 'prop-types'
-import React, { useReducer, useState } from 'react'
 import services from '../../services'
 
-const StoriesActions = {
+const actionTypes = {
   SET_STORIES: 'SET_STORIES',
   ADD_STORIES: 'ADD_STORIES',
 }
 
 function StoriesReducer(state, action) {
   switch (action.type) {
-    case StoriesActions.SET_STORIES:
+    case actionTypes.SET_STORIES:
       return {
         stories: action.params.stories,
         showFetchMoreStoriesBtn: action.params.stories.length >= 15,
       }
-    case StoriesActions.ADD_STORIES:
+    case actionTypes.ADD_STORIES:
       const newStories = [...state.stories, ...action.params.stories]
       return {
         stories: newStories,
@@ -51,7 +51,7 @@ export default function Stories({ tags, stories }) {
   })
 
   function getParamsForSearch(isSet = true) {
-    const params = { start: isSet ? 0 : state.stories.length }
+    const params = { start: isSet ? 0 : state.stories.length, published: true }
     if (tagId !== 'ALL') {
       params.tagId = tagId
     }
@@ -69,7 +69,7 @@ export default function Stories({ tags, stories }) {
     const stories = await FormHelper.fakeDelay(
       async () => await api.search(getParamsForSearch()),
     )
-    dispatch({ type: StoriesActions.SET_STORIES, params: { stories } })
+    dispatch({ type: actionTypes.SET_STORIES, params: { stories } })
 
     serLoading(false)
   }
@@ -82,7 +82,7 @@ export default function Stories({ tags, stories }) {
     )
 
     const scrollOrigin = window.scrollY
-    dispatch({ type: StoriesActions.ADD_STORIES, params: { stories } })
+    dispatch({ type: actionTypes.ADD_STORIES, params: { stories } })
 
     // this in order to get the user view facing to the first new fetched story
     if (window.scrollY > scrollOrigin) {

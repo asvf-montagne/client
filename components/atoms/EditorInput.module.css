@@ -1,14 +1,23 @@
 .editor {
-    padding: 14px 0 14px 14px;
-    width: 100%;
-    border: 2px solid var(--font-color-gray2);
-    border-radius: var(--border-radius-medium);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-bottom: 16px;
 }
 
-.editor_focused {
+.editor_container {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    border: 2px solid var(--font-color-gray2);
+    margin-bottom: 28px;
+}
+
+.editor_container[aria-selected="true"] {
     border: 2px solid var(--font-color-link);
 }
 
-.editor_error {
-    border: 2px solid var(--font-color-status-error);
+.editor_input {
+    padding: 32px;
 }

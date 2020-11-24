@@ -10,7 +10,7 @@
     border-style: dashed;
     color: var(--font-color-secondary);
     outline: none;
-    transition: border .24s ease-in-out;
+    transition: .2s;
     cursor: pointer;
 }
 
@@ -87,6 +87,10 @@
     margin-left: 16px;
     color: var(--font-color-gray2);
     cursor: pointer;
+}
+
+.img_preview__contained_del__disabled {
+    cursor: not-allowed;
 }
 
 .img_preview__contained_del:hover {

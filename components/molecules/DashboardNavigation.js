@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Icon from '@material-ui/core/Icon'
-import styles from './AccountNavigation.module.css'
+import styles from './DashboardNavigation.module.css'
 
 NavLink.propTypes = {
   name: PropTypes.string.isRequired,
@@ -22,7 +22,7 @@ function NavLink({ name, icon, url }) {
   )
 }
 
-export default function AccountNavigation() {
+export default function DashboardNavigation() {
   const links = [
     {
       name: 'Mes détails',

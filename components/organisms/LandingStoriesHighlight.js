@@ -41,7 +41,7 @@ export default function LandingStoriesHighlight({
                     image={view.getPreviewImage(highlightedStory)}
                     author={highlightedStory.author}
                     categories={highlightedStory.tags[0]}
-                    date={view.getPublishedTimeAgo(highlightedStory)}
+                    date={view.getTimeAgo(highlightedStory)}
                   />
                 </div>
               </div>
@@ -55,7 +55,7 @@ export default function LandingStoriesHighlight({
                 title={story.title}
                 author={story.author}
                 categories={story.tags[0]}
-                date={view.getPublishedTimeAgo(story)}
+                date={view.getTimeAgo(story)}
               />
             ))}
           </div>

@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Layout from '@components/atoms/Layout'
 import DashboardLayout from '@components/atoms/DashboardLayout'
-import AccountNavigation from '@components/molecules/AccountNavigation'
-import AccountLinkWithGoogle from '@components/molecules/AccountLinkWithGoogle'
+import DashboardNavigation from '@components/molecules/DashboardNavigation'
+import DashboardLinkWithGoogle from '@components/molecules/DashboardLinkWithGoogle'
 import FormDashboardSettingsAccount from '@components/organisms/Forms/FormDashboardSettingsAccount'
 import FormDashboardSettingsPassword from '@components/organisms/Forms/FormDashboardSettingsPassword'
 import services from '../../services'
@@ -19,26 +19,26 @@ Settings.propTypes = {
  * @constructor
  */
 export default function Settings({ user }) {
-  async function handleLinkWithGoogle(event) {
-    try {
-      console.log('link')
-    } catch (error) {
-      console.error('error while submitting sign up form', error)
-    }
-  }
+  // async function handleLinkWithGoogle(event) {
+  //   try {
+  //     console.log('LINK WITH GOOGLE ACCOUNT')
+  //   } catch (error) {
+  //     console.error('error while submitting sign up form', error)
+  //   }
+  // }
 
   return (
     <Layout>
-      <AccountNavigation />
+      <DashboardNavigation />
       <DashboardLayout>
         <FormDashboardSettingsAccount user={user} />
 
         <FormDashboardSettingsPassword />
 
-        <AccountLinkWithGoogle
+        <DashboardLinkWithGoogle
           label="Lier mon compte google"
           description="Pour plus de simplicité connectez vous avec votre compte google en cliquant sur bouton ci-contre."
-          onClick={handleLinkWithGoogle}
+          // onClick={handleLinkWithGoogle}
         />
       </DashboardLayout>
     </Layout>
