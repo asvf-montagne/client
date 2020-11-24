@@ -37,12 +37,13 @@ export async function getServerSideProps(ctx) {
   } = services({ token: ctx.req.cookies.token, isServer: true })
 
   let story = {}
+  console.log(ctx.query.id)
   if (ctx.query.id !== undefined) {
     try {
       const res = await posts.api.find({ id: ctx.query.id, published: false })
       story = { story: res }
     } catch (error) {
-      console.error(`unable to get post with id ${ctx.query.id}`, error.data)
+      console.error(`unable to get post with id ${ctx.query.id}`, error)
     }
   }
 

@@ -1,4 +1,4 @@
-import FormCreateOrUpdateStory from '@components/organisms/Forms/FormCreateOrUpdateStory'
+import FormStoryEditor from '@components/organisms/Forms/FormStoryEditor'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './DashboardStories.module.css'
@@ -17,7 +17,7 @@ export default function DashboardStoryCreator({ title, tags, user, story }) {
         <h1 className={styles.container_header_title}>{title}</h1>
       </span>
 
-      <FormCreateOrUpdateStory tags={tags} author={user.id} story={story} />
+      <FormStoryEditor tags={tags} author={user.id} story={story} />
     </div>
   )
 }
