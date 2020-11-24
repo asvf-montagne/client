@@ -18,7 +18,7 @@ import { diff } from 'deep-object-diff'
 import arrayMutators from 'final-form-arrays'
 import dynamic from 'next/dynamic'
 import PropTypes from 'prop-types'
-import React, { useReducer, useRef } from 'react'
+import React, { useMemo, useReducer, useRef } from 'react'
 import { Field, Form } from 'react-final-form'
 import styles from './FormCreateStory.module.css'
 
@@ -62,11 +62,32 @@ FormCreateOrUpdateStory.propTypes = {
 }
 
 export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
+  const files = useMemo(() => {
+    if (story.images !== undefined) {
+      return story.images.map((image) => {
+        return {
+          file: {
+            path: image.name,
+            size: image.height * image.width,
+            lastModified: 0,
+          },
+          caption: image.caption,
+          preview: image.url,
+          id: image.id,
+        }
+      })
+    }
+
+    return filesReducerDefaultState.files
+  }, [story])
+
   const [state, dispatch] = useReducer(reducer, {
     status: statuses.INITIAL,
-    storyId: undefined,
-    published: false,
-    ...filesReducerDefaultState,
+    storyId: story.id || undefined,
+    published:
+      (story.published_at !== null && story.published_at === undefined) ||
+      false,
+    files,
   })
 
   // refPreviousForm keep the latest form to diff if there is change (because editor.js is a pain and save
@@ -210,15 +231,17 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
       validate={posts.validations.create}
       initialValues={{
         title: story.title || '',
-        content: story.content || {
+        content: JSON.parse(story.content) || {
           blocks: [{ type: 'paragraph', data: {} }],
           version: '2.19.0',
         },
         tags:
           story.tags && story.tags.length > 0
-            ? story.tags[0].id
+            ? options.find((f) => f.label === story.tags[0]).value
             : options[0].value,
-        ['event_date']: story.event_date ? new Date(story.event_date) : '',
+        ['event_date']:
+          story.event_date !== undefined ? new Date(story.event_date) : '',
+        files,
       }}
       render={({ form, values, valid, submitting }) => (
         <form>
@@ -304,7 +327,7 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
 
 FormFooter.propTypes = {
   state: PropTypes.object.isRequired,
-  canSubmit: PropTypes.func.isRequired,
+  canSubmit: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   handlePublish: PropTypes.func.isRequired,
 }

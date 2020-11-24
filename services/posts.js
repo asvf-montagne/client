@@ -78,10 +78,11 @@ const posts = (client) => ({
       return res.data
     },
 
-    async find({ id }) {
+    async find({ id, published }) {
       const res = await client.get(`/posts/view/post`, {
         params: {
           id,
+          published,
         },
       })
       return res.data

@@ -6,17 +6,23 @@ import services from '@services/index'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-NewStories.propTypes = {
+Editor.propTypes = {
   tags: PropTypes.array,
   user: PropTypes.object,
+  story: PropTypes.object,
 }
 
-export default function NewStories({ tags, user }) {
+export default function Editor({ tags, user, story = {} }) {
   return (
     <Layout>
       <DashboardNavigation />
       <DashboardLayout>
-        <DashboardStoryCreator title="Créer un récit" tags={tags} user={user} />
+        <DashboardStoryCreator
+          title="Créer un récit"
+          tags={tags}
+          user={user}
+          story={story}
+        />
       </DashboardLayout>
     </Layout>
   )
@@ -25,16 +31,25 @@ export default function NewStories({ tags, user }) {
 export async function getServerSideProps(ctx) {
   const {
     tags,
+    posts,
     auth,
     users: { api },
   } = services({ token: ctx.req.cookies.token, isServer: true })
 
+  let story = {}
+  if (ctx.query.id !== undefined) {
+    try {
+      const res = await posts.api.find({ id: ctx.query.id, published: false })
+      story = { story: res }
+    } catch (error) {
+      console.error(`unable to get post with id ${ctx.query.id}`, error.data)
+    }
+  }
+
   const user = await auth.helpers.shouldRedirectIfNotAuthenticated(api, ctx)
   const tagsList = await tags.api.list()
 
-  console.log(user, tags)
-
   return {
-    props: { tags: tagsList, user },
+    props: { tags: tagsList, user, ...story },
   }
 }

@@ -1,8 +1,9 @@
-import useServices from '@hooks/useServices'
-import PropTypes from 'prop-types'
-import CardStoryMin from '@components/molecules/CardStoryMin'
 import Button from '@components/atoms/Button'
 import BigIcon from '@components/molecules/BigIcon'
+import CardStoryMin from '@components/molecules/CardStoryMin'
+import useServices from '@hooks/useServices'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './DashboardStories.module.css'
 
@@ -13,9 +14,12 @@ DashboardStories.propTypes = {
 }
 
 export default function DashboardStories({ title, stories, handleClick }) {
+  const router = useRouter()
+
   const {
     posts: { view },
   } = useServices()
+
   return (
     <div className={styles.container}>
       <span className={styles.container_header}>
@@ -36,6 +40,9 @@ export default function DashboardStories({ title, stories, handleClick }) {
             key={index}
             id={+story.id}
             title={story.title}
+            handleRedirection={() =>
+              router.push(`/dashboard/stories/editor?id=${story.id}`)
+            }
             badge={{
               color: story.published_at === null ? 'yellow' : 'blue',
               label: story.published_at === null ? 'brouillon' : 'publié',
