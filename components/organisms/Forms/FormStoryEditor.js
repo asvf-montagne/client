@@ -63,13 +63,16 @@ FormStoryEditor.propTypes = {
 }
 
 export default function FormStoryEditor({ tags, story = {}, author }) {
-
   const router = useRouter()
 
-  const options = useMemo(() => tags.map((tag) => ({
-    label: tag.tag,
-    value: tag.id,
-  })), tags)
+  const options = useMemo(
+    () =>
+      tags.map((tag) => ({
+        label: tag.tag,
+        value: tag.id,
+      })),
+    tags,
+  )
 
   const initialValues = useMemo(() => {
     const defaultValues = {
@@ -96,21 +99,22 @@ export default function FormStoryEditor({ tags, story = {}, author }) {
       }))
 
       return {
-        title: story.title === null
-          ? defaultValues.title
-          : story.title,
+        title: story.title === null ? defaultValues.title : story.title,
 
-        content: story.content === null
-          ? defaultValues.content
-          : JSON.parse(story.content),
+        content:
+          story.content === null
+            ? defaultValues.content
+            : JSON.parse(story.content),
 
-        tags: story.tags === null || story.tags.length === 0
-          ? defaultValues.tags
-          : options.find((f) => f.label === story.tags[0]).value,
+        tags:
+          story.tags === null || story.tags.length === 0
+            ? defaultValues.tags
+            : options.find((f) => f.label === story.tags[0]).value,
 
-        event_date: story.event_date === null
-          ? defaultValues.event_date
-          : new Date(story.event_date),
+        event_date:
+          story.event_date === null
+            ? defaultValues.event_date
+            : new Date(story.event_date),
 
         files,
       }
@@ -154,7 +158,10 @@ export default function FormStoryEditor({ tags, story = {}, author }) {
         if (res.status === 200) {
           if (currentState.storyId === undefined) {
             dispatch({ type: actionTypes.SET_STORY_ID, data: res.data.id })
-            router.push(`/dashboard/stories/editor?id=${res.data.id}`, {}, { shallow: true })
+            router.push(
+              `/?id=${res.data.id}`, undefined,
+              { shallow: true },
+            )
           }
 
           // only update images if there is a change in files
@@ -266,7 +273,7 @@ export default function FormStoryEditor({ tags, story = {}, author }) {
       initialValues={initialValues}
       render={({ form, values, valid, submitting }) => (
         <form>
-          <FormHelper.FormOnChangeHandler onChange={createOrUpdatePost}/>
+          <FormHelper.FormOnChangeHandler onChange={createOrUpdatePost} />
 
           <div className={styles.form_title}>
             <Field name="title" type="text">
