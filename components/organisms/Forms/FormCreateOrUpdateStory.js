@@ -94,7 +94,6 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
             posts.validations.prepareCreate({
               ...values,
               author,
-              publish: currentState.published,
               id: currentState.storyId,
             }),
           ),

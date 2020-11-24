@@ -43,6 +43,7 @@ const posts = (client) => ({
           console.log('updating story id', id)
           return await client.put(`/posts/${id}`, data)
         } else {
+          data.published_at = null
           console.log('creating story with ', data)
           return await client.post(`/posts`, data)
         }
@@ -90,6 +91,7 @@ const posts = (client) => ({
       const res = await client.get(`/posts/view/search`, {
         params: {
           limit: limit,
+          published: true,
           publishedBefore: date,
         },
       })
