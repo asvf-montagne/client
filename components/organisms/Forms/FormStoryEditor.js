@@ -158,7 +158,6 @@ export default function FormStoryEditor({ tags, story = {}, author }) {
         if (res.status === 200) {
           if (currentState.storyId === undefined) {
             dispatch({ type: actionTypes.SET_STORY_ID, data: res.data.id })
-            router.push(`/dashboard/stories/editor?id=${res.data.id}`, undefined, { shallow: true })
           }
 
           // only update images if there is a change in files
