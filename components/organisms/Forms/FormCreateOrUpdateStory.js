@@ -222,7 +222,6 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
       }}
       render={({ form, values, valid, submitting }) => (
         <form>
-          {JSON.stringify(state)}
           <FormHelper.FormOnChangeHandler onChange={createOrUpdatePost} />
 
           <div className={styles.form_title}>
