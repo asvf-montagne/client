@@ -49,7 +49,7 @@ export default function FormResetPassword({}) {
         pristine,
         submitting,
       }) => (
-        <form className={styles.signUpForm}>
+        <form className={styles.signUpForm} onSubmit={(e) => e.preventDefault()}>
           <DisplaySuccessOrError
             success={success}
             error={submitError}

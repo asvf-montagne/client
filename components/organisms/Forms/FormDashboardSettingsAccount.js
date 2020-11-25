@@ -59,7 +59,7 @@ export default function FormDashboardSettingsAccount({ user = {} }) {
         email: (user && user.email) || '',
       }}
       render={({ submitError, handleSubmit, values, submitting }) => (
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
           <span className={styles.form_header}>
             <h1 className={styles.form_header_title}>
               Informations personnelles

@@ -48,7 +48,7 @@ export default function FormSignIn({}) {
       onSubmit={handleSubmit}
       validate={auth.validations.signIn}
       render={({ submitError, handleSubmit, values, pristine, submitting }) => (
-        <form className={styles.signUpForm}>
+        <form className={styles.signUpForm} onSubmit={(e) => e.preventDefault()}>
           <FormSuccessOrError
             success={false}
             error={submitError}
@@ -80,6 +80,7 @@ export default function FormSignIn({}) {
                 ref={refPassword}
                 {...input}
                 meta={meta}
+                link={{ title: 'Mot de passe oublié ?', ref: '/auth/forgot-password' }}
                 onKeyDown={(e) =>
                   FormHelper.withKeyCode(e, 13, () => handleSubmit(values))
                 }

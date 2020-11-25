@@ -20,7 +20,7 @@ import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import React, { useMemo, useReducer, useRef } from 'react'
 import { Field, Form } from 'react-final-form'
-import styles from './FormCreateStory.module.css'
+import styles from './FormStoryEditor.module.css'
 
 const EditorInput = dynamic(() => import('@components/atoms/EditorInput'), {
   ssr: false,
@@ -66,8 +66,6 @@ FormStoryEditor.propTypes = {
 }
 
 export default function FormStoryEditor({ tags, story = {}, author }) {
-  const router = useRouter()
-
   const options = useMemo(
     () =>
       tags.map((tag) => ({
@@ -273,7 +271,7 @@ export default function FormStoryEditor({ tags, story = {}, author }) {
       validate={posts.validations.create}
       initialValues={initialValues}
       render={({ form, values, valid, submitting }) => (
-        <form>
+        <form onSubmit={(e) => e.preventDefault()}>
           <FormHelper.FormOnChangeHandler onChange={createOrUpdatePost} />
 
           <div className={styles.form_title}>

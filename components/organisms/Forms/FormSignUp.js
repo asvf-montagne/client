@@ -45,7 +45,7 @@ export default function FormSignUp({}) {
       validate={auth.validations.signUp}
       onSubmit={handleSubmit}
       render={({ submitError, handleSubmit, values, pristine, submitting }) => (
-        <form className={styles.signUpForm}>
+        <form className={styles.signUpForm} onSubmit={(e) => e.preventDefault()}>
           <DisplaySuccessOrError
             success={false}
             error={submitError}
