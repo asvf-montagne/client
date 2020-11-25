@@ -15,7 +15,7 @@ Editor.propTypes = {
 export default function Editor({ tags, user, story = {} }) {
   return (
     <Layout>
-      <DashboardNavigation />
+      <DashboardNavigation/>
       <DashboardLayout>
         <DashboardStoryCreator
           title="Créer un récit"
@@ -36,18 +36,28 @@ export async function getServerSideProps(ctx) {
     users: { api },
   } = services({ token: ctx.req.cookies.token, isServer: true })
 
+  const user = await auth.helpers.shouldRedirectIfNotAuthenticated(api, ctx)
+
   let story = {}
-  console.log(ctx.query.id)
+
   if (ctx.query.id !== undefined) {
+    const storyId = ctx.query.id
+
+    // check that the user can edit this story
+    if (!(await posts.api.canEdit({ id: storyId }))) {
+      ctx.res.statusCode = 302
+      ctx.res.setHeader('Location', `/dashboard/stories`)
+      return
+    }
+
     try {
-      const res = await posts.api.find({ id: ctx.query.id, published: false })
+      const res = await posts.api.find({ id: storyId, published: false })
       story = { story: res }
     } catch (error) {
-      console.error(`unable to get post with id ${ctx.query.id}`, error)
+      console.error(`unable to get post with id ${storyId}`, error)
     }
   }
 
-  const user = await auth.helpers.shouldRedirectIfNotAuthenticated(api, ctx)
   const tagsList = await tags.api.list()
 
   return {

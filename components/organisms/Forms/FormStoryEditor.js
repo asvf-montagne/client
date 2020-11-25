@@ -107,7 +107,7 @@ export default function FormStoryEditor({ tags, story = {}, author }) {
             : JSON.parse(story.content),
 
         tags:
-          story.tags === null || story.tags.length === 0
+          story.tags === null || story.tags.length === 0 || story.tags[0] === null
             ? defaultValues.tags
             : options.find((f) => f.label === story.tags[0]).value,
 
