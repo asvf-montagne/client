@@ -12,14 +12,16 @@ const requestRoleSubmissions = (client) => ({
 
     async hasAlreadyQuestRole({ userId, role }) {
       try {
-        const res = await client.get('/request-role-submissions', { params: { user: userId, role } })
+        const res = await client.get('/request-role-submissions', {
+          params: { user: userId, role },
+        })
 
-        return (res.status === 200 && res.data.length === 1)
+        return res.status === 200 && res.data.length === 1
       } catch (error) {
         return false
       }
-    }
-  }
+    },
+  },
 })
 
 export default requestRoleSubmissions

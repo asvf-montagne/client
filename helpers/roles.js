@@ -1,14 +1,14 @@
 export default {
   editor: {
     id: 3,
-    name: 'Editor'
+    name: 'Editor',
   },
   authenticated: {
     id: 2,
-    name: 'Authenticated'
+    name: 'Authenticated',
   },
   public: {
     id: 2,
-    name: 'Public'
-  }
+    name: 'Public',
+  },
 }

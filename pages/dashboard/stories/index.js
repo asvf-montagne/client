@@ -14,7 +14,7 @@ import React, { useState } from 'react'
 Stories.propTypes = {
   user: PropTypes.object,
   posts: PropTypes.array,
-  hasRequestRoleEditor: PropTypes.bool
+  hasRequestRoleEditor: PropTypes.bool,
 }
 
 /**
@@ -26,7 +26,9 @@ Stories.propTypes = {
  * @constructor
  */
 export default function Stories({ user, posts, hasRequestRoleEditor }) {
-  const [hasRequestedRoleEditor, setHasRequestedRoleEditor] = useState(hasRequestRoleEditor)
+  const [hasRequestedRoleEditor, setHasRequestedRoleEditor] = useState(
+    hasRequestRoleEditor,
+  )
   const router = useRouter()
   const { requestRoleSubmissions } = useServices()
 
@@ -36,7 +38,9 @@ export default function Stories({ user, posts, hasRequestRoleEditor }) {
 
   async function handleGetAccess() {
     try {
-      const res = await requestRoleSubmissions.api.create({ role: roles.editor.id })
+      const res = await requestRoleSubmissions.api.create({
+        role: roles.editor.id,
+      })
       if (res.status === 200) setHasRequestedRoleEditor(true)
     } catch (error) {
       console.error('error while trying to request role', error)
@@ -45,7 +49,7 @@ export default function Stories({ user, posts, hasRequestRoleEditor }) {
 
   return (
     <Layout>
-      <DashboardNavigation/>
+      <DashboardNavigation />
       <DashboardLayout>
         {user.role.id !== roles.editor.id && (
           <>
@@ -62,7 +66,9 @@ export default function Stories({ user, posts, hasRequestRoleEditor }) {
               onClick={handleGetAccess}
               style={{ margin: '0 auto', marginTop: 52 }}
             >
-              {hasRequestedRoleEditor ? `Votre demande d'accès est en cours d'étude` : `Demander l'accès`}
+              {hasRequestedRoleEditor
+                ? `Votre demande d'accès est en cours d'étude`
+                : `Demander l'accès`}
             </Button>
           </>
         )}
@@ -96,11 +102,12 @@ export async function getServerSideProps(ctx) {
 
   let hasRequestRoleEditor = true
   if (user.role.id !== roles.editor.id) {
-    hasRequestRoleEditor = await requestRoleSubmissions.api.hasAlreadyQuestRole({
-      userId: user.id,
-      role: roles.editor.id
-    })
-
+    hasRequestRoleEditor = await requestRoleSubmissions.api.hasAlreadyQuestRole(
+      {
+        userId: user.id,
+        role: roles.editor.id,
+      },
+    )
   }
 
   if (user) {
