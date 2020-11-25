@@ -13,7 +13,7 @@ import TokenHelper from '../helpers/token'
  * @property {string} created_at
  * @property {string} updated_at
  * @property {boolean} confirmed
- * @property {Object} role
+ * @property {{description: string, id: number, name: string, type: string}} role
  * @property {string} [lastname]
  * @property {string} [firstname]
  * @property {string} [phone]

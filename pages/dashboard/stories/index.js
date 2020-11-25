@@ -1,42 +1,53 @@
-import PropTypes from 'prop-types'
-import { useRouter } from 'next/router'
-import Layout from '@components/atoms/Layout'
 import Button from '@components/atoms/Button'
-import BigIcon from '@components/molecules/BigIcon'
 import DashboardLayout from '@components/atoms/DashboardLayout'
+import Layout from '@components/atoms/Layout'
+import BigIcon from '@components/molecules/BigIcon'
 import DashboardNavigation from '@components/molecules/DashboardNavigation'
 import DashboardStories from '@components/organisms/DashboardStories'
+import roles from '@helpers/roles'
+import useServices from '@hooks/useServices'
 import services from '@services/index'
-import React from 'react'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
+import React, { useState } from 'react'
 
 Stories.propTypes = {
   user: PropTypes.object,
   posts: PropTypes.array,
+  hasRequestRoleEditor: PropTypes.bool
 }
 
 /**
  *
  * @param {User} user
  * @param {Array} posts
+ * @param {boolean} hasRequestRoleEditor
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Stories({ user, posts }) {
+export default function Stories({ user, posts, hasRequestRoleEditor }) {
+  const [hasRequestedRoleEditor, setHasRequestedRoleEditor] = useState(hasRequestRoleEditor)
   const router = useRouter()
+  const { requestRoleSubmissions } = useServices()
 
   function handleCreateStory() {
     router.push('/dashboard/stories/editor')
   }
 
-  function handleGetAccess() {
-    console.log('todo: request access')
+  async function handleGetAccess() {
+    try {
+      const res = await requestRoleSubmissions.api.create({ role: roles.editor.id })
+      if (res.status === 200) setHasRequestedRoleEditor(true)
+    } catch (error) {
+      console.error('error while trying to request role', error)
+    }
   }
 
   return (
     <Layout>
-      <DashboardNavigation />
+      <DashboardNavigation/>
       <DashboardLayout>
-        {user.role.name === 'Authenticated' && (
+        {user.role.id !== roles.editor.id && (
           <>
             <BigIcon
               icon="error"
@@ -47,14 +58,15 @@ export default function Stories({ user, posts }) {
               size="medium"
               variant="primary"
               focus="primary"
+              disabled={hasRequestedRoleEditor}
               onClick={handleGetAccess}
               style={{ margin: '0 auto', marginTop: 52 }}
             >
-              Demander l’accès
+              {hasRequestedRoleEditor ? `Votre demande d'accès est en cours d'étude` : `Demander l'accès`}
             </Button>
           </>
         )}
-        {user.role.name === 'Editor' && (
+        {user.role.id === roles.editor.id && (
           <DashboardStories
             title={`Mes récit (${posts.length})`}
             stories={posts}
@@ -71,6 +83,7 @@ export async function getServerSideProps(ctx) {
     auth,
     posts,
     users: { api },
+    requestRoleSubmissions,
   } = services({ token: ctx.req.cookies.token, isServer: true })
 
   const user = await auth.helpers.shouldRedirectIfNotAuthenticated(api, ctx)
@@ -81,9 +94,18 @@ export async function getServerSideProps(ctx) {
     published: false,
   })
 
+  let hasRequestRoleEditor = true
+  if (user.role.id !== roles.editor.id) {
+    hasRequestRoleEditor = await requestRoleSubmissions.api.hasAlreadyQuestRole({
+      userId: user.id,
+      role: roles.editor.id
+    })
+
+  }
+
   if (user) {
     return {
-      props: { user, posts: postList },
+      props: { user, posts: postList, hasRequestRoleEditor },
     }
   }
 }
