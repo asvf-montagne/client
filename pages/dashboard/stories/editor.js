@@ -15,7 +15,7 @@ Editor.propTypes = {
 export default function Editor({ tags, user, story = {} }) {
   return (
     <Layout>
-      <DashboardNavigation/>
+      <DashboardNavigation />
       <DashboardLayout>
         <DashboardStoryCreator
           title="Créer un récit"
@@ -47,7 +47,6 @@ export async function getServerSideProps(ctx) {
     if (!(await posts.api.canEdit({ id: storyId }))) {
       ctx.res.statusCode = 302
       ctx.res.setHeader('Location', `/dashboard/stories`)
-      return
     }
 
     try {

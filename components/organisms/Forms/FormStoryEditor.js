@@ -1,5 +1,4 @@
 import Button from '@components/atoms/Button'
-import DatePicker from '@components/atoms/DatePicker'
 import Input from '@components/atoms/Input'
 import Select from '@components/atoms/Select'
 import UploadImageInput from '@components/organisms/UploadImageInput'
@@ -24,6 +23,10 @@ import { Field, Form } from 'react-final-form'
 import styles from './FormCreateStory.module.css'
 
 const EditorInput = dynamic(() => import('@components/atoms/EditorInput'), {
+  ssr: false,
+})
+
+const DatePicker = dynamic(() => import('@components/atoms/DatePicker'), {
   ssr: false,
 })
 
@@ -107,7 +110,9 @@ export default function FormStoryEditor({ tags, story = {}, author }) {
             : JSON.parse(story.content),
 
         tags:
-          story.tags === null || story.tags.length === 0 || story.tags[0] === null
+          story.tags === null ||
+          story.tags.length === 0 ||
+          story.tags[0] === null
             ? defaultValues.tags
             : options.find((f) => f.label === story.tags[0]).value,
 

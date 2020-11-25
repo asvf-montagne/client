@@ -71,9 +71,8 @@ const posts = (client) => ({
     async canEdit({ id }) {
       try {
         const res = await client.get(`/posts/can-edit/${id}`)
-        return (res.status === 200)
+        return res.status === 200
       } catch (error) {
-        console.log("there is an error lol ?")
         return false
       }
     },
