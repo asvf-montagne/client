@@ -25,7 +25,7 @@ export default function Stories({ user, posts }) {
   const router = useRouter()
 
   function handleCreateStory() {
-    router.push('/dashboard/stories/new')
+    router.push('/dashboard/stories/editor')
   }
 
   function handleGetAccess() {

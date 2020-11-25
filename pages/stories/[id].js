@@ -91,7 +91,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { posts } = services({ isServer: true })
 
-  const story = await posts.api.find({ id: params.id })
+  const story = await posts.api.find({ id: params.id, published: true })
   const suggestedStories = await posts.api.suggested({
     limit: 2,
     date: story['published_at'],

@@ -12,7 +12,8 @@ NavLink.propTypes = {
 
 function NavLink({ name, icon, url }) {
   const router = useRouter()
-  const active = router.pathname === url
+
+  const active = router.pathname.startsWith(url)
 
   return (
     <li className={`${styles.link} ${active ? styles.link_active : ''}`}>
@@ -34,11 +35,6 @@ export default function DashboardNavigation() {
       icon: 'menu_book',
       url: '/dashboard/stories',
     },
-    // {
-    //   name: 'Sorties',
-    //   icon: 'event',
-    //   url: '/account/stories',
-    // },
   ]
 
   return (

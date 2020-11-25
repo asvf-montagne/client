@@ -1,5 +1,4 @@
 import Button from '@components/atoms/Button'
-import DatePicker from '@components/atoms/DatePicker'
 import Input from '@components/atoms/Input'
 import Select from '@components/atoms/Select'
 import UploadImageInput from '@components/organisms/UploadImageInput'
@@ -17,12 +16,17 @@ import {
 import { diff } from 'deep-object-diff'
 import arrayMutators from 'final-form-arrays'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
-import React, { useReducer, useRef } from 'react'
+import React, { useMemo, useReducer, useRef } from 'react'
 import { Field, Form } from 'react-final-form'
 import styles from './FormCreateStory.module.css'
 
 const EditorInput = dynamic(() => import('@components/atoms/EditorInput'), {
+  ssr: false,
+})
+
+const DatePicker = dynamic(() => import('@components/atoms/DatePicker'), {
   ssr: false,
 })
 
@@ -55,18 +59,80 @@ function reducer(state, action) {
   }
 }
 
-FormCreateOrUpdateStory.propTypes = {
+FormStoryEditor.propTypes = {
   tags: PropTypes.array.isRequired,
   story: PropTypes.object,
   author: PropTypes.number,
 }
 
-export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
+export default function FormStoryEditor({ tags, story = {}, author }) {
+  const router = useRouter()
+
+  const options = useMemo(
+    () =>
+      tags.map((tag) => ({
+        label: tag.tag,
+        value: tag.id,
+      })),
+    tags,
+  )
+
+  const initialValues = useMemo(() => {
+    const defaultValues = {
+      title: '',
+      content: {
+        blocks: [{ type: 'paragraph', data: {} }],
+        version: '2.19.0',
+      },
+      tags: options[0].value,
+      event_date: '',
+      files: filesReducerDefaultState.files,
+    }
+
+    if (Object.keys(story).length > 0) {
+      const files = story.images.map((image) => ({
+        file: {
+          path: image.name,
+          size: image.height * image.width,
+          lastModified: 0,
+        },
+        caption: image.caption,
+        preview: image.url,
+        id: image.id,
+      }))
+
+      return {
+        title: story.title === null ? defaultValues.title : story.title,
+
+        content:
+          story.content === null
+            ? defaultValues.content
+            : JSON.parse(story.content),
+
+        tags:
+          story.tags === null ||
+          story.tags.length === 0 ||
+          story.tags[0] === null
+            ? defaultValues.tags
+            : options.find((f) => f.label === story.tags[0]).value,
+
+        event_date:
+          story.event_date === null
+            ? defaultValues.event_date
+            : new Date(story.event_date),
+
+        files,
+      }
+    }
+
+    return defaultValues
+  }, [story])
+
   const [state, dispatch] = useReducer(reducer, {
     status: statuses.INITIAL,
-    storyId: undefined,
-    published: false,
-    ...filesReducerDefaultState,
+    storyId: story.id || undefined,
+    published: story.published_at !== null && story.published_at !== undefined,
+    files: initialValues.files,
   })
 
   // refPreviousForm keep the latest form to diff if there is change (because editor.js is a pain and save
@@ -74,11 +140,6 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
   const refPreviousForm = useRef({})
 
   const { posts, uploader } = useServices()
-
-  const options = tags.map((tag) => ({
-    label: tag.tag,
-    value: tag.id,
-  }))
 
   const createOrUpdatePost = useDebounce(
     state,
@@ -100,7 +161,9 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
         )
 
         if (res.status === 200) {
-          dispatch({ type: actionTypes.SET_STORY_ID, data: res.data.id })
+          if (currentState.storyId === undefined) {
+            dispatch({ type: actionTypes.SET_STORY_ID, data: res.data.id })
+          }
 
           // only update images if there is a change in files
           if (Object.keys(filesDiff).length > 0) {
@@ -208,18 +271,7 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
       mutators={{ ...arrayMutators }}
       onSubmit={handlePublish}
       validate={posts.validations.create}
-      initialValues={{
-        title: story.title || '',
-        content: story.content || {
-          blocks: [{ type: 'paragraph', data: {} }],
-          version: '2.19.0',
-        },
-        tags:
-          story.tags && story.tags.length > 0
-            ? story.tags[0].id
-            : options[0].value,
-        ['event_date']: story.event_date ? new Date(story.event_date) : '',
-      }}
+      initialValues={initialValues}
       render={({ form, values, valid, submitting }) => (
         <form>
           <FormHelper.FormOnChangeHandler onChange={createOrUpdatePost} />
@@ -304,7 +356,7 @@ export default function FormCreateOrUpdateStory({ tags, story = {}, author }) {
 
 FormFooter.propTypes = {
   state: PropTypes.object.isRequired,
-  canSubmit: PropTypes.func.isRequired,
+  canSubmit: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   handlePublish: PropTypes.func.isRequired,
 }

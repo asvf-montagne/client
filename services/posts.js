@@ -68,6 +68,15 @@ const posts = (client) => ({
       return res.data
     },
 
+    async canEdit({ id }) {
+      try {
+        const res = await client.get(`/posts/can-edit/${id}`)
+        return res.status === 200
+      } catch (error) {
+        return false
+      }
+    },
+
     async search(params) {
       const res = await client.get(`/posts/view/search`, {
         params: {
@@ -78,10 +87,11 @@ const posts = (client) => ({
       return res.data
     },
 
-    async find({ id }) {
+    async find({ id, published }) {
       const res = await client.get(`/posts/view/post`, {
         params: {
           id,
+          published,
         },
       })
       return res.data
