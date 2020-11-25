@@ -41,17 +41,18 @@ export default function FormContact() {
           onSubmit={onSubmit}
           validate={contactFormSubmissions.validations.validateCreate}
           render={({
-            submitError,
-            handleSubmit,
-            values,
-            form,
-            pristine,
-            submitting,
-          }) => (
+                     submitError,
+                     handleSubmit,
+                     values,
+                     form,
+                     pristine,
+                     submitting,
+                   }) => (
             <form
               className={`
               ${styles.landingContact__overlay__contacts__col__form}
             `}
+              onSubmit={(e) => e.preventDefault()}
             >
               <DisplaySuccessOrError
                 success={success}
@@ -99,7 +100,8 @@ export default function FormContact() {
                     placeholder="Un super message pour l’asvf montagne !"
                     textArea
                     {...input}
-                    onKeyDown={() => {}}
+                    onKeyDown={() => {
+                    }}
                     meta={meta}
                   />
                 )}

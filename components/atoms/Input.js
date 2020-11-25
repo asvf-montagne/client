@@ -36,7 +36,7 @@ const Input = forwardRef(
 
     return (
       <div className={styles.input} {...props}>
-        {label && <InputLabel label={label} link={link} />}
+        {label && <InputLabel label={label} link={link}/>}
 
         <div
           className={`
@@ -44,10 +44,10 @@ const Input = forwardRef(
             ${disabled ? styles.input__container_disabled : ''}
             
             ${
-              hasError
-                ? styles.input__containerError
-                : focused && styles.input__containerFocused
-            }
+            hasError
+              ? styles.input__containerError
+              : focused && styles.input__containerFocused
+          }
           `}
         >
           {icon && (
@@ -57,10 +57,10 @@ const Input = forwardRef(
                   ${styles.input__container__iconBox__icon}
                   
                   ${
-                    hasError
-                      ? styles.input__container__iconBox__iconError
-                      : focused && styles.input__container__iconBox__iconFocused
-                  }
+                  hasError
+                    ? styles.input__container__iconBox__iconError
+                    : focused && styles.input__container__iconBox__iconFocused
+                }
                 `}
               >
                 {icon}
@@ -149,7 +149,10 @@ Input.propTypes = {
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   icon: PropTypes.string,
-  link: PropTypes.object,
+  link: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    ref: PropTypes.string.isRequired
+  }),
   meta: PropTypes.object,
 }
 

@@ -18,8 +18,10 @@ export default function FormForgotPassword({}) {
     try {
       const res = await auth.api.forgotPassword(values)
 
+      console.log(res)
+
       if (res.status === 200) {
-        await router.push('/auth/forgot-password-email-sent')
+        router.push('/auth/forgot-password-email-sent')
       } else {
         return ValidationHelper.validateFromBackend(res.data)
       }
@@ -37,7 +39,7 @@ export default function FormForgotPassword({}) {
       onSubmit={handleSubmit}
       validate={auth.validations.forgotPassword}
       render={({ submitError, values, handleSubmit, pristine, submitting }) => (
-        <form className={styles.signUpForm}>
+        <form className={styles.signUpForm} onSubmit={(e) => e.preventDefault()}>
           <DisplaySuccessOrError
             success={false}
             error={submitError}
