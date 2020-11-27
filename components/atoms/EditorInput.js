@@ -3,6 +3,7 @@ import EditorJS from '@editorjs/editorjs'
 import Header from '@editorjs/header'
 import List from '@editorjs/list'
 import Quote from '@editorjs/quote'
+import Table from '@editorjs/table'
 import PropTypes from 'prop-types'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './EditorInput.module.css'
@@ -57,14 +58,23 @@ export default function EditorInput({ input, meta, label, placeholder = '' }) {
         tools: {
           header: {
             class: Header,
-            levels: [2],
-            inlineToolbar: ['link'],
+            config: {
+              level: [2],
+            },
+            inlineToolbar: ['link']
           },
           list: {
             class: List,
-            inlineToolbar: true,
+            inlineToolbar: true
           },
-          quote: Quote,
+          quote: {
+            class: Quote,
+            inlineToolbar: true
+          },
+          table: {
+            class: Table,
+            inlineToolbar: true,
+          }
         },
         placeholder: placeholder,
         minHeight: 32,
@@ -91,9 +101,9 @@ export default function EditorInput({ input, meta, label, placeholder = '' }) {
 
   return (
     <div className={styles.editor}>
-      {label && <InputLabel label={label} />}
+      {label && <InputLabel label={label}/>}
       <div className={styles.editor_container} aria-selected={focus}>
-        <div className={styles.editor_input} ref={editorRef} />
+        <div className={styles.editor_input} ref={editorRef}/>
       </div>
     </div>
   )

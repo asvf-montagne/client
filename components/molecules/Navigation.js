@@ -76,7 +76,7 @@ export default function Navigation() {
                     <DropDownItem onClick={() => router.push('/club')}>
                       Presentation du club
                     </DropDownItem>
-                    <DropDownItem onClick={() => router.push('/club')}>
+                    <DropDownItem onClick={() => router.push('/climbing-school')}>
                       Ecole d&apos;escalade
                     </DropDownItem>
                     <DropDownItem onClick={() => router.push('/club')}>

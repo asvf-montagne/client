@@ -1,3 +1,4 @@
+import pages from '@services/pages'
 import requestRoleSubmissions from '@services/requestRoleSubmissions'
 import uploader from '@services/uploader'
 import axios from 'axios'
@@ -40,6 +41,7 @@ function services({ token, isServer } = { token: undefined, isServer: false }) {
     partners: partners(client),
     contactFormSubmissions: contactFormSubmissions(client),
     requestRoleSubmissions: requestRoleSubmissions(client),
+    pages: pages(client),
   }
 }
 
