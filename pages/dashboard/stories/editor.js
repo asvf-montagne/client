@@ -36,6 +36,8 @@ export async function getServerSideProps(ctx) {
     users: { api },
   } = services({ token: ctx.req.cookies.token, isServer: true })
 
+  console.log(ctx.req.cookies.token)
+
   const user = await auth.helpers.shouldRedirectIfNotAuthenticated(api, ctx)
 
   let story = {}
