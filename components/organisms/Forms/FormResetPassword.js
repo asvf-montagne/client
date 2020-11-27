@@ -80,7 +80,7 @@ export default function FormResetPassword({}) {
             {({ input, meta }) => (
               <Input
                 label="Confirmation du mot de passe"
-                ref={refPassword}
+                ref={refPasswordConfirm}
                 {...input}
                 meta={meta}
                 onKeyDown={(e) =>

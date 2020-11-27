@@ -5,7 +5,6 @@ export default function Footer() {
     <>
       <footer className={styles.footer}>
         <div className={styles.footer__container}>
-
           <ul className={styles.footer__list}>
             <h3 className={styles.footer__title}>ASVF Montagne</h3>
             <li className={styles.footer__item}>
@@ -77,12 +76,18 @@ export default function Footer() {
           <ul className={styles.footer__list}>
             <h3 className={styles.footer__title}>Partenaires</h3>
             <li className={styles.footer__item}>
-              <a href="https://www.petzl.com/FR/fr" className={styles.footer__link}>
+              <a
+                href="https://www.petzl.com/FR/fr"
+                className={styles.footer__link}
+              >
                 Petzel
               </a>
             </li>
             <li className={styles.footer__item}>
-              <a href="https://www.haribo.com/fr-fr" className={styles.footer__link}>
+              <a
+                href="https://www.haribo.com/fr-fr"
+                className={styles.footer__link}
+              >
                 Haribo
               </a>
             </li>
@@ -92,7 +97,10 @@ export default function Footer() {
               </a>
             </li>
             <li className={styles.footer__item}>
-              <a href="https://www.auvieuxcampeur.fr/" className={styles.footer__link}>
+              <a
+                href="https://www.auvieuxcampeur.fr/"
+                className={styles.footer__link}
+              >
                 Au vieux campeur
               </a>
             </li>
@@ -102,7 +110,10 @@ export default function Footer() {
               </a>
             </li>
             <li className={styles.footer__item}>
-              <a href="https://www.sport2000.fr/" className={styles.footer__link}>
+              <a
+                href="https://www.sport2000.fr/"
+                className={styles.footer__link}
+              >
                 Sport 2000
               </a>
             </li>
