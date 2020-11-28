@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types'
-import { useRouter } from 'next/router'
 import Layout from '@components/atoms/Layout'
 import LandingHero from '@components/molecules/LandingHero'
 import LandingContact from '@components/organisms/LandingContact'
 import LandingStoriesHighlight from '@components/organisms/LandingStoriesHighlight'
 import services from '@services/index'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
 
 Home.propTypes = {
   stories: PropTypes.array,

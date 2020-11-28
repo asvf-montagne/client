@@ -8,7 +8,7 @@ import { fr } from 'date-fns/locale'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-ClimbingSchool.propTypes = {
+ClimbingSlots.propTypes = {
   page: PropTypes.object.isRequired,
 }
 
@@ -17,7 +17,7 @@ ClimbingSchool.propTypes = {
  * @returns {JSX.Element}
  * @constructor
  */
-export default function ClimbingSchool({ page }) {
+export default function ClimbingSlots({ page }) {
   return (
     <Layout>
       <SplitBackgroundOverlay padding="96px 0 180px 0" topHalfHeight={65}>
@@ -38,5 +38,5 @@ export default function ClimbingSchool({ page }) {
 export async function getStaticProps() {
   const pages = services().pages
 
-  return { props: { page: await pages.api.climbingSchool() }, revalidate: 2 }
+  return { props: { page: await pages.api.climbingSlots() }, revalidate: 2 }
 }

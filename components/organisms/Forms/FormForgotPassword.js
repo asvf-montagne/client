@@ -39,7 +39,10 @@ export default function FormForgotPassword({}) {
       onSubmit={handleSubmit}
       validate={auth.validations.forgotPassword}
       render={({ submitError, values, handleSubmit, pristine, submitting }) => (
-        <form className={styles.signUpForm} onSubmit={(e) => e.preventDefault()}>
+        <form
+          className={styles.signUpForm}
+          onSubmit={(e) => e.preventDefault()}
+        >
           <DisplaySuccessOrError
             success={false}
             error={submitError}
