@@ -8,7 +8,11 @@ import useWindowSize from '@hooks/useWindowSize'
 import TokenHelper from '@helpers/token'
 import styles from './Navigation.module.css'
 
-export default function Navigation() {
+Navigation.propTypes = {
+  flash: PropTypes.bool.isRequired,
+}
+
+export default function Navigation({ flash }) {
   const router = useRouter()
   const { user, setUser } = useUser()
   const { width: size } = useWindowSize()
@@ -69,6 +73,7 @@ export default function Navigation() {
             <ul className={styles.header_inner_left}>
               <li className={styles.header_inner_left_item}>
                 <NavLinkWithDropDown
+                  flash={flash}
                   title="Le Club"
                   onSmallDevice={onSmallDevice}
                 >
@@ -121,6 +126,7 @@ export default function Navigation() {
               {isAuthenticated && (
                 <li className={styles.header_inner_right_item}>
                   <NavLinkWithDropDown
+                    flash={flash}
                     title={user.username}
                     onSmallDevice={onSmallDevice}
                   >
@@ -194,31 +200,18 @@ function NavLink({ title, onClick }) {
 
 NavLinkWithDropDown.propTypes = {
   title: PropTypes.string.isRequired,
+  flash: PropTypes.bool.isRequired,
   onSmallDevice: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
 }
 
-function NavLinkWithDropDown({ title, onSmallDevice, children }) {
+function NavLinkWithDropDown({ title, flash, onSmallDevice, children }) {
   const [isMenuActive, setIsMenuActive] = useState(false)
-  const [flash, setFlash] = useState(true)
   const count = Children.count(children)
   const showDropDown = useMemo(
     () => !onSmallDevice || (onSmallDevice && isMenuActive),
     [onSmallDevice, isMenuActive],
   )
-
-  useEffect(() => {
-    const item = window.localStorage.getItem('flash')
-
-    if (item) {
-      const { value } = JSON.parse(item)
-      if (!value) {
-        setFlash(false)
-      } else {
-        setFlash(true)
-      }
-    }
-  }, [])
 
   useEffect(() => {
     if (!onSmallDevice && isMenuActive) {
