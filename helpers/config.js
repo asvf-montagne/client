@@ -14,5 +14,5 @@ export default {
       label: 'dim 15 nov 2020 / Sortie VTT – 25 à 35km / VTT',
       redirect: '/',
     },
-  ]
+  ],
 }

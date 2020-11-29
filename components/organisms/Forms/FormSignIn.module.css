@@ -3,10 +3,6 @@
     padding-top: 64px;
 }
 
-.signUpForm > div:first-child {
-    margin-bottom: 32px;
-}
-
 .signUpForm__authGroup {
     display: flex;
     flex-direction: column;
