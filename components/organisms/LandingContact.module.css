@@ -105,6 +105,7 @@
     padding: 16px;
     margin-bottom: 16px;
     border: none;
+    text-decoration: none;
 }
 
 .landingContact__overlay__contacts__icons_btn:hover {

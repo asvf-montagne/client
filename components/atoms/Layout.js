@@ -5,42 +5,14 @@ import PropTypes from 'prop-types'
 import Footer from '@components/atoms/Footer'
 import Navigation from '@components/molecules/Navigation'
 import FlashInfo from '@components/atoms/FlashInfo'
+import config from '@helpers/config'
 import styles from './Layout.module.css'
 
-// const DEFAULT_SEO = {
-//   title: 'ASVF Montagne',
-//   description: 'SEO made easy for Next.js projects',
-//   openGraph: {
-//     type: 'website',
-//     locale: 'en_IE',
-//     url: 'http://www.asvf-montagne.fr/',
-//     title: 'ASVF Montagne',
-//     description: 'SEO made easy for Next.js projects',
-//     image:
-//       'https://prismic-io.s3.amazonaws.com/gary-blog%2F3297f290-a885-4cc6-9b19-3235e3026646_default.jpg',
-//     site_name: 'asvf-montagne.fr',
-//     imageWidth: 1200,
-//     imageHeight: 1200
-//   }
-// };
-
-const infos = [
-  {
-    label: 'dim 08 nov 2020 / VTT, FTT et Handbike / Handisport',
-    redirect: '/',
-  },
-  {
-    label: 'dim 15 nov 2020 / Sortie VTT – 25 à 35km / VTT',
-    redirect: '/',
-  },
-]
-
 Layout.propTypes = {
-  less: PropTypes.bool,
   children: PropTypes.node.isRequired,
 }
 
-export default function Layout({ less = false, children }) {
+export default function Layout({ children }) {
   const [flash, setFlash] = useState(true)
   const router = useRouter()
 
@@ -63,13 +35,15 @@ export default function Layout({ less = false, children }) {
         new Date(createdAt).getTime() - new Date().getTime() > oneDay
       if (isExpired) {
         window.localStorage.removeItem('flash')
-      } else if (!value) {
-        setFlash(false)
       } else {
-        setFlash(true)
+        setFlash(value)
       }
     }
   }, [])
+
+  useEffect(() => {
+    console.log('FLASH', flash, router.pathname)
+  }, [flash])
 
   const toggleFlash = () => {
     setFlash(false)
@@ -83,38 +57,31 @@ export default function Layout({ less = false, children }) {
     )
   }
 
-  function CurrentPageInner() {
-    return (
-      <>
-        {!less && <Navigation />}
-        <main className={styles.container}>{children}</main>
-        {!less && <Footer />}
-      </>
-    )
-  }
-
-  function CurrentPage() {
-    if (flash && router.pathname === '/') {
-      return (
-        <>
-          <FlashInfo infos={infos} handleClose={() => toggleFlash()} />
-          <div className={styles.container_flash}>
-            <CurrentPageInner />
-          </div>
-        </>
-      )
-    }
-    return <CurrentPageInner />
-  }
-
   return (
     <>
       <Head>
         <title>ASVF Montagne</title>
         {/*<link rel="icon" href="/favicon.ico" />*/}
       </Head>
-      {/*<NextSeo config={DEFAULT_SEO} />*/}
-      <CurrentPage />
+      {flash && router.pathname === '/' ? (
+        <>
+          <FlashInfo
+            infos={config.flashInfos}
+            handleClose={() => toggleFlash()}
+          />
+          <div className={styles.container_flash}>
+            <Navigation flash={true} />
+            <main className={styles.container}>{children}</main>
+            <Footer />
+          </div>
+        </>
+      ) : (
+        <>
+          <Navigation flash={false} />
+          <main className={styles.container}>{children}</main>
+          <Footer />
+        </>
+      )}
     </>
   )
 }

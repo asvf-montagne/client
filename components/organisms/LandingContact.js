@@ -1,8 +1,9 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import dynamic from 'next/dynamic'
 import FormContact from '@components/organisms/Forms/FormContact'
 import Icon from '@material-ui/core/Icon'
-import dynamic from 'next/dynamic'
-import PropTypes from 'prop-types'
-import React from 'react'
+import config from '@helpers/config'
 import styles from './LandingContact.module.css'
 
 const PartnersSlider = dynamic(
@@ -45,10 +46,13 @@ export default function LandingContact({ partners }) {
                   styles.landingContact__overlay__contacts__icons__inner
                 }
               >
-                <button
+                <a
                   className={
                     styles.landingContact__overlay__contacts__icons_btn
                   }
+                  href={config.contacts.mail}
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <Icon
                     style={{
@@ -66,20 +70,23 @@ export default function LandingContact({ partners }) {
                   >
                     contact@asvf-montagne.fr
                   </p>
-                </button>
+                </a>
 
                 <h3
                   className={
                     styles.landingContact__overlay__contacts__inner__title
                   }
                 >
-                  Ouvert le jeudi de 18h30 à 20h
+                  Astreinte le jeudi de 18h30 à 20h
                 </h3>
 
-                <button
+                <a
                   className={
                     styles.landingContact__overlay__contacts__icons_btn
                   }
+                  href={config.contacts.map}
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <Icon
                     style={{
@@ -97,11 +104,14 @@ export default function LandingContact({ partners }) {
                   >
                     22 rue du Passou 38090 Vaulx-Milieu
                   </p>
-                </button>
-                <button
+                </a>
+                <a
                   className={
                     styles.landingContact__overlay__contacts__icons_btn
                   }
+                  href={config.contacts.phone}
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <Icon
                     style={{
@@ -119,7 +129,7 @@ export default function LandingContact({ partners }) {
                   >
                     06 81 26 88 14
                   </p>
-                </button>
+                </a>
               </div>
             </div>
           </div>
