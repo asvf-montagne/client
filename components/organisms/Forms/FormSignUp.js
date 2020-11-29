@@ -2,6 +2,7 @@ import GoogleLogoAsset from '@assets/images/logo_google.png'
 import Button from '@components/atoms/Button'
 import DisplaySuccessOrError from '@components/atoms/FormSuccessOrError'
 import Input from '@components/atoms/Input'
+import baseURL from '@helpers/baseURL'
 import FormHelper from '@helpers/form'
 import ValidationHelper from '@helpers/validation'
 import useServices from '@hooks/useServices'
@@ -124,7 +125,7 @@ export default function FormSignUp({}) {
               size="large"
               focus="primary"
               fluid
-              // onClick={registerWithGoogle}
+              onClick={() => router.push(`${baseURL}/connect/google/`)}
             >
               <img
                 alt="auth-google"

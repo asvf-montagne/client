@@ -1,19 +1,21 @@
-import PropTypes from 'prop-types'
-import Button from '@components/atoms/Button'
 import GoogleLogoAsset from '@assets/images/logo_google.png'
+import Button from '@components/atoms/Button'
+import baseURL from '@helpers/baseURL'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
 import styles from './DashboardLinkWithGoogle.module.css'
 
 DashboardLinkWithGoogle.propTypes = {
   label: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
 }
 
 export default function DashboardLinkWithGoogle({
-  label,
-  description,
-  onClick,
-}) {
+                                                  label,
+                                                  description,
+                                                }) {
+  const router = useRouter()
+
   return (
     <div className={styles.container}>
       <div className={styles.container_col}>
@@ -25,7 +27,7 @@ export default function DashboardLinkWithGoogle({
         size="large"
         focus="primary"
         fluid
-        onClick={(event) => onClick(event)}
+        onClick={() => router.push(`${baseURL}/connect/google/`)}
       >
         <img
           alt="auth-google"

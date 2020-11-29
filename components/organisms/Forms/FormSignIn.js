@@ -2,6 +2,7 @@ import GoogleLogoAsset from '@assets/images/logo_google.png'
 import Button from '@components/atoms/Button'
 import FormSuccessOrError from '@components/atoms/FormSuccessOrError'
 import Input from '@components/atoms/Input'
+import baseURL from '@helpers/baseURL'
 import FormHelper from '@helpers/form'
 import TokenHelper from '@helpers/token'
 import ValidationHelper from '@helpers/validation'
@@ -116,7 +117,7 @@ export default function FormSignIn({}) {
               size="large"
               focus="primary"
               fluid
-              onClick={(event) => handleSubmit(event)}
+              onClick={() => router.push(`${baseURL}/connect/google/`)}
             >
               <img
                 alt="auth-google"
