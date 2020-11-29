@@ -10,10 +10,7 @@ DashboardLinkWithGoogle.propTypes = {
   description: PropTypes.string.isRequired,
 }
 
-export default function DashboardLinkWithGoogle({
-                                                  label,
-                                                  description,
-                                                }) {
+export default function DashboardLinkWithGoogle({ label, description }) {
   const router = useRouter()
 
   return (

@@ -21,18 +21,18 @@ Settings.propTypes = {
 export default function Settings({ user }) {
   return (
     <Layout>
-      <DashboardNavigation/>
+      <DashboardNavigation />
       <DashboardLayout>
-        <FormDashboardSettingsAccount user={user}/>
+        <FormDashboardSettingsAccount user={user} />
 
-        <FormDashboardSettingsPassword/>
+        <FormDashboardSettingsPassword />
 
-        {user.provider !== 'google' &&
-        <DashboardLinkWithGoogle
-          label="Lier mon compte google"
-          description="Pour plus de simplicité connectez vous avec votre compte google en cliquant sur bouton ci-contre."
-        />
-        }
+        {user.provider !== 'google' && (
+          <DashboardLinkWithGoogle
+            label="Lier mon compte google"
+            description="Pour plus de simplicité connectez vous avec votre compte google en cliquant sur bouton ci-contre."
+          />
+        )}
       </DashboardLayout>
     </Layout>
   )

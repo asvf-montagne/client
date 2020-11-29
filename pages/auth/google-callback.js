@@ -18,8 +18,9 @@ export default function GoogleCallback() {
   }
 
   useEffect(() => {
-
-    FormHelper.fakeDelay(() => services().auth.api.signInWithGoogleProvider(getAccessToken()))
+    FormHelper.fakeDelay(() =>
+      services().auth.api.signInWithGoogleProvider(getAccessToken()),
+    )
       .then(({ status, data }) => {
         if (status !== 200) {
           setErr(true)
@@ -33,7 +34,9 @@ export default function GoogleCallback() {
 
         return router.push('/')
       })
-      .catch((err) => console.error('unable to get account from this provider', err))
+      .catch((err) =>
+        console.error('unable to get account from this provider', err),
+      )
   }, [router])
 
   return (
@@ -47,9 +50,11 @@ export default function GoogleCallback() {
       <BigIcon
         icon={err ? 'cancel' : 'check_circle'}
         variant={err ? 'error' : 'success'}
-        description={err
-          ? 'Impossible d\'utiliser votre compte google. Réessayez plus tard.'
-          : 'Vous allez être redirigé sur la page d\'accueil'}
+        description={
+          err
+            ? "Impossible d'utiliser votre compte google. Réessayez plus tard."
+            : "Vous allez être redirigé sur la page d'accueil"
+        }
       />
     </AuthLayout>
   )

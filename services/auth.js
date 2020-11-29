@@ -13,7 +13,9 @@ const auth = (client) => ({
 
     async signInWithGoogleProvider(access_token) {
       try {
-        return await client.get('/auth/google/callback', { params: { access_token } })
+        return await client.get('/auth/google/callback', {
+          params: { access_token },
+        })
       } catch (ex) {
         return ex.response
       }
@@ -137,7 +139,7 @@ const auth = (client) => ({
     async shouldRedirectIfNotAuthenticated({ me }, { res }) {
       if (!client.metadata.isServer) {
         console.warn(
-          '[service:auth] function \'shouldRedirectIfNotAuthenticated\' is only usable with getServerSideProps',
+          "[service:auth] function 'shouldRedirectIfNotAuthenticated' is only usable with getServerSideProps",
         )
         return undefined
       }
@@ -162,7 +164,7 @@ const auth = (client) => ({
     async shouldRedirectIfAuthenticated(ctx) {
       if (!client.metadata.isServer) {
         console.warn(
-          '[service:auth] function \'shouldRedirectIfAuthenticated\' is only usable with getServerSideProps',
+          "[service:auth] function 'shouldRedirectIfAuthenticated' is only usable with getServerSideProps",
         )
         return undefined
       }

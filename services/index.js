@@ -10,8 +10,6 @@ import posts from './posts'
 import tags from './tags'
 import users from './users'
 
-
-
 function services({ token, isServer } = { token: undefined, isServer: false }) {
   const client = axios.create({
     baseURL: baseURL,
