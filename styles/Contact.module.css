@@ -34,21 +34,28 @@
     font-size: var(--text-size-medium);
     transition: ease-in-out .16s;
     margin: 16px 8px;
+    text-decoration: none;
 }
 
+.contact_form_button:hover,
 .contact_form_button:focus {
+    cursor: pointer;
+    background-color: var(--font-color-link);
+    color: var(--font-color-contrast);
     outline: none;
     border-color: var(--font-color-link);
     box-shadow: 0 0 0 0.2rem rgba(12, 117, 255, .5);
 }
 
-.contact_form_button:hover {
-    cursor: pointer;
+.contact_form_button:hover > span,
+.contact_form_button:focus > span {
+    color: var(--font-color-contrast);
 }
 
 .contact_form_button > span {
     color: var(--font-color-link);
     font-size: 24px;
+    transition: ease-in-out .16s;
     margin-bottom: 8px;
 }
 

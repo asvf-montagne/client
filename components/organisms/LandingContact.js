@@ -77,7 +77,7 @@ export default function LandingContact({ partners }) {
                     styles.landingContact__overlay__contacts__inner__title
                   }
                 >
-                  Ouvert le jeudi de 18h30 à 20h
+                  Astreinte le jeudi de 18h30 à 20h
                 </h3>
 
                 <a
