@@ -1,10 +1,10 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import dynamic from 'next/dynamic'
 import FormContact from '@components/organisms/Forms/FormContact'
 import Icon from '@material-ui/core/Icon'
-import dynamic from 'next/dynamic'
-import PropTypes from 'prop-types'
-import React from 'react'
+import config from '@helpers/config'
 import styles from './LandingContact.module.css'
-import { useRouter } from 'next/router'
 
 const PartnersSlider = dynamic(
   () => import('@components/molecules/PartnersSlider'),
@@ -18,8 +18,6 @@ LandingContact.propTypes = {
 }
 
 export default function LandingContact({ partners }) {
-  const router = useRouter()
-
   return (
     <section className={styles.landingContact}>
       <div className={styles.landingContact__overlay}>
@@ -52,7 +50,9 @@ export default function LandingContact({ partners }) {
                   className={
                     styles.landingContact__overlay__contacts__icons_btn
                   }
-                  href="mailto:contact@asvf-montagne.fr"
+                  href={config.contacts.mail}
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <Icon
                     style={{
@@ -84,7 +84,7 @@ export default function LandingContact({ partners }) {
                   className={
                     styles.landingContact__overlay__contacts__icons_btn
                   }
-                  href="https://www.google.com/maps/place/22+Rue+du+Passou,+38090+Vaulx-Milieu/data=!4m2!3m1!1s0x47f4d2c0bb99b5b5:0xc97231c18a5a6940?sa=X&ved=2ahUKEwj42uuGpKjtAhWjy4UKHbSAC58Q8gEwAHoECAYQAQ"
+                  href={config.contacts.map}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -109,7 +109,7 @@ export default function LandingContact({ partners }) {
                   className={
                     styles.landingContact__overlay__contacts__icons_btn
                   }
-                  href="tel:+33681268814"
+                  href={config.contacts.phone}
                   target="_blank"
                   rel="noreferrer"
                 >
