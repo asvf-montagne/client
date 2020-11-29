@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './LandingContact.module.css'
+import { useRouter } from 'next/router'
 
 const PartnersSlider = dynamic(
   () => import('@components/molecules/PartnersSlider'),
@@ -17,6 +18,8 @@ LandingContact.propTypes = {
 }
 
 export default function LandingContact({ partners }) {
+  const router = useRouter()
+
   return (
     <section className={styles.landingContact}>
       <div className={styles.landingContact__overlay}>
@@ -45,10 +48,11 @@ export default function LandingContact({ partners }) {
                   styles.landingContact__overlay__contacts__icons__inner
                 }
               >
-                <button
+                <a
                   className={
                     styles.landingContact__overlay__contacts__icons_btn
                   }
+                  href="mailto:contact@asvf-montagne.fr"
                 >
                   <Icon
                     style={{
@@ -66,7 +70,7 @@ export default function LandingContact({ partners }) {
                   >
                     contact@asvf-montagne.fr
                   </p>
-                </button>
+                </a>
 
                 <h3
                   className={
@@ -76,10 +80,13 @@ export default function LandingContact({ partners }) {
                   Ouvert le jeudi de 18h30 à 20h
                 </h3>
 
-                <button
+                <a
                   className={
                     styles.landingContact__overlay__contacts__icons_btn
                   }
+                  href="https://www.google.com/maps/place/22+Rue+du+Passou,+38090+Vaulx-Milieu/data=!4m2!3m1!1s0x47f4d2c0bb99b5b5:0xc97231c18a5a6940?sa=X&ved=2ahUKEwj42uuGpKjtAhWjy4UKHbSAC58Q8gEwAHoECAYQAQ"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <Icon
                     style={{
@@ -97,11 +104,14 @@ export default function LandingContact({ partners }) {
                   >
                     22 rue du Passou 38090 Vaulx-Milieu
                   </p>
-                </button>
-                <button
+                </a>
+                <a
                   className={
                     styles.landingContact__overlay__contacts__icons_btn
                   }
+                  href="tel:+33681268814"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <Icon
                     style={{
@@ -119,7 +129,7 @@ export default function LandingContact({ partners }) {
                   >
                     06 81 26 88 14
                   </p>
-                </button>
+                </a>
               </div>
             </div>
           </div>
