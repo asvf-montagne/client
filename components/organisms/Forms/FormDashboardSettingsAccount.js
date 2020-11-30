@@ -20,6 +20,7 @@ export default function FormDashboardSettingsAccount({ user = {} }) {
   const { users } = useServices(null)
   const messageRef = useRef(null)
 
+  console.log(user)
   const scrollToMessage = () => {
     if (messageRef.current)
       messageRef.current.scrollIntoView({ behavior: 'smooth' })
@@ -165,8 +166,7 @@ export default function FormDashboardSettingsAccount({ user = {} }) {
                   </label>
                   <p className={styles.wideInput_col_description}>
                     L’addresse email est utilisé pour vous avertir d’évènements,
-                    de changements lié au site ect. Elle reste privé.ue vous
-                    publiez des
+                    de changements lié au site ect. Elle reste privé.
                   </p>
                 </div>
                 <Input

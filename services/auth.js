@@ -1,11 +1,21 @@
-import ValidationHelper from '../helpers/validation'
 import v from 'validator'
+import ValidationHelper from '../helpers/validation'
 
 const auth = (client) => ({
   api: {
     async signIn(data) {
       try {
         return await client.post('/auth/local', data)
+      } catch (ex) {
+        return ex.response
+      }
+    },
+
+    async signInWithGoogleProvider(access_token) {
+      try {
+        return await client.get('/auth/google/callback', {
+          params: { access_token },
+        })
       } catch (ex) {
         return ex.response
       }

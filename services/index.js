@@ -1,3 +1,4 @@
+import baseURL from '@helpers/baseURL'
 import pages from '@services/pages'
 import requestRoleSubmissions from '@services/requestRoleSubmissions'
 import uploader from '@services/uploader'
@@ -9,14 +10,9 @@ import posts from './posts'
 import tags from './tags'
 import users from './users'
 
-const baseURL =
-  process.env.API_ENDPOINT ||
-  process.env.NEXT_PUBLIC_API_ENDPOINT ||
-  'https://backend.asvf-montagne.fr'
-
 function services({ token, isServer } = { token: undefined, isServer: false }) {
   const client = axios.create({
-    baseURL,
+    baseURL: baseURL,
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
