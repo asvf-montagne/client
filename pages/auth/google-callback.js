@@ -2,6 +2,7 @@ import AuthLayout from '@components/atoms/AuthLayout'
 import BigIcon from '@components/molecules/BigIcon'
 import FormHelper from '@helpers/form'
 import TokenHelper from '@helpers/token'
+import useServices from '@hooks/useServices'
 import useUser from '@hooks/useUser'
 import services from '@services/index'
 import { useRouter } from 'next/router'
@@ -11,6 +12,7 @@ export default function GoogleCallback() {
   const { setUser } = useUser()
   const router = useRouter()
   const [err, setErr] = useState(false)
+  const { auth } = useServices()
 
   function getAccessToken() {
     const urlParams = new URLSearchParams(window.location.search)
@@ -19,7 +21,7 @@ export default function GoogleCallback() {
 
   useEffect(() => {
     FormHelper.fakeDelay(() =>
-      services().auth.api.signInWithGoogleProvider(getAccessToken()),
+      auth.api.signInWithGoogleProvider(getAccessToken()),
     )
       .then(({ status, data }) => {
         if (status !== 200) {
