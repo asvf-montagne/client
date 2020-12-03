@@ -21,7 +21,7 @@ export default function SignUp() {
       title="S'inscrire"
       helper={{ label: `Vous avez déjà un compte ?`, href: '/auth/sign-in' }}
     >
-      <SignUpSeo/>
+      <SignUpSeo />
       <FormSignUp />
     </AuthLayout>
   )
