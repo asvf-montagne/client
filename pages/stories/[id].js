@@ -73,13 +73,13 @@ export default function Story({ story, suggestedStories }) {
   }
   return (
     <Layout>
-      {!loading && <StorySeo story={story}/>}
+      {!loading && <StorySeo story={story} />}
       <SplitBackgroundOverlay
         padding="96px 0 64px 0"
         topHalfHeight={storyHasImage(story, loading) ? 60 : 100}
       >
         {loading ? (
-          <StoryHeader loading={true}/>
+          <StoryHeader loading={true} />
         ) : (
           <StoryHeader
             tag={view.getFirstTag(story)}
@@ -92,7 +92,7 @@ export default function Story({ story, suggestedStories }) {
       </SplitBackgroundOverlay>
 
       {loading ? (
-        <Blog loading={true}/>
+        <Blog loading={true} />
       ) : (
         <Blog
           data={JSON.parse(story.content)}
@@ -111,7 +111,7 @@ export default function Story({ story, suggestedStories }) {
               width: image.width,
             }))}
           />
-          <SuggestedStories stories={suggestedStories}/>
+          <SuggestedStories stories={suggestedStories} />
         </>
       )}
     </Layout>
