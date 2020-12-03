@@ -1,5 +1,5 @@
 import Badge from '@components/atoms/Badge'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import PropTypes from 'prop-types'
 import styles from './CardStoryMin.module.css'
 
@@ -13,7 +13,7 @@ CardStoryMin.propTypes = {
   }),
   categories: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  handleRedirection: PropTypes.func,
+  href: PropTypes.string,
 }
 
 export default function CardStoryMin({
@@ -23,24 +23,15 @@ export default function CardStoryMin({
   badge,
   categories,
   date,
-  handleRedirection,
+  href,
 }) {
-  const router = useRouter()
-
-  const redirection = () => {
-    router.push(`/stories/${id}`)
-  }
-
   return (
     <div className={styles.cardMin}>
-      <h1
-        className={styles.cardMin__title}
-        onClick={
-          handleRedirection === undefined ? redirection : handleRedirection
-        }
-      >
-        {title}
-      </h1>
+      <Link href={href !== undefined ? href : `/stories/${id}`} scroll={false}>
+        <a style={{ textDecoration: 'none' }}>
+          <h2 className={styles.cardMin__title}>{title}</h2>
+        </a>
+      </Link>
       <div className={styles.cardMin__meta}>
         {author && <p className={styles.cardMin__meta__author}>{author}</p>}
         {badge && <Badge color={badge.color}>{badge.label}</Badge>}

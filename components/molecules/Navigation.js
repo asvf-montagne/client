@@ -1,11 +1,12 @@
-import { Children, useMemo, useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import PropTypes from 'prop-types'
-import Icon from '@material-ui/core/Icon'
 import Button from '@components/atoms/Button'
+import TokenHelper from '@helpers/token'
 import useUser from '@hooks/useUser'
 import useWindowSize from '@hooks/useWindowSize'
-import TokenHelper from '@helpers/token'
+import Icon from '@material-ui/core/Icon'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
+import { Children, forwardRef, useEffect, useMemo, useState } from 'react'
 import styles from './Navigation.module.css'
 
 Navigation.propTypes = {
@@ -44,12 +45,12 @@ export default function Navigation({ flash }) {
             onSmallDevice ? styles.header_inner_header_reduced : ''
           }`}
         >
-          <a
-            className={styles.header_inner_header_logo}
-            onClick={() => router.push('/')}
-          >
-            {onSmallDevice ? 'ASVF' : 'ASVF Montagne'}
-          </a>
+          <Link href="/" scroll={false}>
+            <a className={styles.header_inner_header_logo}>
+              {onSmallDevice ? 'ASVF' : 'ASVF Montagne'}
+            </a>
+          </Link>
+
           {onSmallDevice && (
             <Button
               onClick={() => setIsMenuActive(!isMenuActive)}
@@ -78,51 +79,29 @@ export default function Navigation({ flash }) {
                   onSmallDevice={onSmallDevice}
                 >
                   <DropDownCol title="nouveau ?">
-                    <DropDownItem onClick={() => router.push('/')}>
-                      Presentation du club
-                    </DropDownItem>
-                    <DropDownItem
-                      onClick={() => router.push('/climbing-school')}
-                    >
+                    <DropDownItem href="/">Presentation du club</DropDownItem>
+                    <DropDownItem href="/climbing-school">
                       Ecole d&apos;escalade
                     </DropDownItem>
-                    <DropDownItem
-                      onClick={() => router.push('/climbing-slots')}
-                    >
+                    <DropDownItem href="/climbing-slots">
                       Créneaux escalade
                     </DropDownItem>
-                    <DropDownItem onClick={() => router.push('/')}>
-                      Inscription au club
-                    </DropDownItem>
+                    <DropDownItem href="/">Inscription au club</DropDownItem>
                   </DropDownCol>
 
                   <DropDownCol title="adhérent">
-                    <DropDownItem onClick={() => router.push('/')}>
-                      Prochaines sorties
-                    </DropDownItem>
-                    <DropDownItem onClick={() => router.push('/')}>
-                      reglement interieur
-                    </DropDownItem>
-                    <DropDownItem onClick={() => router.push('/')}>
-                      Location materiel
-                    </DropDownItem>
-                    <DropDownItem onClick={() => router.push('/')}>
-                      COVID-19
-                    </DropDownItem>
+                    <DropDownItem href="/">Prochaines sorties</DropDownItem>
+                    <DropDownItem href="/">reglement interieur</DropDownItem>
+                    <DropDownItem href="/">Location materiel</DropDownItem>
+                    <DropDownItem href="/">COVID-19</DropDownItem>
                   </DropDownCol>
                 </NavLinkWithDropDown>
               </li>
               <li className={styles.header_inner_left_item}>
-                <NavLink
-                  title="Récits"
-                  onClick={() => router.push('/stories')}
-                />
+                <NavLink href="/stories" title="Récits" />
               </li>
               <li className={styles.header_inner_left_item}>
-                <NavLink
-                  title="Contact"
-                  onClick={() => router.push('/contact')}
-                />
+                <NavLink href="/contact" title="Contact" />
               </li>
             </ul>
 
@@ -135,16 +114,14 @@ export default function Navigation({ flash }) {
                     onSmallDevice={onSmallDevice}
                   >
                     <DropDownCol>
-                      <DropDownItem
-                        onClick={() => router.push('/dashboard/settings')}
-                      >
+                      <DropDownItem href="/dashboard/settings">
                         Mes details
                       </DropDownItem>
-                      <DropDownItem
-                        onClick={() => router.push('/dashboard/stories')}
-                      >
+
+                      <DropDownItem href="/dashboard/stories">
                         Recits
                       </DropDownItem>
+
                       <DropDownItem onClick={onLogout}>
                         {!onSmallDevice && (
                           <span
@@ -164,15 +141,12 @@ export default function Navigation({ flash }) {
               {!isAuthenticated && (
                 <>
                   <li className={styles.header_inner_right_item}>
-                    <NavLink
-                      title="Connexion"
-                      onClick={() => router.push('/auth/sign-in')}
-                    />
+                    <NavLink href="/auth/sign-in" title="Connexion" />
                   </li>
                   <li className={styles.header_inner_right_item}>
                     <Button
                       size="medium"
-                      onClick={() => router.push('/auth/sign-up')}
+                      link={{ href: '/auth/sign-up', scroll: false }}
                       variant="light"
                       focus="light"
                     >
@@ -190,15 +164,15 @@ export default function Navigation({ flash }) {
 }
 
 NavLink.propTypes = {
+  href: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
 }
 
-function NavLink({ title, onClick }) {
+function NavLink({ href, title }) {
   return (
-    <a className={styles.header_item} onClick={onClick}>
-      {title}
-    </a>
+    <Link href={href} scroll={false}>
+      <a className={styles.header_item}>{title}</a>
+    </Link>
   )
 }
 
@@ -278,18 +252,35 @@ function DropDownCol({ title, children, ...props }) {
 }
 
 DropDownItem.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+  href: PropTypes.string,
   children: PropTypes.node.isRequired,
 }
 
-function DropDownItem({ onClick, children, ...props }) {
-  return (
-    <div
+function DropDownItem({ href, onClick, children, ...props }) {
+  const Item = forwardRef(({ href }, ref) => (
+    <a
+      ref={ref}
+      href={href}
       className={styles.header_dropdown_inner_col_item}
       onClick={onClick}
       {...props}
     >
       {children}
-    </div>
+    </a>
+  ))
+
+  Item.displayName = 'Item'
+
+  return (
+    <>
+      {href ? (
+        <Link href={href} scroll={false} passHref>
+          <Item />
+        </Link>
+      ) : (
+        <Item />
+      )}
+    </>
   )
 }

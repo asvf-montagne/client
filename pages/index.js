@@ -29,10 +29,7 @@ function Home({ stories, partners }) {
       <IndexSeo />
       <Layout>
         <LandingHero handleRedirection={() => router.push('/club')} />
-        <LandingStoriesHighlight
-          highlightedStories={stories}
-          handleRedirection={() => router.push('/stories')}
-        />
+        <LandingStoriesHighlight highlightedStories={stories} />
 
         <LandingContact partners={partners} />
       </Layout>

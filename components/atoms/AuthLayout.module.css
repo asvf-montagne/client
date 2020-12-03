@@ -36,7 +36,7 @@
     margin: 0 auto;
 }
 
-.authLayout__right__header__inner button {
+.authLayout__right__header__inner a {
     margin-right: auto;
     margin-left: 32px;
 }

@@ -9,13 +9,9 @@ import styles from './LandingStoriesHighlight.module.css'
 
 LandingStoriesHighlight.propTypes = {
   highlightedStories: PropTypes.array.isRequired,
-  handleRedirection: PropTypes.func.isRequired,
 }
 
-export default function LandingStoriesHighlight({
-  highlightedStories,
-  handleRedirection,
-}) {
+export default function LandingStoriesHighlight({ highlightedStories }) {
   const view = posts().view
   const highlightedStory = highlightedStories[0]
 
@@ -62,7 +58,11 @@ export default function LandingStoriesHighlight({
         </div>
 
         <span className={styles.storiesHighlight__span}>
-          <Button variant="link" size="medium" onClick={handleRedirection}>
+          <Button
+            link={{ href: '/stories', scroll: false }}
+            variant="link"
+            size="medium"
+          >
             Voir tous nos récits
             <Icon style={{ fontSize: 24, margin: '2px 0 0 8px' }}>
               chevron_right

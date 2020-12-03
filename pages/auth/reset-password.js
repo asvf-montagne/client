@@ -25,6 +25,7 @@ export default function NewPassword() {
       title="Nouveau mot de passe"
       helper={{ label: `Vous avez déjà un compte ?`, href: '/sign-in' }}
     >
+      <GoogleCallbackSeo />
       <FormResetPassword
         passwordConfirm={passwordConfirm}
         setPasswordConfirm={setPasswordConfirm}
