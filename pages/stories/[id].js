@@ -18,7 +18,9 @@ StorySeo.propTypes = {
 function StorySeo({ story }) {
   const view = posts().view
   const img = view.getFirstImage(story)
-  const description = `Récit de ${view.getTitledAuthor(story)} :  "${story.title}" dans la catégorie ${view.getFirstTag(story)}`
+  const description = `Récit de ${view.getTitledAuthor(story)} :  "${
+    story.title
+  }" dans la catégorie ${view.getFirstTag(story)}`
   return (
     <>
       <NextSeo
