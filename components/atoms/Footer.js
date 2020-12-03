@@ -24,11 +24,6 @@ export default function Footer() {
             </li>
             <li className={styles.footer__item}>
               <a href="/" className={styles.footer__link}>
-                Galerie
-              </a>
-            </li>
-            <li className={styles.footer__item}>
-              <a href="/" className={styles.footer__link}>
                 Connexion
               </a>
             </li>

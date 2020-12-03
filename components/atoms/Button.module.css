@@ -9,7 +9,9 @@
     border: 2px solid rgba(12, 117, 255, 0.2);
     transition: ease-in-out .16s;
     cursor: pointer;
+    text-decoration: none !important;
 }
+
 
 .btn:focus {
     outline: none;
@@ -21,6 +23,7 @@
     align-items: center;
     justify-content: center;
 }
+
 /*SHARED STYLE STOP*/
 
 

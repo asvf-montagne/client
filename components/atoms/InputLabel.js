@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router'
+import Link from 'next/link'
+import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './InputLabel.module.css'
-import PropTypes from 'prop-types'
 
 InputLabel.propTypes = {
   label: PropTypes.string.isRequired,
@@ -12,14 +12,13 @@ InputLabel.propTypes = {
 }
 
 export default function InputLabel({ label, link }) {
-  const router = useRouter()
   return (
     <span className={styles.span}>
       <label className={styles.label}>{label}</label>
       {link && (
-        <a className={styles.link} onClick={() => router.push(link.ref)}>
-          {link.title}
-        </a>
+        <Link href={link.ref} scroll={false}>
+          <a className={styles.link}>{link.title}</a>
+        </Link>
       )}
     </span>
   )

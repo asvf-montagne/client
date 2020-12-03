@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -48,7 +49,13 @@ export default function CardStory({
           <p className={styles.cardStory__content__inner__categories}>
             {categories}
           </p>
-          <h1 className={styles.cardStory__content__inner__title}>{title}</h1>
+          <Link href={`/stories/${id}`} scroll={false}>
+            <a style={{ textDecoration: 'none' }}>
+              <h2 className={styles.cardStory__content__inner__title}>
+                {title}
+              </h2>
+            </a>
+          </Link>
           {description && (
             <p className={styles.cardStory__content__inner__description}>
               {description}
