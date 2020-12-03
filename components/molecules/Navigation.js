@@ -78,7 +78,7 @@ export default function Navigation({ flash }) {
                   onSmallDevice={onSmallDevice}
                 >
                   <DropDownCol title="nouveau ?">
-                    <DropDownItem onClick={() => router.push('/club')}>
+                    <DropDownItem onClick={() => router.push('/')}>
                       Presentation du club
                     </DropDownItem>
                     <DropDownItem
@@ -91,22 +91,22 @@ export default function Navigation({ flash }) {
                     >
                       Créneaux escalade
                     </DropDownItem>
-                    <DropDownItem onClick={() => router.push('/club')}>
+                    <DropDownItem onClick={() => router.push('/')}>
                       Inscription au club
                     </DropDownItem>
                   </DropDownCol>
 
                   <DropDownCol title="adhérent">
-                    <DropDownItem onClick={() => router.push('/club')}>
+                    <DropDownItem onClick={() => router.push('/')}>
                       Prochaines sorties
                     </DropDownItem>
-                    <DropDownItem onClick={() => router.push('/club')}>
+                    <DropDownItem onClick={() => router.push('/')}>
                       reglement interieur
                     </DropDownItem>
-                    <DropDownItem onClick={() => router.push('/club')}>
+                    <DropDownItem onClick={() => router.push('/')}>
                       Location materiel
                     </DropDownItem>
-                    <DropDownItem onClick={() => router.push('/club')}>
+                    <DropDownItem onClick={() => router.push('/')}>
                       COVID-19
                     </DropDownItem>
                   </DropDownCol>

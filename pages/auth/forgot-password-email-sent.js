@@ -1,7 +1,16 @@
 import AuthLayout from '@components/atoms/AuthLayout'
 import BigIcon from '@components/molecules/BigIcon'
 import services from '@services/index'
+import { NextSeo } from 'next-seo'
 import React from 'react'
+
+function EmailSentSeo() {
+  return (
+    <>
+      <NextSeo title="Bientôt terminé !" noindex={true} />
+    </>
+  )
+}
 
 export default function EmailSent() {
   return (
@@ -9,6 +18,7 @@ export default function EmailSent() {
       title="Bientôt terminé !"
       helper={{ label: `Se connecter`, href: '/auth/sign-in' }}
     >
+      <EmailSentSeo />
       <BigIcon
         icon="email"
         variant="primary"

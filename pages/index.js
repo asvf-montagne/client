@@ -3,8 +3,18 @@ import LandingHero from '@components/molecules/LandingHero'
 import LandingContact from '@components/organisms/LandingContact'
 import LandingStoriesHighlight from '@components/organisms/LandingStoriesHighlight'
 import services from '@services/index'
+import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
+import React from 'react'
+
+function IndexSeo() {
+  return (
+    <>
+      <NextSeo title="Accueil" />
+    </>
+  )
+}
 
 Home.propTypes = {
   stories: PropTypes.array,
@@ -16,6 +26,7 @@ function Home({ stories, partners }) {
 
   return (
     <>
+      <IndexSeo />
       <Layout>
         <LandingHero handleRedirection={() => router.push('/club')} />
         <LandingStoriesHighlight

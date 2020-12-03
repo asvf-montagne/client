@@ -4,9 +4,17 @@ import FormHelper from '@helpers/form'
 import TokenHelper from '@helpers/token'
 import useServices from '@hooks/useServices'
 import useUser from '@hooks/useUser'
-import services from '@services/index'
+import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+
+function GoogleCallbackSeo() {
+  return (
+    <>
+      <NextSeo title="Chargement du compte !" noindex={true} />
+    </>
+  )
+}
 
 export default function GoogleCallback() {
   const { setUser } = useUser()
@@ -49,6 +57,7 @@ export default function GoogleCallback() {
         href: '/auth/sign-in',
       }}
     >
+      <GoogleCallbackSeo />
       <BigIcon
         icon={err ? 'cancel' : 'check_circle'}
         variant={err ? 'error' : 'success'}

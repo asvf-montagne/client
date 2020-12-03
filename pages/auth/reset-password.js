@@ -1,7 +1,16 @@
 import AuthLayout from '@components/atoms/AuthLayout'
 import FormResetPassword from '@components/organisms/Forms/FormResetPassword'
 import services from '@services/index'
+import { NextSeo } from 'next-seo'
 import React, { useState } from 'react'
+
+function GoogleCallbackSeo() {
+  return (
+    <>
+      <NextSeo title="Changez votre mot de passe" noindex={true} />
+    </>
+  )
+}
 
 export default function NewPassword() {
   const [password, setPassword] = useState('')

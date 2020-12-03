@@ -1,6 +1,3 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { useRouter } from 'next/router'
 import Blog from '@components/atoms/Blog'
 import Layout from '@components/atoms/Layout'
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
@@ -9,6 +6,49 @@ import StoryHeader from '@components/molecules/StoryHeader'
 import SuggestedStories from '@components/organisms/SuggestedStories'
 import services from '@services/index'
 import posts from '@services/posts'
+import { BlogJsonLd, NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
+import React from 'react'
+
+StorySeo.propTypes = {
+  story: PropTypes.object.isRequired,
+}
+
+function StorySeo({ story }) {
+  const view = posts().view
+  const img = view.getFirstImage(story)
+  const description = `Récit de ${view.getTitledAuthor(story)} :  "${
+    story.title
+  }" dans la catégorie ${view.getFirstTag(story)}`
+  return (
+    <>
+      <NextSeo
+        title={story.title}
+        description={description}
+        openGraph={{
+          article: {
+            authors: [view.getTitledAuthor(story)],
+            modifiedTime: story.updated_at,
+            publishedTime: story.published_at,
+            tags: [view.getFirstTag(story)],
+            section: view.getFirstTag(story),
+          },
+          images: [{ url: img.url }],
+        }}
+      />
+      <BlogJsonLd
+        title={story.title}
+        authorName={view.getTitledAuthor(story)}
+        datePublished={story.published_at}
+        dateModified={story.updated_at}
+        description={description}
+        images={[view.getFirstImage(story).url]}
+        url={'htps://beta.asvf-montagne.fr/stories'}
+      />
+    </>
+  )
+}
 
 Story.propTypes = {
   story: PropTypes.object,
@@ -31,6 +71,7 @@ export default function Story({ story, suggestedStories }) {
   }
   return (
     <Layout>
+      {!loading && <StorySeo story={story} />}
       <SplitBackgroundOverlay
         padding="96px 0 64px 0"
         topHalfHeight={storyHasImage(story, loading) ? 60 : 100}

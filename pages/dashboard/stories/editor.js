@@ -3,8 +3,17 @@ import Layout from '@components/atoms/Layout'
 import DashboardNavigation from '@components/molecules/DashboardNavigation'
 import DashboardStoryCreator from '@components/organisms/DashboardStoryCreator'
 import services from '@services/index'
+import { NextSeo } from 'next-seo'
 import PropTypes from 'prop-types'
 import React from 'react'
+
+function EditorSeo() {
+  return (
+    <>
+      <NextSeo title="Edition d'un récit" noindex={true} />
+    </>
+  )
+}
 
 Editor.propTypes = {
   tags: PropTypes.array,
@@ -15,6 +24,7 @@ Editor.propTypes = {
 export default function Editor({ tags, user, story = {} }) {
   return (
     <Layout>
+      <EditorSeo />
       <DashboardNavigation />
       <DashboardLayout>
         <DashboardStoryCreator

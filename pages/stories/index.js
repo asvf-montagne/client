@@ -1,12 +1,24 @@
-import React, { useReducer, useState } from 'react'
-import PropTypes from 'prop-types'
 import Layout from '@components/atoms/Layout'
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
 import SearchHeader from '@components/molecules/SearchHeader'
 import StoriesGrid from '@components/organisms/StoriesGrid'
 import FormHelper from '@helpers/form'
 import useServices from '@hooks/useServices'
+import { NextSeo } from 'next-seo'
+import PropTypes from 'prop-types'
+import React, { useReducer, useState } from 'react'
 import services from '../../services'
+
+function StoriesSeo() {
+  return (
+    <>
+      <NextSeo
+        title="Récits"
+        description="Découvrez ou recherchez les récits des membres du club de l'asvf-montagne"
+      />
+    </>
+  )
+}
 
 const actionTypes = {
   SET_STORIES: 'SET_STORIES',
@@ -42,7 +54,7 @@ export default function Stories({ tags, stories }) {
   const {
     posts: { api },
   } = useServices()
-  const [loading, serLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState('')
   const [tagId, setTagId] = useState('ALL')
   const [state, dispatch] = useReducer(StoriesReducer, {
@@ -64,18 +76,18 @@ export default function Stories({ tags, stories }) {
   }
 
   async function handleSearch() {
-    serLoading(true)
+    setLoading(true)
 
     const stories = await FormHelper.fakeDelay(
       async () => await api.search(getParamsForSearch()),
     )
     dispatch({ type: actionTypes.SET_STORIES, params: { stories } })
 
-    serLoading(false)
+    setLoading(false)
   }
 
   async function handleFetchMoreStories() {
-    serLoading(true)
+    setLoading(true)
 
     const stories = await FormHelper.fakeDelay(
       async () => await api.search(getParamsForSearch(false)),
@@ -89,11 +101,12 @@ export default function Stories({ tags, stories }) {
       window.scrollTo({ behavior: 'auto', top: scrollOrigin, left: 0 })
     }
 
-    serLoading(false)
+    setLoading(false)
   }
 
   return (
     <Layout>
+      <StoriesSeo />
       <SplitBackgroundOverlay padding="96px 0 64px 0" topHalfHeight={65}>
         <SearchHeader
           title="Découvrez nos récits"

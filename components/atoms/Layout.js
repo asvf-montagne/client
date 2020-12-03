@@ -59,10 +59,7 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <Head>
-        <title>ASVF Montagne</title>
-        {/*<link rel="icon" href="/favicon.ico" />*/}
-      </Head>
+      <Head>{/*<link rel="icon" href="/favicon.ico" />*/}</Head>
       {flash && router.pathname === '/' ? (
         <>
           <FlashInfo
