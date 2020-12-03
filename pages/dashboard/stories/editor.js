@@ -8,12 +8,11 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 function EditorSeo() {
-  return <>
-    <NextSeo
-      title="Edition d'un récit"
-      noindex={true}
-    />
-  </>
+  return (
+    <>
+      <NextSeo title="Edition d'un récit" noindex={true} />
+    </>
+  )
 }
 
 Editor.propTypes = {
@@ -25,7 +24,7 @@ Editor.propTypes = {
 export default function Editor({ tags, user, story = {} }) {
   return (
     <Layout>
-      <EditorSeo/>
+      <EditorSeo />
       <DashboardNavigation />
       <DashboardLayout>
         <DashboardStoryCreator

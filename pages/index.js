@@ -9,11 +9,12 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 function IndexSeo() {
-  return <>
-    <NextSeo title="Accueil"/>
-  </>
+  return (
+    <>
+      <NextSeo title="Accueil" />
+    </>
+  )
 }
-
 
 Home.propTypes = {
   stories: PropTypes.array,
@@ -25,15 +26,15 @@ function Home({ stories, partners }) {
 
   return (
     <>
-      <IndexSeo/>
+      <IndexSeo />
       <Layout>
-        <LandingHero handleRedirection={() => router.push('/club')}/>
+        <LandingHero handleRedirection={() => router.push('/club')} />
         <LandingStoriesHighlight
           highlightedStories={stories}
           handleRedirection={() => router.push('/stories')}
         />
 
-        <LandingContact partners={partners}/>
+        <LandingContact partners={partners} />
       </Layout>
     </>
   )

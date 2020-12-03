@@ -10,12 +10,11 @@ import React from 'react'
 import services from '../../services'
 
 function SettingsSeo() {
-  return <>
-    <NextSeo
-      title="Paramètres"
-      noindex={true}
-    />
-  </>
+  return (
+    <>
+      <NextSeo title="Paramètres" noindex={true} />
+    </>
+  )
 }
 
 Settings.propTypes = {
@@ -31,12 +30,12 @@ Settings.propTypes = {
 export default function Settings({ user }) {
   return (
     <Layout>
-      <SettingsSeo/>
-      <DashboardNavigation/>
+      <SettingsSeo />
+      <DashboardNavigation />
       <DashboardLayout>
-        <FormDashboardSettingsAccount user={user}/>
+        <FormDashboardSettingsAccount user={user} />
 
-        <FormDashboardSettingsPassword/>
+        <FormDashboardSettingsPassword />
 
         {user.provider !== 'google' && (
           <DashboardLinkWithGoogle

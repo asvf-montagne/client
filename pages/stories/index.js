@@ -10,14 +10,15 @@ import React, { useReducer, useState } from 'react'
 import services from '../../services'
 
 function StoriesSeo() {
-  return <>
-    <NextSeo
-      title="Récits"
-      description="Découvrez ou recherchez les récits des membres du club de l'asvf-montagne"
-    />
-  </>
+  return (
+    <>
+      <NextSeo
+        title="Récits"
+        description="Découvrez ou recherchez les récits des membres du club de l'asvf-montagne"
+      />
+    </>
+  )
 }
-
 
 const actionTypes = {
   SET_STORIES: 'SET_STORIES',
@@ -105,7 +106,7 @@ export default function Stories({ tags, stories }) {
 
   return (
     <Layout>
-      <StoriesSeo/>
+      <StoriesSeo />
       <SplitBackgroundOverlay padding="96px 0 64px 0" topHalfHeight={65}>
         <SearchHeader
           title="Découvrez nos récits"

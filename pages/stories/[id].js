@@ -11,40 +11,45 @@ import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-
 StorySeo.propTypes = {
-  story: PropTypes.object.isRequired
+  story: PropTypes.object.isRequired,
 }
 
 function StorySeo({ story }) {
   const view = posts().view
 
-  return <>
-    <NextSeo
-      title={story.title}
-      description={`Récit de ${view.getTitledAuthor(story)} à propos de ${story.title} dans la catégorie 
+  return (
+    <>
+      <NextSeo
+        title={story.title}
+        description={`Récit de ${view.getTitledAuthor(story)} à propos de ${
+          story.title
+        } dans la catégorie 
       ${view.getFirstTag(story)}`}
-      openGraph={{
-        article: {
-          authors: [view.getTitledAuthor(story)],
-          modifiedTime: story.updated_at,
-          publishedTime: story.published_at,
-          tags: [view.getFirstTag(story)],
-          section: view.getFirstTag(story),
-        }
-      }}
-    />
-    <BlogJsonLd
-      title={story.title}
-      authorName={view.getTitledAuthor(story)}
-      datePublished={story.published_at}
-      dateModified={story.updated_at}
-      description={`Récit de ${view.getTitledAuthor(story)} à propos de ${story.title} dans la catégorie 
+        openGraph={{
+          article: {
+            authors: [view.getTitledAuthor(story)],
+            modifiedTime: story.updated_at,
+            publishedTime: story.published_at,
+            tags: [view.getFirstTag(story)],
+            section: view.getFirstTag(story),
+          },
+        }}
+      />
+      <BlogJsonLd
+        title={story.title}
+        authorName={view.getTitledAuthor(story)}
+        datePublished={story.published_at}
+        dateModified={story.updated_at}
+        description={`Récit de ${view.getTitledAuthor(story)} à propos de ${
+          story.title
+        } dans la catégorie 
       ${view.getFirstTag(story)}`}
-      images={[view.getFirstImage(story).url]}
-      url={'htps://beta.asvf-montagne.fr/stories'}
-    />
-  </>
+        images={[view.getFirstImage(story).url]}
+        url={'htps://beta.asvf-montagne.fr/stories'}
+      />
+    </>
+  )
 }
 
 Story.propTypes = {
@@ -68,7 +73,7 @@ export default function Story({ story, suggestedStories }) {
   }
   return (
     <Layout>
-      <StorySeo story={story}/>
+      {!loading && <StorySeo story={story}/>}
       <SplitBackgroundOverlay
         padding="96px 0 64px 0"
         topHalfHeight={storyHasImage(story, loading) ? 60 : 100}

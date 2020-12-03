@@ -5,12 +5,14 @@ import { NextSeo } from 'next-seo'
 import React from 'react'
 
 function SignUpSeo() {
-  return <>
-    <NextSeo
-      title="S'inscrire"
-      description="S'inscrire à l'asvf-montagne avec votre compte"
-    />
-  </>
+  return (
+    <>
+      <NextSeo
+        title="S'inscrire"
+        description="S'inscrire à l'asvf-montagne avec votre compte"
+      />
+    </>
+  )
 }
 
 export default function SignUp() {

@@ -5,12 +5,11 @@ import { NextSeo } from 'next-seo'
 import React from 'react'
 
 function EmailSentSeo() {
-  return <>
-    <NextSeo
-      title="Bientôt terminé !"
-      noindex={true}
-    />
-  </>
+  return (
+    <>
+      <NextSeo title="Bientôt terminé !" noindex={true} />
+    </>
+  )
 }
 
 export default function EmailSent() {
@@ -19,7 +18,7 @@ export default function EmailSent() {
       title="Bientôt terminé !"
       helper={{ label: `Se connecter`, href: '/auth/sign-in' }}
     >
-      <EmailSentSeo/>
+      <EmailSentSeo />
       <BigIcon
         icon="email"
         variant="primary"

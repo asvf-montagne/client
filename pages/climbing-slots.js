@@ -18,13 +18,13 @@ ClimbingSlotsSeo.propTypes = {
  * @returns {JSX.Element}
  */
 function ClimbingSlotsSeo({ page }) {
-  const description = 'Fonctionement de l\'école d\'escalade pour le club ASVF Montagne'
-  return <>
-    <NextSeo
-      title={page.title}
-      description={description}
-    />
-  </>
+  const description =
+    "Fonctionement de l'école d'escalade pour le club ASVF Montagne"
+  return (
+    <>
+      <NextSeo title={page.title} description={description} />
+    </>
+  )
 }
 
 ClimbingSlots.propTypes = {
@@ -38,7 +38,7 @@ ClimbingSlots.propTypes = {
 export default function ClimbingSlots({ page }) {
   return (
     <>
-      <ClimbingSlotsSeo page={page}/>
+      <ClimbingSlotsSeo page={page} />
       <Layout>
         <SplitBackgroundOverlay padding="96px 0 180px 0" topHalfHeight={65}>
           <PageHeader
@@ -50,7 +50,7 @@ export default function ClimbingSlots({ page }) {
             )}`}
           />
         </SplitBackgroundOverlay>
-        <Blog data={JSON.parse(page.content)}/>
+        <Blog data={JSON.parse(page.content)} />
       </Layout>
     </>
   )

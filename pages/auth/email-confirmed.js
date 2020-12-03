@@ -6,12 +6,11 @@ import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
 function EmailConfirmedSeo() {
-  return <>
-    <NextSeo
-      title="Compte validé"
-      noindex={true}
-    />
-  </>
+  return (
+    <>
+      <NextSeo title="Compte validé" noindex={true} />
+    </>
+  )
 }
 
 export default function EmailConfirmed() {
@@ -31,7 +30,7 @@ export default function EmailConfirmed() {
         href: '/auth/sign-in',
       }}
     >
-      <EmailConfirmedSeo/>
+      <EmailConfirmedSeo />
       <BigIcon
         icon="check_circle"
         variant="success"

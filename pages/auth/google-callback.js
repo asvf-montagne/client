@@ -9,14 +9,12 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
 function GoogleCallbackSeo() {
-  return <>
-    <NextSeo
-      title="Chargement du compte !"
-      noindex={true}
-    />
-  </>
+  return (
+    <>
+      <NextSeo title="Chargement du compte !" noindex={true} />
+    </>
+  )
 }
-
 
 export default function GoogleCallback() {
   const { setUser } = useUser()
@@ -59,7 +57,7 @@ export default function GoogleCallback() {
         href: '/auth/sign-in',
       }}
     >
-      <GoogleCallbackSeo/>
+      <GoogleCallbackSeo />
       <BigIcon
         icon={err ? 'cancel' : 'check_circle'}
         variant={err ? 'error' : 'success'}

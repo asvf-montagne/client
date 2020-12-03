@@ -18,13 +18,12 @@ ClimbingSchoolSeo.propTypes = {
  * @returns {JSX.Element}
  */
 function ClimbingSchoolSeo({ page }) {
-  const description = 'Crénaux d\'escalade pour le club ASVF Montagne'
-  return <>
-    <NextSeo
-      title={page.title}
-      description={description}
-    />
-  </>
+  const description = "Crénaux d'escalade pour le club ASVF Montagne"
+  return (
+    <>
+      <NextSeo title={page.title} description={description} />
+    </>
+  )
 }
 
 ClimbingSchool.propTypes = {
@@ -39,7 +38,7 @@ ClimbingSchool.propTypes = {
 export default function ClimbingSchool({ page }) {
   return (
     <>
-      <ClimbingSchoolSeo page={page}/>
+      <ClimbingSchoolSeo page={page} />
       <Layout>
         <SplitBackgroundOverlay padding="96px 0 180px 0" topHalfHeight={65}>
           <PageHeader
@@ -51,7 +50,7 @@ export default function ClimbingSchool({ page }) {
             )}`}
           />
         </SplitBackgroundOverlay>
-        <Blog data={JSON.parse(page.content)}/>
+        <Blog data={JSON.parse(page.content)} />
       </Layout>
     </>
   )

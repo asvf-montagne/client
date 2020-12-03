@@ -5,12 +5,11 @@ import { NextSeo } from 'next-seo'
 import React, { useState } from 'react'
 
 function GoogleCallbackSeo() {
-  return <>
-    <NextSeo
-      title="Changez votre mot de passe"
-      noindex={true}
-    />
-  </>
+  return (
+    <>
+      <NextSeo title="Changez votre mot de passe" noindex={true} />
+    </>
+  )
 }
 
 export default function NewPassword() {

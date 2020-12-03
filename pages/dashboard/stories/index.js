@@ -13,12 +13,11 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 
 function StoriesSeo() {
-  return <>
-    <NextSeo
-      title="Vos récits"
-      noindex={true}
-    />
-  </>
+  return (
+    <>
+      <NextSeo title="Vos récits" noindex={true} />
+    </>
+  )
 }
 
 Stories.propTypes = {
@@ -59,7 +58,7 @@ export default function Stories({ user, posts, hasRequestRoleEditor }) {
 
   return (
     <Layout>
-      <StoriesSeo/>
+      <StoriesSeo />
       <DashboardNavigation />
       <DashboardLayout>
         {user.role.id !== roles.editor.id && (
