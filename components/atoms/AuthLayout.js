@@ -17,11 +17,6 @@ export default function AuthLayout({ title, helper, children }) {
 
   return (
     <>
-      <Head>
-        <title>ASVF Montagne</title>
-        {/*<link rel="icon" href="/favicon.ico" />*/}
-      </Head>
-
       <main>
         <div className={styles.authLayout}>
           <div className={styles.authLayout__left}>

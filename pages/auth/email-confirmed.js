@@ -1,10 +1,20 @@
 import AuthLayout from '@components/atoms/AuthLayout'
 import BigIcon from '@components/molecules/BigIcon'
 import services from '@services/index'
+import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
-export default function EmailVerify() {
+function EmailConfirmedSeo() {
+  return <>
+    <NextSeo
+      title="Compte validé"
+      noindex={true}
+    />
+  </>
+}
+
+export default function EmailConfirmed() {
   const router = useRouter()
 
   useEffect(() => {
@@ -21,6 +31,7 @@ export default function EmailVerify() {
         href: '/auth/sign-in',
       }}
     >
+      <EmailConfirmedSeo/>
       <BigIcon
         icon="check_circle"
         variant="success"

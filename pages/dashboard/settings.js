@@ -4,9 +4,19 @@ import DashboardLinkWithGoogle from '@components/molecules/DashboardLinkWithGoog
 import DashboardNavigation from '@components/molecules/DashboardNavigation'
 import FormDashboardSettingsAccount from '@components/organisms/Forms/FormDashboardSettingsAccount'
 import FormDashboardSettingsPassword from '@components/organisms/Forms/FormDashboardSettingsPassword'
+import { NextSeo } from 'next-seo'
 import PropTypes from 'prop-types'
 import React from 'react'
 import services from '../../services'
+
+function SettingsSeo() {
+  return <>
+    <NextSeo
+      title="Paramètres"
+      noindex={true}
+    />
+  </>
+}
 
 Settings.propTypes = {
   user: PropTypes.object,
@@ -21,11 +31,12 @@ Settings.propTypes = {
 export default function Settings({ user }) {
   return (
     <Layout>
-      <DashboardNavigation />
+      <SettingsSeo/>
+      <DashboardNavigation/>
       <DashboardLayout>
-        <FormDashboardSettingsAccount user={user} />
+        <FormDashboardSettingsAccount user={user}/>
 
-        <FormDashboardSettingsPassword />
+        <FormDashboardSettingsPassword/>
 
         {user.provider !== 'google' && (
           <DashboardLinkWithGoogle

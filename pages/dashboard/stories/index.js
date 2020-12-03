@@ -7,9 +7,19 @@ import DashboardStories from '@components/organisms/DashboardStories'
 import roles from '@helpers/roles'
 import useServices from '@hooks/useServices'
 import services from '@services/index'
+import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
+
+function StoriesSeo() {
+  return <>
+    <NextSeo
+      title="Vos récits"
+      noindex={true}
+    />
+  </>
+}
 
 Stories.propTypes = {
   user: PropTypes.object,
@@ -49,6 +59,7 @@ export default function Stories({ user, posts, hasRequestRoleEditor }) {
 
   return (
     <Layout>
+      <StoriesSeo/>
       <DashboardNavigation />
       <DashboardLayout>
         {user.role.id !== roles.editor.id && (
