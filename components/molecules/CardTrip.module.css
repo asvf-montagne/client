@@ -1,0 +1,101 @@
+.card {
+    width: 100%;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: var(--border-radius-medium);
+    background-color: var(--primary-bg-color);
+    border: 2px solid rgba(12, 117, 255, 0.2);
+    transition: ease-in-out 0.16s;
+    box-shadow: var(--shadow);
+}
+
+.card_title {
+    font-size: var(--title-size-medium);
+    color: var(--font-color-secondary);
+    font-weight: var(--font-weight-medium);
+    overflow: hidden;
+    word-break: break-word;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin: 0 8px 24px 8px;
+    line-height: 110%;
+    transition: ease-in-out .16s;
+}
+
+.card:hover {
+    border: 2px solid var(--tertiary-blue-bg-color);
+    box-shadow: var(--shadow-active);
+}
+
+.card_inner {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 16px;
+}
+
+.card_inner_bottom {
+    display: flex;
+    flex-direction: row;
+}
+
+.card_inner_content {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    margin-left: 16px;
+}
+
+.card_inner_content_col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card_inner_content_col_title {
+    font-size: var(--text-size-medium);
+    color: var(--font-color-gray1);
+    font-weight: var(--font-weight-semiBold);
+}
+
+.card_inner_content_col_value {
+    font-size: var(--text-size-medium);
+    color: var(--font-color-gray1);
+    font-weight: var(--font-weight-medium);
+}
+
+.card_inner_icon {
+    margin: 0 8px;
+    overflow: hidden;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-active);
+    height: 96px;
+    width: 96px;
+    min-height: 96px;
+    min-width: 96px;
+}
+
+.card_inner_icon_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+}
+
+.card_inner_icon_section:first-child {
+    background-color: var(--secondary-blue-bg-color);
+}
+
+.card_inner_icon_section_day {
+    font-size: var(--title-size-medium);
+    font-weight: var(--font-weight-bold);
+    color: var(--font-color-contrast);
+}
+
+.card_inner_icon_section_month {
+    font-size: var(--title-size-small);
+    font-weight: var(--font-weight-bold);
+    color: var(--font-color-gray1);
+}
