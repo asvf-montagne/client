@@ -1,0 +1,6 @@
+
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+
+Sitemap: https://beta.asvf-montagne.fr/sitemap.xml

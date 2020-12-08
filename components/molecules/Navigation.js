@@ -90,7 +90,9 @@ export default function Navigation({ flash }) {
                   </DropDownCol>
 
                   <DropDownCol title="adhérent">
-                    <DropDownItem href="/">Prochaines sorties</DropDownItem>
+                    <DropDownItem href="/trips/2020-2021">
+                      Prochaines sorties
+                    </DropDownItem>
                     <DropDownItem href="/">reglement interieur</DropDownItem>
                     <DropDownItem href="/">Location materiel</DropDownItem>
                     <DropDownItem href="/">COVID-19</DropDownItem>
