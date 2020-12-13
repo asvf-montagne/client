@@ -6,7 +6,7 @@ import { getDate, getMonth, getYear } from 'date-fns'
 import Layout from '@components/atoms/Layout'
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
 import StoryHeader from '@components/molecules/StoryHeader'
-import Blog from '@components/atoms/Blog'
+import BlockStyleRenderer from '@components/atoms/BlockStyleRenderer'
 
 const mockTrip = {
   id: '62c6689a-adc5-4a8a-bddc-93f69895ff8c',
@@ -117,9 +117,9 @@ export default function Trip() {
       </SplitBackgroundOverlay>
 
       {loading ? (
-        <Blog loading={true} />
+        <BlockStyleRenderer loading={true} />
       ) : (
-        <Blog data={mockTrip.content} style={{ marginTop: 64 }} />
+        <BlockStyleRenderer data={mockTrip.content} style={{ marginTop: 64 }} />
       )}
     </Layout>
   )

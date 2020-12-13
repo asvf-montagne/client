@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types'
 import EditorRendererProvider from 'react-editorjs-renderer'
 import Skeleton from 'react-loading-skeleton'
-import styles from './Blog.module.css'
+import styles from './BlockStyleRenderer.module.css'
 
-Blog.propTypes = {
+BlockStyleRenderer.propTypes = {
   data: PropTypes.object,
   ornate: PropTypes.bool,
   loading: PropTypes.bool,
 }
 
-export default function Blog({ data, ornate = true, loading, ...props }) {
+export default function BlockStyleRenderer({ data, ornate = true, loading, ...props }) {
   return (
     <section className={styles.blog} {...props}>
       <div className={styles.blog__inner} aria-selected={ornate}>

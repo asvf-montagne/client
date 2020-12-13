@@ -1,4 +1,4 @@
-import Blog from '@components/atoms/Blog'
+import BlockStyleRenderer from '@components/atoms/BlockStyleRenderer'
 import Layout from '@components/atoms/Layout'
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
 import Gallery from '@components/molecules/Gallery'
@@ -90,9 +90,9 @@ export default function Story({ story, suggestedStories }) {
       </SplitBackgroundOverlay>
 
       {loading ? (
-        <Blog loading={true} />
+        <BlockStyleRenderer loading={true} />
       ) : (
-        <Blog
+        <BlockStyleRenderer
           data={JSON.parse(story.content)}
           style={{ marginTop: !story.images.length ? 64 : 0 }}
         />
