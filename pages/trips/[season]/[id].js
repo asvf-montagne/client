@@ -7,7 +7,17 @@ import Layout from '@components/atoms/Layout'
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
 import StoryHeader from '@components/molecules/StoryHeader'
 import BlockStyleRenderer from '@components/atoms/BlockStyleRenderer'
+import FooterLinkedStory from '@components/molecules/FooterLinkedStory'
 
+const story = {
+  id: 'c4658a5f-9c36-4329-a0c0-7cba7f9d2941',
+  title: 'wewewe',
+  content: 'wewewe',
+  image:
+    'https://freight.cargo.site/t/original/i/7ddbe14af3552d7c6ac24ff33fadd5db4c7b24274ce7f67eb8eb96d9f3e7d1c4/DSC00604.jpg',
+  author: 'John Doe',
+  tags: ['escalade'],
+}
 const mockTrip = {
   id: '62c6689a-adc5-4a8a-bddc-93f69895ff8c',
   title: "Goulotte Zia et traversée d'arête !",
@@ -121,6 +131,8 @@ export default function Trip() {
       ) : (
         <BlockStyleRenderer data={mockTrip.content} style={{ marginTop: 64 }} />
       )}
+
+      <FooterLinkedStory story={story} />
     </Layout>
   )
 }

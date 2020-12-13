@@ -9,7 +9,12 @@ BlockStyleRenderer.propTypes = {
   loading: PropTypes.bool,
 }
 
-export default function BlockStyleRenderer({ data, ornate = true, loading, ...props }) {
+export default function BlockStyleRenderer({
+  data,
+  ornate = true,
+  loading,
+  ...props
+}) {
   return (
     <section className={styles.blog} {...props}>
       <div className={styles.blog__inner} aria-selected={ornate}>
