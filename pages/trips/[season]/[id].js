@@ -132,7 +132,7 @@ export default function Trip() {
         <BlockStyleRenderer data={mockTrip.content} style={{ marginTop: 64 }} />
       )}
 
-      <FooterLinkedStory story={story} />
+      {story && <FooterLinkedStory story={story} />}
     </Layout>
   )
 }
