@@ -1,15 +1,15 @@
-import Blog from '@components/atoms/Blog'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { useRouter } from 'next/router'
+import { BlogJsonLd, NextSeo } from 'next-seo'
+import services from '@services/index'
+import posts from '@services/posts'
+import BlockStyleRenderer from '@components/atoms/BlockStyleRenderer'
 import Layout from '@components/atoms/Layout'
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
 import Gallery from '@components/molecules/Gallery'
 import StoryHeader from '@components/molecules/StoryHeader'
 import SuggestedStories from '@components/organisms/SuggestedStories'
-import services from '@services/index'
-import posts from '@services/posts'
-import { BlogJsonLd, NextSeo } from 'next-seo'
-import { useRouter } from 'next/router'
-import PropTypes from 'prop-types'
-import React from 'react'
 
 StorySeo.propTypes = {
   story: PropTypes.object.isRequired,
@@ -90,9 +90,9 @@ export default function Story({ story, suggestedStories }) {
       </SplitBackgroundOverlay>
 
       {loading ? (
-        <Blog loading={true} />
+        <BlockStyleRenderer loading={true} />
       ) : (
-        <Blog
+        <BlockStyleRenderer
           data={JSON.parse(story.content)}
           style={{ marginTop: !story.images.length ? 64 : 0 }}
         />

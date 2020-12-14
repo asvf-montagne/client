@@ -1,4 +1,4 @@
-import Blog from '@components/atoms/Blog'
+import BlockStyleRenderer from '@components/atoms/BlockStyleRenderer'
 import Layout from '@components/atoms/Layout'
 import PageHeader from '@components/atoms/PageHeader'
 import SplitBackgroundOverlay from '@components/atoms/SplitBackgroundOverlay'
@@ -50,7 +50,7 @@ export default function ClimbingSlots({ page }) {
             )}`}
           />
         </SplitBackgroundOverlay>
-        <Blog data={JSON.parse(page.content)} />
+        <BlockStyleRenderer data={JSON.parse(page.content)} />
       </Layout>
     </>
   )

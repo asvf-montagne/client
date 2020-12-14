@@ -1,0 +1,86 @@
+.suggestedStories {
+    background-color: var(--secondary-bg-color);
+}
+
+.suggestedStories__inner {
+    margin: 0 auto;
+    padding: 64px 0;
+}
+
+.suggestedStories__inner__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    padding: 0 64px;
+}
+
+.suggestedStories__title {
+    font-size: var(--title-size-large);
+    color: var(--font-color-secondary);
+    font-weight: var(--font-weight-semiBold);
+    margin-bottom: 64px;
+}
+
+.suggestedStories__titleEnd {
+    font-size: var(--title-size-large);
+    color: var(--font-color-secondary);
+    font-weight: var(--font-weight-semiBold);
+}
+
+.suggestedStories__cards {
+    width: 100%;
+    min-height: 488px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px 16px;
+    justify-items: center;
+}
+
+@media screen and (max-width: 576px) {
+    .suggestedStories__inner {
+        max-width: 343px;
+    }
+
+    .suggestedStories__inner__box {
+        padding: 0;
+    }
+
+    .suggestedStories__cards {
+        flex-direction: column;
+    }
+
+    .suggestedStories__cards div:nth-child(1) {
+        margin-bottom: 32px;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+    .suggestedStories__inner {
+        max-width: 544px;
+    }
+
+    .suggestedStories__inner__box {
+        padding: 0;
+    }
+
+    .suggestedStories__cards {
+        flex-direction: column;
+    }
+
+    .suggestedStories__cards div:nth-child(1) {
+        margin-bottom: 32px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1080px) {
+    .suggestedStories__inner {
+        max-width: 738px;
+    }
+}
+
+@media screen and (min-width: 1080px) {
+    .suggestedStories__inner {
+        max-width: 1040px;
+    }
+}

@@ -16,7 +16,7 @@
     padding: 0.4em 0;
 }
 
-.blog__inner > p:nth-child(1)::first-letter {
+.blog__inner[aria-selected="true"] > p:nth-child(1)::first-letter {
     font-size: 64px;
     color: var(--font-color-secondary);
     font-weight: var(--font-weight-semiBold);
