@@ -64,6 +64,12 @@
     font-size: var(--text-size-medium);
     color: var(--font-color-gray1);
     font-weight: var(--font-weight-medium);
+    overflow: hidden;
+    word-break: break-word;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .card_inner_icon {
